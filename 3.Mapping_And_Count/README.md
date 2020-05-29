@@ -169,3 +169,21 @@ What do you see?
 - Want to generate count data for each gene (actually each exon) - how many reads mapped to each exon in the genome, from each of our samples?
 - Once we have that information, we can start thinking about how to determine which genes were differentially expressed in our study.
 
+## Subread and FeatureCounts
+- The featureCounts tool from the Subread package can be used to count how many reads aligned to each genome feature (exon).
+- Need to specify the annotation informatyion (.gtf file) 
+You can process all the samples at once:
+
+```
+featureCounts -a Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf \ -o yeast-chr1_counts.txt *.sam
+```
+
+Or you can do process each sample individually:
+
+```
+featureCounts -a Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o SRR014335-chr1_counts.txt SRR014335-chr1-Aligned.out.sam
+```
+
+ ·
+ 
+
