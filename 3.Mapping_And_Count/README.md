@@ -164,8 +164,8 @@ if you don't know what is the library type then you can guess according to the m
 
 What do you see?
 
-#Counting
-· We need to do some counting!
-· Want to generate count data for each gene (actually each exon) - how many reads mapped to each exon in the genome, from each of our samples?
-· Once we have that information, we can start thinking about how to determine which genes were differentially expressed in our study.
+# Counting
+- We need to do some counting!
+- Want to generate count data for each gene (actually each exon) - how many reads mapped to each exon in the genome, from each of our samples?
+- Once we have that information, we can start thinking about how to determine which genes were differentially expressed in our study.
 
