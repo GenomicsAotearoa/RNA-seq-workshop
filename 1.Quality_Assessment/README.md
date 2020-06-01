@@ -10,10 +10,22 @@ pwd
 # good I am ready to work
 
 ```
+
+Checking to make sure we have the Raw files for the workshop.
+
+```
+ls
+modload.sh RNA_seq ...
+```
 Creating a directory where to store the QC data:
 
 ```
-mkdir QC
+cd RNA_seq
+
+ls
+Raw
+
+mkdir - QC
 
 ```
 
