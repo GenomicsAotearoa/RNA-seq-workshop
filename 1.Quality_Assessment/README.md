@@ -33,7 +33,7 @@ Since we are working on the NeSI HPC, we need to search and load the package bef
 
 Search
 ```
-module spider fastqc
+$ module spider fastqc
 ```
 
 and then load 
@@ -72,7 +72,7 @@ SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.ht
 
 ```
 
-##Viewing the FastQC results
+## Viewing the FastQC results
 
 If we were working on our local computers, we’d be able to look at each of these HTML files by opening them in a web browser.
 
