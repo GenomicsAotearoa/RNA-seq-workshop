@@ -139,4 +139,4 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 
 ```
 
-* Have a look at the fastqx_summaries.txt and search for any of the samples that have failed the QC statistical tests.
+* Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
