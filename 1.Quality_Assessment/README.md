@@ -86,8 +86,57 @@ First we will make a new directory on our computer to store the HTML files we’
 
 ```
 
-mkdir -p ~/Desktop/fastqc_html 
+$ mkdir -p ~/Desktop/fastqc_html 
 
-scp -r fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/QC/ ~/Desktop/fastqc_html
+$ scp -r fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/QC/ ~/Desktop/fastqc_html
 
 ```
+
+## Working with the FastQC text output
+Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
+
+```
+$ cd /home/fayfa80p/RNA_seq/QC
+
+$ ls
+SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
+SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
+SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
+
+```
+Let's unzip the files to look at the FastQC text file outputs.
+
+```
+
+$ for filename in *.zip
+> do
+> unzip $filename
+> done
+
+```
+
+Inside each unzipped folder, there is a summary text which shows results of the statistical tests done by FastQC
+
+```
+$ ls SRR014335-chr1_fastqc
+fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
+
+```
+
+Use less to preview the summary.txt file
+
+```
+
+$ less SRR014335-chr1_fastqc/summary.txt
+
+```
+
+We can make a record of the results we obtained for all our samples by concatenating all of our summary.txt files into a single file using the cat command. We’ll call this fastqc_summaries.txt.
+
+```
+
+$ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt 
+
+```
+
+* Have a look at the fastqx_summaries.txt and search for any of the samples that have failed the QC statistical tests.
