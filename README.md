@@ -24,6 +24,6 @@ We will be using NeSI HPC for the analysis so make sure you have a NeSI account 
   * __LUNCH BREAK__
 
   * Differential Gene Expression analysis
-# Mik to add some stuff
+# Mik to add some cool stuff
 
   * __DISCUSSION AND FOLLOW-UP__
