@@ -14,7 +14,7 @@ Genome/ Raw/
 
 ```
 
-If you see the RNA_seq directories with 2 sub-directories: Genome/ and Raw/, yayyy you are good to go.
+If you see the RNA_seq directory with 2 sub-directories: Genome/ and Raw/, yayyy you are good to go.
 
 If not, no pressure, we can still copy the RNA_seq directory to your home directory.
 
