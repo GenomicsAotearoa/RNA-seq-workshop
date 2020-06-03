@@ -90,8 +90,7 @@ Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
 
 ```
 
-# let's use a for loop to process our samples:
-# for each iteration $i will change:  first iteration i=1, then 2 then 3.
+let's use a for loop to process our samples:
 
 ```
 $ cd Raw
