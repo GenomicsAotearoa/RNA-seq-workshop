@@ -4,7 +4,7 @@ This RNA-seq workshop aims to get you started with your own RNA-seq analysis and
 
 We will be using NeSI HPC for the analysis so make sure you have a NeSI account and you are able to login.
 
-Go through the workshop prep files to ensure you are set to go: <a href="https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/README.md"</a>
+Go through the workshop prep files to ensure you are set to go: <a href="https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/README.md">Prep_Files</a>
 
 
 ## Workshop outline
