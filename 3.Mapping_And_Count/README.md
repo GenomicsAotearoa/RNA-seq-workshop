@@ -232,7 +232,7 @@ Since we now have all the count data in one file, we need to transfer it to our 
 
 ```
 
-#In a new terminal that is can access you computer files, cd to the directory you want to save the counts file.
+#In a new terminal that you can access you computer files, cd to the directory you want to save the counts file.
 
 $ scp fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/Counts/yeast_counts_all_chr.txt ./
 
