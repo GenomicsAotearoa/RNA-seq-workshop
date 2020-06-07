@@ -215,5 +215,29 @@ $ for filename in *_sorted.bam
 
 ```
 
+The last thing on count data is to concatenate all the count data into one file.
+
+```
+
+$ cd ../Counts
+
+$ pwd
+/home/Your_Username/RNA_seq/Counts
+
+$ cat *_counts.txt > yeast_counts_all_chr.txt 
+
+```
+
+Since we now have all the count data in one file, we need to transfer it to our locla computers so we could start working on RStudio to get differentially expressed genes.
+
+```
+
+#In a new terminal that is can access you computer files, cd to the directory you want to save the counts file.
+
+$ scp fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/Counts/yeast_counts_all_chr.txt ./
+
+```
+
+
  
 
