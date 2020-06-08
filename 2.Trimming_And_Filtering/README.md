@@ -54,3 +54,22 @@ $ for filename in *.fastq
 > done
 
 ```
+
+---
+
+## MultiQC: `cutadapt` log files
+
+ - If the log files from `cutadapt` are added to the directory containing the FastQC output, this information will also be incorporated into the MultiQC report the next time it is run.
+ 
+```
+
+$ cd ../MultiQC
+ 
+$ cp ../Trimmed/*log .
+
+$ multiqc .
+
+```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC2.png)
+
+
