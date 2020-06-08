@@ -159,7 +159,12 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
 
 ---
 
-# Detecting differential expression: DESeq2
+# Detecting differential expression: 
+
+We are going to identify genes that are differential expressed using 3 different packages (time allowing) and compare the results. 
+
+---
+# DESeq2
 
  - The DESeq2 package uses the *Negative Binomial* distribution to model the count data from each sample.
  - A statistical test based on the Negative Binomial distribution (via a generalized linear model, GLM) can be used to assess differential expression for each gene.
@@ -224,7 +229,7 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 
 ---
 
-## Detecting differential expression: edgeR
+# edgeR
 
  - The edgeR package also uses the negative binomial distribution to model the RNA-seq count data.
  - Takes an empirical Bayes approach to the statistical analysis, in a similar way to how the `limma` package handles microarray data.
@@ -237,7 +242,7 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > knitr::kable(topTags(et, n=4)$table)
 
 ```
-#### edgeR: adjusted p-values
+*adjusted p-values*
 
 ```{r}
 
@@ -251,6 +256,7 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > edgePadj <- edge[edge$FDR <= 0.05, ]
 
 ```
+---
 
 ### DESeq2 vs edgeR
 
@@ -267,3 +273,71 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > vennPlot(vennset, mymain="DEG Comparison")
 
 ```
+
+---
+
+# Limma
+
+<!-- NEED TO EXPLAIN "TREND=TRUE" -->
+
+ - Limma can be used for analysis (log-scale normality-based assumption rather than Negative Binomial for count data)
+ - Use data transformation and log to satisfy normality assumptions (CPM = Counts per Million).
+
+```{r}
+design <- model.matrix(~conds)
+dge <- DGEList(counts=counts)
+dge <- calcNormFactors(dge)
+logCPM <- cpm(dge, log=TRUE, prior.count=3)
+options(width=100)
+head(logCPM, 3)
+```
+
+### Limma: voom
+
+ - The "voom" function estimates relationship between the mean and the variance of the logCPM data, normalises the data, and 
+ creates "precision weights" for each observation that are incorporated into the limma analysis.
+
+```{r, fig.height=4}
+v <- voom(dge, design, plot=TRUE)
+```
+
+*Limma: voom* (impact on first three samples)
+
+```{r, fig.height=4.5, fig.width=12}
+par(mfrow=c(1,3))
+for(i in 1:3){
+  plot(logCPM[,i], v$E[,i], xlab="LogCPM", ylab="Voom", main=colnames(logCPM)[i])
+  abline(0,1)
+}
+```
+
+```{r}
+fit <- lmFit(v, design)
+fit <- eBayes(fit)
+tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
+head(tt)
+```
+
+
+*limma: adjusted p-values*
+
+```{r}
+sum(tt$adj.P.Val <= 0.05)
+sum(p.adjust(tt$P.Value, method="fdr") <= 0.05)
+
+## Get the rows of top table with significant adjusted p-values
+limmaPadj <- tt[tt$adj.P.Val <= 0.05, ]
+```
+
+---
+
+## Limma vs edgeR vs DESeq2
+
+```{r}
+setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj), 
+                LimmaVoom=rownames(limmaPadj))
+vennset <- overLapper(setlist=setlist[1:3], type="vennsets")
+vennPlot(vennset, mymain="DEG Comparison")
+```
+
+---
