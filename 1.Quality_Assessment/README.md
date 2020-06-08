@@ -142,3 +142,30 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 ```
 
 * Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
+
+---
+## MultiQC -  multi-sample analysis
+
+ - The FastQC analysis is applied to each sample separately, and produces a report for each.
+ - The application MultiQC provides a way to combine multiple sets of results (i.e., from MANY 
+ different software packages) across multipel samples.
+ - To generate `multqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
+ 
+```{bash, eval=FALSE}
+
+$ module load MultiQC
+
+$ cd ~/RNA_seq/
+
+$ mkdir MultiQC
+
+$ cd MultiQC
+
+$ multiqc ../QC
+
+$ ls -F
+multiqc_data/  multiqc_report.html
+
+```
+The html report shows the MultiQC summary
+
