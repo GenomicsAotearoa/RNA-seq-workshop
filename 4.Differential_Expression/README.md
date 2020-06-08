@@ -168,17 +168,17 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
 
 More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article by Love et al, 2014</a> 
 
-# Detecting differential expression: DESeq2
 
 ```{r, comment=FALSE, message=FALSE}
-library(DESeq2)
+
+> library(DESeq2)
+
 # Specify "conditions" (groups: WT and MT)
-conds <- c("WT","WT","WT","MT","MT","MT")
+> conds <- c("WT","WT","WT","MT","MT","MT")
 
 # Create object of class CountDataSet derived from eSet class
-dds <- DESeqDataSetFromMatrix(countData = as.matrix(counts), 
-                              colData = data.frame(conds=factor(conds)),
-                              design = formula(~conds))
+> dds <- DESeqDataSetFromMatrix(countData = as.matrix(counts), colData = data.frame(conds=factor(conds)), design = formula(~conds))
+
 # CountDataSet has similar accessor methods as eSet class.
 knitr::kable(counts(dds)[1:4, ]) 
 ```
