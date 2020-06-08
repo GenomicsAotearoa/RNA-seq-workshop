@@ -117,9 +117,21 @@ Further checking our dataset
  - Add row names
 
 ```{r}
-counts = fcData[, 7:12]
-rownames(counts) = fcData$Geneid
-counts %>% head()
+
+> counts = fcData[, 7:12]
+
+> rownames(counts) = fcData$Geneid
+
+> counts %>% head()
+          SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
+YDL248W           0         0         0         0         0         0
+YDL247W-A         0         0         0         0         0         0
+YDL247W           0         0         0         0         0         0
+YDL246C           0         0         0         0         0         0
+YDL245C           0         0         0         0         0         0
+YDL244W           0         0         0         0         0         0
+
+
 ```
 
 ---
@@ -130,10 +142,21 @@ counts %>% head()
  "library size" (number of reads generated for each sample) into account.
 
 ```{r}
-colSums(counts)
+
+> colSums(counts)
+SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341 
+    66112     66607     75730     52490     52915     51802 
+
 ```
 
 ---
 
 ## Visualise via bar plot
+
+```{r}
+
+> colSums(counts) %>% barplot(., las=3, ylab="Reads mapped per sample")
+
+```
+
 
