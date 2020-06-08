@@ -185,7 +185,7 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 
 ```{r, message=FALSE, warning=FALSE}
 
-## Fit DESeq model to identify DE transcripts
+# Fit DESeq model to identify DE transcripts
 > dds <- DESeq(dds)
 > res <- DESeq2::results(dds)
 > knitr::kable(res[1:6,])
@@ -199,25 +199,25 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 
 ```{r}
 
-## Remove rows with NAs
+# Remove rows with NAs
 > res = na.omit(res)
 
-## Get the rows of "res" with significant adjusted p-values
+# Get the rows of "res" with significant adjusted p-values
 > resPadj<-res[res$padj <= 0.05 , ]
 
-## Get dimensions
+# Get dimensions
 > dim(resPadj)
 
 ```
 
 ```{r, warning=FALSE}
-## Number of adjusted p-values less than 0.05
+# Number of adjusted p-values less than 0.05
 > sum(res$padj <= 0.05)
 
-## Check that this is the same using p.adjust with FDR correction
+# Check that this is the same using p.adjust with FDR correction
 > sum(p.adjust(res$pvalue, method="fdr") <= 0.05)
 
-## Number of Holm adjusted p-values less than 0.05
+# Number of Holm adjusted p-values less than 0.05
 > sum(p.adjust(res$pvalue, method="holm") <= 0.01)
 
 ```
