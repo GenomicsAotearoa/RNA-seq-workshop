@@ -180,12 +180,90 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > dds <- DESeqDataSetFromMatrix(countData = as.matrix(counts), colData = data.frame(conds=factor(conds)), design = formula(~conds))
 
 # CountDataSet has similar accessor methods as eSet class.
-knitr::kable(counts(dds)[1:4, ]) 
+> knitr::kable(counts(dds)[1:4, ]) 
 ```
 
+```{r, message=FALSE, warning=FALSE}
 
+## Fit DESeq model to identify DE transcripts
+> dds <- DESeq(dds)
+> res <- DESeq2::results(dds)
+> knitr::kable(res[1:6,])
 
+```
 
+#### Note: p-value adjustment
 
+ - The "padj" column of the DESeq2 results (`res`) contains adjusted p-values (FDR).
+ - Can use the `p.adjust` function to manually adjust the DESeq2 p-values if needed (e.g., to use Holm correction)
 
+```{r}
 
+## Remove rows with NAs
+> res = na.omit(res)
+
+## Get the rows of "res" with significant adjusted p-values
+> resPadj<-res[res$padj <= 0.05 , ]
+
+## Get dimensions
+> dim(resPadj)
+
+```
+
+```{r, warning=FALSE}
+## Number of adjusted p-values less than 0.05
+> sum(res$padj <= 0.05)
+
+## Check that this is the same using p.adjust with FDR correction
+> sum(p.adjust(res$pvalue, method="fdr") <= 0.05)
+
+## Number of Holm adjusted p-values less than 0.05
+> sum(p.adjust(res$pvalue, method="holm") <= 0.01)
+
+```
+
+---
+
+## Detecting differential expression: edgeR
+
+ - The edgeR package also uses the negative binomial distribution to model the RNA-seq count data.
+ - Takes an empirical Bayes approach to the statistical analysis, in a similar way to how the `limma` package handles microarray data.
+
+```{r}
+
+# Compute exact test for the negative binomial distribution.
+> et <- exactTest(y) 
+
+> knitr::kable(topTags(et, n=4)$table)
+
+```
+#### edgeR: adjusted p-values
+
+```{r}
+
+> edge <- as.data.frame(topTags(et, n=nrow(counts))) 
+
+> sum(edge$FDR <= 0.05)
+
+> sum(p.adjust(edge$PValue, method="fdr") <= 0.05)
+
+## Get the rows of "edge" with significant adjusted p-values
+> edgePadj <- edge[edge$FDR <= 0.05, ]
+
+```
+
+### DESeq2 vs edgeR
+
+ - Generate Venn diagram to compare DESeq2 and edgeR results.
+
+```{r}
+
+> library(systemPipeR)
+
+> setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj))
+
+> vennset <- overLapper(setlist=setlist[1:2], type="vennsets")
+
+> vennPlot(vennset, mymain="DEG Comparison")
+
+```
