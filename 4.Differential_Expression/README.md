@@ -37,7 +37,7 @@ To create a project,
 
 - Note: I have now aligned the data for ALL CHROMOSOMES and generated counts, so we are working with data from all 7127 genes.
 
-*Let's look at our dataset and manipulate is as we prepare for differential expression.*
+*Let's look at our dataset and manipulate it is as we prepare for differential expression.*
 
 ```
 
@@ -153,6 +153,35 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
 > colSums(counts) %>% barplot(., las=3, ylab="Reads mapped per sample")
 ```
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Rplot_bar.png)
+
+
+*Now we are ready for differential expression analysis*
+
+---
+
+# Detecting differential expression: DESeq2
+
+ - The DESeq2 package uses the *Negative Binomial* distribution to model the count data from each sample.
+ - A statistical test based on the Negative Binomial distribution (via a generalized linear model, GLM) can be used to assess differential expression for each gene.
+ - Use of the Negative Binomial distribution attempts to accurately capture the variation 
+ that is observed for count data.
+
+More information about DESeq2: <a =href:"https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article by Love et al, 2014</a> 
+
+# Detecting differential expression: DESeq2
+
+```{r, comment=FALSE, message=FALSE}
+library(DESeq2)
+# Specify "conditions" (groups: WT and MT)
+conds <- c("WT","WT","WT","MT","MT","MT")
+
+# Create object of class CountDataSet derived from eSet class
+dds <- DESeqDataSetFromMatrix(countData = as.matrix(counts), 
+                              colData = data.frame(conds=factor(conds)),
+                              design = formula(~conds))
+# CountDataSet has similar accessor methods as eSet class.
+knitr::kable(counts(dds)[1:4, ]) 
+```
 
 
 
