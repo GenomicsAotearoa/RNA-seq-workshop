@@ -166,7 +166,7 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
  - Use of the Negative Binomial distribution attempts to accurately capture the variation 
  that is observed for count data.
 
-More information about DESeq2: <a =href:"https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article by Love et al, 2014</a> 
+More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article by Love et al, 2014</a> 
 
 # Detecting differential expression: DESeq2
 
