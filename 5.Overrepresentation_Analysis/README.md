@@ -1,5 +1,7 @@
 # Overrepresentation analysis (Gene Ontology)
 
+Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/article/20/18/3710/202612">Boyle et al. 2004</a>) is a widely used approach to determine whether known biological functions or processes are over-represented (= enriched) in an experimentally-derived gene list, e.g. a list of differentially expressed genes (DEGs).
+
  - Can perform overrepresentation analysis (e.g., GATHER, GeneSetDB, PantherDB) in R.
  - The basic principles are to:
     - identify a collection of differentially expressed genes
@@ -17,37 +19,25 @@
 
 ## GOseq
 
- - The GOseq methodology (Young et al., 2010) overcomes this issue by allowing the over-representation analysis to be adjusted for gene length.
+ - The GOseq methodology (<a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-2-r14">Young et al., 2010</a>) overcomes this issue by allowing the over-representation analysis to be adjusted for gene length.
      - modification to hypergeometric sampling probability 
      - exact method (resampling) and an approximation-based method
  - More recent publications have also applied this gene-length correction to GSEA-based methods.
  - Still not widely understood to be an issue when performing RNA-seq pathway analysis, but REALLY important to take into account.
 
-## Proportion DE by gene length and reads
+*Proportion DE by gene length and reads* 
 
-<center>
-<img src="PNG/goseq-1.png" height="450">
-</center>
-
-Young, M. D., Wakefield, M. J., Smyth, G. K., & Oshlack, A. (2010).  http://doi.org/10.1186/gb-2010-11-2-r14
+![Alt text]()
 
 
-## Gene set ranks by standard analysis
+*Gene set ranks by standard analysis*
 
-<center>
-<img src="PNG/goseq-2.png" height="450">
-</center>
-
-Young, M. D., Wakefield, M. J., Smyth, G. K., & Oshlack, A. (2010).  http://doi.org/10.1186/gb-2010-11-2-r14
+![Alt text]()
 
 
-## Gene set ranks by GOseq
+*Gene set ranks by GOseq*
 
-<center>
-<img src="PNG/goseq-3.png" height="450">
-</center>
-
-Young, M. D., Wakefield, M. J., Smyth, G. K., & Oshlack, A. (2010).  http://doi.org/10.1186/gb-2010-11-2-r14
+![Alt text]
 
 ---
 
