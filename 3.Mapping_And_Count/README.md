@@ -182,8 +182,31 @@ $ samtools flagstat SRR014335-chr1_sorted.bam
 0 + 0 with mate mapped to a different chr
 0 + 0 with mate mapped to a different chr (mapQ>=5)
 
+```
+
+---
+
+## MultiQC: `HISAT2` output
+
+ - The HISAT2 output data can also be incorporated into the MultiQC report the next time it is run.
+ 
+ ```
+ 
+ $ cd ~/RNA_seq
+ 
+ $ cp ../Mapping/*summary*
+ 
+ $ multiqc .
+ 
 
 ```
+
+
+
+Please note: running HISAT2 with either option `--summary-file` or older versions (< v2.1.0) gives log output identical to Bowtie2. These logs are indistinguishable and summary statistics will appear in MultiQC reports labelled as Bowtie2.
+
+---
+
 # Read Summarization
 Sequencing reads often need to be assigned to genomic features of interest after they are mapped to the reference genome. This process is often called read summarization or read quantification. Read summarization is required by a number of downstream analyses such as gene expression analysis and histone modification analysis. The output of read summarization
 is a count table, in which the number of reads assigned to each feature in each library is recorded.
