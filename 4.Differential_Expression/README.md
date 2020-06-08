@@ -1,12 +1,10 @@
-## RNA-seq : recap
+# RNA-seq : recap
 
 - In the last section we worked through the process of quality assessment and alignment 
 for RNA-seq data
 - This typically takes place on the command line, but can also be done from within R.
 - The end result was the generation of count data (counts of reads aligned to each gene, per sample) using the FeatureCounts command from Subread/Rsubread.
 - Now that we've got count data in R, we can begin our differental expression analysis.
-
----
 
 ## Data set reminder
 
@@ -31,12 +29,15 @@ To create a project,
 - Finally click Create Project
 
 
-(save source from untitled to yeast_data.R) 
+(save source from untitled to yeast_data.R and continue saving reguralry as we work) 
+
 ---
 
 ## Count data
 
 - Note: I have now aligned the data for ALL CHROMOSOMES and generated counts, so we are working with data from all 7127 genes.
+
+*Let's look at our dataset and manipulate is as we prepare for differential expression.*
 
 ```
 
@@ -109,8 +110,6 @@ Further checking our dataset
 
 ```
 
----
-
 ## Extract count data
 
  - Remove annotation columns
@@ -134,8 +133,6 @@ YDL244W           0         0         0         0         0         0
 
 ```
 
----
-
 ## Read counts per sample
 
  - Normalisation process (slightly different for each analysis method) takes 
@@ -149,17 +146,15 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
 
 ```
 
----
-
 ## Visualise via bar plot
 
 ```{r}
 
 > colSums(counts) %>% barplot(., las=3, ylab="Reads mapped per sample")
-
 ```
-
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Rplot_bar.png)
+
+
 
 
 
