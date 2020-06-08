@@ -137,7 +137,7 @@ We will convert the SAM file to BAM format using the samtools program with the v
 ```
 $ module load SAMtools
 
-$ for filename in *
+$ for filename in *.sam
 > do
 > base=$(basename ${filename} .sam)
 > samtools view -S -b ${filename} -o ${base}.bam
@@ -237,6 +237,26 @@ $ for filename in *_sorted.bam
 > done
 
 ```
+
+---
+
+## MultiQC: featureCounts output
+
+- If the samples are processed individually, the output data can be incorporated into the MultiQC report the next time it is run.
+ 
+```
+
+$ cd ../MultiQC
+
+$ cp ../Counts/* .
+
+$ multiqc .
+
+```
+
+![Alt text]()
+
+---
 
 The last thing on count data is to concatenate all the count data into one file.
 
