@@ -201,7 +201,7 @@ $ samtools flagstat SRR014335-chr1_sorted.bam
 
 ```
 
-
+![Alt text]()
 
 Please note: running HISAT2 with either option `--summary-file` or older versions (< v2.1.0) gives log output identical to Bowtie2. These logs are indistinguishable and summary statistics will appear in MultiQC reports labelled as Bowtie2.
 
