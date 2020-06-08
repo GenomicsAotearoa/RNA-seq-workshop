@@ -161,7 +161,9 @@ $ mkdir MultiQC
 
 $ cd MultiQC
 
-$ multiqc ../QC
+$ cp ../QC/* ./
+
+$ multiqc .
 
 $ ls -F
 multiqc_data/  multiqc_report.html
