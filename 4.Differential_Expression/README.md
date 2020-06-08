@@ -157,8 +157,11 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
 
 > colSums(counts) %>% barplot(., las=3, ylab="Reads mapped per sample")
 
+```
+
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Rplot_bar.png)
 
-```
+
+
 
 
