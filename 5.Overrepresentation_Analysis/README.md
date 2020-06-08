@@ -27,17 +27,17 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
 
 *Proportion DE by gene length and reads* 
 
-![Alt text]()
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/goseq-1.png)
 
 
 *Gene set ranks by standard analysis*
 
-![Alt text]()
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/goseq-2.png)
 
 
 *Gene set ranks by GOseq*
 
-![Alt text]
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/goseq-3.png)
 
 ---
 
@@ -46,21 +46,29 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
  - Need to figure out if our organism is supported... (code is "sacCer")
 
 ```{r}
-library(goseq)
-supportedOrganisms()
+
+> library(goseq)
+
+> supportedOrganisms()
+
 ```
 
 
-## Define differentially expressed genes
+*Define differentially expressed genes*
 
  - Create a vector of 0's and 1's to denot whether or not genes are differentially expressed (limma analysis: topTable).
  - Add gene names to the vector so that GOSeq knows which gene each data point relates to.
 
 ```{r}
-genes <- ifelse(tt$adj.P.Val < 0.05, 1, 0)
-names(genes) <- rownames(tt)
-head(genes)
-table(genes)
+
+> genes <- ifelse(tt$adj.P.Val < 0.05, 1, 0)
+
+> names(genes) <- rownames(tt)
+
+> head(genes)
+
+> table(genes)
+
 ```
 
 ## Calculate gene weights
