@@ -30,6 +30,8 @@ To create a project,
 - In the window that opens select Existing Project, and browse to the RNA-seq folder we have created on our Desktop.
 - Finally click Create Project
 
+
+(save source from untitled to yeast_data.R) 
 ---
 
 ## Count data
@@ -37,7 +39,9 @@ To create a project,
 - Note: I have now aligned the data for ALL CHROMOSOMES and generated counts, so we are working with data from all 7127 genes.
 
 ```
-> setwd("/Users/ngonifaya/Desktop/RNA_seq")
+
+> getwd()
+[1] "/Users/ngonifaya/Desktop/RNA_seq"
 
 > library(dplyr)
 
