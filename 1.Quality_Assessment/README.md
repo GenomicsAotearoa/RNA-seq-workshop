@@ -92,6 +92,8 @@ $ scp -r fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/QC/ ~/Desktop
 
 ```
 
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/fqc1_2.png)
+
 ## Working with the FastQC text output
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
 
