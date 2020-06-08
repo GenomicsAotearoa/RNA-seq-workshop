@@ -26,6 +26,14 @@ RNA_seq
 
 ```
 
+---
+## Differential expression prep
+
+```
+# install DESeq2
+> source("https://bioconductor.org/biocLite.R")
+> biocLite("DESeq2")
+```
 
 
 
