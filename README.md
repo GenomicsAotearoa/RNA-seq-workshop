@@ -26,8 +26,7 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
 
   * __LUNCH BREAK__
 
-  * Differential Gene Expression analysis
-  - Using DESeq2, edgeR and Limma
+  * Differential Gene Expression analysis (Using DESeq2, edgeR and Limma packages)
   * Overrepresentation analysis (Gene Ontology)
   
   * __DISCUSSION AND FOLLOW-UP__
