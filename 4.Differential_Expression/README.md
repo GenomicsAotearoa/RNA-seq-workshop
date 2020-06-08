@@ -10,13 +10,11 @@ for RNA-seq data
 
 ## Data set reminder
 
- - Data obtained from yeast RNA-seq experiment
+ - Data obtained from yeast RNA-seq experiment, <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000299">Lee et al 2008 </a>
  - Wild-type versus RNA degradation mutants 
  - Six samples (3 WT / 3 MT)
- - Last week we just worked with data from chromosome 1 to keep the files sizes relatively small.
+ - We are working with data from chromosome 1 to keep the files sizes relatively small.
 
-<BR><BR><BR><BR><BR><BR>
-### Lee, A., Hansen, K. D., Bullard, J., Dudoit, S., & Sherlock, G. (2008). PLoS Genetics, 4(12), e1000299. 
 
 ---
 
