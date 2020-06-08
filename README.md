@@ -27,6 +27,16 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
   * __LUNCH BREAK__
 
   * Differential Gene Expression analysis
-# Mik to add some cool stuff
 
   * __DISCUSSION AND FOLLOW-UP__
+ 
+--- 
+  ## Attribution notice
+  
+- The material used to prepare for the workshop was extracted from Assoc. Prof. Michael Blacks lectures for Stat435 course.
+
+- Some code from the used has been extracted from a collection of presentations, workshops and lectures by Prof. Thomas Girke, Institute for Integrative Genome Biology, UC Riverside:
+### http://girke.bioinformatics.ucr.edu/
+### http://faculty.ucr.edu/~tgirke/HTML_Presentations/Manuals/MCBIOS2015/Rrnaseq/Rrnaseq.pdf
+
+---
