@@ -15,6 +15,20 @@ for RNA-seq data
  - Six samples (3 WT / 3 MT)
  - We are working with data from chromosome 1 to keep the files sizes relatively small.
 
+---
+
+## Create an RStudio project
+
+One of the first benefits we will take advantage of in RStudio is something called an RStudio Project. An RStudio project allows you to more easily:
+
+- Save data, files, variables, packages, etc. related to a specific analysis project
+- Restart work where you left off
+- Collaborate, especially if you are using version control such as git.
+
+To create a project,
+- Open RStudio and go to the File menu, and click New Project.
+- In the window that opens select Existing Project, and browse to the RNA-seq folder we have created on our Desktop.
+- Finally click Create Project
 
 ---
 
@@ -22,10 +36,15 @@ for RNA-seq data
 
 - Note: I have now aligned the data for ALL CHROMOSOMES and generated counts, so we are working with data from all 7127 genes.
 
-```{r, message=FALSE, warning=FALSE}
-library(dplyr)
-fcData = read.table('YeastData/Counts/yeast_counts_all_chr.txt', sep='\t', header=TRUE)
-fcData %>% head()
+```
+> setwd("/Users/ngonifaya/Desktop/RNA_seq")
+
+> library(dplyr)
+
+> fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
+
+> fcData %>% head()
+
 ```
 
 ---
