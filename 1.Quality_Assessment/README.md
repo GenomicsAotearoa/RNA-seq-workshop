@@ -169,3 +169,5 @@ multiqc_data/  multiqc_report.html
 ```
 The html report shows the MultiQC summary
 
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC1.png)
+
