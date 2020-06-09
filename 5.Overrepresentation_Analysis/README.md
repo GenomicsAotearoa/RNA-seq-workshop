@@ -220,7 +220,6 @@ pwf=nullp(genes,"sacCer1","ensGene")
 
 ```
 
----
 
 ## Compare with and without adjustment
 
@@ -246,7 +245,6 @@ pwf=nullp(genes,"sacCer1","ensGene")
 
 ```
 
----
 
 #### Gene lengths and GO term membership
 
@@ -329,7 +327,6 @@ pwf=nullp(genes,"sacCer1","ensGene")
         col=cols[oo], ylab="Gene Length", xlab = "GO term")
 ```
 
----
 
 #### Gene length versus P-value
 
