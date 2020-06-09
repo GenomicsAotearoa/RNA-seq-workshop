@@ -32,19 +32,22 @@ RNA_seq
 ## Differential expression prep
 These are the packages needed for the differential expression analysis
 ```
-# install DESeq2
+# install DESeq2, edgeR and limma
 
-#Older versions of R (older than 3.5)
+# Older versions of R (older than 3.5)
 > source("https://bioconductor.org/biocLite.R")
 
 > biocLite("DESeq2")
 
 
-#Newer versions of R
+# Newer versions of R
 > if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 > BiocManager::install("DESeq2")
+
+# Installing edgeR will also install limma as it is a dependency package
+> BiocManager::install("edgeR")
 
 ```
 
