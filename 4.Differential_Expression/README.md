@@ -46,27 +46,28 @@ To create a project,
 
 > library(dplyr)
 
-> fcData = read.table('yeast_chr1_counts.txt', sep='\t', header=TRUE)
+> fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
 
 > fcData %>% head()
-     Geneid Chr Start   End Strand Length ...STAR.SRR014335.chr1.Aligned.out.sam
-1   YDL248W  IV  1802  2953      +   1152                                      0
-2 YDL247W-A  IV  3762  3836      +     75                                      0
-3   YDL247W  IV  5985  7814      +   1830                                      0
-4   YDL246C  IV  8683  9756      -   1074                                      0
-5   YDL245C  IV 11657 13360      -   1704                                      0
-6   YDL244W  IV 16204 17226      +   1023                                      0
-  ...STAR.SRR014336.chr1.Aligned.out.sam ...STAR.SRR014337.chr1.Aligned.out.sam
-1                                      0                                      0
-2                                      0                                      0
-3                                      0                                      0
-4                                      0                                      0
-5                                      0                                      0
-6                                      0                                      0
-  ...STAR.SRR014339.chr1.Aligned.out.sam ...STAR.SRR014340.chr1.Aligned.out.sam
-  .
-  .
-  .
+     Geneid Chr Start   End Strand Length ...STAR.SRR014335.Aligned.out.sam
+1   YDL248W  IV  1802  2953      +   1152                                52
+2 YDL247W-A  IV  3762  3836      +     75                                 0
+3   YDL247W  IV  5985  7814      +   1830                                 2
+4   YDL246C  IV  8683  9756      -   1074                                 0
+5   YDL245C  IV 11657 13360      -   1704                                 0
+6   YDL244W  IV 16204 17226      +   1023                                 6
+  ...STAR.SRR014336.Aligned.out.sam ...STAR.SRR014337.Aligned.out.sam
+1                                46                                36
+2                                 0                                 0
+3                                 4                                 2
+4                                 0                                 1
+5                                 3                                 0
+6                                 6                                 5
+  ...STAR.SRR014339.Aligned.out.sam ...STAR.SRR014340.Aligned.out.sam
+1                                65                                70
+.
+.
+.
 
 ```
 
@@ -75,6 +76,7 @@ Further checking our dataset
 ```{r}
 
 > dim(fcData)
+[1] 7127   12
 
 > names(fcData)
  [1] "Geneid"                                 "Chr"                                   
@@ -93,20 +95,13 @@ Further checking our dataset
                         "SRR014339", "SRR014340", "SRR014341")
  
 > fcData %>% head()
-     Geneid Chr Start   End Strand Length SRR014335 SRR014336 SRR014337 SRR014339
-1   YDL248W  IV  1802  2953      +   1152         0         0         0         0
-2 YDL247W-A  IV  3762  3836      +     75         0         0         0         0
-3   YDL247W  IV  5985  7814      +   1830         0         0         0         0
-4   YDL246C  IV  8683  9756      -   1074         0         0         0         0
-5   YDL245C  IV 11657 13360      -   1704         0         0         0         0
-6   YDL244W  IV 16204 17226      +   1023         0         0         0         0
-  SRR014340 SRR014341
-1         0         0
-2         0         0
-3         0         0
-4         0         0
-5         0         0
-6         0         0
+     Geneid Chr Start   End Strand Length SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
+1   YDL248W  IV  1802  2953      +   1152        52        46        36        65        70        78
+2 YDL247W-A  IV  3762  3836      +     75         0         0         0         0         1         0
+3   YDL247W  IV  5985  7814      +   1830         2         4         2         6         8         5
+4   YDL246C  IV  8683  9756      -   1074         0         0         1         1         2         0
+5   YDL245C  IV 11657 13360      -   1704         0         3         0         5         7         4
+6   YDL244W  IV 16204 17226      +   1023         6         6         5        20        30        19
 
 ```
 
@@ -123,12 +118,12 @@ Further checking our dataset
 
 > counts %>% head()
           SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
-YDL248W           0         0         0         0         0         0
-YDL247W-A         0         0         0         0         0         0
-YDL247W           0         0         0         0         0         0
-YDL246C           0         0         0         0         0         0
-YDL245C           0         0         0         0         0         0
-YDL244W           0         0         0         0         0         0
+YDL248W          52        46        36        65        70        78
+YDL247W-A         0         0         0         0         1         0
+YDL247W           2         4         2         6         8         5
+YDL246C           0         0         1         1         2         0
+YDL245C           0         3         0         5         7         4
+YDL244W           6         6         5        20        30        19
 
 
 ```
@@ -142,7 +137,7 @@ YDL244W           0         0         0         0         0         0
 
 > colSums(counts)
 SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341 
-    66112     66607     75730     52490     52915     51802 
+  4915975   4892227   4778158   4618409   4719413   4554283 
 
 ```
 
@@ -186,13 +181,21 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 
 # CountDataSet has similar accessor methods as eSet class.
 > knitr::kable(counts(dds)[1:4, ]) 
+|          | SRR014335| SRR014336| SRR014337| SRR014339| SRR014340| SRR014341|
+|:---------|---------:|---------:|---------:|---------:|---------:|---------:|
+|YDL248W   |         0|         0|         0|         0|         0|         0|
+|YDL247W-A |         0|         0|         0|         0|         0|         0|
+|YDL247W   |         0|         0|         0|         0|         0|         0|
+|YDL246C   |         0|         0|         0|         0|         0|         0|
+
 ```
 
+#### Fit DESeq model to identify DE transcripts
 ```{r, message=FALSE, warning=FALSE}
-
-# Fit DESeq model to identify DE transcripts
 > dds <- DESeq(dds)
+
 > res <- DESeq2::results(dds)
+
 > knitr::kable(res[1:6,])
 
 ```
