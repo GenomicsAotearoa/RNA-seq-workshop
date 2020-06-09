@@ -50,6 +50,17 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
 > library(goseq)
 
 > supportedOrganisms()
+           Genome         Id       Id Description Lengths in geneLeneDataBase GO Annotation Available
+12        anoCar1    ensGene      Ensembl gene ID                        TRUE                   FALSE
+13        anoGam1    ensGene      Ensembl gene ID                        TRUE                    TRUE
+127       anoGam3                                                       FALSE                    TRUE
+14        apiMel2    ensGene      Ensembl gene ID                        TRUE                   FALSE
+132   Arabidopsis                                                       FALSE                    TRUE
+56        bosTau2 geneSymbol          Gene Symbol                        TRUE                    TRUE
+15        bosTau3    ensGene      Ensembl gene ID                        TRUE                    TRUE
+.
+.
+.
 
 ```
 
@@ -66,8 +77,14 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
 > names(genes) <- rownames(tt)
 
 > head(genes)
+YAL038W YOR161C YML128C YMR105C YHL021C YDR516C 
+      1       1       1       1       1       1 
+      
 
 > table(genes)
+genes
+   0    1 
+1987 5140 
 
 ```
 
@@ -77,8 +94,12 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
  - Likely restricts to only those genes with GO annotation
   
 ```{r, message=FALSE, warning=FALSE, fig.height=5}
-pwf=nullp(genes,"sacCer1","ensGene")
+
+> pwf=nullp(genes,"sacCer1","ensGene")
+
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_weights.png)
+
 
 ```{r, echo=FALSE, eval=FALSE}
 
@@ -100,6 +121,13 @@ pwf=nullp(genes,"sacCer1","ensGene")
 ```{r}
 
 > head(pwf)
+        DEgenes bias.data       pwf
+YAL038W       1      1504 0.8205505
+YOR161C       1      1621 0.8205505
+YML128C       1      1543 0.8205505
+YMR105C       1      1711 0.8205505
+YHL021C       1      1399 0.8205505
+YDR516C       1      1504 0.8205505
 
 ```
 
@@ -114,6 +142,7 @@ pwf=nullp(genes,"sacCer1","ensGene")
 >hist(pwf$pwf,30)
 
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_lengths_weight.png)
 
 
 #### Gene length vs average expression
@@ -127,6 +156,7 @@ pwf=nullp(genes,"sacCer1","ensGene")
   geom_smooth(method='lm')
   
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_AvgExpression.png)
 
 #### Length correction in GOSeq
 
