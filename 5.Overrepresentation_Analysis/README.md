@@ -71,7 +71,7 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
 
 ```
 
-## Calculate gene weights
+#### Calculate gene weights
   
  - Put genes into length-based "bins", and plot length vs proportion differentially expressed
  - Likely restricts to only those genes with GO annotation
@@ -81,42 +81,54 @@ pwf=nullp(genes,"sacCer1","ensGene")
 ```
 
 ```{r, echo=FALSE, eval=FALSE}
-# library(GenomicFeatures)
-# txdb <- makeTxDbFromGFF(file="Saccharomyces_cerevisiae.R64-1-1.99.gtf", format = "gtf",
-#                        dataSource = "SGD", organism = "Saccharomyces cerevisiae")
-# txsByGene=transcriptsBy(txdb,"gene")
-# lengthData=median(width(txsByGene))
+
+> library(GenomicFeatures)
+
+> txdb <- makeTxDbFromGFF(file="Saccharomyces_cerevisiae.R64-1-1.99.gtf", format = "gtf", dataSource = "SGD", organism = "Saccharomyces cerevisiae")
+
+> txsByGene=transcriptsBy(txdb,"gene")
+
+> lengthData=median(width(txsByGene))
+
 ```
 
 
-## Inspect output
+#### Inspect output
 
  - Report length (bias) and weight data per gene.
 
 ```{r}
-head(pwf)
+
+> head(pwf)
+
 ```
 
-## Gene lengths and weights
+#### Gene lengths and weights
 
 ```{r, fig.height=5.5, fig.width=10}
 
-par(mfrow=c(1,2))
-hist(pwf$bias.data,30)
-hist(pwf$pwf,30)
+> par(mfrow=c(1,2))
+
+> hist(pwf$bias.data,30)
+
+>hist(pwf$pwf,30)
+
 ```
 
 
-## Gene length vs average expression
+#### Gene length vs average expression
 
 ```{r, fig.height=5.5, fig.width=9, warning=FALSE, message=FALSE}
-library(ggplot2)
-data.frame(logGeneLength = log2(pwf$bias.data), avgExpr = tt$AveExpr) %>% 
+
+> library(ggplot2)
+
+> data.frame(logGeneLength = log2(pwf$bias.data), avgExpr = tt$AveExpr) %>% 
   ggplot(., aes(x=logGeneLength, y=avgExpr)) + geom_point(size=0.2) + 
   geom_smooth(method='lm')
+  
 ```
 
-## Length correction in GOSeq
+#### Length correction in GOSeq
 
  - Uses "Wallenius approximation" to perform correction.
  - Essentially it is performing a weighted Fisher's Exact Test, but each gene in the 
@@ -126,27 +138,37 @@ data.frame(logGeneLength = log2(pwf$bias.data), avgExpr = tt$AveExpr) %>%
  that are differentially expressed.
 
 
-## Run GOSeq with gene length correction
+#### Run GOSeq with gene length correction
 
 ```{r, cache=TRUE}
-GO.wall=goseq(pwf, "sacCer1", "ensGene")
+
+> GO.wall=goseq(pwf, "sacCer1", "ensGene")
+
 ```
 
 
-## Output: Wallenius method
+#### Output: Wallenius method
 
 ```{r}
-head(GO.wall)
+
+> head(GO.wall)
+
 ```
 
-## P-value adjustment
+#### P-value adjustment
 
 ```{r}
-GO.wall.padj <- p.adjust(GO.wall$over_represented_pvalue, method="fdr")
-sum(GO.wall.padj < 0.05)
-GO.wall.sig <- GO.wall$category[GO.wall.padj < 0.05]
-length(GO.wall.sig)
-head(GO.wall.sig)
+
+> GO.wall.padj <- p.adjust(GO.wall$over_represented_pvalue, method="fdr")
+
+> sum(GO.wall.padj < 0.05)
+
+> GO.wall.sig <- GO.wall$category[GO.wall.padj < 0.05]
+
+> length(GO.wall.sig)
+
+> head(GO.wall.sig)
+
 ```
 
 ---
@@ -156,36 +178,46 @@ head(GO.wall.sig)
  - Can use the `GO.db` package to get more information about the significant gene sets.
 
 ```{r}
-library(GO.db)
-GOTERM[[GO.wall.sig[1]]]
+
+> library(GO.db)
+
+> GOTERM[[GO.wall.sig[1]]]
+
 ```
 
 ---
 
-## Run GOSeq without gene length correction
+#### Run GOSeq without gene length correction
 
 ```{r, cache=TRUE}
-GO.nobias=goseq(pwf, "sacCer1", "ensGene", method="Hypergeometric")
+
+> GO.nobias=goseq(pwf, "sacCer1", "ensGene", method="Hypergeometric")
+
 ```
 
----
-
-## Output: Hypergeomtric (Fisher) method
+*Output: Hypergeomtric (Fisher) method*
 
 ```{r}
-head(GO.nobias)
+
+> head(GO.nobias)
+
 ```
 
----
 
-## P-value adjustment
+#### P-value adjustment
 
 ```{r}
-GO.nobias.padj <- p.adjust(GO.nobias$over_represented_pvalue, method="fdr")
-sum(GO.nobias.padj < 0.05)
-GO.nobias.sig <- GO.nobias$category[GO.nobias.padj < 0.05]
-length(GO.nobias.sig)
-head(GO.nobias.sig)
+
+> GO.nobias.padj <- p.adjust(GO.nobias$over_represented_pvalue, method="fdr")
+
+> sum(GO.nobias.padj < 0.05)
+
+> GO.nobias.sig <- GO.nobias$category[GO.nobias.padj < 0.05]
+
+> length(GO.nobias.sig)
+
+> head(GO.nobias.sig)
+
 ```
 
 ---
@@ -193,116 +225,131 @@ head(GO.nobias.sig)
 ## Compare with and without adjustment
 
 ```{r}
-venn(list(GO.wall=GO.wall.sig, GO.nobias=GO.nobias.sig))
+
+> venn(list(GO.wall=GO.wall.sig, GO.nobias=GO.nobias.sig))
+
 ```
 
----
-
-## Compare with and without adjustment
-
- - Extract out the different parts of the Venn diagram (yes, theer are definitely better ways to do this).
+ - Extract out the different parts of the Venn diagram (yes, there are definitely better ways to do this).
  
 
 ```{r}
+
 ## Only significant in Hypergeomtric analysis
-onlySig.nobias <- setdiff(GO.nobias.sig, GO.wall.sig)
+> onlySig.nobias <- setdiff(GO.nobias.sig, GO.wall.sig)
 
 ## Only significant in Wallenius analysis
-onlySig.wall <- setdiff(GO.wall.sig, GO.nobias.sig)
+> onlySig.wall <- setdiff(GO.wall.sig, GO.nobias.sig)
 
 ## Significant in both
-sig.wall.nobias <- intersect(GO.wall.sig, GO.nobias.sig)
+> sig.wall.nobias <- intersect(GO.wall.sig, GO.nobias.sig)
+
 ```
 
 ---
 
-## Gene lengths and GO term membership
+#### Gene lengths and GO term membership
 
  - Can also extract gene length and GO membership information.
 
 ```{r}
-len=getlength(names(genes),"sacCer1","ensGene")
-head(len)
 
-go = getgo(names(genes),"sacCer1","ensGene")
-head(go)
+> len=getlength(names(genes),"sacCer1","ensGene")
+
+> head(len)
+
+> go = getgo(names(genes),"sacCer1","ensGene")
+
+> head(go)
+
 ```
 
 ---
 
-## Getting fancy...
+#### Getting fancy...
 
  - Figure out which genes are in the significant GO groups, and then gets their lengths.
 
 ```{r}
-lengths.onlySig.nobias <- list()
-for(i in 1:length(onlySig.nobias)){
+
+> lengths.onlySig.nobias <- list()
+> for(i in 1:length(onlySig.nobias)){
   inGo <- lapply(go, function(x)  onlySig.nobias[i] %in% x) %>% unlist()
   lengths.onlySig.nobias[[i]] <- len[inGo]
 }
 
-lengths.onlySig.wall <- list()
-for(i in 1:length(onlySig.wall)){
+> lengths.onlySig.wall <- list()
+> for(i in 1:length(onlySig.wall)){
   inGo <- lapply(go, function(x)  onlySig.wall[i] %in% x) %>% unlist()
   lengths.onlySig.wall[[i]] <- len[inGo]
 }
+
 ```
 
----
-
-## Significant: Hypergeometric vs Wallenius 
+#### Significant: Hypergeometric vs Wallenius 
 
  - Only Hypergeometric (pink) vs only Wallenius (blue)
  - Hypergeometric method is findings GO terms containing longer genes.
 
 ```{r, fig.width=9, fig.height=5}
-cols <- rep(c("lightpink", "lightblue"), c(10,7))
-boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
+
+> cols <- rep(c("lightpink", "lightblue"), c(10,7))
+
+> boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
+
 ```
 
----
-
-## All significant GO terms
+#### All significant GO terms
 
 ```{r, echo=FALSE}
-lengths.sig.wall.nobias <- list()
-for(i in 1:length(sig.wall.nobias)){
+
+> lengths.sig.wall.nobias <- list()
+
+> for(i in 1:length(sig.wall.nobias)){
   inGo <- lapply(go, function(x)  sig.wall.nobias[i] %in% x) %>% unlist()
   lengths.sig.wall.nobias[[i]] <- len[inGo]
 }
+
 ```
 
 ```{r, echo=FALSE}
-cols <- rep(c("lightpink", grey(0.7), "lightblue"), c(10,37,7))
 
-avgLength <- lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall),
+> cols <- rep(c("lightpink", grey(0.7), "lightblue"), c(10,37,7))
+
+> avgLength <- lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall),
                     median) %>% unlist()
 
-oo <- order(avgLength, decreasing=TRUE)
+> oo <- order(avgLength, decreasing=TRUE)
+
 ```
 
 ```{r, echo=FALSE, fig.width=12, fig.height=7}
-boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)[oo],
+
+> boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)[oo],
         col=cols[oo], ylab="Gene Length", xlab = "GO term")
 ```
 
 ---
 
-## Gene length versus P-value
+#### Gene length versus P-value
 
 ```{r, echo=FALSE}
-avgLength.wall <- lapply(c(lengths.onlySig.wall, lengths.sig.wall.nobias), median)
-avgLength.nobias <- lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias), median)
-cols <- rep(c("blue", "lightblue", "red","lightpink"),
+
+> avgLength.wall <- lapply(c(lengths.onlySig.wall, lengths.sig.wall.nobias), median)
+
+> avgLength.nobias <- lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias), median)
+
+> cols <- rep(c("blue", "lightblue", "red","lightpink"),
             c(length(lengths.onlySig.wall), length(lengths.sig.wall.nobias),
               length(lengths.onlySig.nobias), length(lengths.sig.wall.nobias)))
 
-plot(c(avgLength.wall, avgLength.nobias), 
+> plot(c(avgLength.wall, avgLength.nobias), 
      -log(c(GO.nobias.padj[GO.nobias.padj < 0.05], GO.wall.padj[GO.wall.padj < 0.05])), 
      col=cols, pch=16, xlab="Median Gene Length", ylab ="-log(FDR adj-pval)")
 legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)", 
                      "Sig in both (wal adjp)", "Only sig in Wall"), 
        fill=c("red", "pink", "lightblue", "blue"))
+       
 ```
 
 ---
