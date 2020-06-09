@@ -34,8 +34,9 @@ RNA_seq
 ## Differential expression prep
 These are the packages needed for the differential expression analysis
 
+#### install `DESeq2`, `edgeR`, `limma`, `systemPipeR`
+
 ```
-# install DESeq2, edgeR and limma
 
 # Older versions of R (older than 3.5)
 > source("https://bioconductor.org/biocLite.R")
@@ -51,12 +52,7 @@ These are the packages needed for the differential expression analysis
 # Installing edgeR will also install limma as it is a dependency package
 > BiocManager::install("edgeR")
 
-```
-
-#### install `systemPipeR`:
-R package for building and running automated end-to-end analysis workflows for a wide range of next generation sequence (NGS) applications such as RNA-Seq, ChIP-Seq, VAR-Seq and Ribo-Seq.
-
-```
+# systemPipeR: R package for building and running automated end-to-end analysis workflows for a wide range of next generation sequence (NGS) applications such as RNA-Seq, ChIP-Seq, VAR-Seq and Ribo-Seq.
 
 > BiocManager::install("systemPipeR")
 
@@ -66,11 +62,14 @@ R package for building and running automated end-to-end analysis workflows for a
 
 ## Overrepresentation analysis prep
 
-#### install `goseq`
-R package for detecting Gene Ontology and/or other user defined categories which are over/under represented in RNA-seq data
+#### install `goseq`, `ggplot2`
 
 ```
+# goseq: R package for detecting Gene Ontology and/or other user defined categories which are over/under represented in RNA-seq data
 > BiocManager::install("goseq")
+
+# ggplot: is a data visualization package
+> install.packages("ggplot2")
 
 ```
 
