@@ -260,7 +260,7 @@ fitting model and testing
 # Add colored points: blue if padj<0.01, red if log2FC>1 and padj<0.05)
 > with(subset(res, padj<.01 ), points(log2FoldChange, -log10(pvalue), pch=20, col="blue"))
 > with(subset(res, padj<.01 & abs(log2FoldChange)>2), points(log2FoldChange, -log10(pvalue), pch=20, col="red"))
-``
+```
 
 ---
 
