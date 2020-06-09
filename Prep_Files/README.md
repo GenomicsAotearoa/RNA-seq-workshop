@@ -1,5 +1,7 @@
 # Workshop Preparation
 
+---
+## HPC and dataset check
 Things to check:
 - Are you able to login into NeSI (If not please get in touch with Dini - dinindu.senanayake@nesi.org.nz)
 - Do you have RStudio installed on your laptop
@@ -40,7 +42,6 @@ These are the packages needed for the differential expression analysis
 
 > biocLite("DESeq2")
 
-
 # Newer versions of R
 > if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -52,13 +53,32 @@ These are the packages needed for the differential expression analysis
 
 ```
 
+#### install `systemPipeR`:
+R package for building and running automated end-to-end analysis workflows for a wide range of next generation sequence (NGS) applications such as RNA-Seq, ChIP-Seq, VAR-Seq and Ribo-Seq.
 
 ```
-# install systemPipeR: R package for building and running automated end-to-end analysis workflows for a wide range of next generation sequence (NGS) applications such as RNA-Seq, ChIP-Seq, VAR-Seq and Ribo-Seq. 
 
 > BiocManager::install("systemPipeR")
 
 ```
+
+---
+
+## Overrepresentation analysis prep
+
+#### install `goseq`
+R package for detecting Gene Ontology and/or other user defined categories which are over/under represented in RNA-seq data
+
+```
+> BiocManager::install("goseq")
+
+```
+
+
+
+
+
+
 
 
 
