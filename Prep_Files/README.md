@@ -27,8 +27,10 @@ RNA_seq
 ```
 
 ---
-## Differential expression prep
 
+
+## Differential expression prep
+These are the packages needed for the differential expression analysis
 ```
 # install DESeq2
 
