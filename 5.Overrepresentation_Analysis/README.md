@@ -173,6 +173,13 @@ YDR516C       1      1504 0.8205505
 ```{r, cache=TRUE}
 
 > GO.wall=goseq(pwf, "sacCer1", "ensGene")
+Fetching GO annotations...
+
+For 1323 genes, we could not find any categories. These genes will be excluded.
+To force their use, please run with use_genes_without_cat=TRUE (see documentation).
+This was the default behavior for version 1.15.1 and earlier.
+Calculating the p-values...
+'select()' returned 1:1 mapping between keys and columns
 
 ```
 
@@ -182,6 +189,13 @@ YDR516C       1      1504 0.8205505
 ```{r}
 
 > head(GO.wall)
+       category over_represented_pvalue under_represented_pvalue numDEInCat numInCat                                 term ontology
+1335 GO:0005622            1.700002e-17                        1       4279     5156                        intracellular       CC
+3793 GO:0022613            1.862808e-11                        1        435      478 ribonucleoprotein complex biogenesis       BP
+7667 GO:0110165            3.568363e-11                        1       4428     5384           cellular anatomical entity       CC
+2658 GO:0009987            1.488703e-10                        1       4090     4930                     cellular process       BP
+5159 GO:0042254            1.792827e-10                        1        369      404                  ribosome biogenesis       BP
+5356 GO:0043226            5.930354e-10                        1       3783     4564                            organelle       CC
 
 ```
 
@@ -192,12 +206,15 @@ YDR516C       1      1504 0.8205505
 > GO.wall.padj <- p.adjust(GO.wall$over_represented_pvalue, method="fdr")
 
 > sum(GO.wall.padj < 0.05)
+[1] 39
 
 > GO.wall.sig <- GO.wall$category[GO.wall.padj < 0.05]
 
 > length(GO.wall.sig)
+[1] 39
 
 > head(GO.wall.sig)
+"GO:0005622" "GO:0022613" "GO:0110165" "GO:0009987" "GO:0042254" "GO:0043226"
 
 ```
 
@@ -212,6 +229,16 @@ YDR516C       1      1504 0.8205505
 > library(GO.db)
 
 > GOTERM[[GO.wall.sig[1]]]
+GOID: GO:0005622
+Term: intracellular
+Ontology: CC
+Definition: The living contents of a cell; the matter contained within (but not including) the
+    plasma membrane, usually taken to exclude large vacuoles and masses of secretory or ingested
+    material. In eukaryotes it includes the nucleus and cytoplasm.
+Synonym: internal to cell
+Synonym: protoplasm
+Synonym: nucleocytoplasm
+Synonym: protoplast
 
 ```
 
@@ -222,6 +249,12 @@ YDR516C       1      1504 0.8205505
 ```{r, cache=TRUE}
 
 > GO.nobias=goseq(pwf, "sacCer1", "ensGene", method="Hypergeometric")
+Fetching GO annotations...
+For 1323 genes, we could not find any categories. These genes will be excluded.
+To force their use, please run with use_genes_without_cat=TRUE (see documentation).
+This was the default behavior for version 1.15.1 and earlier.
+Calculating the p-values...
+'select()' returned 1:1 mapping between keys and columns
 
 ```
 
@@ -230,6 +263,13 @@ YDR516C       1      1504 0.8205505
 ```{r}
 
 > head(GO.nobias)
+       category over_represented_pvalue under_represented_pvalue numDEInCat numInCat                       term ontology
+1335 GO:0005622            6.767436e-28                        1       4279     5156              intracellular       CC
+2658 GO:0009987            1.379014e-20                        1       4090     4930           cellular process       BP
+7667 GO:0110165            2.056092e-19                        1       4428     5384 cellular anatomical entity       CC
+5356 GO:0043226            1.064309e-13                        1       3783     4564                  organelle       CC
+5359 GO:0043229            1.616133e-13                        1       3776     4556    intracellular organelle       CC
+1386 GO:0005737            1.273288e-12                        1       3562     4289                  cytoplasm       CC
 
 ```
 
