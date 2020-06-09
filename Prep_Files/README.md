@@ -62,7 +62,7 @@ These are the packages needed for the differential expression analysis
 
 ## Overrepresentation analysis prep
 
-#### install `goseq`, `ggplot2`
+#### install `goseq`, `ggplot2`, `org.Sc.sgd.db`, `venn`
 
 ```
 # goseq: R package for detecting Gene Ontology and/or other user defined categories which are over/under represented in RNA-seq data
@@ -70,6 +70,13 @@ These are the packages needed for the differential expression analysis
 
 # ggplot: is a data visualization package
 > install.packages("ggplot2")
+
+# org.Sc.sgd.db: Genome wide annotation for Yeast, primarily based on mapping using ORF identifiers from SGD.
+> BiocManager::install("org.Sc.sgd.db")
+
+# venn: Draws and displays Venn diagrams up to 7 sets, and any Boolean union of set intersections.
+
+> install.packages("venn")
 
 ```
 
