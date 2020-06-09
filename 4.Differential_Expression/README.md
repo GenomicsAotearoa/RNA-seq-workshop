@@ -381,20 +381,36 @@ YDL247W    0.1484688  0.6727144  0.1645731  0.7843936  1.0395626  0.6349276
 ```{r}
 
 > fit <- lmFit(v, design)
-fit <- eBayes(fit)
-tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
+
+> fit <- eBayes(fit)
+
+> tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
+
 head(tt)
+           logFC  AveExpr        t      P.Value    adj.P.Val        B
+YAL038W 2.313985 10.80214 319.5950 3.725452e-13 8.850433e-10 21.08951
+YOR161C 2.568389 10.80811 321.9628 3.574510e-13 8.850433e-10 21.08187
+YML128C 1.640664 11.40819 286.6167 6.857932e-13 9.775297e-10 20.84520
+YMR105C 2.772539  9.65092 331.8249 3.018547e-13 8.850433e-10 20.16815
+YHL021C 2.034496 10.17510 269.4034 9.702963e-13 1.152550e-09 20.07857
+YDR516C 2.085424 10.05426 260.8061 1.163655e-12 1.184767e-09 19.87217
+
 ```
 
 
 *limma: adjusted p-values*
 
 ```{r}
-sum(tt$adj.P.Val <= 0.05)
-sum(p.adjust(tt$P.Value, method="fdr") <= 0.05)
+
+> sum(tt$adj.P.Val <= 0.05)
+[1] 5140
+
+> sum(p.adjust(tt$P.Value, method="fdr") <= 0.05)
+[1] 5140
 
 ## Get the rows of top table with significant adjusted p-values
-limmaPadj <- tt[tt$adj.P.Val <= 0.05, ]
+> limmaPadj <- tt[tt$adj.P.Val <= 0.05, ]
+
 ```
 
 ---
@@ -402,10 +418,14 @@ limmaPadj <- tt[tt$adj.P.Val <= 0.05, ]
 ## Limma vs edgeR vs DESeq2
 
 ```{r}
-setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj), 
-                LimmaVoom=rownames(limmaPadj))
-vennset <- overLapper(setlist=setlist[1:3], type="vennsets")
+
+> setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj), LimmaVoom=rownames(limmaPadj))
+
+> vennset <- overLapper(setlist=setlist[1:3], type="vennsets")
+
 vennPlot(vennset, mymain="DEG Comparison")
+
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/DEG_Comparison.png)
 
 ---
