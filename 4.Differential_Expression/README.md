@@ -183,20 +183,34 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > knitr::kable(counts(dds)[1:4, ]) 
 |          | SRR014335| SRR014336| SRR014337| SRR014339| SRR014340| SRR014341|
 |:---------|---------:|---------:|---------:|---------:|---------:|---------:|
-|YDL248W   |         0|         0|         0|         0|         0|         0|
-|YDL247W-A |         0|         0|         0|         0|         0|         0|
-|YDL247W   |         0|         0|         0|         0|         0|         0|
-|YDL246C   |         0|         0|         0|         0|         0|         0|
+|YDL248W   |        52|        46|        36|        65|        70|        78|
+|YDL247W-A |         0|         0|         0|         0|         1|         0|
+|YDL247W   |         2|         4|         2|         6|         8|         5|
+|YDL246C   |         0|         0|         1|         1|         2|         0|
 
 ```
 
 #### Fit DESeq model to identify DE transcripts
 ```{r, message=FALSE, warning=FALSE}
 > dds <- DESeq(dds)
+estimating size factors
+estimating dispersions
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+fitting model and testing
 
 > res <- DESeq2::results(dds)
 
 > knitr::kable(res[1:6,])
+|          |   baseMean| log2FoldChange|     lfcSE|       stat|    pvalue|      padj|
+|:---------|----------:|--------------:|---------:|----------:|---------:|---------:|
+|YDL248W   | 56.2230316|     -0.2339470| 0.2278417| -1.0267961| 0.3045165| 0.3663639|
+|YDL247W-A |  0.1397714|     -0.5255769| 4.0804729| -0.1288030| 0.8975136| 0.9173926|
+|YDL247W   |  4.2428211|     -0.8100552| 0.8332543| -0.9721584| 0.3309718| 0.3948536|
+|YDL246C   |  0.6182409|     -1.0326364| 2.1560899| -0.4789394| 0.6319817| 0.6915148|
+|YDL245C   |  2.8486580|     -1.9781751| 1.1758845| -1.6822869| 0.0925132| 0.1230028|
+|YDL244W   | 13.0883354|     -1.5823354| 0.5128788| -3.0852037| 0.0020341| 0.0032860|
 
 ```
 
@@ -215,18 +229,23 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 
 # Get dimensions
 > dim(resPadj)
+[1] 4811    6
 
 ```
 
 ```{r, warning=FALSE}
+
 # Number of adjusted p-values less than 0.05
 > sum(res$padj <= 0.05)
+[1] 4811
 
 # Check that this is the same using p.adjust with FDR correction
 > sum(p.adjust(res$pvalue, method="fdr") <= 0.05)
+[1] 4811
 
 # Number of Holm adjusted p-values less than 0.05
 > sum(p.adjust(res$pvalue, method="holm") <= 0.01)
+[1] 3429
 
 ```
 
@@ -236,6 +255,27 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 
  - The edgeR package also uses the negative binomial distribution to model the RNA-seq count data.
  - Takes an empirical Bayes approach to the statistical analysis, in a similar way to how the `limma` package handles microarray data.
+ 
+*Identify DEGs with edgeR’s Exact Method*
+ 
+ ```
+> library(edgeR)
+
+# Construct DGEList object
+> y <- DGEList(counts=counts, group=conds)
+
+# Calculate library size (counts per sample)
+> y <- calcNormFactors(y)
+
+# Estimate common dispersion (overall variability)
+> y <- estimateCommonDisp(y)
+
+# Estimate tagwise dispersion (per gene variability)
+> y <- estimateTagwiseDisp(y)
+
+```
+
+*edgeR analysis and output
 
 ```{r}
 
@@ -243,6 +283,12 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > et <- exactTest(y) 
 
 > knitr::kable(topTags(et, n=4)$table)
+|        |     logFC|    logCPM| PValue| FDR|
+|:-------|---------:|---------:|------:|---:|
+|YCR077C | 13.098599|  6.629306|      0|   0|
+|snR71   | -9.870811|  8.294459|      0|   0|
+|snR59   | -8.752555| 10.105453|      0|   0|
+|snR53   | -8.503101|  7.687908|      0|   0|
 
 ```
 *adjusted p-values*
@@ -252,8 +298,10 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > edge <- as.data.frame(topTags(et, n=nrow(counts))) 
 
 > sum(edge$FDR <= 0.05)
+[1] 5242
 
 > sum(p.adjust(edge$PValue, method="fdr") <= 0.05)
+[1] 5242
 
 ## Get the rows of "edge" with significant adjusted p-values
 > edgePadj <- edge[edge$FDR <= 0.05, ]
@@ -276,6 +324,7 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 > vennPlot(vennset, mymain="DEG Comparison")
 
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/DEG_vs_edgeR.png)
 
 ---
 
@@ -287,12 +336,22 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
  - Use data transformation and log to satisfy normality assumptions (CPM = Counts per Million).
 
 ```{r}
-design <- model.matrix(~conds)
-dge <- DGEList(counts=counts)
-dge <- calcNormFactors(dge)
-logCPM <- cpm(dge, log=TRUE, prior.count=3)
-options(width=100)
-head(logCPM, 3)
+> design <- model.matrix(~conds)
+
+> dge <- DGEList(counts=counts)
+
+> dge <- calcNormFactors(dge)
+
+> logCPM <- cpm(dge, log=TRUE, prior.count=3)
+
+> options(width=100)
+
+> head(logCPM, 3)
+           SRR014335  SRR014336  SRR014337  SRR014339  SRR014340  SRR014341
+YDL248W    3.7199528  3.5561232  3.2538405  3.6446399  3.7156488  3.9155366
+YDL247W-A -0.6765789 -0.6765789 -0.6765789 -0.6765789 -0.3140297 -0.6765789
+YDL247W    0.1484688  0.6727144  0.1645731  0.7843936  1.0395626  0.6349276
+
 ```
 
 ### Limma: voom
@@ -301,21 +360,27 @@ head(logCPM, 3)
  creates "precision weights" for each observation that are incorporated into the limma analysis.
 
 ```{r, fig.height=4}
-v <- voom(dge, design, plot=TRUE)
+
+> v <- voom(dge, design, plot=TRUE)
+
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Voom_Mean_Variance.png)
+
 
 *Limma: voom* (impact on first three samples)
 
 ```{r, fig.height=4.5, fig.width=12}
-par(mfrow=c(1,3))
-for(i in 1:3){
-  plot(logCPM[,i], v$E[,i], xlab="LogCPM", ylab="Voom", main=colnames(logCPM)[i])
-  abline(0,1)
-}
+
+> par(mfrow=c(1,3))
+
+> for(i in 1:3){plot(logCPM[,i], v$E[,i], xlab="LogCPM", ylab="Voom", main=colnames(logCPM)[i])abline(0,1)}
+
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/voom_3_samples.png)
 
 ```{r}
-fit <- lmFit(v, design)
+
+> fit <- lmFit(v, design)
 fit <- eBayes(fit)
 tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
 head(tt)
