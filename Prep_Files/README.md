@@ -31,8 +31,19 @@ RNA_seq
 
 ```
 # install DESeq2
+
+#Older versions of R (older than 3.5)
 > source("https://bioconductor.org/biocLite.R")
+
 > biocLite("DESeq2")
+
+
+#Newer versions of R
+> if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+> BiocManager::install("DESeq2")
+
 ```
 
 
