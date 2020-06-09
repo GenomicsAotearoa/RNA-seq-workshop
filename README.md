@@ -10,7 +10,6 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
 ## Workshop outline
 
   * Overview of RNA-seq
-  * What is a Fastq file?
   * How to QC a fastq ?
   * How to trim a sequence file?
     * Quality trimming
