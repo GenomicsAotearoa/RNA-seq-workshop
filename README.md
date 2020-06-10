@@ -10,20 +10,21 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
 ## Workshop outline (9am - 4pm)
 
   * Overview of RNA-seq
-  * How to QC a fastq ?
-  * How to trim a sequence file?
+  * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/1.Quality_Assessment">How to QC a fastq?</a>
+  * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/2.Trimming_And_Filtering">How to trim a sequence file?</a>
     * Quality trimming
     * Adaptor trimming
-  * How to align the sequencing reads on a reference using HISAT2 
+  * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/3.Mapping_And_Count">How to align the sequencing reads on a reference using HISAT2</a> 
     * creating a reference sequence
     * aligning reads on a reference
-  * Defining alignment format
-  * Introduction to SAMtools
-  * How to get a count matrix
+    * Defining alignment format
+    * Introduction to SAMtools
+ * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/3.Mapping_And_Count">How to get a count matrix</a>
     * What is an annotation file
     * How to use featureCount
-  * Differential Gene Expression analysis (Using DESeq2, edgeR and Limma packages)
-  * Overrepresentation analysis (Gene Ontology)
+  * <a href=="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/4.Differential_Expression">Differential Gene Expression analysis</a> 
+     * Using DESeq2, edgeR and Limma packages)
+  * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/5.Overrepresentation_Analysis">Overrepresentation analysis (Gene Ontology)</a>
   
   * __DISCUSSION AND FOLLOW-UP__
  
