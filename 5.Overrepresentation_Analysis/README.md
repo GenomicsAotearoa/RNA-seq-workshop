@@ -281,12 +281,16 @@ Calculating the p-values...
 > GO.nobias.padj <- p.adjust(GO.nobias$over_represented_pvalue, method="fdr")
 
 > sum(GO.nobias.padj < 0.05)
+[1] 41
 
 > GO.nobias.sig <- GO.nobias$category[GO.nobias.padj < 0.05]
 
 > length(GO.nobias.sig)
+[1] 41
 
 > head(GO.nobias.sig)
+"GO:0005622" "GO:0009987" "GO:0110165" "GO:0043226" "GO:0043229" "GO:0005737"
+
 
 ```
 
@@ -298,6 +302,8 @@ Calculating the p-values...
 > venn(list(GO.wall=GO.wall.sig, GO.nobias=GO.nobias.sig))
 
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_venn.png)
+
 
  - Extract out the different parts of the Venn diagram (yes, there are definitely better ways to do this).
  
@@ -323,12 +329,26 @@ Calculating the p-values...
 ```{r}
 
 > len=getlength(names(genes),"sacCer1","ensGene")
+Loading sacCer1 length data...
 
 > head(len)
+[1] 1504 1621 1543 1711 1399 1504
 
 > go = getgo(names(genes),"sacCer1","ensGene")
 
 > head(go)
+$YAL038W
+ [1] "GO:0005975" "GO:0006082" "GO:0006090" "GO:0006091" "GO:0006139" "GO:0006163" "GO:0006165"
+ [8] "GO:0006725" "GO:0006753" "GO:0006757" "GO:0006793" "GO:0006796" "GO:0006807" "GO:0008150"
+ .
+ .
+ .
+ $YOR161C
+ [1] "GO:0008150" "GO:0051179" "GO:0051234" "GO:0006810" "GO:0005575" "GO:0016020" "GO:0031224"
+ [8] "GO:0110165" "GO:0071944" "GO:0005886" "GO:0016021" "GO:0031226" "GO:0005887" "GO:0003674"
+ .
+ .
+ .
 
 ```
 
@@ -341,12 +361,14 @@ Calculating the p-values...
 ```{r}
 
 > lengths.onlySig.nobias <- list()
+
 > for(i in 1:length(onlySig.nobias)){
   inGo <- lapply(go, function(x)  onlySig.nobias[i] %in% x) %>% unlist()
   lengths.onlySig.nobias[[i]] <- len[inGo]
 }
 
 > lengths.onlySig.wall <- list()
+
 > for(i in 1:length(onlySig.wall)){
   inGo <- lapply(go, function(x)  onlySig.wall[i] %in% x) %>% unlist()
   lengths.onlySig.wall[[i]] <- len[inGo]
@@ -363,9 +385,13 @@ Calculating the p-values...
 
 > cols <- rep(c("lightpink", "lightblue"), c(10,7))
 
+> par(mfrow=c(1,1))
+
 > boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
 
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_boxplot1.png)
+
 
 #### All significant GO terms
 
@@ -396,6 +422,7 @@ Calculating the p-values...
 > boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)[oo],
         col=cols[oo], ylab="Gene Length", xlab = "GO term")
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_All_significant.png)
 
 
 #### Gene length versus P-value
@@ -418,6 +445,7 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
        fill=c("red", "pink", "lightblue", "blue"))
        
 ```
+![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_p-value.png)
 
 ---
 
