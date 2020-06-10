@@ -2,12 +2,12 @@
 
 This RNA-seq workshop aims to get you started with your own RNA-seq analysis and assumes you are already familiar with the basics of bash and R.
 
-We will be using NeSI HPC for the analysis so make sure you have a NeSI account and you are able to login.
+We will be using NeSI HPC for some of the analysis so make sure you have a NeSI account and you are able to login.
 
 Go through the workshop prep files to ensure you are set to go: <a href="https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/README.md">Prep_Files</a>
 
 
-## Workshop outline
+## Workshop outline (9am - 4pm)
 
   * Overview of RNA-seq
   * How to QC a fastq ?
@@ -22,9 +22,6 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
   * How to get a count matrix
     * What is an annotation file
     * How to use featureCount
-
-  * __LUNCH BREAK__
-
   * Differential Gene Expression analysis (Using DESeq2, edgeR and Limma packages)
   * Overrepresentation analysis (Gene Ontology)
   
