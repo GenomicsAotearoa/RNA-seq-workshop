@@ -22,7 +22,7 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
  * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/3.Mapping_And_Count">How to get a count matrix</a>
     * What is an annotation file
     * How to use featureCount
-  * <a href=="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/4.Differential_Expression">Differential Gene Expression analysis</a> 
+  * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/4.Differential_Expression">Differential Gene Expression analysis</a> 
      * Using DESeq2, edgeR and Limma packages)
   * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/5.Overrepresentation_Analysis">Overrepresentation analysis (Gene Ontology)</a>
   
