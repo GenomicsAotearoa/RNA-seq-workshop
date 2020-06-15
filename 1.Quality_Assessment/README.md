@@ -18,37 +18,41 @@ Checking to make sure we have the Raw files for the workshop.
 
 $ ls
 modload.sh RNA_seq ...
+
 ```
+
 Creating a directory where to store the QC data:
 
 ```bash
-
 $ cd RNA_seq
+```
 
+```bash
 $ ls
 Raw
+```
 
+```bash
 $ mkdir - QC
-
 ```
 
 Since we are working on the NeSI HPC, we need to search and load the package before we start using it.
 
 Search
-```bash
 
+```bash
 $ module spider fastqc
 ```
 
 and then load 
 
-```
+```bash
 $ module load FastQC
 ```
 
 Now we can start the quality control:
 
-```
+```bash
 $ fastqc -o QC/ /Raw/*
 
 ```
@@ -68,7 +72,7 @@ Approx 35% complete for SRR014335-chr1.fastq
 
 The FastQC program has created several new files within our RNA_seq/QC/ directory.
 
-```
+```bash
 $ ls QC
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
 SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
@@ -88,9 +92,11 @@ To transfer a file from a remote server to our own machines, we will use scp.
 
 First we will make a new directory on our computer to store the HTML files we’re transferring. Let’s put it on our desktop for now. Open a new tab in your terminal program (you can use the pull down menu at the top of your screen or the Cmd+t keyboard shortcut) and type:
 
+```bash
+$ mkdir -p ~/Desktop/fastqc_html 
 ```
 
-$ mkdir -p ~/Desktop/fastqc_html 
+```bash
 
 $ scp -r fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/QC/ ~/Desktop/fastqc_html
 
@@ -101,7 +107,7 @@ $ scp -r fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/QC/ ~/Desktop
 ## Working with the FastQC text output
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
 
-```
+```bash
 $ cd /home/fayfa80p/RNA_seq/QC
 
 $ ls
