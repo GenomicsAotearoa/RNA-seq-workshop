@@ -4,7 +4,8 @@ Several tools available to do so. For this workshop, we will use fastqc.
 
 First, it is always good to verify where we are:
 
-```
+```bash
+
 $ pwd
 /home/[your_username]
 # good I am ready to work
@@ -13,13 +14,15 @@ $ pwd
 
 Checking to make sure we have the Raw files for the workshop.
 
-```
+```bash
+
 $ ls
 modload.sh RNA_seq ...
 ```
 Creating a directory where to store the QC data:
 
-```
+```bash
+
 $ cd RNA_seq
 
 $ ls
@@ -32,7 +35,8 @@ $ mkdir - QC
 Since we are working on the NeSI HPC, we need to search and load the package before we start using it.
 
 Search
-```
+```bash
+
 $ module spider fastqc
 ```
 
