@@ -73,7 +73,7 @@ To create a project,
 
 Further checking our dataset
 
-```{r}
+```R
 
 > dim(fcData)
 [1] 7127   12
@@ -89,7 +89,7 @@ Further checking our dataset
 ```
 ## Rename data columns
 
-```{r}
+```R
 
 > names(fcData)[7:12] = c("SRR014335", "SRR014336", "SRR014337", 
                         "SRR014339", "SRR014340", "SRR014341")
@@ -110,7 +110,7 @@ Further checking our dataset
  - Remove annotation columns
  - Add row names
 
-```{r}
+```R
 
 > counts = fcData[, 7:12]
 
@@ -133,7 +133,7 @@ YDL244W           6         6         5        20        30        19
  - Normalisation process (slightly different for each analysis method) takes 
  "library size" (number of reads generated for each sample) into account.
 
-```{r}
+```R
 
 > colSums(counts)
 SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341 
@@ -143,7 +143,7 @@ SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
 
 ## Visualise via bar plot
 
-```{r}
+```R
 
 > colSums(counts) %>% barplot(., las=3, ylab="Reads mapped per sample")
 ```
@@ -169,7 +169,7 @@ We are going to identify genes that are differential expressed using 3 different
 More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article by Love et al, 2014</a> 
 
 
-```{r, comment=FALSE, message=FALSE}
+```R
 
 > library(DESeq2)
 
@@ -191,7 +191,8 @@ More information about DESeq2: <a href="https://genomebiology.biomedcentral.com/
 ```
 
 #### Fit DESeq model to identify DE transcripts
-```{r, message=FALSE, warning=FALSE}
+```R
+
 > dds <- DESeq(dds)
 estimating size factors
 estimating dispersions
@@ -219,7 +220,7 @@ fitting model and testing
  - The "padj" column of the DESeq2 results (`res`) contains adjusted p-values (FDR).
  - Can use the `p.adjust` function to manually adjust the DESeq2 p-values if needed (e.g., to use Holm correction)
 
-```{r}
+```R
 
 # Remove rows with NAs
 > res = na.omit(res)
@@ -233,7 +234,7 @@ fitting model and testing
 
 ```
 
-```{r, warning=FALSE}
+```R
 
 # Number of adjusted p-values less than 0.05
 > sum(res$padj <= 0.05)
@@ -250,7 +251,8 @@ fitting model and testing
 ```
 #### Volcano plot
 
-```
+```R
+
 #reset par
 > par(mfrow=c(1,1))
 
@@ -273,7 +275,8 @@ fitting model and testing
  
 *Identify DEGs with edgeR’s Exact Method*
  
- ```
+ ```R
+ 
 > library(edgeR)
 
 # Construct DGEList object
@@ -292,7 +295,7 @@ fitting model and testing
 
 *edgeR analysis and output
 
-```{r}
+```R
 
 # Compute exact test for the negative binomial distribution.
 > et <- exactTest(y) 
@@ -308,7 +311,7 @@ fitting model and testing
 ```
 *adjusted p-values*
 
-```{r}
+```R
 
 > edge <- as.data.frame(topTags(et, n=nrow(counts))) 
 
@@ -328,7 +331,7 @@ fitting model and testing
 
  - Generate Venn diagram to compare DESeq2 and edgeR results.
 
-```{r}
+```R
 
 > library(systemPipeR)
 
@@ -350,7 +353,7 @@ fitting model and testing
  - Limma can be used for analysis (log-scale normality-based assumption rather than Negative Binomial for count data)
  - Use data transformation and log to satisfy normality assumptions (CPM = Counts per Million).
 
-```{r}
+```R
 > design <- model.matrix(~conds)
 
 > dge <- DGEList(counts=counts)
@@ -374,7 +377,7 @@ YDL247W    0.1484688  0.6727144  0.1645731  0.7843936  1.0395626  0.6349276
  - The "voom" function estimates relationship between the mean and the variance of the logCPM data, normalises the data, and 
  creates "precision weights" for each observation that are incorporated into the limma analysis.
 
-```{r, fig.height=4}
+```R
 
 > v <- voom(dge, design, plot=TRUE)
 
@@ -384,7 +387,7 @@ YDL247W    0.1484688  0.6727144  0.1645731  0.7843936  1.0395626  0.6349276
 
 *Limma: voom* (impact on first three samples)
 
-```{r, fig.height=4.5, fig.width=12}
+```R
 
 > par(mfrow=c(1,3))
 
@@ -393,7 +396,7 @@ YDL247W    0.1484688  0.6727144  0.1645731  0.7843936  1.0395626  0.6349276
 ```
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/voom_3_samples.png)
 
-```{r}
+```R
 
 > fit <- lmFit(v, design)
 
@@ -415,7 +418,7 @@ YDR516C 2.085424 10.05426 260.8061 1.163655e-12 1.184767e-09 19.87217
 
 *limma: adjusted p-values*
 
-```{r}
+```R
 
 > sum(tt$adj.P.Val <= 0.05)
 [1] 5140
@@ -432,7 +435,7 @@ YDR516C 2.085424 10.05426 260.8061 1.163655e-12 1.184767e-09 19.87217
 
 ## Limma vs edgeR vs DESeq2
 
-```{r}
+```R
 
 > setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj), LimmaVoom=rownames(limmaPadj))
 
