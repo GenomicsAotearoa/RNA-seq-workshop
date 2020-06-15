@@ -45,7 +45,7 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
 
  - Need to figure out if our organism is supported... (code is "sacCer")
 
-```{r}
+```R
 
 > library(goseq)
 
@@ -70,7 +70,7 @@ Over Representation Analysis (<a href="https://academic.oup.com/bioinformatics/a
  - Create a vector of 0's and 1's to denot whether or not genes are differentially expressed (limma analysis: topTable).
  - Add gene names to the vector so that GOSeq knows which gene each data point relates to.
 
-```{r}
+```R
 
 > genes <- ifelse(tt$adj.P.Val < 0.05, 1, 0)
 
@@ -93,7 +93,7 @@ genes
  - Put genes into length-based "bins", and plot length vs proportion differentially expressed
  - Likely restricts to only those genes with GO annotation
   
-```{r, message=FALSE, warning=FALSE, fig.height=5}
+```R
 
 > pwf=nullp(genes,"sacCer1","ensGene")
 
@@ -101,7 +101,7 @@ genes
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_weights.png)
 
 
-```{r, echo=FALSE, eval=FALSE}
+```R
 
 > library(GenomicFeatures)
 
@@ -118,7 +118,7 @@ genes
 
  - Report length (bias) and weight data per gene.
 
-```{r}
+```R
 
 > head(pwf)
         DEgenes bias.data       pwf
@@ -133,7 +133,7 @@ YDR516C       1      1504 0.8205505
 
 #### Gene lengths and weights
 
-```{r, fig.height=5.5, fig.width=10}
+```R
 
 > par(mfrow=c(1,2))
 
@@ -147,7 +147,7 @@ YDR516C       1      1504 0.8205505
 
 #### Gene length vs average expression
 
-```{r, fig.height=5.5, fig.width=9, warning=FALSE, message=FALSE}
+```R
 
 > library(ggplot2)
 
@@ -170,7 +170,7 @@ YDR516C       1      1504 0.8205505
 
 #### Run GOSeq with gene length correction
 
-```{r, cache=TRUE}
+```R
 
 > GO.wall=goseq(pwf, "sacCer1", "ensGene")
 Fetching GO annotations...
@@ -186,7 +186,7 @@ Calculating the p-values...
 
 #### Output: Wallenius method
 
-```{r}
+```R
 
 > head(GO.wall)
        category over_represented_pvalue under_represented_pvalue numDEInCat numInCat                                 term ontology
@@ -201,7 +201,7 @@ Calculating the p-values...
 
 #### P-value adjustment
 
-```{r}
+```R
 
 > GO.wall.padj <- p.adjust(GO.wall$over_represented_pvalue, method="fdr")
 
@@ -224,7 +224,7 @@ Calculating the p-values...
 
  - Can use the `GO.db` package to get more information about the significant gene sets.
 
-```{r}
+```R
 
 > library(GO.db)
 
@@ -246,7 +246,7 @@ Synonym: protoplast
 
 #### Run GOSeq without gene length correction
 
-```{r, cache=TRUE}
+```R
 
 > GO.nobias=goseq(pwf, "sacCer1", "ensGene", method="Hypergeometric")
 Fetching GO annotations...
@@ -260,7 +260,7 @@ Calculating the p-values...
 
 *Output: Hypergeomtric (Fisher) method*
 
-```{r}
+```R
 
 > head(GO.nobias)
        category over_represented_pvalue under_represented_pvalue numDEInCat numInCat                       term ontology
@@ -276,7 +276,7 @@ Calculating the p-values...
 
 #### P-value adjustment
 
-```{r}
+```R
 
 > GO.nobias.padj <- p.adjust(GO.nobias$over_represented_pvalue, method="fdr")
 
@@ -297,7 +297,7 @@ Calculating the p-values...
 
 ## Compare with and without adjustment
 
-```{r}
+```R
 
 > venn(list(GO.wall=GO.wall.sig, GO.nobias=GO.nobias.sig))
 
@@ -308,7 +308,7 @@ Calculating the p-values...
  - Extract out the different parts of the Venn diagram (yes, there are definitely better ways to do this).
  
 
-```{r}
+```R
 
 ## Only significant in Hypergeomtric analysis
 > onlySig.nobias <- setdiff(GO.nobias.sig, GO.wall.sig)
@@ -326,7 +326,7 @@ Calculating the p-values...
 
  - Can also extract gene length and GO membership information.
 
-```{r}
+```R
 
 > len=getlength(names(genes),"sacCer1","ensGene")
 Loading sacCer1 length data...
@@ -358,7 +358,7 @@ $YAL038W
 
  - Figure out which genes are in the significant GO groups, and then gets their lengths.
 
-```{r}
+```R
 
 > lengths.onlySig.nobias <- list()
 
@@ -381,7 +381,7 @@ $YAL038W
  - Only Hypergeometric (pink) vs only Wallenius (blue)
  - Hypergeometric method is findings GO terms containing longer genes.
 
-```{r, fig.width=9, fig.height=5}
+```R
 
 > cols <- rep(c("lightpink", "lightblue"), c(10,7))
 
@@ -395,7 +395,7 @@ $YAL038W
 
 #### All significant GO terms
 
-```{r, echo=FALSE}
+```R
 
 > lengths.sig.wall.nobias <- list()
 
@@ -406,7 +406,7 @@ $YAL038W
 
 ```
 
-```{r, echo=FALSE}
+```R
 
 > cols <- rep(c("lightpink", grey(0.7), "lightblue"), c(10,37,7))
 
@@ -417,7 +417,7 @@ $YAL038W
 
 ```
 
-```{r, echo=FALSE, fig.width=12, fig.height=7}
+```R
 
 > boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)[oo],
         col=cols[oo], ylab="Gene Length", xlab = "GO term")
@@ -427,7 +427,7 @@ $YAL038W
 
 #### Gene length versus P-value
 
-```{r, echo=FALSE}
+```R
 
 > avgLength.wall <- lapply(c(lengths.onlySig.wall, lengths.sig.wall.nobias), median)
 
