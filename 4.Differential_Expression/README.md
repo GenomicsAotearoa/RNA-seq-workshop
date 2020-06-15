@@ -39,7 +39,7 @@ To create a project,
 
 *Let's look at our dataset and manipulate it is as we prepare for differential expression.*
 
-```
+```R
 
 > getwd()
 [1] "/Users/ngonifaya/Desktop/RNA_seq"
