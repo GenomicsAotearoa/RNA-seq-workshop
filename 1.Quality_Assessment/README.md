@@ -33,7 +33,7 @@ Raw
 ```
 
 ```bash
-$ mkdir - QC
+$ mkdir QC
 ```
 
 Since we are working on the NeSI HPC, we need to search and load the package before we start using it.
