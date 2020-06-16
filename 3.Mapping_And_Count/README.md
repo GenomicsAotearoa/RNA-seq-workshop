@@ -11,7 +11,7 @@ For RNA-seq, we need to align or map each read back to the genome, to see which 
 To be able to map (align) sequencing reads on the genome, the genome needs to be indexed first. In this workshop we will use [HISAT2](https://www.nature.com/articles/nmeth.3317).
 Note for speed reason, the reads will be aligned on the chr5 of the mouse genome.
 
-```
+```bash
 $ cd /home/[Your_Username]/RNA_seq/Genome
 
 #to list what is in your directory:
@@ -51,7 +51,7 @@ Information required:
   
   * Now, lets move one folder up (into the RNA_seq folder):
   
-```
+```bash
   
 $ cd ..
   
@@ -62,7 +62,8 @@ Genome  QC  Raw  Trimmed
 
 Let's map one of our sample to the genome
 
-```
+```bash
+
 $ module load Hisat2
 
 $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR014335-chr1.fastq -S SRR014335.sam
@@ -77,7 +78,8 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
 
 Now we need to align all the rest of the samples.
 
-```
+```bash
+
 $ pwd
 /home/[Your_Username]/RNA_seq/
 
@@ -92,7 +94,8 @@ Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
 
 let's use a for loop to process our samples:
 
-```
+```bash
+
 $ cd Raw
 
 $ ls
@@ -108,7 +111,8 @@ $ for filename in *
 
 Now we can explore our SAM files.
 
-```
+```bash
+
 $ cd ../Mapping
 
 $ ls
@@ -124,7 +128,8 @@ The compressed binary version of SAM is called a BAM file. We use this version t
 
 ### A quick look into the sam file
 
-```
+```bash
+
 $ less SRR014335-chr1.sam 
 
 The file begins with a header, which is optional. The header is used to describe the source of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information for a single read. Each alignment line has 11 mandatory fields for essential mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
@@ -134,7 +139,8 @@ The file begins with a header, which is optional. The header is used to describe
 
 We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (-S) and to output BAM format (-b):
 
-```
+```bash
+
 $ module load SAMtools
 
 $ for filename in *.sam
@@ -151,7 +157,8 @@ SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  
 
 Next we sort the BAM file using the sort command from samtools. -o tells the command where to write the output.
 
-```
+```bash
+
 $ for filename in *.bam
 > do
 > base=$(basename ${filename} .bam)
@@ -165,7 +172,7 @@ $ for filename in *.bam
 You can use samtools to learn more about the bam file as well.
 ## Some stats on your mapping:
 
-```
+```bash
 
 $ samtools flagstat SRR014335-chr1_sorted.bam 
 156984 + 0 in total (QC-passed reads + QC-failed reads)
@@ -190,7 +197,7 @@ $ samtools flagstat SRR014335-chr1_sorted.bam
 
  - The HISAT2 output data can also be incorporated into the MultiQC report the next time it is run.
  
- ```
+ ```bash
  
  $ cd ~/RNA_seq
  
@@ -222,7 +229,8 @@ is a count table, in which the number of reads assigned to each feature in each 
 - Need to specify the annotation informatyion (.gtf file) 
 You can process all the samples at once:
 
-```
+```bash
+
 $pwd
 /home/[Your_Username]/RNA_seq
 
@@ -244,7 +252,7 @@ $ for filename in *_sorted.bam
 
 - If the samples are processed individually, the output data can be incorporated into the MultiQC report the next time it is run.
  
-```
+```bash
 
 $ cd ../MultiQC
 
@@ -260,7 +268,7 @@ $ multiqc .
 
 The last thing on count data is to concatenate all the count data into one file.
 
-```
+```bash
 
 $ cd ../Counts
 
@@ -273,7 +281,7 @@ $ cat *_counts.txt > yeast_counts_all_chr.txt
 
 Since we now have all the count data in one file, we need to transfer it to our locla computers so we could start working on RStudio to get differentially expressed genes.
 
-```
+```bash
 
 #In a new terminal that you can access you computer files, cd to the directory you want to save the counts file.
 
