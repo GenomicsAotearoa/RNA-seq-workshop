@@ -259,13 +259,14 @@ Summary of differential gene expression
 
 ```
 
-Sort summary list by p-value
+Sort summary list by p-value and save the table to excel
 
 ```R
 
 > res <- res[order(res$padj),]
 
-> head(res)
+> write.csv(as.data.frame(res),file='deseq2.csv')
+
 
 ```
 
