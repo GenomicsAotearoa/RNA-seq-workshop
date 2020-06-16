@@ -18,6 +18,7 @@ $ cd /home/[Your_Username]/RNA_seq/Genome
 $ ls /home/[Your_Username]/RNA_seq/Genome
 Saccharomyces_cerevisiae.R64-1-1.99.gtf  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
 
+$ module load HISAT2
 
 # index file:
 $ hisat2-build -p 4 -f Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna.toplevel
