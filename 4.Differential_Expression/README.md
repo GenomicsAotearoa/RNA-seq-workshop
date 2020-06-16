@@ -91,8 +91,7 @@ Further checking our dataset
 
 ```R
 
-> names(fcData)[7:12] = c("SRR014335", "SRR014336", "SRR014337", 
-                        "SRR014339", "SRR014340", "SRR014341")
+> names(fcData)[7:12] = c("SRR014335", "SRR014336", "SRR014337", "SRR014339", "SRR014340", "SRR014341")
  
 > fcData %>% head()
      Geneid Chr Start   End Strand Length SRR014335 SRR014336 SRR014337 SRR014339 SRR014340 SRR014341
