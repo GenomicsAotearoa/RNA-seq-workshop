@@ -200,6 +200,8 @@ mean-dispersion relationship
 final dispersion estimates
 fitting model and testing
 
+
+#Taking a look at the results table
 > res <- DESeq2::results(dds)
 
 > knitr::kable(res[1:6,])
@@ -211,6 +213,14 @@ fitting model and testing
 |YDL246C   |  0.6182409|     -1.0326364| 2.1560899| -0.4789394| 0.6319817| 0.6915148|
 |YDL245C   |  2.8486580|     -1.9781751| 1.1758845| -1.6822869| 0.0925132| 0.1230028|
 |YDL244W   | 13.0883354|     -1.5823354| 0.5128788| -3.0852037| 0.0020341| 0.0032860|
+
+```
+
+Summary of differential gene expression
+```R
+
+#summary of results
+> summary(res) 
 
 ```
 
@@ -248,6 +258,17 @@ fitting model and testing
 [1] 3429
 
 ```
+
+Sort summary list by p-value
+
+```R
+
+> res <- res[order(res$padj),]
+
+> head(res)
+
+```
+
 #### Volcano plot
 
 ```R
