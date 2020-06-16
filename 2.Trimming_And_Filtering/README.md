@@ -31,7 +31,7 @@ $ module load cutadapt
 
 $ cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq > Trimmed/SRR014335-chr1.log
 
-```bash
+```
 We can have a look at the log file to see what cutadapt has done.
 
 ```bash
