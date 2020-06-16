@@ -234,7 +234,7 @@ You can process all the samples at once:
 
 ```bash
 
-$pwd
+$ pwd
 /home/[Your_Username]/RNA_seq
 
 $ mkdir Counts
