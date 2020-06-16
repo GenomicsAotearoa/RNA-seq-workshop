@@ -202,9 +202,9 @@ $ samtools flagstat SRR014335-chr1_sorted.bam
  
  ```bash
  
- $ cd ~/RNA_seq
+ $ cd ~/RNA_seq/MultiQC
  
- $ cp ../Mapping/*summary*
+ $ cp ../Mapping/*summary* ./
  
  $ multiqc .
  
