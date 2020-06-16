@@ -20,7 +20,7 @@ To do so, we can use on tools: The cutadapt application is often used to remove 
 from FASTQ files.
 · The following syntax will remove the adapter sequence AACCGGTT from the file SRR014335-chr1.fastq, create a new file called SRR014335-chr1_trimmed.fastq, and write a summary to the log file SRR014335-chr1.log:
 
-```
+```bash
 
 $ pwd
 /home/[Your_Username]/RNA_seq
@@ -31,10 +31,10 @@ $ module load cutadapt
 
 $ cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq > Trimmed/SRR014335-chr1.log
 
-```
+```bash
 We can have a look at the log file to see what cutadapt has done.
 
-```
+```bash
 
 $ less Trimmed/SRR014335-chr1.log
 
@@ -42,7 +42,7 @@ $ less Trimmed/SRR014335-chr1.log
 
 Now we should trim all samples.
 
-``` 
+```bash 
 $ cd Raw
 
 $ ls
@@ -61,7 +61,7 @@ $ for filename in *.fastq
 
  - If the log files from `cutadapt` are added to the directory containing the FastQC output, this information will also be incorporated into the MultiQC report the next time it is run.
  
-```
+```bash
 
 $ cd ../MultiQC
  
