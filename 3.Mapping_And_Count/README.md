@@ -1,6 +1,6 @@
 # Alignment to a reference genome
 
-RNA-seq generate gene expression information by quantifying the number of transcripts (per gene) in a sample. This is ccompished by counting the number of transcripts that have been sequenced - the more active a gene is, the more transcripts will be in a sample, and the more reads will be generated from that transcript.
+RNA-seq generate gene expression information by quantifying the number of transcripts (per gene) in a sample. This is acompished by counting the number of transcripts that have been sequenced - the more active a gene is, the more transcripts will be in a sample, and the more reads will be generated from that transcript.
 
 For RNA-seq, we need to align or map each read back to the genome, to see which gene produced it.
 - Highly expressed genes will generate lots of transcripts, so there will be lots of reads that map back to the position of that transcript in the genome.
