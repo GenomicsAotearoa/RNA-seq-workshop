@@ -30,8 +30,10 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
  
 --- 
 
-### Post-Event Survey
-Please take the <a href="https://www.surveymonkey.com/r/55FDWHB">survey</a> to help us improve.
+## Post-Event Survey
+Please take the <a href="https://www.surveymonkey.com/r/55FDWHB">_survey_</a> to help us improve.
+
+---
 
   ## Attribution notice
   
