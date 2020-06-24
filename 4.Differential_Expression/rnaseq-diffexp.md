@@ -41,21 +41,23 @@ more easily:
   - Collaborate, especially if you are using version control such as
     git.
 
-To create a project, - Open RStudio and go to the File menu, and click
-New Project. - In the window that opens select Existing Project, and
-browse to the RNA-seq folder we have created on our Desktop. - Finally,
-click Create Project
+To create a project:
 
-(save source from untitled to yeast\_data.R and continue saving
-reguralry as we work)
+  - Open RStudio and go to the File menu, and click New Project.
+  - In the window that opens select Existing Project, and browse to the
+    RNA-seq folder we have created on our Desktop.
+  - Finally, click Create Project
+
+*Save source from untitled to yeast\_data.R and continue saving
+reguralry as we work*
 
 ### Count data
 
-  - Note: I have now aligned the data for ALL CHROMOSOMES and generated
-    counts, so we are working with data from all 7127 genes.
+Note: I have now aligned the data for ALL CHROMOSOMES and generated
+counts, so we are working with data from all 7127 genes.
 
-*Let’s look at our dataset and manipulate it is as we prepare for
-differential expression.*
+*Let’s look at our dataset and perform some basic checks before we do a
+differential expression analysis.*
 
 ``` r
 library(dplyr)
@@ -92,7 +94,7 @@ fcData %>% head()
     ## 5                                 4
     ## 6                                19
 
-Further checking our dataset
+Check dimensions:
 
 ``` r
 dim(fcData)
@@ -111,7 +113,7 @@ names(fcData)
     ##  [9] "...STAR.SRR014337.Aligned.out.sam" "...STAR.SRR014339.Aligned.out.sam"
     ## [11] "...STAR.SRR014340.Aligned.out.sam" "...STAR.SRR014341.Aligned.out.sam"
 
-Rename data columns
+Rename data columns to reflect group membership
 
 ``` r
 names(fcData)[7:12] = c("WT1", "WT2", "WT3", "MT1", "MT2", "MT3")
@@ -150,11 +152,15 @@ counts %>% head()
 
 #### Visualising the data
 
+Data are highly skewed (suggests that logging might be useful):
+
 ``` r
 boxplot(as.matrix(counts) ~ col(counts))
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+Some genes have zero counts:
 
 ``` r
 colSums(counts==0)
@@ -163,15 +169,21 @@ colSums(counts==0)
     ## WT1 WT2 WT3 MT1 MT2 MT3 
     ## 562 563 573 437 425 435
 
+Log transformation (add 0.5 to avoid log(0) issues):
+
 ``` r
 logCounts = log2(as.matrix(counts)+ 0.5)
 ```
+
+Now we can see the per-sample distributions more clearly:
 
 ``` r
 boxplot(as.matrix(logCounts) ~ col(logCounts))
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+Density plots are also a good way to visualise the data:
 
 ``` r
 lineColour <- c("blue", "blue", "blue", "red", "red", "red")
@@ -187,13 +199,15 @@ for(i in 2:ncol(logCounts)) lines(density(logCounts[,i]), col=lineColour[i])
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
+The boxplots and density plots show clear differences between the sample
+groups - are these biological, or experimental artifacts? (often we
+don’t know).
+
 #### Read counts per sample
 
-  - Normalisation process (slightly different for each analysis method)
-    takes “library size” (number of reads generated for each sample)
-    into account.
-
-<!-- end list -->
+Normalisation process (slightly different for each analysis method)
+takes “library size” (number of reads generated for each sample) into
+account.
 
 ``` r
 colSums(counts)
@@ -223,7 +237,7 @@ But first, lets take a brief aside, and talk about the process of
 detecting genes that have undergone a statistically significance change
 in expression between the two groups.
 
-**INSERT LINK TO “LECTURE” SLIDES**
+**GO BACK TO THE README PAGE, AND OPEN UP THE PDF DOCUMENT**
 
 -----
 
@@ -231,7 +245,8 @@ in expression between the two groups.
 
 <!-- NEED TO EXPLAIN "TREND=TRUE" -->
 
-  - Limma can be used for analysis (log-scale normality-based assumption
+  - Limma can be used for analysis, by transforming the RNA-seq count
+    data in an appropriate way (log-scale normality-based assumption
     rather than Negative Binomial for count data)
   - Use data transformation and log to satisfy normality assumptions
     (CPM = Counts per Million).
@@ -241,27 +256,7 @@ in expression between the two groups.
 ``` r
 library(limma)
 library(edgeR)
-# Specify "conditions" (groups: WT and MT)
-conds <- c("WT","WT","WT","MT","MT","MT")
 
-design <- model.matrix(~conds)
-design
-```
-
-    ##   (Intercept) condsWT
-    ## 1           1       1
-    ## 2           1       1
-    ## 3           1       1
-    ## 4           1       0
-    ## 5           1       0
-    ## 6           1       0
-    ## attr(,"assign")
-    ## [1] 0 1
-    ## attr(,"contrasts")
-    ## attr(,"contrasts")$conds
-    ## [1] "contr.treatment"
-
-``` r
 dge <- DGEList(counts=counts)
 dge <- calcNormFactors(dge)
 logCPM <- cpm(dge, log=TRUE, prior.count=3)
@@ -274,6 +269,16 @@ head(logCPM, 3)
     ## YDL248W    3.7199528  3.5561232  3.2538405  3.6446399  3.7156488  3.9155366
     ## YDL247W-A -0.6765789 -0.6765789 -0.6765789 -0.6765789 -0.3140297 -0.6765789
     ## YDL247W    0.1484688  0.6727144  0.1645731  0.7843936  1.0395626  0.6349276
+
+#### Aside: RPKM
+
+We can use R to generate RPKM values.
+
+  - Need gene length information to do this
+  - Can get this from`goseq` package (we’ll use this later for our
+    pathway analysis)
+
+<!-- end list -->
 
 ``` r
 library(goseq)
@@ -296,6 +301,8 @@ range(rpkmData, na.rm=TRUE)
 
     ## [1]     0.00 69786.58
 
+Compare RPKM to logCPM
+
 ``` r
 par(mfrow=c(2,3))
 for(i in 1:ncol(rpkmData)){
@@ -306,12 +313,21 @@ for(i in 1:ncol(rpkmData)){
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
+**We’re NOT going to use RPKM data here. I just wanted to show you how
+to calculate it, and how it relates to the logCPM data**
+
 ### Back to the analysis… (using logCPM)
 
 What if we just did a t-test?
 
 ``` r
+## The beeswarm package is great for making jittered dot plots
 library(beeswarm)
+
+# Specify "conditions" (groups: WT and MT)
+conds <- c("WT","WT","WT","MT","MT","MT")
+
+## Perform t-test for "gene number 6" (because I like that one...)
 t.test(logCPM[6,] ~ conds)
 ```
 
@@ -334,15 +350,40 @@ beeswarm(logCPM[6,] ~ conds, pch=16, ylab="Expression (logCPM)", xlab="Group",
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
-Before we get to statistical testing, we first need to do a little bit
-more normalisation.
+  - we basically want to do this sort of analysis, for every gene
+  - we’ll use a slightly more sophisicated approach though
 
-**Limma: voom**
+However, before we get to statistical testing, we first need to do a
+little bit more normalisation.
 
-The “voom” function estimates relationship between the mean and the
-variance of the logCPM data, normalises the data, and creates “precision
-weights” for each observation that are incorporated into the limma
-analysis.
+### Limma: voom
+
+  - The “voom” function estimates relationship between the mean and the
+    variance of the logCPM data, normalises the data, and creates
+    “precision weights” for each observation that are incorporated
+    into the limma analysis.
+  - This is where we need to specify the design matrix that we talked
+    about when we went through the PDF document.
+
+<!-- end list -->
+
+``` r
+design <- model.matrix(~conds)
+design
+```
+
+    ##   (Intercept) condsWT
+    ## 1           1       1
+    ## 2           1       1
+    ## 3           1       1
+    ## 4           1       0
+    ## 5           1       0
+    ## 6           1       0
+    ## attr(,"assign")
+    ## [1] 0 1
+    ## attr(,"contrasts")
+    ## attr(,"contrasts")$conds
+    ## [1] "contr.treatment"
 
 ``` r
 v <- voom(dge, design, plot=TRUE)
@@ -352,7 +393,9 @@ v <- voom(dge, design, plot=TRUE)
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Voom_Mean_Variance.png) -->
 
-*Limma: voom* (impact on samples)
+#### Zoom: impact on samples
+
+Mainly affects the low-end (low abundance genes)
 
 ``` r
 par(mfrow=c(2,3))
@@ -366,6 +409,8 @@ for(i in 1:ncol(logCPM)){
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/voom_3_samples.png) -->
+
+Hasn’t removed the differences between the groups
 
 ``` r
 boxplot(v$E ~ col(v$E))
@@ -387,11 +432,25 @@ for(i in 2:ncol(logCPM)) lines(density(v$E[,i]), col=lineColour[i])
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
+We can deal with this via “quantile normalisation”. Specify
+
+    normalize="quantile"
+
+in the `voom` function.
+
 ``` r
 q <- voom(dge, design, plot=TRUE, normalize="quantile")
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+
+Quantile normalisation forces all of the distributions to be the same.
+
+  - it is a strong assumption, and can have a major impact on the
+    analysis
+  - potentially removing biological differences between groups.
+
+<!-- end list -->
 
 ``` r
 par(mfrow=c(2,3))
@@ -424,13 +483,34 @@ for(i in 2:ncol(logCPM)) lines(density(q$E[,i]), col=lineColour[i])
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
-**Statistical testing: fitting a linear model**
+**Note: we’re NOT going to use the quantile normalised data here, but I
+wanted to show you how that method works.**
+
+### Statistical testing: fitting a linear model
+
+The next step is to fit a linear model to the transformed count data.
+
+The `lmFit()` command does this *for each gene* (all at once).
 
 ``` r
 fit <- lmFit(v, design)
-fit <- eBayes(fit)
-tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
+```
 
+The `eBayes()` function then performs Emprical Bays shrinkage estimation
+to adjust the variability estimates for each gene, and produce the
+moderated t-statistics.
+
+``` r
+fit <- eBayes(fit)
+```
+
+We then summarize this information using the `topTable()` function,
+which list the genes in order of the strength of statistical support for
+differential expression (i.e., genes with lowest p-values are at the top
+of the list):
+
+``` r
+tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
 head(tt)
 ```
 
@@ -442,65 +522,42 @@ head(tt)
     ## YHL021C 2.034496 10.17510 269.4034 9.702963e-13 1.152550e-09 20.07857
     ## YDR516C 2.085424 10.05426 260.8061 1.163655e-12 1.184767e-09 19.87217
 
-``` r
-fitq <- lmFit(q, design)
-fitq <- eBayes(fitq)
-ttq <- topTable(fitq, coef=ncol(design), n=nrow(counts))
+#### Significant genes
 
-head(ttq)
+Adjusted p-values less than 0.05:
+
+``` r
+sum(tt$adj.P.Val < 0.05)
 ```
 
-    ##              logFC  AveExpr          t      P.Value    adj.P.Val        B
-    ## YDR077W  0.8639934 12.95928  2179.3528 6.195761e-16 2.207860e-12 28.00141
-    ## YCL040W  2.1258023 12.43036  2353.4164 4.243029e-16 2.207860e-12 27.33008
-    ## YFL014W -0.8000685 13.09322 -1790.5198 1.631559e-15 3.876040e-12 27.03513
-    ## YDL022W  0.2666330 13.52460  1595.4222 2.880451e-15 5.132244e-12 25.82946
-    ## YGL008C -0.6937168 12.58984 -1027.0814 2.522564e-14 3.595662e-11 24.27597
-    ## YER062C -0.4654310 12.76000  -853.3046 6.287307e-14 7.468273e-11 23.17832
+    ## [1] 5140
+
+Adjusted p-values less than 0.01:
 
 ``` r
-sum(tt$adj.P.Val < 0.01)
+sum(tt$adj.P.Val <= 0.01)
 ```
 
     ## [1] 4566
 
-``` r
-sum(ttq$adj.P.Val < 0.01)
-```
-
-    ## [1] 4191
+By default, limma uses FDR adjustment (but lets check):
 
 ``` r
-length(intersect(rownames(tt)[tt$adj.P.Val < 0.01], rownames(ttq)[ttq$adj.P.Val < 0.01]))
+sum(p.adjust(tt$P.Value, method="fdr") <= 0.01)
 ```
 
-    ## [1] 3612
+    ## [1] 4566
 
-*limma: adjusted p-values*
-
-``` r
-sum(tt$adj.P.Val <= 0.05)
-```
-
-    ## [1] 5140
-
-``` r
-sum(p.adjust(tt$P.Value, method="fdr") <= 0.05)
-```
-
-    ## [1] 5140
-
-``` r
-## Get the rows of top table with significant adjusted p-values
-limmaPadj <- tt[tt$adj.P.Val <= 0.05, ]
-```
+Volcano plots are a popular method for summarising the `limma` output:
 
 ``` r
 volcanoplot(fit, coef=2)
 abline(h=-log10(0.05))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
+
+Significantly DE genes:
 
 ``` r
 sigGenes = which(tt$adj.P.Val <= 0.05)
@@ -514,7 +571,9 @@ volcanoplot(fit, coef=2)
 points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+
+Significantly DE genes above fold-change threshold:
 
 ``` r
 sigGenes = which(tt$adj.P.Val <= 0.05 & (abs(tt$logFC) > log2(2)))
@@ -528,7 +587,14 @@ volcanoplot(fit, coef=2)
 points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
+
+Get the rows of top table with significant adjusted p-values - we’ll
+save these for later to compare with the other methods.
+
+``` r
+limmaPadj <- tt[tt$adj.P.Val <= 0.01, ]
+```
 
 -----
 
@@ -546,33 +612,40 @@ More information about DESeq2:
 <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article
 by Love et al, 2014</a>
 
+Set up “DESeq object” for analysis:
+
 ``` r
 library(DESeq2)
-
-# Create object of class CountDataSet derived from eSet class
 dds <- DESeqDataSetFromMatrix(countData = as.matrix(counts), 
                               colData = data.frame(conds=factor(conds)), 
                               design = formula(~conds))
-
-# CountDataSet has similar accessor methods as eSet class.
-knitr::kable(counts(dds)[1:4, ]) 
 ```
 
-|           | WT1 | WT2 | WT3 | MT1 | MT2 | MT3 |
-| --------- | --: | --: | --: | --: | --: | --: |
-| YDL248W   |  52 |  46 |  36 |  65 |  70 |  78 |
-| YDL247W-A |   0 |   0 |   0 |   0 |   1 |   0 |
-| YDL247W   |   2 |   4 |   2 |   6 |   8 |   5 |
-| YDL246C   |   0 |   0 |   1 |   1 |   2 |   0 |
+Can access the count data in teh `dds` object via the `counts()`
+function:
+
+``` r
+counts(dds) %>% head()
+```
+
+    ##           WT1 WT2 WT3 MT1 MT2 MT3
+    ## YDL248W    52  46  36  65  70  78
+    ## YDL247W-A   0   0   0   0   1   0
+    ## YDL247W     2   4   2   6   8   5
+    ## YDL246C     0   0   1   1   2   0
+    ## YDL245C     0   3   0   5   7   4
+    ## YDL244W     6   6   5  20  30  19
 
 Fit DESeq model to identify DE transcripts
 
 ``` r
 dds <- DESeq(dds)
+```
 
-#Taking a look at the results table
+Take a look at the results table
+
+``` r
 res <- DESeq2::results(dds)
-
 knitr::kable(res[1:6,])
 ```
 
@@ -588,7 +661,6 @@ knitr::kable(res[1:6,])
 Summary of differential gene expression
 
 ``` r
-#summary of results
 summary(res) 
 ```
 
@@ -625,22 +697,25 @@ dim(resPadj)
 
     ## [1] 4811    6
 
+Number of adjusted p-values less than 0.05
+
 ``` r
-# Number of adjusted p-values less than 0.05
 sum(res$padj <= 0.05)
 ```
 
     ## [1] 4811
 
+Check that this is the same using p.adjust with FDR correction
+
 ``` r
-# Check that this is the same using p.adjust with FDR correction
 sum(p.adjust(res$pvalue, method="fdr") <= 0.05)
 ```
 
     ## [1] 4811
 
+Number of Holm adjusted p-values less than 0.05
+
 ``` r
-# Number of Holm adjusted p-values less than 0.05
 sum(p.adjust(res$pvalue, method="holm") <= 0.01)
 ```
 
@@ -655,22 +730,6 @@ res <- res[order(res$padj),]
 write.csv(as.data.frame(res),file='deseq2.csv')
 ```
 
-Volcano plot
-
-``` r
-# reset par
-# par(mfrow=c(1,1))
-
-# Make a basic volcano plot
-with(res, plot(log2FoldChange, -log10(pvalue), pch=20, main="Volcano plot", xlim=c(-3,3)))
-
-# Add colored points: blue if padj<0.01, red if log2FC>1 and padj<0.05)
-with(subset(res, padj<.01 ), points(log2FoldChange, -log10(pvalue), pch=20, col="blue"))
-with(subset(res, padj<.01 & abs(log2FoldChange)>2), points(log2FoldChange, -log10(pvalue), pch=20, col="red"))
-```
-
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
-
 -----
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Volcano%20plot.png) -->
@@ -680,30 +739,45 @@ with(subset(res, padj<.01 & abs(log2FoldChange)>2), points(log2FoldChange, -log1
   - The edgeR package also uses the negative binomial distribution to
     model the RNA-seq count data.
   - Takes an empirical Bayes approach to the statistical analysis, in a
-    similar way to how the `limma` package handles microarray data.
+    similar way to how the `limma` package handles RNA-seq data.
 
-*Identify DEGs with edgeR’s Exact Method*
+#### Identify DEGs with edgeR’s “Exact” Method
+
+Load `edgeR` package
 
 ``` r
 library(edgeR)
+```
 
-# Construct DGEList object
+Construct `DGEList` object
+
+``` r
 y <- DGEList(counts=counts, group=conds)
+```
 
-# Calculate library size (counts per sample)
+Calculate library size (counts per sample)
+
+``` r
 y <- calcNormFactors(y)
+```
 
-# Estimate common dispersion (overall variability)
+Estimate common dispersion (overall variability)
+
+``` r
 y <- estimateCommonDisp(y)
+```
 
-# Estimate tagwise dispersion (per gene variability)
+Estimate tagwise dispersion (per gene variability)
+
+``` r
 y <- estimateTagwiseDisp(y)
 ```
 
-\*edgeR analysis and output
+#### edgeR analysis and output
+
+Compute exact test for the negative binomial distribution.
 
 ``` r
-# Compute exact test for the negative binomial distribution.
 et <- exactTest(y) 
 
 knitr::kable(topTags(et, n=4)$table)
@@ -716,7 +790,7 @@ knitr::kable(topTags(et, n=4)$table)
 | snR59   | \-8.752555 | 10.105453 |      0 |   0 |
 | snR53   | \-8.503101 |  7.687908 |      0 |   0 |
 
-*adjusted p-values*
+*Adjusted p-values*
 
 ``` r
 edge <- as.data.frame(topTags(et, n=nrow(counts))) 
@@ -731,25 +805,25 @@ sum(p.adjust(edge$PValue, method="fdr") <= 0.05)
 
     ## [1] 5242
 
+Get the rows of “edge” with significant adjusted p-values
+
 ``` r
-## Get the rows of "edge" with significant adjusted p-values
 edgePadj <- edge[edge$FDR <= 0.05, ]
 ```
 
 ### DESeq2 vs edgeR
 
-  - Generate Venn diagram to compare DESeq2 and edgeR results.
+Generate Venn diagram to compare DESeq2 and edgeR results.
 
-<!-- end list -->
+There is fairly good overlap:
 
 ``` r
-library(systemPipeR)
+library(gplots)
 setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj))
-vennset <- overLapper(setlist=setlist[1:2], type="vennsets")
-vennPlot(vennset, mymain="DEG Comparison")
+venn(setlist)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-41-1.png)<!-- -->
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-54-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/DEG_vs_edgeR.png) -->
 
@@ -757,19 +831,30 @@ vennPlot(vennset, mymain="DEG Comparison")
 
 ### Limma vs edgeR vs DESeq2
 
+Again, fairly good overlap across the three methods we’ve looked at:
+
 ``` r
 setlist <- list(edgeRexact=rownames(edgePadj), 
                 DESeq2=rownames(resPadj),
                 LimmaVoom=rownames(limmaPadj))
-
-vennset <- overLapper(setlist=setlist[1:3], type="vennsets")
-
-vennPlot(vennset, mymain="DEG Comparison")
+venn(setlist)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-42-1.png)<!-- -->
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-56-1.png)<!-- -->
 
-### Save topTable results for next session…
+### Summary
+
+  - Once we’ve generated count data, there are a number of ways to
+    perform a differential expression analysis.
+      - DESeq2 and edgeR model the count data, and assume a Negative
+        Binomial distribution
+      - Limma transforms (and logs) the data and assumes normality
+  - Here we’ve seen that these three approaches give quite similar
+    results.
+  - The next step in a “standard” RNA-seq workflow is to perform
+    “pathway analysis”.
+
+#### Save limma topTable results for next session…
 
 ``` r
 save(list='tt', file='topTable.RData')
