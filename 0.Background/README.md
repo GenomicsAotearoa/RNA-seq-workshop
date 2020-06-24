@@ -10,7 +10,7 @@ This workshop uses the dataset from yeast RNA-seq experiment, <a href="https://j
 
 
 ### Overview of Illumina Sequencing
-Here is a <a href="https://www.youtube.com/watch?v=fCd6B5HRaZ8">video</a> to illumina sequencing.
+Here is a <a href="https://www.youtube.com/watch?v=womKfikWlxM">video</a> to illumina sequencing.
 
 
 
