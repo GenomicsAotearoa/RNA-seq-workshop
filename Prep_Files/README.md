@@ -8,7 +8,13 @@ Things to check:
 
 Once you login to NeSI, you will see a folder RNA_seq in your home directory:
 
-```
+```bash
+
+$ ssh -y [your_username]@lander.nesi.or.nz
+
+#logging to the training platform
+$ ssh login.mahuika.nesi.org.nz
+
 $ cd RNA_seq
 
 $ ls -F
