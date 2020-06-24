@@ -148,8 +148,8 @@ table(genes)
 pwf=nullp(genes,"sacCer1","ensGene")
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-5-1.png)<!-- --> ![Alt
-text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_weights.png)
+![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_weights.png) -->
 
 #### Inspect output
 
