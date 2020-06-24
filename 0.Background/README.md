@@ -6,6 +6,13 @@ This workshop uses the dataset from yeast RNA-seq experiment, <a href="https://j
 - Wild-type versus RNA degradation mutants
 - Subset of data (chromosome 1)
 - Six samples (3 WT / 3 MT)
+- Single end sequencing
+
+
+### Overview of Illumina Sequencing
+Here is a <a href="https://www.youtube.com/watch?v=fCd6B5HRaZ8">video</a> to illumina sequencing.
+
+
 
 
 
