@@ -12,14 +12,14 @@ biological functions or processes are over-represented (= enriched) in
 an experimentally-derived gene list, e.g. a list of differentially
 expressed genes (DEGs).
 
-  - Can perform overrepresentation analysis (e.g., GATHER, GeneSetDB,
-    PantherDB) in R.
+  - Can perform overrepresentation analysis online (e.g., GATHER,
+    GeneSetDB, PantherDB), and also in R.
   - The basic principles are to:
       - identify a collection of differentially expressed genes
-  - test to see if genes that are members of specific gene sets
-    (e.g.Reactome pathways, Gene Ontologies categories) are
-    differentially expressed more often than would be expected by
-    chance.
+      - test to see if genes that are members of specific gene sets
+        (e.g.Reactome pathways, Gene Ontologies categories) are
+        differentially expressed more often than would be expected by
+        chance.
 
 *Some caveats for RNA-seq data*
 
@@ -49,11 +49,13 @@ expressed genes (DEGs).
   - Still not widely understood to be an issue when performing RNA-seq
     pathway analysis, but REALLY important to take into account.
 
+#### Results from the Young et al (2010) publication:
+
 *Proportion DE by gene length and reads*
 
 <center>
 
-<img src="PNG/goseq-1.png" height="450">
+<img src="PNG/goseq-1.png" height="350">
 
 </center>
 
@@ -61,7 +63,7 @@ expressed genes (DEGs).
 
 <center>
 
-<img src="PNG/goseq-2.png" height="450">
+<img src="PNG/goseq-2.png" height="350">
 
 </center>
 
@@ -69,15 +71,13 @@ expressed genes (DEGs).
 
 <center>
 
-<img src="PNG/goseq-3.png" height="450">
+<img src="PNG/goseq-3.png" height="350">
 
 </center>
 
 ### GOseq analysis
 
-  - Need to figure out if our organism is supported… (code is “sacCer”)
-
-<!-- end list -->
+Need to figure out if our organism is supported… (code is “sacCer”)
 
 ``` r
 library(magrittr)
@@ -100,18 +100,20 @@ supportedOrganisms() %>% head()
     ## 15                    TRUE
     ## 57                    TRUE
 
+Easier to find if we use `View()`
+
 ``` r
 supportedOrganisms() %>% View()
 ```
 
 *Define differentially expressed genes*
 
-  - Create a vector of 0’s and 1’s to denot whether or not genes are
+  - Create a vector of 0’s and 1’s to denote whether or not genes are
     differentially expressed (limma analysis: topTable).
   - Add gene names to the vector so that GOSeq knows which gene each
     data point relates to.
 
-Load out topTable results from last session:
+Load our topTable results from last session:
 
 ``` r
 load('topTable.RData')
@@ -151,9 +153,7 @@ text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images
 
 #### Inspect output
 
-  - Report length (bias) and weight data per gene.
-
-<!-- end list -->
+Report length (bias) and weight data per gene.
 
 ``` r
 head(pwf)
@@ -181,6 +181,8 @@ hist(pwf$pwf,30)
 
 #### Gene length vs average expression
 
+Is there an association between gene length and expression level?
+
 ``` r
 library(ggplot2)
 data.frame(logGeneLength = log2(pwf$bias.data), 
@@ -191,6 +193,21 @@ data.frame(logGeneLength = log2(pwf$bias.data),
 ```
 
 ![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+How about gene length and statistical evidence supporting differential
+expression?
+
+(Kinda hard to see, but it is apparently there…)
+
+``` r
+data.frame(logGeneLength = log2(pwf$bias.data), 
+           negLogAdjP = -log10(tt$adj.P.Val)) %>% 
+  ggplot(., aes(x=logGeneLength, negLogAdjP)) + 
+  geom_point(size=0.2) + 
+  geom_smooth(method='lm')
+```
+
+![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_AvgExpression.png) -->
 
@@ -206,7 +223,7 @@ data.frame(logGeneLength = log2(pwf$bias.data),
     enriched that a gene set with a similar proportion of long genes
     that are differentially expressed.
 
-#### Run GOSeq with gene length correction
+Run GOSeq with gene length correction:
 
 ``` r
 GO.wall=goseq(pwf, "sacCer1", "ensGene")
@@ -335,20 +352,18 @@ head(GO.nobias.sig)
     ## [1] "GO:0005623" "GO:0044464" "GO:0005622" "GO:0044424" "GO:0009987"
     ## [6] "GO:0043226"
 
-## Compare with and without adjustment
+### Compare with and without adjustment
 
 ``` r
 library(gplots)
 venn(list(GO.wall=GO.wall.sig, GO.nobias=GO.nobias.sig))
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_venn.png) -->
 
-  - Extract out the different parts of the Venn diagram (yes, there are
-    definitely better ways to do this).
-
-<!-- end list -->
+Extract out the different parts of the Venn diagram (yes, there are
+definitely better ways to do this).
 
 ``` r
 ## Only significant in Hypergeomtric analysis
@@ -361,11 +376,9 @@ onlySig.wall <- setdiff(GO.wall.sig, GO.nobias.sig)
 sig.wall.nobias <- intersect(GO.wall.sig, GO.nobias.sig)
 ```
 
-#### Gene lengths and GO term membership
+### Gene lengths and GO term membership
 
-  - Can also extract gene length and GO membership information.
-
-<!-- end list -->
+Can also extract gene length and GO membership information.
 
 ``` r
 len=getlength(names(genes),"sacCer1","ensGene")
@@ -407,10 +420,8 @@ head(go[[2]])
 
 #### Getting fancy…
 
-  - Figure out which genes are in the significant GO groups, and then
-    gets their lengths.
-
-<!-- end list -->
+Figure out which genes are in the significant GO groups, and then gets
+their lengths.
 
 ``` r
 lengths.onlySig.nobias <- list()
@@ -440,7 +451,7 @@ cols <- rep(c("lightpink", "lightblue"), c(10,7))
 boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_boxplot1.png) -->
 
 #### All significant GO terms
@@ -468,7 +479,7 @@ boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)
         col=cols[oo], ylab="Gene Length", xlab = "GO term")
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_All_significant.png) -->
 
 #### Gene length versus P-value
@@ -490,7 +501,7 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
        fill=c("red", "pink", "lightblue", "blue"))
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
+![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_p-value.png) -->
 
 -----
