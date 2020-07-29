@@ -53,7 +53,7 @@ $ module load FastQC
 Now we can start the quality control:
 
 ```bash
-$ fastqc -o QC/ /Raw/*
+$ fastqc -o QC/ Raw/*
 
 ```
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
@@ -98,7 +98,7 @@ $ mkdir -p ~/Desktop/fastqc_html
 
 ```bash
 
-$ scp -r fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/QC/ ~/Desktop/fastqc_html
+$ scp -r [Your_UserName]p@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fastqc_html
 
 ```
 
