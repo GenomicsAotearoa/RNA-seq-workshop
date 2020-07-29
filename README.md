@@ -30,7 +30,7 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
  
 --- 
 ## Colaborative Document 
-,a href="https://pad.riseup.net/p/UOO-RNA-seq_30072020"<Link></a>
+<a href="https://pad.riseup.net/p/UOO-RNA-seq_30072020">Link</a>
 
 ## Post-Event Survey
 Please take the <a href="https://www.surveymonkey.com/r/55FDWHB">survey</a> to help us improve.
