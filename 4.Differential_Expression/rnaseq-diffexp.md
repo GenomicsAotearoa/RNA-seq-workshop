@@ -362,8 +362,6 @@ little bit more normalisation.
     variance of the logCPM data, normalises the data, and creates
     “precision weights” for each observation that are incorporated
     into the limma analysis.
-  - This is where we need to specify the design matrix that we talked
-    about when we went through the PDF document.
 
 <!-- end list -->
 
