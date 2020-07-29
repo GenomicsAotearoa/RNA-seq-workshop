@@ -7,7 +7,7 @@ In the previous section, we took a high-level look at the quality of each of our
 - Since the sequence is not part of the target genome (i.e., the genome if the species from which teh samples were derived) then we need to remove it to prevent it affecting the downstream analysis.
 - The FastQC application get detection adapter contamination in samples.
 
-We will use a program called Trimmomatic to filter poor quality reads and trim poor quality bases from our samples.
+We will use a program called CutAdapt to filter poor quality reads and trim poor quality bases from our samples.
 
 
 ## How to act on fastq after QC.
