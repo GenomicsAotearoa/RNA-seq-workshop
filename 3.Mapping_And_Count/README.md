@@ -283,7 +283,9 @@ $ cat *_counts.txt > yeast_counts_all_chr.txt
 
 ```
 
-Since we now have all the count data in one file, we need to transfer it to our locla computers so we could start working on RStudio to get differentially expressed genes.
+Since we now have all the count data in one file, we need to transfer it to our local computers so we could start working on RStudio to get differentially expressed genes.
+
+- And the code to do it is below, however for this workshop, we are going to use a different file (yeast_counts_all_chr.txt) that you can download from section 4. Differential_Expression. This file has all the data for all the chromosomes.
 
 ```bash
 
