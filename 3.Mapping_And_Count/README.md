@@ -38,7 +38,7 @@ Option info:
 
 How many files were created during the indexing process?
 
-## Alignment on the genome (chromosome5)
+## Alignment on the genome
 
 Now that the genome is prepared. Sequencing reads can be aligned.
 
@@ -84,9 +84,10 @@ Now we need to align all the rest of the samples.
 $ pwd
 /home/[Your_Username]/RNA_seq/
 
-$ cd Raw
 
 $ mkdir Mapping
+
+$ cd Raw
 
 $ ls
 Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
