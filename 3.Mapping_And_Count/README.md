@@ -234,6 +234,7 @@ is a count table, in which the number of reads assigned to each feature in each 
 You can process all the samples at once:
 
 ```bash
+$ module load Subread
 
 $ pwd
 /home/[Your_Username]/RNA_seq
