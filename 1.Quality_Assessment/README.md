@@ -147,7 +147,7 @@ We can make a record of the results we obtained for all our samples by concatena
 
 ```
 
-$ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt 
+$ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt 
 
 ```
 
