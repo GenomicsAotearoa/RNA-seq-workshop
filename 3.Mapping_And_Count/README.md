@@ -18,7 +18,7 @@ $ cd /home/[Your_Username]/RNA_seq/Genome
 $ ls /home/[Your_Username]/RNA_seq/Genome
 Saccharomyces_cerevisiae.R64-1-1.99.gtf  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
 
-$ module load HISAT2
+$ module load HISAT2/2.2.0-gimkl-2020a
 
 # index file:
 $ hisat2-build -p 4 -f Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna.toplevel
@@ -64,8 +64,6 @@ Genome  QC  Raw  Trimmed
 Let's map one of our sample to the genome
 
 ```bash
-
-$ module load Hisat2
 
 $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR014335-chr1.fastq -S SRR014335.sam
 125090 reads; of these:
@@ -145,7 +143,7 @@ We will convert the SAM file to BAM format using the samtools program with the v
 
 ```bash
 
-$ module load SAMtools
+$ module load SAMtools/1.10-GCC-9.2.0
 
 $ for filename in *.sam
 > do
