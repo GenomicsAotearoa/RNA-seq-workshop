@@ -85,8 +85,6 @@ $ pwd
 
 $ mkdir Mapping
 
-$ cd Raw
-
 $ ls
 Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
 
