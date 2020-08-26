@@ -47,7 +47,7 @@ $ module spider fastqc
 and then load 
 
 ```bash
-$ module load FastQC
+$ module load FastQC/0.11.9
 ```
 
 Now we can start the quality control:
@@ -147,7 +147,7 @@ We can make a record of the results we obtained for all our samples by concatena
 
 ```
 
-$ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt 
+$ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt 
 
 ```
 
@@ -163,7 +163,7 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
  
 ```{bash, eval=FALSE}
 
-$ module load MultiQC
+$ module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
 
 $ cd ~/RNA_seq/
 
