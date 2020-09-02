@@ -7,7 +7,7 @@ We will be using NeSI HPC for some of the analysis so make sure you have a NeSI 
 Go through the workshop prep files to ensure you are set to go: <a href="https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/README.md">Prep_Files</a>
 
 
-## Workshop outline (9am - 4pm)
+## Workshop outline (9:00am - 4:30pm)
 
   * Overview of RNA-seq
   * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/1.Quality_Assessment">How to QC a fastq?</a>
