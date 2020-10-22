@@ -127,3 +127,100 @@ y    6    7    8    9   10
 [3,]    2    2    9
 
 ```
+
+#### Data frames
+- A tabular structure that can have different modes ( numeric, character etc)
+
+```{r}
+# creating data frame
+> chr <- c("chr1", "chr1", "chr2", "chr2")
+> strand <- c("-","-","+","+")
+> start<- c(200,4000,100,400)
+> end<-c(250,410,200,450)
+> mydata <- data.frame(chr,start,end,strand)
+
+#change column names
+names(mydata) <- c("chr","start","end","strand")
+> mydata 
+   chr start end strand
+1 chr1   200 250      -
+2 chr1  4000 410      -
+3 chr2   100 200      +
+4 chr2   400 450      +
+```
+
+- Accessing elements in a data frame
+```
+#looking at columns 2 to 4
+> mydata[,2:4]
+  start end strand
+1   200 250      -
+2  4000 410      -
+3   100 200      +
+4   400 450      +
+
+# columns chr and start from data frame
+> mydata[,c("chr","start")]
+   chr start
+1 chr1   200
+2 chr1  4000
+3 chr2   100
+4 chr2   400
+
+# variable start in the data frame
+> mydata$start
+[1]  200 4000  100  400
+
+# get 1st and 3rd rows
+> mydata[c(1,3),]
+   chr start end strand
+1 chr1   200 250      -
+3 chr2   100 200      +
+
+# get all rows where start>400
+> mydata[mydata$start>400,]
+   chr start end strand
+2 chr1  4000 410      -
+```
+
+#### Lists
+- An ordered collection of objects.
+- In a list, you can store a variety of (possibly unrelated) objects under one name. 
+- Each object or element in a list has a numbered position and can have names.
+
+```{r}
+# creating a list with 4 objects
+> mylist
+$name
+[1] "Bob"
+
+$mynumbers
+[1] 1 2 3
+
+$mymatrix
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+$age
+[1] 5.3
+
+
+# Objects in a list can be extracted using double square-bracket `[[]]` with either position or name in the brackets
+> mylist[[2]]
+[1] 1 2 3
+
+> mylist[["mymatrix"]]
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+
+
+# This also works
+> mylist$age
+[1] 5.3
+
+```
+
+
+
