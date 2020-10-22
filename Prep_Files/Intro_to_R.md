@@ -90,4 +90,40 @@ Take a minute tp play around with R to perform some calculations.
 ```
 
 #### Matrices
+- A numeric array of columns and rows (tabular data structures)
 
+```{r}
+# creating matrices from vectors
+> x <- c(1,2,3,4,5)
+> y <- c(7,7,8,9,10)
+> m1 <- cbind(x,y)
+> m1
+     x  y
+[1,] 1  6
+[2,] 2  7
+[3,] 3  8
+[4,] 4  9
+[5,] 5 10
+
+> dim(m1)
+[1] 5 2
+
+#transpose m1
+> m2 <- t(m1)
+> m2
+  [,1] [,2] [,3] [,4] [,5]
+x    1    2    3    4    5
+y    6    7    8    9   10
+> dim(m2)
+[1] 2 5
+
+
+# Creating matrices by directly adding elements
+> m3<-matrix(c(1,3,2,5,-1,2,2,3,9),nrow=3)
+> m3
+     [,1] [,2] [,3]
+[1,]    1    5    2
+[2,]    3   -1    3
+[3,]    2    2    9
+
+```
