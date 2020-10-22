@@ -6,15 +6,15 @@
 - Bioconductor and CRAN have an array of specialized tools for doing genomics-specific analysis.
 
 ### Installing Packages
-CRAN packages can be installed using install.packages()
+- CRAN packages can be installed using install.packages()
 
 ```{r}
 # install package called `tidyverse`
 install.packages("tidyverse")
 ```
-You can install bioconductor packages with a specific installer script.
+- You can install bioconductor packages with a specific installer script.
 
-```
+```{r}
 # get the installer package if you don't have
 install.packages("BiocManager")
 
@@ -22,11 +22,11 @@ install.packages("BiocManager")
 BiocManager::install("DESeq2")
 ```
 
-You can also install packages from Github, or from the source by downloading the source file
+- You can also install packages from Github, or from the source by downloading the source file
 
-You can also update CRAN and Bioconductor packages.
+### Updating CRAN and Bioconductor packages.
 
-```
+```{r}
 # updating CRAN packages
 update.packages()
 
@@ -35,4 +35,15 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install()
 ```
+
+### Getting help on functions and packages
+You can get help on functions by using `help()` and ?package_name.
+
+```
+?hist
+help("hist")
+```
+
+
+
 
