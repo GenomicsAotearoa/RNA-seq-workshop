@@ -222,5 +222,24 @@ $age
 
 ```
 
+#### Factors
+- This data structure is used to store categorial data.
+- Very important in statistical models as a categorical data is treated differently from continuous variables.
+
+```{r}
+# creating factors
+> features=c("promoter","exon","intron")
+> class(features)
+[1] "character"
+> f.feat=factor(features)
+> class(f.feat)
+[1] "factor"
+```
+- It is important to note that when you are reading a data frame with read.table() or creating a data frame with data.frame() function, the character columns are stored as factors by default.
+
+---
+
+
+
 
 
