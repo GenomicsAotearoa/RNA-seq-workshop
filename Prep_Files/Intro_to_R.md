@@ -5,6 +5,7 @@
 - High-dimensional genomics datasets are usually suitable to be analyzed with core R packages and functions.
 - Bioconductor and CRAN have an array of specialized tools for doing genomics-specific analysis.
 
+---
 ### Installing Packages
 - CRAN packages can be installed using install.packages()
 
@@ -44,6 +45,8 @@ You can get help on functions by using `help()` and ?package_name.
 help("hist")
 ```
 
+Above all, google search can be your best friend to quickly find answers.
 
+---
 
 
