@@ -277,6 +277,44 @@ $age
 
 ---
 ### Reading and writing data
+- Most of the genomics datasets come in table format e.g. gene expression count data or BED format.
+- In R you can easily read tabular data with the read.table() and will be converted to a dataframe structure
+
+*We are going to read the count data file located in RNA-seq-workshop/Prep_Files/Files*
+
+```
+> cd1 <- read.table("test_table.csv", sep=",", header=TRUE)
+> head(cd1)
+          X WT1 WT2 WT3 MT1 MT2 MT3
+1   YDL248W  52  46  36  65  70  78
+2 YDL247W-A   0   0   0   0   1   0
+3   YDL247W   2   4   2   6   8   5
+4   YDL246C   0   0   1   1   2   0
+5   YDL245C   0   3   0   5   7   4
+6   YDL244W   6   6   5  20  30  19
+
+> dim(cd1)
+[1] 7127    7
+
+# check column names
+> names(cd1)
+[1] "X"   "WT1" "WT2" "WT3" "MT1" "MT2" "MT3"
+
+# change column name
+> names(cd1)[1] = c("Gene_Names")
+> names(cd1)
+[1] "Gene_Names" "WT1"        "WT2"        "WT3"        "MT1"        "MT2"        "MT3"  
+```
+
+*We are also going to write out our data*
+
+- A data frame or matrix can be saved using write.table()
+```
+> write.table(cd1, file="new_test_data.txt", row.names = FALSE, col.names = TRUE, sep = "\t")
+```
+
+
+
 
 
 
