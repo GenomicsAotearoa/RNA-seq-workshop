@@ -12,3 +12,27 @@ CRAN packages can be installed using install.packages()
 # install package called `tidyverse`
 install.packages("tidyverse")
 ```
+You can install bioconductor packages with a specific installer script.
+
+```
+# get the installer package if you don't have
+install.packages("BiocManager")
+
+# install bioconductor package "DESeq2"
+BiocManager::install("DESeq2")
+```
+
+You can also install packages from Github, or from the source by downloading the source file
+
+You can also update CRAN and Bioconductor packages.
+
+```
+# updating CRAN packages
+update.packages()
+
+# updating bioconductor packages
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install()
+```
+
