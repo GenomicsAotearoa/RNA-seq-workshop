@@ -239,6 +239,45 @@ $age
 
 ---
 
+### Data types
+- There are four common data types in R, they are numeric, logical, character and integer. All these data types can be used to create vectors natively.
+
+#### Numeric data type
+
+```{r}
+#create a numeric vector x with 5 components
+> x<-c(1,3,2,10,5)
+> x
+[1]  1  3  2 10  5
+```
+#### Logical data type
+```
+#create a logical vector x
+> x<-c(TRUE,FALSE,TRUE)
+> x
+[1]  TRUE FALSE  TRUE
+```
+
+#### Character data type
+
+```
+# create a character vector
+> x<-c("sds","sd","as")
+> x
+[1] "sds" "sd"  "as"
+```
+
+#### Integer data type
+```
+# create an integer vector
+> x<-c(1L,2L,3L)
+> x
+[1] 1 2 3
+```
+
+
+
+
 
 
 
