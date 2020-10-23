@@ -313,6 +313,26 @@ $age
 > write.table(cd1, file="new_test_data.txt", row.names = FALSE, col.names = TRUE, sep = "\t")
 ```
 
+### Plotting in R with base graphics
+
+- sample 50 values from normal distribution and store them in vector x
+- plotting histogram
+
+```
+> x <- rnorm(50)
+> hist(x)
+```
+![Alt_text](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Hist.png)
+
+- using help (?hist), we can see how to manipulate the figure
+```
+> hist(x,main="Hello histogram!!!",col="red")
+```
+![Alt_text](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Hist_2.png)
+
+
+
+
 
 
 
