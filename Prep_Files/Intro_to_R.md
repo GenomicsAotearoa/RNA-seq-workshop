@@ -380,6 +380,66 @@ $age
 ![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Barplot.png)
 
 
+##### Combining multiple plots
+- Combining multiple plots in the same graphic can become handy especially when preparing reports
+- We use `par()` function for this
+
+```
+# Combining 2 plots side-by-side
+> par(mfrow=c(1,2))
+
+> hist(x,main="Hello histogram!!!",col="red")
+
+> plot(x,y,main="scatterplot", ylab="y values",xlab="x values")
+
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Multiple_plots.png)
+
+
+#### Saving plots
+- There are different ways of saving plots.
+- If you are using RStudio or other platforms, you can export the image directlty to your disk.
+- You can also save the plot in the commandline as below
+
+```
+# Open a graphics device
+> pdf("myplot.pdf",width=5,height=5)
+
+# Create the plot
+> plot(x,y)
+
+# Close the graphics device
+> dev.off()
+```
+
+- Alternatively, you can create the plot first and then copy it to the graphics device
+```
+> plot(x,y)
+
+> dev.copy(pdf,"myplot.pdf",width=7,height=5)
+
+> dev.off()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
