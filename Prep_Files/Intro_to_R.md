@@ -316,7 +316,9 @@ $age
 ### Plotting in R with base graphics
 
 - sample 50 values from normal distribution and store them in vector x
-- plotting histogram
+-
+
+#### Histogram
 
 ```
 > x <- rnorm(50)
@@ -330,9 +332,59 @@ $age
 ```
 ![Alt_text](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Hist_2.png)
 
+#### Scatter plot
+- Scatter plots are one of the most common plots you will meet in data analysis
+- They are useful to visualise the relationships between two variables
+
+*We are going to create another vector y and compare with x*
+
+```
+
+> y <- rnorm(50)
+
+# plot scatter plot
+> plot(x,y,main="scatterplot of random samples", ylab="y values",xlab="x values")
+
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Scatter_plot.png)
+
+
+#### Box plot
+- These depict groups of numerical data through their quartiles.
+- The edges of the box denote the 1st and 3rd quartiles, and the line that crosses the box is the median. 
+- The distance between the 1st and the 3rd quartiles is called interquartile range. 
+- Outliers can be depicted as dots
+
+*Using the same data from vectors x and y, we can plot a bocplot*
+
+```
+> boxplot(x,y,main="boxplots of random samples")
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/boxplot.png)
+
+
+#### Bar plot
+- We are going to plot lengths of 4 genes
+
+```
+# Creating vectors with the variables
+> gene_len <- c(250, 400, 320, 100)
+> gene_names <- c("lipase1","lipase2", "protease1", "protease2")
+
+# plotting the barplot
+> barplot(gene_len, names.arg=gene_names, ylab = "Gene Length", main = "Lengths of experimental genes", col = c("red", "red", "blue", "blue"))
+
+# creating the legend 
+> legend("topright",legend=c("test","control"), fill=c("red","blue"))
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Files/Barplot.png)
 
 
 
+
+
+
+        
 
 
 
