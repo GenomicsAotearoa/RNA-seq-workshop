@@ -190,6 +190,7 @@ names(mydata) <- c("chr","start","end","strand")
 
 ```{r}
 # creating a list with 4 objects
+> mylist <- list(name="Bob", mynumbers=c(1,2,3), mymatrix=matrix(1:4,ncol = 2), age=5.3)
 > mylist
 $name
 [1] "Bob"
