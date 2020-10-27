@@ -52,7 +52,7 @@ Above all, google search can be your best friend to quickly find answers.
 
 ### R as a calculator
 - One of the most basic ways to use R is as a calculator.
-Take a minute tp play around with R to perform some calculations.
+Take a minute to play around with R to perform some calculations.
 
 ### Data structures
 - R has multiple data structures
