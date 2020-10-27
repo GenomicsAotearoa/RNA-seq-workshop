@@ -312,6 +312,7 @@ $age
 ```
 > write.table(cd1, file="new_test_data.txt", row.names = FALSE, col.names = TRUE, sep = "\t")
 ```
+---
 
 ### Plotting in R with base graphics
 
