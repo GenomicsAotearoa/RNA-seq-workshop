@@ -94,14 +94,14 @@ let's use a for loop to process our samples:
 
 ```bash
 
-$ cd Raw
+$ cd Trimmed
 
 $ ls
 SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
 
 $ for filename in *
 > do
-> base=$(basename ${filename} .fastq)
+> base=$(basename ${filename} .trimmed.fastq)
 > hisat2 -p 4 -x ../Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U $filename -S ../Mapping/${base}.sam --summary-file ../Mapping/${base}_summary.txt
 > done
 
