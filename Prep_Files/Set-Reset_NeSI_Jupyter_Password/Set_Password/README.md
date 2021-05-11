@@ -1,0 +1,1 @@
+<img src="../../img/SetPassword.png" alt="drawing" width="800"/></p>
