@@ -57,6 +57,183 @@ setwd("/home/Your_User_Name/RNA_seq/DE")
 list.files()
 
 ```
+### Count data
+
+Note: I have now aligned the data for ALL CHROMOSOMES and generated
+counts, so we are working with data from all 7127 genes.
+
+*Let’s look at our dataset and perform some basic checks before we do a
+differential expression analysis.*
+
+``` r
+library(dplyr)
+fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
+fcData %>% head()
+```
+
+    ##      Geneid Chr Start   End Strand Length ...STAR.SRR014335.Aligned.out.sam
+    ## 1   YDL248W  IV  1802  2953      +   1152                                52
+    ## 2 YDL247W-A  IV  3762  3836      +     75                                 0
+    ## 3   YDL247W  IV  5985  7814      +   1830                                 2
+    ## 4   YDL246C  IV  8683  9756      -   1074                                 0
+    ## 5   YDL245C  IV 11657 13360      -   1704                                 0
+    ## 6   YDL244W  IV 16204 17226      +   1023                                 6
+    ##   ...STAR.SRR014336.Aligned.out.sam ...STAR.SRR014337.Aligned.out.sam
+    ## 1                                46                                36
+    ## 2                                 0                                 0
+    ## 3                                 4                                 2
+    ## 4                                 0                                 1
+    ## 5                                 3                                 0
+    ## 6                                 6                                 5
+    ##   ...STAR.SRR014339.Aligned.out.sam ...STAR.SRR014340.Aligned.out.sam
+    ## 1                                65                                70
+    ## 2                                 0                                 1
+    ## 3                                 6                                 8
+    ## 4                                 1                                 2
+    ## 5                                 5                                 7
+    ## 6                                20                                30
+    ##   ...STAR.SRR014341.Aligned.out.sam
+    ## 1                                78
+    ## 2                                 0
+    ## 3                                 5
+    ## 4                                 0
+    ## 5                                 4
+    ## 6                                19
+
+Check dimensions:
+
+``` r
+dim(fcData)
+```
+
+    ## [1] 7127   12
+
+``` r
+names(fcData)
+```
+
+    ##  [1] "Geneid"                            "Chr"                              
+    ##  [3] "Start"                             "End"                              
+    ##  [5] "Strand"                            "Length"                           
+    ##  [7] "...STAR.SRR014335.Aligned.out.sam" "...STAR.SRR014336.Aligned.out.sam"
+    ##  [9] "...STAR.SRR014337.Aligned.out.sam" "...STAR.SRR014339.Aligned.out.sam"
+    ## [11] "...STAR.SRR014340.Aligned.out.sam" "...STAR.SRR014341.Aligned.out.sam"
+
+Rename data columns to reflect group membership
+
+``` r
+names(fcData)[7:12] = c("WT1", "WT2", "WT3", "MT1", "MT2", "MT3")
+ 
+fcData %>% head()
+```
+
+    ##      Geneid Chr Start   End Strand Length WT1 WT2 WT3 MT1 MT2 MT3
+    ## 1   YDL248W  IV  1802  2953      +   1152  52  46  36  65  70  78
+    ## 2 YDL247W-A  IV  3762  3836      +     75   0   0   0   0   1   0
+    ## 3   YDL247W  IV  5985  7814      +   1830   2   4   2   6   8   5
+    ## 4   YDL246C  IV  8683  9756      -   1074   0   0   1   1   2   0
+    ## 5   YDL245C  IV 11657 13360      -   1704   0   3   0   5   7   4
+    ## 6   YDL244W  IV 16204 17226      +   1023   6   6   5  20  30  19
+
+Extract count data
+
+  - Remove annotation columns
+  - Add row names
+
+<!-- end list -->
+
+``` r
+counts = fcData[, 7:12]
+rownames(counts) = fcData$Geneid
+counts %>% head()
+```
+
+    ##           WT1 WT2 WT3 MT1 MT2 MT3
+    ## YDL248W    52  46  36  65  70  78
+    ## YDL247W-A   0   0   0   0   1   0
+    ## YDL247W     2   4   2   6   8   5
+    ## YDL246C     0   0   1   1   2   0
+    ## YDL245C     0   3   0   5   7   4
+    ## YDL244W     6   6   5  20  30  19
+
+#### Visualising the data
+
+Data are highly skewed (suggests that logging might be useful):
+
+``` r
+boxplot(as.matrix(counts) ~ col(counts))
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+Some genes have zero counts:
+
+``` r
+colSums(counts==0)
+```
+
+    ## WT1 WT2 WT3 MT1 MT2 MT3 
+    ## 562 563 573 437 425 435
+
+Log transformation (add 0.5 to avoid log(0) issues):
+
+``` r
+logCounts = log2(as.matrix(counts)+ 0.5)
+```
+
+Now we can see the per-sample distributions more clearly:
+
+``` r
+boxplot(as.matrix(logCounts) ~ col(logCounts))
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+Density plots are also a good way to visualise the data:
+
+``` r
+lineColour <- c("blue", "blue", "blue", "red", "red", "red")
+lineColour
+```
+
+    ## [1] "blue" "blue" "blue" "red"  "red"  "red"
+
+``` r
+plot(density(logCounts[,1]), ylim=c(0,0.3), col=lineColour[1])
+for(i in 2:ncol(logCounts)) lines(density(logCounts[,i]), col=lineColour[i])
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+The boxplots and density plots show clear differences between the sample
+groups - are these biological, or experimental artifacts? (often we
+don’t know).
+
+#### Read counts per sample
+
+Normalisation process (slightly different for each analysis method)
+takes “library size” (number of reads generated for each sample) into
+account.
+
+``` r
+colSums(counts)
+```
+
+    ##     WT1     WT2     WT3     MT1     MT2     MT3 
+    ## 4915975 4892227 4778158 4618409 4719413 4554283
+
+Visualise via bar plot
+
+``` r
+colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Rplot_bar1.png) -->
+
+*Now we are ready for differential expression analysis*
+
 
 
 # Remove first five columns (chr, start, end, strand, length)
