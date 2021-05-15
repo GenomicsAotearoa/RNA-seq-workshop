@@ -32,12 +32,12 @@ $ mkdir DE
 
 #copy the count data into this new DE directory
 $ cp ../Counts/yeast_counts.txt ./
-$ pwd (and copy the path
+$ pwd (and copy the path)
 
 ```
 * When using your own dataset, you would copy the count data into your DE directory, however in our case let's download the count data for this exercise from our Github page and store it in DE directory
 
-Hint: Use the wget or curl commands to download from this link: https://raw.githubusercontent.com/GenomicsAotearoa/RNA-seq-workshop/master/4.Differential_Expression/yeast_counts_all_chr.txt
+* Hint: Use the wget or curl commands to download from this link: https://raw.githubusercontent.com/GenomicsAotearoa/RNA-seq-workshop/master/4.Differential_Expression/yeast_counts_all_chr.txt
 
 ## 1. Import & pre-process
 
