@@ -51,10 +51,10 @@ Now let's open the R.4.0.1 notebook using NeSI Jupyter
 
 ```
 #set the working directory (you can paste the copied path here)
-setwd("/home/Your_User_Name/RNA_seq/DE")
+> setwd("/home/Your_User_Name/RNA_seq/DE")
 
 # list the files in your current working directory (you must see 2 count data files in there - one from the previous data analysis and one we just downloaded)
-list.files()
+> list.files()
 
 ```
 ### Count data
@@ -66,9 +66,9 @@ counts, so we are working with data from all 7127 genes.
 differential expression analysis.*
 
 ``` r
-library(dplyr)
-fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
-fcData %>% head()
+> library(dplyr)
+> fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
+> fcData %>% head()
 ```
 
     ##      Geneid Chr Start   End Strand Length ...STAR.SRR014335.Aligned.out.sam
@@ -103,13 +103,13 @@ fcData %>% head()
 Check dimensions:
 
 ``` r
-dim(fcData)
+> dim(fcData)
 ```
 
     ## [1] 7127   12
 
 ``` r
-names(fcData)
+> names(fcData)
 ```
 
     ##  [1] "Geneid"                            "Chr"                              
@@ -122,9 +122,9 @@ names(fcData)
 Rename data columns to reflect group membership
 
 ``` r
-names(fcData)[7:12] = c("WT1", "WT2", "WT3", "MT1", "MT2", "MT3")
+> names(fcData)[7:12] = c("WT1", "WT2", "WT3", "MT1", "MT2", "MT3")
  
-fcData %>% head()
+> fcData %>% head()
 ```
 
     ##      Geneid Chr Start   End Strand Length WT1 WT2 WT3 MT1 MT2 MT3
@@ -143,9 +143,9 @@ Extract count data
 <!-- end list -->
 
 ``` r
-counts = fcData[, 7:12]
-rownames(counts) = fcData$Geneid
-counts %>% head()
+> counts = fcData[, 7:12]
+> rownames(counts) = fcData$Geneid
+> counts %>% head()
 ```
 
     ##           WT1 WT2 WT3 MT1 MT2 MT3
@@ -161,7 +161,7 @@ counts %>% head()
 Data are highly skewed (suggests that logging might be useful):
 
 ``` r
-boxplot(as.matrix(counts) ~ col(counts))
+> boxplot(as.matrix(counts) ~ col(counts))
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
@@ -169,7 +169,7 @@ boxplot(as.matrix(counts) ~ col(counts))
 Some genes have zero counts:
 
 ``` r
-colSums(counts==0)
+> colSums(counts==0)
 ```
 
     ## WT1 WT2 WT3 MT1 MT2 MT3 
@@ -178,13 +178,13 @@ colSums(counts==0)
 Log transformation (add 0.5 to avoid log(0) issues):
 
 ``` r
-logCounts = log2(as.matrix(counts)+ 0.5)
+> logCounts = log2(as.matrix(counts)+ 0.5)
 ```
 
 Now we can see the per-sample distributions more clearly:
 
 ``` r
-boxplot(as.matrix(logCounts) ~ col(logCounts))
+> boxplot(as.matrix(logCounts) ~ col(logCounts))
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
@@ -192,15 +192,15 @@ boxplot(as.matrix(logCounts) ~ col(logCounts))
 Density plots are also a good way to visualise the data:
 
 ``` r
-lineColour <- c("blue", "blue", "blue", "red", "red", "red")
-lineColour
+> lineColour <- c("blue", "blue", "blue", "red", "red", "red")
+> lineColour
 ```
 
     ## [1] "blue" "blue" "blue" "red"  "red"  "red"
 
 ``` r
-plot(density(logCounts[,1]), ylim=c(0,0.3), col=lineColour[1])
-for(i in 2:ncol(logCounts)) lines(density(logCounts[,i]), col=lineColour[i])
+> plot(density(logCounts[,1]), ylim=c(0,0.3), col=lineColour[1])
+> for(i in 2:ncol(logCounts)) lines(density(logCounts[,i]), col=lineColour[i])
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
@@ -216,7 +216,7 @@ takes “library size” (number of reads generated for each sample) into
 account.
 
 ``` r
-colSums(counts)
+> colSums(counts)
 ```
 
     ##     WT1     WT2     WT3     MT1     MT2     MT3 
@@ -225,7 +225,7 @@ colSums(counts)
 Visualise via bar plot
 
 ``` r
-colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
+> colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
@@ -249,26 +249,50 @@ More information about DESeq2:
 by Love et al, 2014</a>
 
 ```
-library(DESeq2)
+> library(DESeq2)
 
 # Specify "conditions" (groups: WT and MT)
-conds <- c("WT","WT","WT","MT","MT","MT")
+> conds <- c("WT","WT","WT","MT","MT","MT")
 
 # Convert to matrix
-countdata <- as.matrix(countdata)
-head(countdata)
+> countdata <- as.matrix(countdata)
+> head(countdata)
 ```
 ![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/Matrix.png)<!-- -->
 
 
 ```
 # Create a coldata frame and instantiate the DESeqDataSet. See ?DESeqDataSetFromMatrix
-coldata <- data.frame(row.names=colnames(countdata), conds)
-dds <- DESeqDataSetFromMatrix(countData=countdata, colData=coldata, design=~conds)
-dds
+> coldata <- data.frame(row.names=colnames(countdata), conds)
+> dds <- DESeqDataSetFromMatrix(countData=countdata, colData=coldata, design=~conds)
+> dds
 
-# Run the DESeq pipeline
+class: DESeqDataSet 
+dim: 7127 6 
+metadata(1): version
+assays(1): counts
+rownames(7127): YDL248W YDL247W-A ... Q0285 Q0297
+rowData names(0):
+colnames(6): WT1 WT2 ... MT2 MT3
+colData names(1): conds
+```
+
+#### Run the DESeq pipeline
+```
 dds <- DESeq(dds)
+
+estimating size factors
+
+estimating dispersions
+
+gene-wise dispersion estimates
+
+mean-dispersion relationship
+
+final dispersion estimates
+
+fitting model and testing
+```
 
 # Plot dispersions
 png("qc-dispersions.png", 1000, 1000, pointsize=20)
