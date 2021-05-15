@@ -39,7 +39,7 @@ $ pwd (and copy the path)
 
 * Hint: Use the wget or curl commands to download from this link: https://raw.githubusercontent.com/GenomicsAotearoa/RNA-seq-workshop/master/4.Differential_Expression/yeast_counts_all_chr.txt
 
-## 1. Import & pre-process
+## Import & pre-process
 
 #### Import data from featureCounts 
 (From the terminal - We got our count data using the command below) 
@@ -234,28 +234,37 @@ colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
 
 *Now we are ready for differential expression analysis*
 
+## DESeq2 Analysis
 
+  - The DESeq2 package uses the *Negative Binomial* distribution to
+    model the count data from each sample.
+  - A statistical test based on the Negative Binomial distribution (via
+    a generalized linear model, GLM) can be used to assess differential
+    expression for each gene.
+  - Use of the Negative Binomial distribution attempts to accurately
+    capture the variation that is observed for count data.
 
-# Remove first five columns (chr, start, end, strand, length)
-countdata <- countdata[ ,6:ncol(countdata)]
+More information about DESeq2:
+<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">article
+by Love et al, 2014</a>
 
-# Remove .bam or .sam from filenames
-colnames(countdata) <- gsub("\\.[sb]am$", "", colnames(countdata))
+```
+library(DESeq2)
+
+# Specify "conditions" (groups: WT and MT)
+conds <- c("WT","WT","WT","MT","MT","MT")
 
 # Convert to matrix
 countdata <- as.matrix(countdata)
 head(countdata)
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/Matrix.png)<!-- -->
 
-# Assign condition (first four are controls, second four contain the expansion)
-(condition <- factor(c(rep("ctl", 4), rep("exp", 4))))
 
-## Analysis with DESeq2 ----------------------------------------------------
-
-library(DESeq2)
-
+```
 # Create a coldata frame and instantiate the DESeqDataSet. See ?DESeqDataSetFromMatrix
-(coldata <- data.frame(row.names=colnames(countdata), condition))
-dds <- DESeqDataSetFromMatrix(countData=countdata, colData=coldata, design=~condition)
+coldata <- data.frame(row.names=colnames(countdata), conds)
+dds <- DESeqDataSetFromMatrix(countData=countdata, colData=coldata, design=~conds)
 dds
 
 # Run the DESeq pipeline
