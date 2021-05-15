@@ -309,9 +309,11 @@ fitting model and testing
 > hist(assay(rld))
 ```
 
-*Colors for plots below
+* Colors for plots below
+```
 > library(RColorBrewer)
-mycols <- brewer.pal(8, "Dark2")[1:length(unique(conds))]
+> mycols <- brewer.pal(8, "Dark2")[1:length(unique(conds))]
+```
 
 #### Sample distance heatmap
 ```
