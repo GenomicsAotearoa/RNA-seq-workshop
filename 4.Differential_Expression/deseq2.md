@@ -163,7 +163,6 @@ Data are highly skewed (suggests that logging might be useful):
 ``` r
 > boxplot(as.matrix(counts) ~ col(counts))
 ```
-
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Some genes have zero counts:
@@ -186,7 +185,6 @@ Now we can see the per-sample distributions more clearly:
 ``` r
 > boxplot(as.matrix(logCounts) ~ col(logCounts))
 ```
-
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 Density plots are also a good way to visualise the data:
@@ -227,7 +225,6 @@ Visualise via bar plot
 ``` r
 > colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
 ```
-
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Rplot_bar1.png) -->
@@ -411,8 +408,9 @@ Gene	baseMean	log2FoldChange	lfcSE	stat	pvalue	padj	WT1	WT2	WT3	MT1	MT2	MT3
 #### Examine plot of p-values
 ```
 > hist(res$pvalue, breaks=50, col="grey")
-![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/p_value_histogram.png)
 ```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/p_value_histogram.png)
+
 
 #### Significant genes
 
