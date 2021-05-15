@@ -411,77 +411,50 @@ Gene	baseMean	log2FoldChange	lfcSE	stat	pvalue	padj	WT1	WT2	WT3	MT1	MT2	MT3
 ```
 ![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/p_value_histogram.png)
 
-
-#### Significant genes
-
-Adjusted p-values less than 0.05:
+#### Summary of differential gene expression
 
 ``` r
-sum(tt$adj.P.Val < 0.05)
+> summary(res) 
 ```
 
-    ## [1] 5140
+    ## 
+    ## out of 6830 with nonzero total read count
+    ## adjusted p-value < 0.1
+    ## LFC > 0 (up)       : 2520, 37%
+    ## LFC < 0 (down)     : 2521, 37%
+    ## outliers [1]       : 0, 0%
+    ## low counts [2]     : 0, 0%
+    ## (mean count < 0)
+    ## [1] see 'cooksCutoff' argument of ?results
+    ## [2] see 'independentFiltering' argument of ?results
+    
 
-Adjusted p-values less than 0.01:
+- Remove rows with NAs
+```
+> res = na.omit(res)
+```
+
+ - Get the rows of "res" with significant adjusted p-values
+```
+> resPadj<-res[res$padj <= 0.05 , ]
+```
+
+- Get dimensions
+```
+> dim(resPadj)
+[1] 4811    6
+```
+
+- Number of adjusted p-values less than 0.05
 
 ``` r
-sum(tt$adj.P.Val <= 0.01)
+> sum(res$padj <= 0.05)
+[1] 4811
 ```
-
-    ## [1] 4566
-
-By default, limma uses FDR adjustment (but lets check):
-
-``` r
-sum(p.adjust(tt$P.Value, method="fdr") <= 0.01)
+MA plot to summmarise the DESeq output
 ```
-
-    ## [1] 4566
-
-Volcano plots are a popular method for summarising the `limma` output:
-
-``` r
-volcanoplot(fit, coef=2)
-abline(h=-log10(0.05))
+> plotMA(dds,ylim=c(-2,2),main='DESeq2')
 ```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/MA_plot.png)
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
-Significantly DE genes:
-
-``` r
-sigGenes = which(tt$adj.P.Val <= 0.05)
-length(sigGenes)
-```
-
-    ## [1] 5140
-
-``` r
-volcanoplot(fit, coef=2)
-points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
-```
-
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
-
-Significantly DE genes above fold-change threshold:
-
-``` r
-sigGenes = which(tt$adj.P.Val <= 0.05 & (abs(tt$logFC) > log2(2)))
-length(sigGenes)
-```
-
-    ## [1] 1891
-
-``` r
-volcanoplot(fit, coef=2)
-points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
-```
-
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
-
-Get the rows of top table with significant adjusted p-values - we’ll
-save these for later to compare with the other methods.
-
-``` r
-limmaPadj <- tt[tt$adj.P.Val <= 0.01, ]
-```
