@@ -319,17 +319,22 @@ mycols <- brewer.pal(8, "Dark2")[1:length(unique(conds))]
 > library(gplots)
 > png("qc-heatmap-samples.png", w=1000, h=1000, pointsize=20)
 > heatmap.2(as.matrix(sampleDists), key=F, trace="none",
-          col=colorpanel(100, "red", "blue"),
+          col=colorpanel(100, "red", "green"),
           ColSideColors=mycols[conds], RowSideColors=mycols[conds],
           margin=c(10, 10), main="Sample Distance Matrix")
 > dev.off()
 ```
 ![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/Sample_distance_Matrix.png)
 
-# Principal components analysis
-## Could do with built-in DESeq2 function:
-## DESeq2::plotPCA(rld, intgroup="condition")
-## I like mine better:
+#### Principal components analysis
+* Using the DESeq2 in-built method
+```
+> DESeq2::plotPCA(rld, intgroup="condition")
+```
+OR
+* personal code
+
+```
 rld_pca <- function (rld, intgroup = "condition", ntop = 500, colors=NULL, legendpos="bottomleft", main="PCA Biplot", textcx=1, ...) {
   require(genefilter)
   require(calibrate)
@@ -359,55 +364,124 @@ rld_pca <- function (rld, intgroup = "condition", ntop = 500, colors=NULL, legen
 png("qc-pca.png", 1000, 1000, pointsize=20)
 rld_pca(rld, colors=mycols, intgroup="condition", xlim=c(-75, 35))
 dev.off()
+```
 
-
-# Get differential expression results
+#### Getting differential expression results
+```
 res <- results(dds)
-table(res$padj<0.05)
-## Order by adjusted p-value
-res <- res[order(res$padj), ]
-## Merge with normalized count data
-resdata <- merge(as.data.frame(res), as.data.frame(counts(dds, normalized=TRUE)), by="row.names", sort=FALSE)
-names(resdata)[1] <- "Gene"
-head(resdata)
-## Write results
-write.csv(resdata, file="diffexpr-results.csv")
+> table(res$padj<0.05)
+FALSE  TRUE 
+ 2019  4811 
+# Order by adjusted p-value
+> res <- res[order(res$padj), ]
+> head(res)
+log2 fold change (MLE): conds WT vs MT 
+Wald test p-value: conds WT vs MT 
+DataFrame with 6 rows and 6 columns
+         baseMean log2FoldChange     lfcSE      stat    pvalue      padj
+        <numeric>      <numeric> <numeric> <numeric> <numeric> <numeric>
+YDL223C  10883.22        1.98548 0.0190608  104.1655         0         0
+YDL222C   3028.11        4.07920 0.0501260   81.3790         0         0
+YDL204W   5208.82        2.18545 0.0269624   81.0556         0         0
+YDL195W   3695.54        1.97387 0.0314551   62.7519         0         0
+YDL185W   5790.68        1.53969 0.0241512   63.7518         0         0
+YDL145C   2681.02        1.35311 0.0349279   38.7401         0         0
 
-## Examine plot of p-values
-hist(res$pvalue, breaks=50, col="grey")
 
-## Examine independent filtering
-attr(res, "filterThreshold")
-plot(attr(res,"filterNumRej"), type="b", xlab="quantiles of baseMean", ylab="number of rejections")
+# Merge with normalized count data
+> resdata <- merge(as.data.frame(res), as.data.frame(counts(dds, normalized=TRUE)), by="row.names", sort=FALSE)
+> names(resdata)[1] <- "Gene"
+> head(resdata)
+A data.frame: 6 × 13
+Gene	baseMean	log2FoldChange	lfcSE	stat	pvalue	padj	WT1	WT2	WT3	MT1	MT2	MT3
+<I<chr>>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>	<dbl>
+1	YDL223C	10883.216	1.985482	0.01906084	104.16551	0	0	17474.229	17335.915	17323.452	4453.3839	4344.0962	4368.2196
+2	YDL222C	3028.107	4.079201	0.05012597	81.37901	0	0	5801.384	5744.146	5607.619	310.2627	331.2583	373.9705
+3	YDL204W	5208.823	2.185455	0.02696242	81.05559	0	0	8613.620	8504.693	8501.911	1887.2886	1865.1101	1880.3133
+4	YDL195W	3695.539	1.973868	0.03145514	62.75186	0	0	5789.897	5916.608	5967.202	1524.7440	1468.4387	1506.3428
+5	YDL185W	5790.680	1.539685	0.02415124	63.75181	0	0	8611.322	8625.417	8614.722	2934.6395	2944.4251	3013.5572
+6	YDL145C	2681.016	1.353109	0.03492789	38.74008	0	0	3946.090	3833.263	3781.500	1528.1724	1522.1109	1474.9606
 
-## MA plot
-## Could do with built-in DESeq2 function:
-## DESeq2::plotMA(dds, ylim=c(-1,1), cex=1)
-## I like mine better:
-maplot <- function (res, thresh=0.05, labelsig=TRUE, textcx=1, ...) {
-  with(res, plot(baseMean, log2FoldChange, pch=20, cex=.5, log="x", ...))
-  with(subset(res, padj<thresh), points(baseMean, log2FoldChange, col="red", pch=20, cex=1.5))
-  if (labelsig) {
-    require(calibrate)
-    with(subset(res, padj<thresh), textxy(baseMean, log2FoldChange, labs=Gene, cex=textcx, col=2))
-  }
-}
-png("diffexpr-maplot.png", 1500, 1000, pointsize=20)
-maplot(resdata, main="MA Plot")
-dev.off()
+# Write results
+> write.csv(resdata, file="diffexpr-results.csv")
+```
 
-## Volcano plot with "significant" genes labeled
-volcanoplot <- function (res, lfcthresh=2, sigthresh=0.05, main="Volcano Plot", legendpos="bottomright", labelsig=TRUE, textcx=1, ...) {
-  with(res, plot(log2FoldChange, -log10(pvalue), pch=20, main=main, ...))
-  with(subset(res, padj<sigthresh ), points(log2FoldChange, -log10(pvalue), pch=20, col="red", ...))
-  with(subset(res, abs(log2FoldChange)>lfcthresh), points(log2FoldChange, -log10(pvalue), pch=20, col="orange", ...))
-  with(subset(res, padj<sigthresh & abs(log2FoldChange)>lfcthresh), points(log2FoldChange, -log10(pvalue), pch=20, col="green", ...))
-  if (labelsig) {
-    require(calibrate)
-    with(subset(res, padj<sigthresh & abs(log2FoldChange)>lfcthresh), textxy(log2FoldChange, -log10(pvalue), labs=Gene, cex=textcx, ...))
-  }
-  legend(legendpos, xjust=1, yjust=1, legend=c(paste("FDR<",sigthresh,sep=""), paste("|LogFC|>",lfcthresh,sep=""), "both"), pch=20, col=c("red","orange","green"))
-}
-png("diffexpr-volcanoplot.png", 1200, 1000, pointsize=20)
-volcanoplot(resdata, lfcthresh=1, sigthresh=0.05, textcx=.8, xlim=c(-2.3, 2))
-dev.off()
+#### Examine plot of p-values
+```
+> hist(res$pvalue, breaks=50, col="grey")
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/p_value_histogram.png)
+```
+
+#### Significant genes
+
+Adjusted p-values less than 0.05:
+
+``` r
+sum(tt$adj.P.Val < 0.05)
+```
+
+    ## [1] 5140
+
+Adjusted p-values less than 0.01:
+
+``` r
+sum(tt$adj.P.Val <= 0.01)
+```
+
+    ## [1] 4566
+
+By default, limma uses FDR adjustment (but lets check):
+
+``` r
+sum(p.adjust(tt$P.Value, method="fdr") <= 0.01)
+```
+
+    ## [1] 4566
+
+Volcano plots are a popular method for summarising the `limma` output:
+
+``` r
+volcanoplot(fit, coef=2)
+abline(h=-log10(0.05))
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
+
+Significantly DE genes:
+
+``` r
+sigGenes = which(tt$adj.P.Val <= 0.05)
+length(sigGenes)
+```
+
+    ## [1] 5140
+
+``` r
+volcanoplot(fit, coef=2)
+points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+
+Significantly DE genes above fold-change threshold:
+
+``` r
+sigGenes = which(tt$adj.P.Val <= 0.05 & (abs(tt$logFC) > log2(2)))
+length(sigGenes)
+```
+
+    ## [1] 1891
+
+``` r
+volcanoplot(fit, coef=2)
+points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
+```
+
+![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
+
+Get the rows of top table with significant adjusted p-values - we’ll
+save these for later to compare with the other methods.
+
+``` r
+limmaPadj <- tt[tt$adj.P.Val <= 0.01, ]
+```
