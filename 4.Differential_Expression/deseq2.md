@@ -1,13 +1,63 @@
-## Import & pre-process ----------------------------------------------------
+# Differential Expression Analysis using DESeq2
+Ngoni Faya & Mik Black
 
-#### Import data from featureCounts
-#### We got our count data using the command 
+### Recap
 
+  - In the last section we worked through the process of quality
+    assessment and alignment for RNA-seq data
+  - This typically takes place on the command line, but can also be done
+    from within R.
+  - The end result was the generation of count data (counts of reads
+    aligned to each gene, per sample) using the FeatureCounts command
+    from Subread/Rsubread.
+  - Now that we’ve got count data, we can begin our differental
+    expression analysis.
+
+### Data set reminder
+
+  - Data obtained from yeast RNA-seq experiment,
+    <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000299">Lee
+    et al 2008 </a>
+  - Wild-type versus RNA degradation mutants
+  - Six samples (3 WT / 3 MT)
+  - We are working with data from chromosome 1 to keep the files sizes
+    relatively small.
+    
+    
+Now let's make a new directory where we will store our RNA-seq data
+
+```
+$ cd ~/RNA-seq
+$ mkdir DE
+
+#copy the count data into this new DE directory
+$ cp ../Counts/yeast_counts.txt ./
+$ pwd (and copy the path
+
+```
+* When using your own dataset, you would copy the count data into your DE directory, however in our case let's download the count data for this exercise from our Github page and store it in DE directory
+
+Hint: Use the wget or curl commands to download from this link: https://raw.githubusercontent.com/GenomicsAotearoa/RNA-seq-workshop/master/4.Differential_Expression/yeast_counts_all_chr.txt
+
+## 1. Import & pre-process
+
+#### Import data from featureCounts 
+(From the terminal - We got our count data using the command below) 
 ```
 $ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
-countdata <- read.table("counts.txt", header=TRUE, row.names=1)
+```
+
+Now let's open the R.4.0.1 notebook using NeSI Jupyter
 
 ```
+#set the working directory (you can paste the copied path here)
+setwd("/home/Your_User_Name/RNA_seq/DE")
+
+# list the files in your current working directory (you must see 2 count data files in there - one from the previous data analysis and one we just downloaded)
+list.files()
+
+```
+
 
 # Remove first five columns (chr, start, end, strand, length)
 countdata <- countdata[ ,6:ncol(countdata)]
