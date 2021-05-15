@@ -279,7 +279,7 @@ colData names(1): conds
 
 #### Run the DESeq pipeline
 ```
-dds <- DESeq(dds)
+> dds <- DESeq(dds)
 
 estimating size factors
 
@@ -294,32 +294,37 @@ final dispersion estimates
 fitting model and testing
 ```
 
-# Plot dispersions
-png("qc-dispersions.png", 1000, 1000, pointsize=20)
-plotDispEsts(dds, main="Dispersion plot")
-dev.off()
+#### Plot dispersions
+```
+> png("qc-dispersions.png", 1000, 1000, pointsize=20)
+> plotDispEsts(dds, main="Dispersion plot")
+> dev.off()
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/dispersion_plot.png)
 
-# Regularized log transformation for clustering/heatmaps, etc
-rld <- rlogTransformation(dds)
-head(assay(rld))
-hist(assay(rld))
+#### Regularized log transformation for clustering/heatmaps, etc
+```
+> rld <- rlogTransformation(dds)
+> head(assay(rld))
+> hist(assay(rld))
+```
 
-# Colors for plots below
-## Ugly:
-## (mycols <- 1:length(unique(condition)))
-## Use RColorBrewer, better
-library(RColorBrewer)
-(mycols <- brewer.pal(8, "Dark2")[1:length(unique(condition))])
+*Colors for plots below
+> library(RColorBrewer)
+mycols <- brewer.pal(8, "Dark2")[1:length(unique(conds))]
 
-# Sample distance heatmap
-sampleDists <- as.matrix(dist(t(assay(rld))))
-library(gplots)
-png("qc-heatmap-samples.png", w=1000, h=1000, pointsize=20)
-heatmap.2(as.matrix(sampleDists), key=F, trace="none",
-          col=colorpanel(100, "black", "white"),
-          ColSideColors=mycols[condition], RowSideColors=mycols[condition],
+#### Sample distance heatmap
+```
+> sampleDists <- as.matrix(dist(t(assay(rld))))
+> library(gplots)
+> png("qc-heatmap-samples.png", w=1000, h=1000, pointsize=20)
+> heatmap.2(as.matrix(sampleDists), key=F, trace="none",
+          col=colorpanel(100, "red", "blue"),
+          ColSideColors=mycols[conds], RowSideColors=mycols[conds],
           margin=c(10, 10), main="Sample Distance Matrix")
-dev.off()
+> dev.off()
+```
+![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/Sample_distance_Matrix.png)
 
 # Principal components analysis
 ## Could do with built-in DESeq2 function:
