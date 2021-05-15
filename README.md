@@ -33,7 +33,7 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
 <a href="https://pad.riseup.net/p/UOO-RNA-seq_30072020">Link</a>
 
 ## Post-Event Survey
-Please take the <a href="https://otago.au1.qualtrics.com/jfe/form/SV_3f8lcz8EiPt3hwp">survey</a> to help us improve.
+Please take the <a href="https://otago.au1.qualtrics.com/jfe/form/SV_6A3iTbRwsoImnQ2">survey</a> to help us improve.
 
 ---
 
