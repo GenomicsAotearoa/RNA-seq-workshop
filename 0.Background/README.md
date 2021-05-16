@@ -14,7 +14,7 @@ Here is a <a href="https://www.youtube.com/watch?v=womKfikWlxM">video</a> to ill
 * * *
 
 ### Workshop Overview
-<p><br><img src="./RNA_seq_workshopflow.png" alt="drawing" width="700"/></p>
+<p><br><img src="./RNA_seq_workshopflow.png" alt="drawing" width="900"/></p>
 
 
 
