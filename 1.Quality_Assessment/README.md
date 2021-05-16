@@ -17,7 +17,7 @@ Checking to make sure we have the Raw files for the workshop.
 ```bash
 
 $ ls
-modload.sh RNA_seq ...
+RNA_seq ...
 
 ```
 
@@ -29,7 +29,7 @@ $ cd RNA_seq
 
 ```bash
 $ ls
-Raw
+Genome  Raw  rsmodules.sh  yeast_counts_all_chr.txt
 ```
 
 ```bash
@@ -47,8 +47,10 @@ $ module spider fastqc
 and then load 
 
 ```bash
+$ module purge
 $ module load FastQC/0.11.9
 ```
+>hint : there is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running `source ~/RNA_seq/rsmodules.sh` command will excute it. 
 
 Now we can start the quality control:
 
