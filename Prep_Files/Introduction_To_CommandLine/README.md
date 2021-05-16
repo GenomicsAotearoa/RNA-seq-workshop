@@ -175,19 +175,19 @@ This prevents the shell interpreter from treating `i` as a string or a command. 
 
 ```
 $ for filename in *.fastq
->do
->    head -n 2 ${filename}
->done
+do
+    head -n 2 ${filename}
+done
 ```
 
 `basename` is rather a powerful tool when used in a for loop. It enables the user to access just the file prefix which can be use to name things
 
 ```
 $ for filename in *.fastq
->do
->    name=$(basename ${filename} .fastq)
->    echo ${name}
->done
+do
+    name=$(basename ${filename} .fastq)
+    echo ${name}
+done
 ```
 
 ### Scripts
