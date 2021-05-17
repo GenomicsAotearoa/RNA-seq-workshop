@@ -23,8 +23,13 @@ This involves generating a collection of RNA fragments that are compatible for s
 
 ### Sequencing
 Parameters for sequencing—such as read length, configuration, and output—depend on the goals of your project and will influence your choice of instrument and sequencing chemistry. The main NGS technologies can be grouped into two categories: short-read (or ‘second generation’) sequencing, and long-read (or ‘third generation’) sequencing. Both have distinct benefits for RNA-Seq.
+- Short-read sequencing is relatively inexpensive on a per-base basis and can generate billions of reads in a massively parallel manner, with single-end read lengths ranging between 50 and 300 bp. The high-throughput nature of this technology is ideal for quantifying the relative abundance of transcripts or identifying rare transcripts. Several platforms available on the market offer flexible outputs using roughly similar chemistry. Each cDNA fragment can be sequenced from only one end, called single-end (SE) sequencing, or both ends, called paired-end (PE) sequencing. The former is generally less expensive and faster than the latter. However, paired-end sequencing helps detect genomic rearrangements and repetitive sequence alignments better than the single- end configuration, since more information is collected from each fragment.
+- Long-read sequencing can resolve inaccessible regions of the genome and read through the entire length of RNA transcripts, allowing precise determination of specific isoforms. Two of the leading long-read sequencing platform providers include Pacific Biosciences (PacBio), and Oxford Nanopore Technologies®.
+
+However, if cost reduction is paramount and/or high data output is required, short-read sequencing is a better choice.
 
 ### Data Analysis
+Evaluating your data quality and extracting biologically relevant information is the final and most rewarding step in an RNA-Seq experiment. It is important to discuss your project with an experienced bioinformatician to find the best analysis pipeline for your data. One pipeline does not fit all approaches.
 <p><br><img src="./RNA_seq_workshopflow.png" alt="drawing" width="900"/></p>
 ---
 
