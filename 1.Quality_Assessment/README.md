@@ -4,6 +4,7 @@
 - Assess the quality of your data
 - Use FastQC package to do quality check
 - Use MultiQC to view our analysis results
+---
 
 Several tools available to do so. For this workshop, we will use fastqc.
 
