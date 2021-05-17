@@ -252,7 +252,7 @@ by Love et al, 2014</a>
 > conds <- c("WT","WT","WT","MT","MT","MT")
 
 # Convert to matrix
-> countdata <- as.matrix(countdata)
+> countdata <- as.matrix(counts)
 > head(countdata)
 ```
 ![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/Matrix.png)<!-- -->
