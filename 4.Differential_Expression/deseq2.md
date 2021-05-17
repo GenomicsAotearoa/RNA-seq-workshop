@@ -291,14 +291,6 @@ final dispersion estimates
 fitting model and testing
 ```
 
-#### Plot dispersions
-```
-> png("qc-dispersions.png", 1000, 1000, pointsize=20)
-> plotDispEsts(dds, main="Dispersion plot")
-> dev.off()
-```
-![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/PNG/dispersion_plot.png)
-
 #### Regularized log transformation for clustering/heatmaps, etc
 ```
 > rld <- rlogTransformation(dds)
@@ -361,13 +353,13 @@ rld_pca <- function (rld, intgroup = "condition", ntop = 500, colors=NULL, legen
   #                                                                                         terldt = list(levels(fac)), rep = FALSE)))
 }
 png("qc-pca.png", 1000, 1000, pointsize=20)
-rld_pca(rld, colors=mycols, intgroup="condition", xlim=c(-75, 35))
+rld_pca(rld, colors=mycols, intgroup="conds", xlim=c(-75, 35))
 dev.off()
 ```
 
 #### Getting differential expression results
 ```
-res <- results(dds)
+> res <- results(dds)
 > table(res$padj<0.05)
 FALSE  TRUE 
  2019  4811 
