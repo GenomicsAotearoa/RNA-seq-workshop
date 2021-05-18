@@ -465,5 +465,12 @@ MA plot to summmarise the DESeq output
 > png("diffexpr-volcanoplot.png", 1200, 1000, pointsize=20)
 > volcanoplot(resdata, lfcthresh=1, sigthresh=0.05, textcx=.8, xlim=c(-2.3, 2))
 > dev.off()
-``
+```
+---  
+  
+#### Saving the toptable for the next section
+```
+> tt = resPadj
+> save(list='tt', file='topTable.RData')
+```
 
