@@ -32,6 +32,11 @@ However, if cost reduction is paramount and/or high data output is required, sho
 Evaluating your data quality and extracting biologically relevant information is the final and most rewarding step in an RNA-Seq experiment. It is important to discuss your project with an experienced bioinformatician to find the best analysis pipeline for your data. One pipeline does not fit all approaches.
 <p><br><img src="./RNA_seq_workshopflow.png" alt="drawing" width="900"/></p>
 
+Exercise
+- Rank genes based on expression?
+- Identify differentially expressed genes after inducing a drug
+- Identify Novel transcripts
+- Identify bacterial and eukaryotic genes in a sample
 ---
 
 # Introduction
