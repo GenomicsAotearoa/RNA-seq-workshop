@@ -120,7 +120,7 @@ load('topTable.RData')
 ```
 
 ``` r
-genes <- ifelse(tt$adj.P.Val < 0.05, 1, 0)
+genes <- ifelse(tt$adj.P.Val < 0.05, 1, 0) # Note: If you use tt from DESeq, replace $adj.P.Val with $padj
 names(genes) <- rownames(tt)
 head(genes)
 ```
