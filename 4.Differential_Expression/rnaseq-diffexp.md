@@ -208,6 +208,7 @@ don’t know).
 Normalisation process (slightly different for each analysis method)
 takes “library size” (number of reads generated for each sample) into
 account.
+A good blog about normalization: <a href="https://www.reneshbedre.com/blog/expression_units.html">Link</a>
 
 ``` r
 colSums(counts)
