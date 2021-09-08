@@ -1,6 +1,7 @@
 RNA-seq data analysis in R
 ================
 Mik Black & Ngoni Faya
+
 8 September 2021
 
 ## RNA-seq: overview
