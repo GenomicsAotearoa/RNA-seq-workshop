@@ -185,3 +185,5 @@ The html report shows the MultiQC summary
 
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC1.png)
 
+- - - 
+[Next Lesson : Trimming and Filtering](../2.Trimming_And_Filtering/README.md)
