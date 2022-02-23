@@ -1,62 +1,68 @@
 RNA-seq data analysis in R
 ================
 Mik Black & Ngoni Faya
-25 June 2020
+
+8 September 2021
 
 ## RNA-seq: overview
 
 ### Recap
 
-  - In the last section we worked through the process of quality
+-   In the last section we worked through the process of quality
     assessment and alignment for RNA-seq data
-  - This typically takes place on the command line, but can also be done
+-   This typically takes place on the command line, but can also be done
     from within R.
-  - The end result was the generation of count data (counts of reads
+-   The end result was the generation of count data (counts of reads
     aligned to each gene, per sample) using the FeatureCounts command
     from Subread/Rsubread.
-  - Now that we’ve got count data in R, we can begin our differental
+-   Now that we’ve got count data in R, we can begin our differential
     expression analysis.
 
 ### Data set reminder
 
-  - Data obtained from yeast RNA-seq experiment,
+-   Data obtained from yeast RNA-seq experiment,
     <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000299">Lee
     et al 2008 </a>
-  - Wild-type versus RNA degradation mutants
-  - Six samples (3 WT / 3 MT)
-  - We are working with data from chromosome 1 to keep the files sizes
-    relatively small.
+-   Wild-type versus RNA degradation mutants
+-   Six samples (3 WT / 3 MT)
+-   NOTE: since we are dealing with an RNA degradation mutant yeast
+    strain, we will see MAJOR transcriptomic differences between the
+    wild-type and mutant groups (usually the differences you observe in
+    a typical RNA-seq study wouldn’t be this extreme).
 
 ## Getting organised
 
 ### Create an RStudio project
 
+**NOTE: skip to the next section (“Count Data”) if you are working
+within Jupyter on NeSI**
+
 One of the first benefits we will take advantage of in RStudio is
 something called an RStudio Project. An RStudio project allows you to
 more easily:
 
-  - Save data, files, variables, packages, etc. related to a specific
+-   Save data, files, variables, packages, etc. related to a specific
     analysis project
-  - Restart work where you left off
-  - Collaborate, especially if you are using version control such as
+-   Restart work where you left off
+-   Collaborate, especially if you are using version control such as
     git.
 
 To create a project:
 
-  - Open RStudio and go to the File menu, and click New Project.
-  - In the window that opens select Existing Project, and browse to the
-    RNA-seq folder we have created on our Desktop.
-  - Finally, click Create Project
+-   Open RStudio and go to the File menu, and click New Project.
+-   In the window that opens select Existing Project, and browse to the
+    RNA\_seq folder.
+-   Finally, click Create Project.
 
-*Save source from untitled to yeast\_data.R and continue saving
-reguralry as we work*
+*Save source from untitled to `yeast_data.R` and continue saving
+regularly as you work.*
 
 ### Count data
 
 Note: I have now aligned the data for ALL CHROMOSOMES and generated
 counts, so we are working with data from all 7127 genes.
 
-*Let’s look at our dataset and perform some basic checks before we do a
+*Let’s look at our data set and perform some basic checks before we do a
 differential expression analysis.*
 
 ``` r
@@ -131,10 +137,8 @@ fcData %>% head()
 
 Extract count data
 
-  - Remove annotation columns
-  - Add row names
-
-<!-- end list -->
+-   Remove annotation columns
+-   Add row names
 
 ``` r
 counts = fcData[, 7:12]
@@ -203,11 +207,18 @@ The boxplots and density plots show clear differences between the sample
 groups - are these biological, or experimental artifacts? (often we
 don’t know).
 
+**Remember: the wild-type and mutant yeast strains are VERY different.
+You wouldn’t normally see this amount of difference in the distributions
+between the groups.**
+
 #### Read counts per sample
 
 Normalisation process (slightly different for each analysis method)
 takes “library size” (number of reads generated for each sample) into
 account.
+
+-   A good blog about normalization:
+    <a href="https://www.reneshbedre.com/blog/expression_units.html">Link</a>
 
 ``` r
 colSums(counts)
@@ -224,8 +235,6 @@ colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Rplot_bar1.png) -->
-
 *Now we are ready for differential expression analysis*
 
 ## Detecting differential expression:
@@ -239,19 +248,17 @@ in expression between the two groups.
 
 **GO BACK TO THE README PAGE, AND OPEN UP THE PDF DOCUMENT**
 
------
+------------------------------------------------------------------------
 
 ### Limma
 
 <!-- NEED TO EXPLAIN "TREND=TRUE" -->
 
-  - Limma can be used for analysis, by transforming the RNA-seq count
+-   Limma can be used for analysis, by transforming the RNA-seq count
     data in an appropriate way (log-scale normality-based assumption
     rather than Negative Binomial for count data)
-  - Use data transformation and log to satisfy normality assumptions
+-   Use data transformation and log to satisfy normality assumptions
     (CPM = Counts per Million).
-
-<!-- end list -->
 
 ``` r
 library(limma)
@@ -272,13 +279,12 @@ head(logCPM, 3)
 
 #### Aside: RPKM
 
-We can use R to generate RPKM values.
+We can use R to generate RPKM values (or FPKM if using paired-end
+reads):
 
-  - Need gene length information to do this
-  - Can get this from`goseq` package (we’ll use this later for our
+-   Need gene length information to do this
+-   Can get this from`goseq` package (we’ll use this later for our
     pathway analysis)
-
-<!-- end list -->
 
 ``` r
 library(goseq)
@@ -350,20 +356,18 @@ beeswarm(logCPM[6,] ~ conds, pch=16, ylab="Expression (logCPM)", xlab="Group",
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
-  - we basically want to do this sort of analysis, for every gene
-  - we’ll use a slightly more sophisicated approach though
+-   we basically want to do this sort of analysis, for every gene
+-   we’ll use a slightly more sophisticated approach though
 
-However, before we get to statistical testing, we first need to do a
-little bit more normalisation.
+However, before we get to statistical testing, we (might) first need to
+do a little bit more normalisation.
 
 ### Limma: voom
 
-  - The “voom” function estimates relationship between the mean and the
+-   The “voom” function estimates relationship between the mean and the
     variance of the logCPM data, normalises the data, and creates
-    “precision weights” for each observation that are incorporated
-    into the limma analysis.
-
-<!-- end list -->
+    “precision weights” for each observation that are incorporated into
+    the limma analysis.
 
 ``` r
 design <- model.matrix(~conds)
@@ -391,7 +395,7 @@ v <- voom(dge, design, plot=TRUE)
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Voom_Mean_Variance.png) -->
 
-#### Zoom: impact on samples
+#### Voom: impact on samples
 
 Mainly affects the low-end (low abundance genes)
 
@@ -405,8 +409,6 @@ for(i in 1:ncol(logCPM)){
 ```
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
-
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/voom_3_samples.png) -->
 
 Hasn’t removed the differences between the groups
 
@@ -444,11 +446,9 @@ q <- voom(dge, design, plot=TRUE, normalize="quantile")
 
 Quantile normalisation forces all of the distributions to be the same.
 
-  - it is a strong assumption, and can have a major impact on the
+-   it is a strong assumption, and can have a major impact on the
     analysis
-  - potentially removing biological differences between groups.
-
-<!-- end list -->
+-   potentially removing biological differences between groups.
 
 ``` r
 par(mfrow=c(2,3))
@@ -594,16 +594,16 @@ save these for later to compare with the other methods.
 limmaPadj <- tt[tt$adj.P.Val <= 0.01, ]
 ```
 
------
+------------------------------------------------------------------------
 
 ### DESeq2
 
-  - The DESeq2 package uses the *Negative Binomial* distribution to
+-   The DESeq2 package uses the *Negative Binomial* distribution to
     model the count data from each sample.
-  - A statistical test based on the Negative Binomial distribution (via
+-   A statistical test based on the Negative Binomial distribution (via
     a generalized linear model, GLM) can be used to assess differential
     expression for each gene.
-  - Use of the Negative Binomial distribution attempts to accurately
+-   Use of the Negative Binomial distribution attempts to accurately
     capture the variation that is observed for count data.
 
 More information about DESeq2:
@@ -647,14 +647,14 @@ res <- DESeq2::results(dds)
 knitr::kable(res[1:6,])
 ```
 
-|           |   baseMean | log2FoldChange |     lfcSE |        stat |    pvalue |      padj |
-| --------- | ---------: | -------------: | --------: | ----------: | --------: | --------: |
-| YDL248W   | 56.2230316 |    \-0.2339470 | 0.2278417 | \-1.0267961 | 0.3045165 | 0.3663639 |
-| YDL247W-A |  0.1397714 |    \-0.5255769 | 4.0804729 | \-0.1288030 | 0.8975136 | 0.9173926 |
-| YDL247W   |  4.2428211 |    \-0.8100552 | 0.8332543 | \-0.9721584 | 0.3309718 | 0.3948536 |
-| YDL246C   |  0.6182409 |    \-1.0326364 | 2.1560899 | \-0.4789394 | 0.6319817 | 0.6915148 |
-| YDL245C   |  2.8486580 |    \-1.9781751 | 1.1758845 | \-1.6822869 | 0.0925132 | 0.1230028 |
-| YDL244W   | 13.0883354 |    \-1.5823354 | 0.5128788 | \-3.0852037 | 0.0020341 | 0.0032860 |
+|           |   baseMean | log2FoldChange |     lfcSE |       stat |    pvalue |      padj |
+|:----------|-----------:|---------------:|----------:|-----------:|----------:|----------:|
+| YDL248W   | 56.2230316 |     -0.2339470 | 0.2278417 | -1.0267961 | 0.3045165 | 0.3663639 |
+| YDL247W-A |  0.1397714 |     -0.5255769 | 4.0804729 | -0.1288030 | 0.8975136 | 0.9173926 |
+| YDL247W   |  4.2428211 |     -0.8100552 | 0.8332543 | -0.9721584 | 0.3309718 | 0.3948536 |
+| YDL246C   |  0.6182409 |     -1.0326364 | 2.1560899 | -0.4789394 | 0.6319817 | 0.6915148 |
+| YDL245C   |  2.8486580 |     -1.9781751 | 1.1758845 | -1.6822869 | 0.0925132 | 0.1230028 |
+| YDL244W   | 13.0883354 |     -1.5823354 | 0.5128788 | -3.0852037 | 0.0020341 | 0.0032860 |
 
 Summary of differential gene expression
 
@@ -675,12 +675,10 @@ summary(res)
 
 Note: p-value adjustment
 
-  - The “padj” column of the DESeq2 results (`res`) contains adjusted
+-   The “padj” column of the DESeq2 results (`res`) contains adjusted
     p-values (FDR).
-  - Can use the `p.adjust` function to manually adjust the DESeq2
+-   Can use the `p.adjust` function to manually adjust the DESeq2
     p-values if needed (e.g., to use Holm correction)
-
-<!-- end list -->
 
 ``` r
 # Remove rows with NAs
@@ -728,15 +726,13 @@ res <- res[order(res$padj),]
 write.csv(as.data.frame(res),file='deseq2.csv')
 ```
 
------
-
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Volcano%20plot.png) -->
+------------------------------------------------------------------------
 
 ### edgeR
 
-  - The edgeR package also uses the negative binomial distribution to
+-   The edgeR package also uses the negative binomial distribution to
     model the RNA-seq count data.
-  - Takes an empirical Bayes approach to the statistical analysis, in a
+-   Takes an empirical Bayes approach to the statistical analysis, in a
     similar way to how the `limma` package handles RNA-seq data.
 
 #### Identify DEGs with edgeR’s “Exact” Method
@@ -781,12 +777,12 @@ et <- exactTest(y)
 knitr::kable(topTags(et, n=4)$table)
 ```
 
-|         |      logFC |    logCPM | PValue | FDR |
-| ------- | ---------: | --------: | -----: | --: |
-| YCR077C |  13.098599 |  6.629306 |      0 |   0 |
-| snR71   | \-9.870811 |  8.294459 |      0 |   0 |
-| snR59   | \-8.752555 | 10.105453 |      0 |   0 |
-| snR53   | \-8.503101 |  7.687908 |      0 |   0 |
+|         |     logFC |    logCPM | PValue | FDR |
+|:--------|----------:|----------:|-------:|----:|
+| YCR077C | 13.098599 |  6.629306 |      0 |   0 |
+| snR71   | -9.870811 |  8.294459 |      0 |   0 |
+| snR59   | -8.752555 | 10.105453 |      0 |   0 |
+| snR53   | -8.503101 |  7.687908 |      0 |   0 |
 
 *Adjusted p-values*
 
@@ -823,9 +819,7 @@ venn(setlist)
 
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-54-1.png)<!-- -->
 
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/DEG_vs_edgeR.png) -->
-
------
+------------------------------------------------------------------------
 
 ### Limma vs edgeR vs DESeq2
 
@@ -842,14 +836,14 @@ venn(setlist)
 
 ### Summary
 
-  - Once we’ve generated count data, there are a number of ways to
+-   Once we’ve generated count data, there are a number of ways to
     perform a differential expression analysis.
-      - DESeq2 and edgeR model the count data, and assume a Negative
+    -   DESeq2 and edgeR model the count data, and assume a Negative
         Binomial distribution
-      - Limma transforms (and logs) the data and assumes normality
-  - Here we’ve seen that these three approaches give quite similar
+    -   Limma transforms (and logs) the data and assumes normality
+-   Here we’ve seen that these three approaches give quite similar
     results.
-  - The next step in a “standard” RNA-seq workflow is to perform
+-   The next step in a “standard” RNA-seq workflow is to perform
     “pathway analysis”.
 
 #### Save limma topTable results for next session…
@@ -857,5 +851,3 @@ venn(setlist)
 ``` r
 save(list='tt', file='topTable.RData')
 ```
-
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/DEG_Comparison.png) -->

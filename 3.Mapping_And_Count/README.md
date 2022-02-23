@@ -99,14 +99,14 @@ let's use a for loop to process our samples:
 
 ```bash
 
-$ cd Raw
+$ cd Trimmed
 
 $ ls
 SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
 
 $ for filename in *
 > do
-> base=$(basename ${filename} .fastq)
+> base=$(basename ${filename} .trimmed.fastq)
 > hisat2 -p 4 -x ../Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U $filename -S ../Mapping/${base}.sam --summary-file ../Mapping/${base}_summary.txt
 > done
 
@@ -242,13 +242,9 @@ $ pwd
 
 $ mkdir Counts
 
-$ cd Mapping
+$ cd Counts
 
-$ for filename in *_sorted.bam
-> do
-> base=$(basename ${filename} _sorted.bam)
-> featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ../Counts/${base}_counts.txt ${filename}
-> done
+$ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
 
 ```
 
@@ -271,19 +267,6 @@ $ multiqc .
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC4.png)
 
 ---
-
-The last thing on count data is to concatenate all the count data into one file.
-
-```bash
-
-$ cd ../Counts
-
-$ pwd
-/home/Your_Username/RNA_seq/Counts
-
-$ cat *_counts.txt > yeast_counts_all_chr.txt 
-
-```
 
 Since we now have all the count data in one file, we need to transfer it to our local computers so we could start working on RStudio to get differentially expressed genes.
 

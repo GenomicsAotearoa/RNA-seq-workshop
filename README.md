@@ -7,7 +7,7 @@ We will be using NeSI HPC for some of the analysis so make sure you have a NeSI 
 Go through the workshop prep files to ensure you are set to go: <a href="https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/README.md">Prep_Files</a>
 
 
-## Workshop outline (9am - 4pm)
+## Workshop outline (9:00am - 4:30pm)
 
   * Overview of RNA-seq
   * <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/tree/master/1.Quality_Assessment">How to QC a fastq?</a>
@@ -33,7 +33,7 @@ Go through the workshop prep files to ensure you are set to go: <a href="https:/
 <a href="https://pad.riseup.net/p/UOO-RNA-seq_30072020">Link</a>
 
 ## Post-Event Survey
-Please take the <a href="https://www.surveymonkey.com/r/55FDWHB">survey</a> to help us improve.
+Please take the <a href="https://otago.au1.qualtrics.com/jfe/form/SV_6A3iTbRwsoImnQ2">survey</a> to help us improve.
 
 ---
 

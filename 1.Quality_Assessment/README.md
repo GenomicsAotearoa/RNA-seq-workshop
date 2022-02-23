@@ -1,6 +1,12 @@
 # Quality control of the sequencing data.
 
-Several tools available to do so. For this workshop, we will use fastqc.
+## Objectives
+- Assess the quality of your data
+- Use FastQC package to do quality check
+- Use MultiQC to view our analysis results
+---
+
+Several tools available to do quality assessemnt. For this workshop, we will use `fastqc`.
 
 First, it is always good to verify where we are:
 
@@ -106,7 +112,7 @@ $ scp -r [Your_UserName]p@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fast
 
 ```
 
-![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/fqc1_2.png)
+![](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/fqc1_2.png)
 
 ## Working with the FastQC text output
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
