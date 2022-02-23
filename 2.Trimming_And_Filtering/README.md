@@ -34,7 +34,7 @@ $ cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014
 
 ```
 >**Arguments :**
->* `-q` (`--quality-cutoff`)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.
+>* **-q** (`--quality-cutoff`)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.
 
 ```bash
 
