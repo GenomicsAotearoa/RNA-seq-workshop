@@ -142,7 +142,7 @@ The file begins with a header, which is optional. The header is used to describe
 ```
 
 
-We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (-S) and to output BAM format (-b):
+We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (`-S`) and to output BAM format (`-b`):
 
 ```bash
 
@@ -160,7 +160,9 @@ SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  
 
 ```
 
-Next we sort the BAM file using the sort command from samtools. -o tells the command where to write the output.
+Next we sort the BAM file using the sort command from samtools. `-o` tells the command where to write the output.
+
+>SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. Default `sort` is coordinates. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input. 
 
 ```bash
 
