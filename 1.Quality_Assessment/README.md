@@ -12,6 +12,8 @@ First, it is always good to verify where we are:
 
 ```bash
 
+$ cd ~
+
 $ pwd
 /home/[your_username]
 # good I am ready to work

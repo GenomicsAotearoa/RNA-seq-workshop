@@ -9,7 +9,7 @@ For RNA-seq, we need to align or map each read back to the genome, to see which 
 ## Preparation of the genome
 
 To be able to map (align) sequencing reads on the genome, the genome needs to be indexed first. In this workshop we will use [HISAT2](https://www.nature.com/articles/nmeth.3317).
-Note for speed reason, the reads will be aligned on the chr5 of the mouse genome.
+Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome.
 
 ```bash
 $ cd /home/[Your_Username]/RNA_seq/Genome
@@ -32,9 +32,9 @@ Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.3.ht2  Saccharomyces_cerevisiae.R6
 
 ```
 
-Option info:
-  * -p number of threads
-  * -f fasta file
+>**Arguments:**
+>  * **-p** number of threads
+>  * **-f** fasta file
 
 How many files were created during the indexing process?
 
@@ -74,6 +74,11 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
 83.58% overall alignment rate
 
 ```
+>**Arguments:**
+>  * **-x** The basename of the index for the reference genome. 
+>  * **-U** Comma-separated list of files containing unpaired reads to be aligned
+>  * **-S** File to write SAM alignments to. By default, alignments are written to the “standard out” or “stdout” filehandle  
+
 
 Now we need to align all the rest of the samples.
 
@@ -137,7 +142,7 @@ The file begins with a header, which is optional. The header is used to describe
 ```
 
 
-We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (-S) and to output BAM format (-b):
+We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (`-S`) and to output BAM format (`-b`):
 
 ```bash
 
@@ -155,7 +160,9 @@ SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  
 
 ```
 
-Next we sort the BAM file using the sort command from samtools. -o tells the command where to write the output.
+Next we sort the BAM file using the sort command from samtools. `-o` tells the command where to write the output.
+
+>SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. Default `sort` is coordinates. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input. 
 
 ```bash
 
@@ -242,6 +249,11 @@ $ cd Counts
 $ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
 
 ```
+>**Arguments:**
+>  * **-a** Name of an annotation file. GTF/GFF format by default
+>  * **-o** Name of output file including read counts
+>  * **-T** Specify the number of threads/CPUs used for mapping. 1 by default
+>  * **-t** Specify feature type in GTF annotation. 'exon' by default. Features used for read counting will be extracted from annotation using the provided value.
 
 ---
 
