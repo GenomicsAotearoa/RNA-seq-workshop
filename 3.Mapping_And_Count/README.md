@@ -9,7 +9,7 @@ For RNA-seq, we need to align or map each read back to the genome, to see which 
 ## Preparation of the genome
 
 To be able to map (align) sequencing reads on the genome, the genome needs to be indexed first. In this workshop we will use [HISAT2](https://www.nature.com/articles/nmeth.3317).
-Note for speed reason, the reads will be aligned on the chr5 of the mouse genome.
+Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome.
 
 ```bash
 $ cd /home/[Your_Username]/RNA_seq/Genome
