@@ -32,9 +32,9 @@ Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.3.ht2  Saccharomyces_cerevisiae.R6
 
 ```
 
-Option info:
-  * -p number of threads
-  * -f fasta file
+>**Arguments:**
+>  * **-p** number of threads
+>  * **-f** fasta file
 
 How many files were created during the indexing process?
 
@@ -74,6 +74,11 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
 83.58% overall alignment rate
 
 ```
+>**Arguments:**
+>  * **-x** The basename of the index for the reference genome. 
+>  * **-U** Comma-separated list of files containing unpaired reads to be aligned
+>  * **-S** File to write SAM alignments to. By default, alignments are written to the “standard out” or “stdout” filehandle  
+
 
 Now we need to align all the rest of the samples.
 
