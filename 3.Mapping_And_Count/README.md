@@ -254,6 +254,7 @@ $ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_
 >  * **-o** Name of output file including read counts
 >  * **-T** Specify the number of threads/CPUs used for mapping. 1 by default
 >  * **-t** Specify feature type in GTF annotation. 'exon' by default. Features used for read counting will be extracted from annotation using the provided value.
+> *  **-g** Specify attribute type in GTF annotation. 'gene_id' by default. Meta-features used for read counting will be extracted from annotation using the provided value.
 
 ---
 
