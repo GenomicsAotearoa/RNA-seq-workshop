@@ -51,7 +51,8 @@ $ ls
 SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
 
 $ for filename in *.fastq
-> do base=$(basename ${filename} .fastq)
+> do 
+> base=$(basename ${filename} .fastq)
 > cutadapt -q 20 -a AACCGGTT -o ../Trimmed/${base}.trimmed.fastq ${filename} > ../Trimmed/${base}.log
 > done
 
