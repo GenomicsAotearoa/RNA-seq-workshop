@@ -189,14 +189,11 @@ Basic statistics shown by `flagstat` will be slightly different from those in th
  - The HISAT2 output data can also be incorporated into the MultiQC report the next time it is run.
  
  ```bash
- 
  $ cd ~/RNA_seq/MultiQC
  
  $ cp ../Mapping/*summary* ./
  
  $ multiqc .
- 
-
 ```
 
 ![Alt text](../Prep_Files/Images/MQC3.png)
