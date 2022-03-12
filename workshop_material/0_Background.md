@@ -3,7 +3,7 @@
 ## RNA-seq Workflow
 Before beginning an RNA-Seq experiment, you should understand and carefully consider each step of the RNA-Seq workflow: Experimental design, Extraction, Library preparation, Sequencing, and Data analysis.
 
-![](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/Prep_Files/Images/RNA-seq_workflow.png)
+![](../Prep_Files/Images/RNA-seq_workflow.png)
 
 ### Experimental design
 The design stage of your experiment is arguably the most critical step in ensuring the success of an RNA-Seq experiment. Researchers must make key decisions at the start of any NGS project, including the type of assay and the number of samples to analyze. The optimal approach will depend largely on the objectives of the experiment, hypotheses to be tested, and expected information to be gathered.
