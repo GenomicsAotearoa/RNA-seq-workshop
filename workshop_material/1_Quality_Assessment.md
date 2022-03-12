@@ -69,7 +69,6 @@ Now we can start the quality control:
 
 ```bash
 $ fastqc -o QC/ Raw/*
-
 ```
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
 
@@ -82,7 +81,6 @@ Approx 20% complete for SRR014335-chr1.fastq
 Approx 25% complete for SRR014335-chr1.fastq
 Approx 30% complete for SRR014335-chr1.fastq
 Approx 35% complete for SRR014335-chr1.fastq
-
 ```
 
 The FastQC program has created several new files within our RNA_seq/QC/ directory.
@@ -92,7 +90,6 @@ $ ls QC
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
 SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
 SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
-
 ```
 
 ## Viewing the FastQC results
