@@ -153,15 +153,13 @@ fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
 
 Use less to preview the summary.txt file
 
-```
-
+```bash
 $ less SRR014335-chr1_fastqc/summary.txt
-
 ```
 
 We can make a record of the results we obtained for all our samples by concatenating all of our summary.txt files into a single file using the cat command. We’ll call this fastqc_summaries.txt.
 
-```
+```bash
 $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt 
 ```
 
