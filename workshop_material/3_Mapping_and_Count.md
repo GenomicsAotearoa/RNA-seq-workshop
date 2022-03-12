@@ -128,14 +128,12 @@ The compressed binary version of SAM is called a BAM file. We use this version t
 $ less SRR014335-chr1.sam 
 
 The file begins with a header, which is optional. The header is used to describe the source of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information for a single read. Each alignment line has 11 mandatory fields for essential mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
-
 ```
 
 
 We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (`-S`) and to output BAM format (`-b`):
 
 ```bash
-
 $ module load SAMtools/1.10-GCC-9.2.0
 
 $ for filename in *.sam
@@ -147,7 +145,6 @@ $ for filename in *.sam
 $ ls
 SRR014335-chr1.bam  SRR014336-chr1.bam  SRR014337-chr1.bam  SRR014339-chr1.bam  SRR014340-chr1.bam  SRR014341-chr1.bam
 SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  SRR014340-chr1.sam  SRR014341-chr1.sam
-
 ```
 
 Next we sort the BAM file using the sort command from samtools. `-o` tells the command where to write the output.
@@ -155,7 +152,6 @@ Next we sort the BAM file using the sort command from samtools. `-o` tells the c
 >SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. Default `sort` is coordinates. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input. 
 
 ```bash
-
 $ for filename in *.bam
 > do
 > base=$(basename ${filename} .bam)
