@@ -64,13 +64,11 @@ $ for filename in *.fastq
  - If the log files from `cutadapt` are added to the directory containing the FastQC output, this information will also be incorporated into the MultiQC report the next time it is run.
  
 ```bash
-
 $ cd ../MultiQC
  
 $ cp ../Trimmed/*log .
 
 $ multiqc .
-
 ```
 ![Alt text](../Prep_Files/Images/MQC2.png)
 
