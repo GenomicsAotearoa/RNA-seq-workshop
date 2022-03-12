@@ -130,25 +130,21 @@ $ ls
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
 SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
 SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
-
 ```
 Let's unzip the files to look at the FastQC text file outputs.
 
-```
-
+```bash
 $ for filename in *.zip
 > do
 > unzip $filename
 > done
-
 ```
 
 Inside each unzipped folder, there is a summary text which shows results of the statistical tests done by FastQC
 
-```
+```bash
 $ ls SRR014335-chr1_fastqc
 fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
-
 ```
 
 Use less to preview the summary.txt file
