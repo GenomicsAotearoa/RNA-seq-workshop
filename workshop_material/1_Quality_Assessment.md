@@ -162,9 +162,7 @@ $ less SRR014335-chr1_fastqc/summary.txt
 We can make a record of the results we obtained for all our samples by concatenating all of our summary.txt files into a single file using the cat command. We’ll call this fastqc_summaries.txt.
 
 ```
-
 $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt 
-
 ```
 
 * Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
@@ -178,8 +176,7 @@ $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
  different software packages) across multipel samples.
  - To generate `multqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
  
-```{bash, eval=FALSE}
-
+```bash
 $ module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
 
 $ cd ~/RNA_seq/
@@ -194,7 +191,6 @@ $ multiqc .
 
 $ ls -F
 multiqc_data/  multiqc_report.html
-
 ```
 The html report shows the MultiQC summary
 
