@@ -221,7 +221,7 @@ Basic statistics shown by `flagstat` will be slightly different from those in th
 
 ```
 
-![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC3.png)
+![Alt text](../Prep_Files/Images/MQC3.png)
 
 Please note: running HISAT2 with either option `--summary-file` or older versions (< v2.1.0) gives log output identical to Bowtie2. These logs are indistinguishable and summary statistics will appear in MultiQC reports labelled as Bowtie2.
 
@@ -278,7 +278,7 @@ $ multiqc .
 
 ```
 
-![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC4.png)
+![Alt text](../Prep_Files/Images/MQC4.png)
 
 ---
 
