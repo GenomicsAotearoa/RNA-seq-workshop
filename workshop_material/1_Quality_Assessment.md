@@ -120,6 +120,7 @@ $ scp -r [Your_UserName]p@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fast
 ![](../Prep_Files/Images/fqc1_2.png)
 
 ## Working with the FastQC text output
+
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
 
 ```bash
@@ -169,6 +170,7 @@ $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
 * Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
 
 ---
+
 ## MultiQC -  multi-sample analysis
 
  - The FastQC analysis is applied to each sample separately, and produces a report for each.
@@ -196,7 +198,7 @@ multiqc_data/  multiqc_report.html
 ```
 The html report shows the MultiQC summary
 
-![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC1.png)
+![Alt text](../Prep_Files/Images/MQC1.png)
 
 - - - 
 [Next Lesson : Trimming and Filtering](../2.Trimming_And_Filtering/README.md)
