@@ -1,6 +1,4 @@
 # Quality control of the sequencing data.
-
-## Outline
 * Do not remove this line (it will not be displayed)
 {:toc}
 
