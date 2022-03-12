@@ -16,13 +16,11 @@ Several tools available to do quality assessment. For this workshop, we will use
 First, it is always good to verify where we are:
 
 ```bash
-
 $ cd ~
 
 $ pwd
 /home/[your_username]
 # good I am ready to work
-
 ```
 
 Checking to make sure we have the Raw files for the workshop.
@@ -107,9 +105,7 @@ $ mkdir -p ~/Desktop/fastqc_html
 ```
 
 ```bash
-
 $ scp -r [Your_UserName]p@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fastqc_html
-
 ```
 
 ![](../Prep_Files/Images/fqc1_2.png)
