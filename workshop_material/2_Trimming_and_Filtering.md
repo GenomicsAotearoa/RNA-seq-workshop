@@ -27,7 +27,7 @@ from FASTQ files.
 
 ```bash
 $ pwd
-/home/[Your_Username]/RNA_seq
+/home/$USER/RNA_seq
 
 $ mkdir Trimmed
 
