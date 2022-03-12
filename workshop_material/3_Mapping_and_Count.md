@@ -1,6 +1,4 @@
 # Alignment to a reference genome
-
-## Outline
 * Do not remove this line (it will not be displayed)
 {:toc}
 
