@@ -17,7 +17,7 @@ First, it is always good to verify where we are:
 $ cd ~
 
 $ pwd
-/home/[your_username]
+/home/$USER
 # good I am ready to work
 ```
 
