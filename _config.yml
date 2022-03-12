@@ -1,0 +1,8 @@
+theme: jekyll-theme-cayman
+
+title: "RNA-seq-workshop "
+description: "RNA-seq-workshop"
+
+markdown: kramdown
+kramdown:
+  parse_block_html: true
