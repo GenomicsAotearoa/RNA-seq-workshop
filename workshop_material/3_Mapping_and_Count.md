@@ -15,10 +15,10 @@ To be able to map (align) sequencing reads on the genome, the genome needs to be
 Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome.
 
 ```bash
-$ cd /home/[Your_Username]/RNA_seq/Genome
+$ cd /home/$USER/RNA_seq/Genome
 
 #to list what is in your directory:
-$ ls /home/[Your_Username]/RNA_seq/Genome
+$ ls /home/$USER/RNA_seq/Genome
 Saccharomyces_cerevisiae.R64-1-1.99.gtf  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
 
 $ module load HISAT2/2.2.0-gimkl-2020a
@@ -27,7 +27,7 @@ $ module load HISAT2/2.2.0-gimkl-2020a
 $ hisat2-build -p 4 -f Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna.toplevel
 
 #list what is in the directory:
-$ ls /home/[Your_Username]/RNA_seq/Genome
+$ ls /home/$USER/RNA_seq/Genome
 Saccharomyces_cerevisiae.R64-1-1.99.gtf              Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.4.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.8.ht2
 Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.1.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.5.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
 Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.2.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.6.ht2
@@ -82,7 +82,7 @@ Now we need to align all the rest of the samples.
 
 ```bash
 $ pwd
-/home/[Your_Username]/RNA_seq/
+/home/$USER/RNA_seq/
 
 $ mkdir Mapping
 
@@ -221,7 +221,7 @@ You can process all the samples at once:
 $ module load Subread
 
 $ pwd
-/home/[Your_Username]/RNA_seq
+/home/$USER/RNA_seq
 
 $ mkdir Counts
 
