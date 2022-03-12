@@ -11,3 +11,4 @@ This RNA-seq workshop aims to get you started with your own RNA-seq analysis and
 3. [Trimming and Filtering](./workshop_material/2_Trimming_and_Filtering.md)
 4. [Mapping and Count](./workshop_material/3_Mapping_and_Count.md)
 5. [Differential Expression Analysis](./workshop_material/4_rnaseq-diffexp.md)
+6. [Differential Expression Analysis cont.-  DESeq2](./workshop_material/5_deseq2.md)
