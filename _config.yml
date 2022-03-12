@@ -1,7 +1,7 @@
 theme: jekyll-theme-cayman
 
-title: "RNA-seq-workshop "
-description: "RNA-seq-workshop"
+title: "RNA-seq Workshop "
+description: "RNA-seq Workshop"
 
 markdown: kramdown
 kramdown:
