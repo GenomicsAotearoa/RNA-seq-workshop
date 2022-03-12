@@ -28,10 +28,8 @@ $ pwd
 Checking to make sure we have the Raw files for the workshop.
 
 ```bash
-
 $ ls
 RNA_seq ...
-
 ```
 
 Creating a directory where to store the QC data:
