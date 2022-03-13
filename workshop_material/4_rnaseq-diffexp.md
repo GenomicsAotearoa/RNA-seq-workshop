@@ -408,7 +408,7 @@ for(i in 1:ncol(logCPM)){
 }
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 Hasn’t removed the differences between the groups
 
