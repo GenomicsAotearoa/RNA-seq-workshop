@@ -442,7 +442,7 @@ in the `voom` function.
 q <- voom(dge, design, plot=TRUE, normalize="quantile")
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 Quantile normalisation forces all of the distributions to be the same.
 
