@@ -459,7 +459,7 @@ for(i in 1:ncol(logCPM)){
 }
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
 ``` r
 boxplot(q$E ~ col(q$E))
@@ -817,7 +817,7 @@ setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj))
 venn(setlist)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-54-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-54-1.png)<!-- -->
 
 ------------------------------------------------------------------------
 
@@ -832,7 +832,7 @@ setlist <- list(edgeRexact=rownames(edgePadj),
 venn(setlist)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-56-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-56-1.png)<!-- -->
 
 ### Summary
 
