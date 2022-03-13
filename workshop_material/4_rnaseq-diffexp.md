@@ -416,7 +416,7 @@ Hasn’t removed the differences between the groups
 boxplot(v$E ~ col(v$E))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 lineColour <- ifelse(conds=="MT", "red", "blue")
