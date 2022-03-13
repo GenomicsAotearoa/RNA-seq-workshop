@@ -233,7 +233,7 @@ Visualise via bar plot
 colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 *Now we are ready for differential expression analysis*
 
@@ -317,7 +317,7 @@ for(i in 1:ncol(rpkmData)){
 }
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 **We’re NOT going to use RPKM data here. I just wanted to show you how
 to calculate it, and how it relates to the logCPM data**
