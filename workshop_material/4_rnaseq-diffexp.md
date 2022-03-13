@@ -354,7 +354,7 @@ beeswarm(logCPM[6,] ~ conds, pch=16, ylab="Expression (logCPM)", xlab="Group",
          main=paste0(rownames(logCPM)[6], ": MT vs WT"))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 -   we basically want to do this sort of analysis, for every gene
 -   we’ll use a slightly more sophisticated approach though
