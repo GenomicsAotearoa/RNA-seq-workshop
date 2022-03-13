@@ -162,7 +162,7 @@ Data are highly skewed (suggests that logging might be useful):
 boxplot(as.matrix(counts) ~ col(counts))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Some genes have zero counts:
 
