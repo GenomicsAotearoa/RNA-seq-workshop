@@ -391,7 +391,7 @@ design
 v <- voom(dge, design, plot=TRUE)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Voom_Mean_Variance.png) -->
 
