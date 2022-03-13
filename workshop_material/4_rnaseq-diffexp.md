@@ -465,7 +465,7 @@ for(i in 1:ncol(logCPM)){
 boxplot(q$E ~ col(q$E))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
 lineColour <- ifelse(conds=="MT", "red", "blue")
@@ -479,7 +479,7 @@ plot(density(q$E[,1]), ylim=c(0,0.3), col=lineColour[1])
 for(i in 2:ncol(logCPM)) lines(density(q$E[,i]), col=lineColour[i])
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
 **Note: we’re NOT going to use the quantile normalised data here, but I
 wanted to show you how that method works.**
