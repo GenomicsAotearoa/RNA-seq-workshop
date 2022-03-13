@@ -553,7 +553,7 @@ volcanoplot(fit, coef=2)
 abline(h=-log10(0.05))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
 Significantly DE genes:
 
@@ -569,7 +569,7 @@ volcanoplot(fit, coef=2)
 points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-33-1.png)<!-- -->
 
 Significantly DE genes above fold-change threshold:
 
@@ -585,7 +585,7 @@ volcanoplot(fit, coef=2)
 points(tt$logFC[sigGenes], -log10(tt$P.Value[sigGenes]), col='red', pch=16, cex=0.5)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-34-1.png)<!-- -->
 
 Get the rows of top table with significant adjusted p-values - we’ll
 save these for later to compare with the other methods.
