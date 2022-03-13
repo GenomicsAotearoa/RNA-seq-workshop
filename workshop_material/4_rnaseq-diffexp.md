@@ -430,7 +430,7 @@ plot(density(v$E[,1]), ylim=c(0,0.3), col=lineColour[1])
 for(i in 2:ncol(logCPM)) lines(density(v$E[,i]), col=lineColour[i])
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 We can deal with this via “quantile normalisation”. Specify
 
