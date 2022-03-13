@@ -185,7 +185,7 @@ Now we can see the per-sample distributions more clearly:
 boxplot(as.matrix(logCounts) ~ col(logCounts))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 Density plots are also a good way to visualise the data:
 
@@ -201,7 +201,7 @@ plot(density(logCounts[,1]), ylim=c(0,0.3), col=lineColour[1])
 for(i in 2:ncol(logCounts)) lines(density(logCounts[,i]), col=lineColour[i])
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](diffexp_figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 The boxplots and density plots show clear differences between the sample
 groups - are these biological, or experimental artifacts? (often we
