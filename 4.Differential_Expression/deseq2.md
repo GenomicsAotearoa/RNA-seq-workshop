@@ -165,7 +165,7 @@ Data are highly skewed (suggests that logging might be useful):
 
 Some genes have zero counts:
 
-``` r
+```R
 > colSums(counts==0)
 ```
 
@@ -174,7 +174,7 @@ Some genes have zero counts:
 
 Log transformation (add 0.5 to avoid log(0) issues):
 
-``` r
+```R
 > logCounts = log2(as.matrix(counts)+ 0.5)
 ```
 
