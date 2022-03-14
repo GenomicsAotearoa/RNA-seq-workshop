@@ -13,4 +13,4 @@ This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and
 5. [Differential Expression Analysis](./4.Differential_Expression/rnaseq-diffexp.md)
 6. [Differential Expression Analysis cont.- DESeq2](./4.Differential_Expression/deseq2.md)
 7. [Over-representation Analysis](./5.Overrepresentation_Analysis/rnaseq-pathway.md)
-8. [Supplementary 1](./6.Supplementary/supp_1.md)
+8. [Supplementary 1 - A Guide to RNA-Seq](./6.Supplementary/supp_1.md)
