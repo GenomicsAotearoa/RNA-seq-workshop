@@ -3,6 +3,7 @@
 {:toc}
 
 ## Objectives
+
 - Assess the quality of your data
 - Use FastQC package to do quality check
 - Use MultiQC to view our analysis results
@@ -64,7 +65,6 @@ Now we can start the quality control:
 
 ```bash
 $ fastqc -o QC/ Raw/*
-
 ```
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
 
@@ -77,7 +77,6 @@ Approx 20% complete for SRR014335-chr1.fastq
 Approx 25% complete for SRR014335-chr1.fastq
 Approx 30% complete for SRR014335-chr1.fastq
 Approx 35% complete for SRR014335-chr1.fastq
-
 ```
 
 The FastQC program has created several new files within our RNA_seq/QC/ directory.
@@ -87,7 +86,6 @@ $ ls QC
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
 SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
 SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
-
 ```
 
 ## Viewing the FastQC results
@@ -109,10 +107,9 @@ $ mkdir -p ~/Desktop/fastqc_html
 ```bash
 
 $ scp -r $USERp@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fastqc_html
-
 ```
 
-![](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/fqc1_2.png)
+![](../Prep_Files/Images/fqc1_2.png)
 
 ## Working with the FastQC text output
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
@@ -124,17 +121,14 @@ $ ls
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
 SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
 SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
-
 ```
 Let's unzip the files to look at the FastQC text file outputs.
 
-```
-
+```bash
 $ for filename in *.zip
 > do
 > unzip $filename
 > done
-
 ```
 
 Inside each unzipped folder, there is a summary text which shows results of the statistical tests done by FastQC
@@ -142,23 +136,18 @@ Inside each unzipped folder, there is a summary text which shows results of the 
 ```
 $ ls SRR014335-chr1_fastqc
 fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
-
 ```
 
 Use less to preview the summary.txt file
 
 ```
-
 $ less SRR014335-chr1_fastqc/summary.txt
-
 ```
 
 We can make a record of the results we obtained for all our samples by concatenating all of our summary.txt files into a single file using the cat command. We’ll call this fastqc_summaries.txt.
 
 ```
-
 $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt 
-
 ```
 
 * Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
