@@ -62,7 +62,6 @@ Genome  QC  Raw  Trimmed
 Let's map one of our sample to the genome
 
 ```bash
-
 $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR014335-chr1.fastq -S SRR014335.sam
 125090 reads; of these:
   125090 (100.00%) were unpaired; of these:
@@ -70,7 +69,6 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
     85066 (68.00%) aligned exactly 1 time
     19487 (15.58%) aligned >1 times
 83.58% overall alignment rate
-
 ```
 >**Arguments:**
 >  * **-x** The basename of the index for the reference genome. 
@@ -83,7 +81,6 @@ Now we need to align all the rest of the samples.
 ```bash
 $ pwd
 /home/$USER/RNA_seq/
-
 
 $ mkdir Mapping
 
