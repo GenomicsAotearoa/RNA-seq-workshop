@@ -152,13 +152,11 @@ Next we sort the BAM file using the sort command from samtools. `-o` tells the c
 >SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. Default `sort` is coordinates. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input. 
 
 ```bash
-
 $ for filename in *.bam
 > do
 > base=$(basename ${filename} .bam)
 > samtools sort -o ${base}_sorted.bam ${filename}
 > done
-
 ```
 
 >**SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.**
