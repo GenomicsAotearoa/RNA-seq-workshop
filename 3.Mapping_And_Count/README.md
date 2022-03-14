@@ -273,6 +273,9 @@ $ scp fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/Counts/yeast_cou
 
 ```
 
+- - - 
+[Next Lesson : Differential Expression Analysis](../4.Differential_Expression/rnaseq-diffexp.md)
+
 
  
 
