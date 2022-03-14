@@ -119,7 +119,7 @@ Check dimensions:
 
 Rename data columns to reflect group membership
 
-``` r
+```R
 > names(fcData)[7:12] = c("WT1", "WT2", "WT3", "MT1", "MT2", "MT3")
  
 > fcData %>% head()
