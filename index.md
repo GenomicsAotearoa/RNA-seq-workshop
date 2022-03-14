@@ -6,7 +6,7 @@ This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and
 
 ## Content
 
-1. [Background](./workshop_material/0_Background.md)
+1. [Background](0.Background/README.md)
 2. [Quality Assessment](./1.Quality_Assessment/README.md)
 3. [Trimming and Filtering](./2.Trimming_And_Filtering/README.md)
 4. [Mapping and Count](./3.Mapping_And_Count/README.md)
