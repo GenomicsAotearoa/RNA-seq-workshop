@@ -106,14 +106,12 @@ $ for filename in *
 Now we can explore our SAM files.
 
 ```bash
-
 $ cd ../Mapping
 
 $ ls
 SRR014335-chr1.sam          SRR014336-chr1_summary.txt  SRR014339-chr1.sam          SRR014340-chr1_summary.txt
 SRR014335-chr1_summary.txt  SRR014337-chr1.sam          SRR014339-chr1_summary.txt  SRR014341-chr1.sam
 SRR014336-chr1.sam          SRR014337-chr1_summary.txt  SRR014340-chr1.sam          SRR014341-chr1_summary.txt
-
 ```
 
 ## Converting SAM files to BAM files
