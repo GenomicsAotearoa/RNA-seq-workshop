@@ -91,7 +91,6 @@ Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
 let's use a for loop to process our samples:
 
 ```bash
-
 $ cd Trimmed
 
 $ ls
@@ -102,7 +101,6 @@ $ for filename in *
 > base=$(basename ${filename} .trimmed.fastq)
 > hisat2 -p 4 -x ../Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U $filename -S ../Mapping/${base}.sam --summary-file ../Mapping/${base}_summary.txt
 > done
-
 ```
 
 Now we can explore our SAM files.
