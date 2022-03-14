@@ -140,7 +140,7 @@ Extract count data
 
 <!-- end list -->
 
-``` r
+```R
 > counts = fcData[, 7:12]
 > rownames(counts) = fcData$Geneid
 > counts %>% head()
@@ -158,7 +158,7 @@ Extract count data
 
 Data are highly skewed (suggests that logging might be useful):
 
-``` r
+```R
 > boxplot(as.matrix(counts) ~ col(counts))
 ```
 ![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
