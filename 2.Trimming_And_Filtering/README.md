@@ -60,7 +60,6 @@ $ for filename in *.fastq
 > base=$(basename ${filename} .fastq)
 > cutadapt -q 20 -a AACCGGTT -o ../Trimmed/${base}.trimmed.fastq ${filename} > ../Trimmed/${base}.log
 > done
-
 ```
 
 ---
@@ -70,13 +69,11 @@ $ for filename in *.fastq
  - If the log files from `cutadapt` are added to the directory containing the FastQC output, this information will also be incorporated into the MultiQC report the next time it is run.
  
 ```bash
-
 $ cd ../MultiQC
  
 $ cp ../Trimmed/*log .
 
 $ multiqc .
-
 ```
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC2.png)
 
