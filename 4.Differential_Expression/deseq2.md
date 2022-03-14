@@ -476,5 +476,5 @@ MA plot to summmarise the DESeq output
 
 - - - 
 
-[Next Lesson : Differential Expression Analysis cont : DESeq2](../5.Overrepresentation_Analysis/rnaseq-pathway.md)
+[Next Lesson : Over-representation Analysis](../5.Overrepresentation_Analysis/rnaseq-pathway.md)
 
