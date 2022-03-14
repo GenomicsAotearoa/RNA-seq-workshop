@@ -160,8 +160,7 @@ $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
  different software packages) across multipel samples.
  - To generate `multqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
  
-```{bash, eval=FALSE}
-
+```bash
 $ module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
 
 $ cd ~/RNA_seq/
@@ -176,11 +175,10 @@ $ multiqc .
 
 $ ls -F
 multiqc_data/  multiqc_report.html
-
 ```
 The html report shows the MultiQC summary
 
-![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC1.png)
+![Alt text](../Prep_Files/Images/MQC1.png)
 
 - - - 
 [Next Lesson : Trimming and Filtering](../2.Trimming_And_Filtering/README.md)
