@@ -15,4 +15,4 @@ This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and
 7. [Over-representation Analysis](./5.Overrepresentation_Analysis/rnaseq-pathway.md)
 8. [Supplementary 1 - A Guide to RNA-Seq](./6.Supplementary/supp_1.md)
 9. [Supplementary 2 - Lecture notes : DE analysis](./6.Supplementary/supp_2.md)
-10. [Supplementary 3 - Lecture notes : Annotation Data & Gene Set Analysys](./6.Supplementary/supp_3.md)
+10. [Supplementary 3 - Lecture notes : Annotation Data & Gene Set Analysis](./6.Supplementary/supp_3.md)
