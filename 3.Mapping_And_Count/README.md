@@ -231,7 +231,6 @@ $ mkdir Counts
 $ cd Counts
 
 $ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
-
 ```
 >**Arguments:**
 >  * **-a** Name of an annotation file. GTF/GFF format by default
