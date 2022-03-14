@@ -6,6 +6,7 @@
 In the previous section, we took a high-level look at the quality of each of our samples using FastQC. We visualized per-base quality graphs showing the distribution of read quality at each base across all reads in a sample and extracted information about which samples fail which quality checks. Some of our samples failed quite a few quality metrics used by FastQC. This doesn’t mean, though, that our samples should be thrown out! It’s very common to have some quality metrics fail, and this may or may not be a problem for your downstream application. 
 
 ## Adapter removal
+
 - "Adapters" are short DNA sequences that are added to each read as part of the sequencing process (we won't get into "why" here).
 - These are removed as part of the data generation steps that occur during the sequencing run, but sometimes there is still a non-trivial amount of adapter sequence present in the FASTQ files.
 - Since the sequence is not part of the target genome (i.e., the genome if the species from which teh samples were derived) then we need to remove it to prevent it affecting the downstream analysis.
