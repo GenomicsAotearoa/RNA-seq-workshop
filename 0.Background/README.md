@@ -40,6 +40,7 @@ Exercise
 - Identify differentially expressed genes after inducing a drug
 - Identify Novel transcripts
 - Identify bacterial and eukaryotic genes in a sample
+
 ---
 
 # Introduction
