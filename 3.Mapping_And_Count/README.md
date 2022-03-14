@@ -1,4 +1,6 @@
-# Alignment to a reference genome
+# Mapping and Counting
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 RNA-seq generate gene expression information by quantifying the number of transcripts (per gene) in a sample. This is acompished by counting the number of transcripts that have been sequenced - the more active a gene is, the more transcripts will be in a sample, and the more reads will be generated from that transcript.
 
