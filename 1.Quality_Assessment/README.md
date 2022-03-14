@@ -1,4 +1,6 @@
 # Quality control of the sequencing data.
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 ## Objectives
 - Assess the quality of your data
