@@ -26,14 +26,13 @@ Ngoni Faya & Mik Black
     
 Now let's make a new directory where we will store our RNA-seq data
 
-```
+```bash
 $ cd ~/RNA-seq
 $ mkdir DE
 
 #copy the count data into this new DE directory
 $ cp ../Counts/yeast_counts.txt ./
 $ pwd (and copy the path)
-
 ```
 * When using your own dataset, you would copy the count data into your DE directory, however in our case let's download the count data for this exercise from our Github page and store it in DE directory
 
@@ -43,19 +42,18 @@ $ pwd (and copy the path)
 
 #### Import data from featureCounts 
 (From the terminal - We got our count data using the command below) 
-```
+```bash
 $ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
 ```
 
-Now let's open the R.4.0.1 notebook using NeSI Jupyter
+Now let's open the R/4.1.0 notebook using NeSI Jupyter
 
-```
+```R
 #set the working directory (you can paste the copied path here)
 > setwd("/home/Your_User_Name/RNA_seq/DE")
 
 # list the files in your current working directory (you must see 2 count data files in there - one from the previous data analysis and one we just downloaded)
 > list.files()
-
 ```
 ### Count data
 
@@ -65,7 +63,7 @@ counts, so we are working with data from all 7127 genes.
 *Let’s look at our dataset and perform some basic checks before we do a
 differential expression analysis.*
 
-``` r
+```R
 > library(dplyr)
 > fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
 > fcData %>% head()
@@ -102,13 +100,13 @@ differential expression analysis.*
 
 Check dimensions:
 
-``` r
+```R
 > dim(fcData)
 ```
 
     ## [1] 7127   12
 
-``` r
+```R
 > names(fcData)
 ```
 
