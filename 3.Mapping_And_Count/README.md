@@ -53,12 +53,10 @@ Information required:
   * Now, lets move one folder up (into the RNA_seq folder):
   
 ```bash
-  
 $ cd ..
   
 $ ls
 Genome  QC  Raw  Trimmed
-  
 ```
 
 Let's map one of our sample to the genome
@@ -83,7 +81,6 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
 Now we need to align all the rest of the samples.
 
 ```bash
-
 $ pwd
 /home/$USER/RNA_seq/
 
@@ -92,7 +89,6 @@ $ mkdir Mapping
 
 $ ls
 Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
-
 ```
 
 let's use a for loop to process our samples:
