@@ -255,7 +255,7 @@ $ multiqc .
 
 ```
 
-![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC4.png)
+![Alt text](../Prep_Files/Images/MQC4.png)
 
 ---
 
