@@ -51,6 +51,7 @@ This workshop uses the dataset from yeast RNA-seq experiment, <a href="https://j
 - Subset of data (chromosome 1)
 - Six samples (3 WT / 3 MT)
 - Single end sequencing
+
 * * *
 
 ### Overview of Illumina Sequencing
