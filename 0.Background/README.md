@@ -37,7 +37,7 @@ Evaluating your data quality and extracting biologically relevant information is
 
 
 
-Exercise
+Exercises
 - Rank genes based on expression?
 - Identify differentially expressed genes after inducing a drug
 - Identify Novel transcripts
