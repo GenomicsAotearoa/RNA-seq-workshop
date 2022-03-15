@@ -1,4 +1,6 @@
 # Workshop Overview
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 ## RNA-seq Workflow
 Before beginning an RNA-Seq experiment, you should understand and carefully consider each step of the RNA-Seq workflow: Experimental design, Extraction, Library preparation, Sequencing, and Data analysis.
