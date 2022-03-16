@@ -105,7 +105,6 @@ $ mkdir -p ~/Desktop/fastqc_html
 ```
 
 ```bash
-
 $ scp -r $USERp@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fastqc_html
 ```
 
