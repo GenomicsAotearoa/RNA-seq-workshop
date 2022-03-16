@@ -123,8 +123,7 @@ The compressed binary version of SAM is called a BAM file. We use this version t
 
 ### A quick look into the sam file
 
-```bash
-
+```bash 
 $ less SRR014335-chr1.sam 
 
 The file begins with a header, which is optional. The header is used to describe the source of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information for a single read. Each alignment line has 11 mandatory fields for essential mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
