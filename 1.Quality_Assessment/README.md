@@ -152,6 +152,7 @@ $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
 * Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
 
 ---
+
 ## MultiQC -  multi-sample analysis
 
  - The FastQC analysis is applied to each sample separately, and produces a report for each.
