@@ -56,6 +56,7 @@ and then load
 
 ```bash
 $ module purge
+
 $ module load FastQC/0.11.9
 ```
 >hint : there is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running `source ~/RNA_seq/rsmodules.sh` command will excute it. 
