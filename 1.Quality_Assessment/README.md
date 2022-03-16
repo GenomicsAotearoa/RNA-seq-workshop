@@ -15,7 +15,6 @@ Several tools available to do quality assessemnt. For this workshop, we will use
 First, it is always good to verify where we are:
 
 ```bash
-
 $ cd ~
 
 $ pwd
