@@ -1,7 +1,7 @@
 <p style="text-align:left;">
   <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">&laquo; 1. Quality Assessment</a></b> 
   <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">1. Quality Assessment &raquo;</a></b>
+    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">2. Cleaning Reads &raquo;</a></b>
   </span>
 </p>
 
