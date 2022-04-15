@@ -85,4 +85,3 @@ $ multiqc .
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC2.png)
 
 - - - 
-[Next Lesson : Mapping and Count](../3.Mapping_And_Count/README.md)
