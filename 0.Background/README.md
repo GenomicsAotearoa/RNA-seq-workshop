@@ -68,4 +68,10 @@ Here is a <a href="https://www.youtube.com/watch?v=womKfikWlxM">video</a> to ill
 
 ---
 
+<p style="text-align:left;">
+  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-green);font-weight:bold">&laquo; Back to homepage</a></b> 
+  <span style="float:right;">
+    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">1. Quality Assessment &raquo;</a></b>
+  </span>
+</p>
 
