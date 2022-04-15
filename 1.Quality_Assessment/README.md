@@ -188,4 +188,3 @@ The html report shows the MultiQC summary
 ![Alt text](../Prep_Files/Images/MQC1.png)
 
 - - - 
-[Next Lesson : Trimming and Filtering](../2.Trimming_And_Filtering/README.md)
