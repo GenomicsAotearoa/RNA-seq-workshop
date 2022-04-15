@@ -3,7 +3,7 @@
 <p style="text-align:left;">
   <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-green);font-weight:bold">&laquo; Back to homepage</a></b> 
   <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/Workshop-Bash_Scripting_And_HPC_Job_Scheduler/workshop_material/2_AutomaticVariantC.html" style="background: var(--bs-green);font-weight:bold">2. Automating a Variant Calling Workflow &raquo;</a></b>
+    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-green);font-weight:bold">2. Automating a Variant Calling Workflow &raquo;</a></b>
   </span>
 </p>
 
