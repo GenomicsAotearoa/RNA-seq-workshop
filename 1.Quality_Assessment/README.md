@@ -1,3 +1,10 @@
+<p style="text-align:left;">
+  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">&laquo; 1. Quality Assessment</a></b> 
+  <span style="float:right;">
+    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">1. Quality Assessment &raquo;</a></b>
+  </span>
+</p>
+
 # Quality control of the sequencing data.
 * Do not remove this line (it will not be displayed)
 {:toc}
