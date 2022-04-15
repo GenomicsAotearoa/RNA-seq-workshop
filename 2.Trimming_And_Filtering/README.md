@@ -85,3 +85,9 @@ $ multiqc .
 ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC2.png)
 
 - - - 
+<p style="text-align:left;">
+  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">&laquo; 2. Cleaning Reads</a></b> 
+  <span style="float:right;">
+    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">2. Cleaning Reads &raquo;</a></b>
+  </span>
+</p>
