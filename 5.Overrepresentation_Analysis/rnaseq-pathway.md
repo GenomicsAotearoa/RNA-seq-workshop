@@ -1,7 +1,3 @@
-RNA-seq data analysis in R
-================
-Mik Black & Ngoni Faya<br>8 September 2021
-
 ### Overrepresentation analysis (Gene Ontology)
 
 Over Representation Analysis
