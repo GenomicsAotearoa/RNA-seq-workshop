@@ -1,4 +1,3 @@
-# Variant Calling Workflow
 
 <p style="text-align:left;">
   <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-green);font-weight:bold">&laquo; Back to homepage</a></b> 
