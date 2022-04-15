@@ -1,9 +1,4 @@
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">&laquo; 1. Quality Assessment</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/3.Mapping_And_Count/" style="background: var(--bs-green);font-weight:bold">3. Mapping and Counting &raquo;</a></b>
-  </span>
-</p>
+
 
 # Cleaning Reads
 * Do not remove this line (it will not be displayed)
