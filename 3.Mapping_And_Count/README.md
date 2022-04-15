@@ -1,7 +1,7 @@
 # Mapping and Counting
 
 <p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">&laquo; 2. Cleaning Reads</a></b> 
+  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">&laquo; 2. Cleaning Reads</a></b> 
   <span style="float:right;">
     <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/3.Mapping_And_Count/" style="background: var(--bs-green);font-weight:bold">3. Mapping and Counting &raquo;</a></b>
   </span>
