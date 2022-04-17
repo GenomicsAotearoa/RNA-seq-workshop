@@ -1,7 +1,7 @@
 ### Overrepresentation analysis (Gene Ontology)
 
 <p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/4.Differential_Expression/rnaseq-diffexp.html" style="background: var(--bs-green);font-weight:bold">&laquo; 2. Cleaning Reads</a></b> 
+  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/4.Differential_Expression/rnaseq-diffexp.html" style="background: var(--bs-green);font-weight:bold">&laquo; 4. DE Analysis</a></b> 
   <span style="float:right;">
     <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/4.Differential_Expression/rnaseq-diffexp.html" style="background: var(--bs-green);font-weight:bold">4. DE Analysis &raquo;</a></b>
   </span>
