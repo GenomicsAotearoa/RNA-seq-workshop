@@ -617,3 +617,5 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
     <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/6.Supplementary/supp_1.html" style="background: var(--bs-green);font-weight:bold">Supplementary 1 &raquo;</a></b>
   </span>
 </p>
+
+<p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
