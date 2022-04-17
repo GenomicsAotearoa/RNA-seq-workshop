@@ -7,7 +7,7 @@
   </span>
 </p>
 
-Over Representation Analysis
+Over-representation Analysis
 (<a href="https://academic.oup.com/bioinformatics/article/20/18/3710/202612">Boyle
 et al. 2004</a>) is a widely used approach to determine whether known
 biological functions or processes are over-represented (= enriched) in
