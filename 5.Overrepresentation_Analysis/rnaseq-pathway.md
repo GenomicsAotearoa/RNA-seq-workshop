@@ -1,4 +1,4 @@
-### Overrepresentation analysis (Gene Ontology)
+### Over-representation analysis (Gene Ontology)
 
 <p style="text-align:left;">
   <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/4.Differential_Expression/rnaseq-diffexp.html" style="background: var(--bs-green);font-weight:bold">&laquo; 4. DE Analysis</a></b> 
