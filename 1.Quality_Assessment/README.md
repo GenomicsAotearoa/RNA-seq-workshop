@@ -198,3 +198,5 @@ The html report shows the MultiQC summary
     <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">2. Cleaning Reads &raquo;</a></b>
   </span>
 </p>
+
+<p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
