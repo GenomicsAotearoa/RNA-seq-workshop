@@ -1,12 +1,12 @@
 site_name: RNA-Seq Data Analysis
 site_author: Genomics Aotearoa & NeSI
 site_dir: public
-site_url: "https://genomicsaotearoa.github.io/Gene_Regulatory_Networks_Simulation_Workshop/"
+site_url: "https://genomicsaotearoa.github.io/RNA-seq-workshop/"
 
 #Repository information
 
-repo_name:   GenomicsAotearoa/Gene_Regulatory_Networks_Simulation_Workshop  
-repo_url: https://github.com/GenomicsAotearoa/Gene_Regulatory_Networks_Simulation_Workshop.git
+repo_name:   GenomicsAotearoa/RNA-seq-workshop 
+repo_url: https://github.com/GenomicsAotearoa/RNA-seq-workshop.git
 
 
 theme:
