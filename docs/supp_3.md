@@ -6,7 +6,11 @@
     <embed src="docs/pdf/lecture_annotation_pathways.pdf" type="application/pdf" />
 </object>
 
+
 docs/pdf/lecture_annotation_pathways.pdf
+
+<!--- file: docs/pdf/lecture_annotation_pathways.pdf --->
+
 
 
 <p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
