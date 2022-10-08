@@ -178,7 +178,7 @@ data.frame(logGeneLength = log2(pwf$bias.data),
   geom_smooth(method='lm')
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 How about gene length and statistical evidence supporting differential
 expression?
