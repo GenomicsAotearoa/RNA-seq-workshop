@@ -49,9 +49,8 @@ expressed genes (DEGs).
 
 #### Results from the Young et al (2010) publication:
 
-*Proportion DE by gene length and reads*
-
 ![image](./PNG/goseq-1.png)
+<center><small>Proportion DE by gene length and reads</small></center>
 
 *Gene set ranks by standard analysis*
 
