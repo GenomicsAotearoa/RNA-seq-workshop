@@ -463,7 +463,7 @@ for(i in 1:ncol(logCPM)){
 boxplot(q$E ~ col(q$E))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
 lineColour <- ifelse(conds=="MT", "red", "blue")
