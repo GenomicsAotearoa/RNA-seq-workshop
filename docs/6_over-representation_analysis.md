@@ -556,7 +556,7 @@ boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)
         col=cols[oo], ylab="Gene Length", xlab = "GO term")
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_All_significant.png) -->
 
 #### Gene length versus P-value
