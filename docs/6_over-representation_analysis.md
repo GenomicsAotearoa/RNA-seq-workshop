@@ -578,7 +578,7 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
        fill=c("red", "pink", "lightblue", "blue"))
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_p-value.png) -->
 
 ------------------------------------------------------------------------
