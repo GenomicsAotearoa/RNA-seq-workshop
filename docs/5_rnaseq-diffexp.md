@@ -24,6 +24,10 @@
     wild-type and mutant groups (usually the differences you observe in
     a typical RNA-seq study wouldn’t be this extreme).
 
+ - Slides: [lecture_differential_expression.pdf](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/lecture_differential_expression.pdf)
+
+
+
 ## Getting organised
 
 ### Create an RStudio project
@@ -45,7 +49,7 @@ To create a project:
 
 -   Open RStudio and go to the File menu, and click New Project.
 -   In the window that opens select Existing Project, and browse to the
-    RNA\_seq folder.
+    RNA_seq folder.
 -   Finally, click Create Project.
 
 *Save source from untitled to `yeast_data.R` and continue saving
@@ -59,7 +63,7 @@ counts, so we are working with data from all 7127 genes.
 *Let’s look at our data set and perform some basic checks before we do a
 differential expression analysis.*
 
-``` r
+```r
 library(dplyr)
 fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
 fcData %>% head()
@@ -156,7 +160,7 @@ Data are highly skewed (suggests that logging might be useful):
 boxplot(as.matrix(counts) ~ col(counts))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Some genes have zero counts:
 
@@ -179,7 +183,7 @@ Now we can see the per-sample distributions more clearly:
 boxplot(as.matrix(logCounts) ~ col(logCounts))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 Density plots are also a good way to visualise the data:
 
@@ -195,7 +199,7 @@ plot(density(logCounts[,1]), ylim=c(0,0.3), col=lineColour[1])
 for(i in 2:ncol(logCounts)) lines(density(logCounts[,i]), col=lineColour[i])
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 The boxplots and density plots show clear differences between the sample
 groups - are these biological, or experimental artifacts? (often we
@@ -227,7 +231,7 @@ Visualise via bar plot
 colSums(counts) %>% barplot(., ylab="Reads mapped per sample")
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 *Now we are ready for differential expression analysis*
 
@@ -311,7 +315,7 @@ for(i in 1:ncol(rpkmData)){
 }
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 **We’re NOT going to use RPKM data here. I just wanted to show you how
 to calculate it, and how it relates to the logCPM data**
@@ -348,7 +352,7 @@ beeswarm(logCPM[6,] ~ conds, pch=16, ylab="Expression (logCPM)", xlab="Group",
          main=paste0(rownames(logCPM)[6], ": MT vs WT"))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 -   we basically want to do this sort of analysis, for every gene
 -   we’ll use a slightly more sophisticated approach though
@@ -385,7 +389,7 @@ design
 v <- voom(dge, design, plot=TRUE)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Voom_Mean_Variance.png) -->
 
@@ -402,7 +406,7 @@ for(i in 1:ncol(logCPM)){
 }
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 Hasn’t removed the differences between the groups
 
@@ -410,7 +414,7 @@ Hasn’t removed the differences between the groups
 boxplot(v$E ~ col(v$E))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 lineColour <- ifelse(conds=="MT", "red", "blue")
@@ -424,7 +428,7 @@ plot(density(v$E[,1]), ylim=c(0,0.3), col=lineColour[1])
 for(i in 2:ncol(logCPM)) lines(density(v$E[,i]), col=lineColour[i])
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 We can deal with this via “quantile normalisation”. Specify
 
@@ -436,7 +440,7 @@ in the `voom` function.
 q <- voom(dge, design, plot=TRUE, normalize="quantile")
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 Quantile normalisation forces all of the distributions to be the same.
 
