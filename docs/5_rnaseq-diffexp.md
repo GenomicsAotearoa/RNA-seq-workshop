@@ -830,7 +830,7 @@ setlist <- list(edgeRexact=rownames(edgePadj),
 venn(setlist)
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-56-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-56-1.png)<!-- -->
 
 ### Summary
 
