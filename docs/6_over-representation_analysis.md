@@ -161,7 +161,7 @@ hist(pwf$bias.data,30)
 hist(pwf$pwf,30)
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_lengths_weight.png) -->
 
