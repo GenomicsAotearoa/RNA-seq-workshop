@@ -1,8 +1,5 @@
 # Mapping and Counting
 
-* Do not remove this line (it will not be displayed)
-{:toc}
-
 RNA-seq generate gene expression information by quantifying the number of transcripts (per gene) in a sample. This is acompished by counting the number of transcripts that have been sequenced - the more active a gene is, the more transcripts will be in a sample, and the more reads will be generated from that transcript.
 
 For RNA-seq, we need to align or map each read back to the genome, to see which gene produced it.
@@ -163,6 +160,7 @@ $ for filename in *.bam
 >**SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.**
 
 You can use samtools to learn more about the bam file as well.
+
 ## Some stats on your mapping:
 
 ```bash
