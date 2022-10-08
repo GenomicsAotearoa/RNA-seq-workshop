@@ -1,4 +1,4 @@
-site_name: Scaling Gene Regulatory Networks Simulations
+site_name: RNA-Seq Data Analysis
 site_author: Genomics Aotearoa & NeSI
 site_dir: public
 site_url: "https://genomicsaotearoa.github.io/Gene_Regulatory_Networks_Simulation_Workshop/"
@@ -24,12 +24,13 @@ theme:
     toggle:
       icon: material/brightness-auto
       name: Switch to light mode
-    primary: deep purple
+    primary: light green
 
   # Palette toggle for light mode
   - media: "(prefers-color-scheme: light)"
     scheme: default
-    primary: deep purple
+    primary: light green
+
 
 
     toggle:
@@ -42,7 +43,8 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to system preference
-    primary: deep purple
+    primary: light green
+
   
   features:
     - navigation.tracking
