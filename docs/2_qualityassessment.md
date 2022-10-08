@@ -90,31 +90,14 @@ SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.ht
 
 ## Viewing the FastQC results
 
-If we were working on our local computers, we’d be able to look at each of these HTML files by opening them in a web browser.
 
-However, these files are currently sitting on our remote NeSI HPC, where our local computer can’t see them. And, since we are only logging into NeSI via the command line - it doesn’t have any web browser setup to display these files either.
-
-So the easiest way to look at these webpage summary reports will be to transfer them to our local computers (i.e. your laptop).
-
-To transfer a file from a remote server to our own machines, we will use scp.
-
-First we will make a new directory on our computer to store the HTML files we’re transferring. Let’s put it on our desktop for now. Open a new tab in your terminal program (you can use the pull down menu at the top of your screen or the Cmd+t keyboard shortcut) and type:
-
-```bash
-$ mkdir -p ~/Desktop/fastqc_html 
-```
-
-```bash
-$ scp -r $USERp@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fastqc_html
-```
-
-![](../Prep_Files/Images/fqc1_2.png)
+![image](./Images/fqc1_2.png)
 
 ## Working with the FastQC text output
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
 
 ```bash
-$ cd /home/fayfa80p/RNA_seq/QC
+$ cd /home/$USER/RNA_seq/QC
 
 $ ls
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
@@ -157,7 +140,7 @@ $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
 
  - The FastQC analysis is applied to each sample separately, and produces a report for each.
  - The application MultiQC provides a way to combine multiple sets of results (i.e., from MANY 
- different software packages) across multipel samples.
+ different software packages) across multiple samples.
  - To generate `multqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
  
 ```bash
