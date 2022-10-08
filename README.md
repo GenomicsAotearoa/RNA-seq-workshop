@@ -1,5 +1,7 @@
 # RNA-seq-workshop
 
+Refer to this page for workshop material https://genomicsaotearoa.github.io/RNA-seq-workshop/
+
 This RNA-seq workshop aims to get you started with your own RNA-seq analysis and assumes you are already familiar with the basics of bash and R.
 
 We will be using NeSI HPC for some of the analysis so make sure you have a NeSI account and you are able to login.
