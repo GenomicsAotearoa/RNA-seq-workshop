@@ -217,8 +217,9 @@ is a count table, in which the number of reads assigned to each feature in each 
 - Once we have that information, we can start thinking about how to determine which genes were differentially expressed in our study.
 
 ## Subread and FeatureCounts
+
 - The featureCounts tool from the Subread package can be used to count how many reads aligned to each genome feature (exon).
-- Need to specify the annotation informatyion (.gtf file) 
+- Need to specify the annotation information (.gtf file) 
 You can process all the samples at once:
 
 ```bash
@@ -256,7 +257,7 @@ $ multiqc .
 
 ```
 
-![Alt text](../Prep_Files/Images/MQC4.png)
+![image](./Images/MQC4.png)
 
 ---
 
