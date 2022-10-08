@@ -51,9 +51,7 @@ expressed genes (DEGs).
 
 *Proportion DE by gene length and reads*
 
-<center>
-<img src="PNG/goseq-1.png" height="350">
-</center>
+![image](./PNG/goseq-1.png)
 
 *Gene set ranks by standard analysis*
 
