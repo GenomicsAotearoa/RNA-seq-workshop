@@ -438,8 +438,10 @@ library(gplots)
 venn(list(GO.wall=GO.wall.sig, GO.nobias=GO.nobias.sig))
 ```
 
-![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_venn.png) -->
+<center>![image](./rnaseq-pathway_files/figure-gfm/GO_venn.png)</center>
+
+
+
 
 Extract out the different parts of the Venn diagram (yes, there are
 definitely better ways to do this).

@@ -1227,12 +1227,10 @@ their lengths.</p>
 <li>Only Hypergeometric (pink) vs only Wallenius (blue)</li>
 <li>Hypergeometric method is findings GO terms containing longer genes.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">cols</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s">&quot;lightblue&quot;</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">cols</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s">&quot;lightblue&quot;</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">boxplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">lengths.onlySig.nobias</span><span class="p">,</span> <span class="n">lengths.onlySig.wall</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="image" src="./rnaseq-pathway_files/figure-gfm/unnamed-chunk-23-1.png" /><!-- --></p>
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_boxplot1.png) -->
-
+<img alt="image" src="../rnaseq-pathway_files/figure-gfm/GO_boxplot1.png" /></p>
 <h4 id="all-significant-go-terms">All significant GO terms<a class="headerlink" href="#all-significant-go-terms" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">lengths.sig.wall.nobias</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
@@ -1270,9 +1268,7 @@ their lengths.</p>
 <a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>                     <span class="s">&quot;Sig in both (wal adjp)&quot;</span><span class="p">,</span> <span class="s">&quot;Only sig in Wall&quot;</span><span class="p">),</span> 
 <a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>       <span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;pink&quot;</span><span class="p">,</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span><span class="p">))</span>
 </code></pre></div>
-<p><img alt="image" src="./rnaseq-pathway_files/figure-gfm/unnamed-chunk-27-1.png" /><!-- --></p>
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_p-value.png) -->
-
+<p><img alt="image" src="../rnaseq-pathway_files/figure-gfm/GeneLength_vs_p-value.png" /><!-- --></p>
 <hr />
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1281,7 +1277,7 @@ their lengths.</p>
 <li>DESeq2 and edgeR model the count data, and assume a Negative
     Binomial distribution</li>
 <li>Limma transforms (and logs) the data and assumes normality</li>
-<li>Here we’ve seen that these three approches give quite similar
+<li>Here we’ve seen that these three approaches give quite similar
     results.</li>
 <li>For Gene Set analysis, gene length needs to be accounted for, since
     longer transcripts are more likely to be found to be differentially
