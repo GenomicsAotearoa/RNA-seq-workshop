@@ -374,7 +374,7 @@ GOTERM[[GO.wall.sig[1]]]
 
 ------------------------------------------------------------------------
 
-**NB - the code below is demosntrating the difference between running
+**NB - the code below is demonstrating the difference between running
 with and without the gene length correction that GOseq implements. You
 wouldn’t usually work through this as part of a standard pathway
 analysis.**
