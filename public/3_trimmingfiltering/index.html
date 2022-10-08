@@ -12,7 +12,7 @@
       
         <link rel="canonical" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/3_trimmingfiltering/">
       
-      <link rel="icon" href="../images/nesi_ga.png">
+      <link rel="icon" href="../Images/nesi_ga.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
@@ -84,7 +84,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="RNA-Seq Data Analysis" class="md-header__button md-logo" aria-label="RNA-Seq Data Analysis" data-md-component="logo">
       
-  <img src="../images/nesi_ga.png" alt="logo">
+  <img src="../Images/nesi_ga.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -212,7 +212,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="RNA-Seq Data Analysis" class="md-nav__button md-logo" aria-label="RNA-Seq Data Analysis" data-md-component="logo">
       
-  <img src="../images/nesi_ga.png" alt="logo">
+  <img src="../Images/nesi_ga.png" alt="logo">
 
     </a>
     RNA-Seq Data Analysis
@@ -256,7 +256,7 @@
   
     <li class="md-nav__item">
       <a href="../1_background/" class="md-nav__link">
-        1 background
+        RNA-seq Workflow
       </a>
     </li>
   
@@ -370,7 +370,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../5.overexpressionanalysis/" class="md-nav__link">
+      <a href="../5_rnaseq-diffexp/" class="md-nav__link">
+        Differential Expression Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_over-representation_analysis/" class="md-nav__link">
         RNA-seq: pathway analysis
       </a>
     </li>
@@ -385,8 +400,38 @@
   
   
     <li class="md-nav__item">
-      <a href="../5_differentialexpression/" class="md-nav__link">
-        RNA-seq: differential expression analysis
+      <a href="../supp_1/" class="md-nav__link">
+        A Guide to RNA-Seq
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supp_2/" class="md-nav__link">
+        Lecture notes : Introduction To Differential Expression Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supp_3/" class="md-nav__link">
+        Lecture notes : Annotation Data & Gene Set Analysis
       </a>
     </li>
   
@@ -458,16 +503,6 @@
 
 
 <h1 id="cleaning-reads">Cleaning Reads<a class="headerlink" href="#cleaning-reads" title="Permanent link">&para;</a></h1>
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">&laquo; 1. Quality Assessment</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/3.Mapping_And_Count/" style="background: var(--bs-green);font-weight:bold">3. Mapping and Counting &raquo;</a></b>
-  </span>
-</p>
-
-<ul>
-<li toc="toc">Do not remove this line (it will not be displayed)</li>
-</ul>
 <p>In the previous section, we took a high-level look at the quality of each of our samples using FastQC. We visualized per-base quality graphs showing the distribution of read quality at each base across all reads in a sample and extracted information about which samples fail which quality checks. Some of our samples failed quite a few quality metrics used by FastQC. This doesn’t mean, though, that our samples should be thrown out! It’s very common to have some quality metrics fail, and this may or may not be a problem for your downstream application. </p>
 <h2 id="adapter-removal">Adapter removal<a class="headerlink" href="#adapter-removal" title="Permanent link">&para;</a></h2>
 <ul>
@@ -524,7 +559,7 @@ from FASTQ files.
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>$ multiqc .
 </code></pre></div>
-<img alt="Alt text" src="https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/MQC2.png" /></p>
+<img alt="image" src="../Images/MQC2.png" /></p>
 <hr />
 <p style="text-align:left;">
   <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">&laquo; 1. Quality Assessment</a></b> 

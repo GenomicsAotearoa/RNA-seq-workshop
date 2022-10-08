@@ -12,7 +12,7 @@
       
         <link rel="canonical" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2_qualityassessment/">
       
-      <link rel="icon" href="../images/nesi_ga.png">
+      <link rel="icon" href="../Images/nesi_ga.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
@@ -84,7 +84,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="RNA-Seq Data Analysis" class="md-header__button md-logo" aria-label="RNA-Seq Data Analysis" data-md-component="logo">
       
-  <img src="../images/nesi_ga.png" alt="logo">
+  <img src="../Images/nesi_ga.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -212,7 +212,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="RNA-Seq Data Analysis" class="md-nav__button md-logo" aria-label="RNA-Seq Data Analysis" data-md-component="logo">
       
-  <img src="../images/nesi_ga.png" alt="logo">
+  <img src="../Images/nesi_ga.png" alt="logo">
 
     </a>
     RNA-Seq Data Analysis
@@ -256,7 +256,7 @@
   
     <li class="md-nav__item">
       <a href="../1_background/" class="md-nav__link">
-        1 background
+        RNA-seq Workflow
       </a>
     </li>
   
@@ -302,13 +302,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    Objectives
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#viewing-the-fastqc-results" class="md-nav__link">
@@ -377,7 +370,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../5.overexpressionanalysis/" class="md-nav__link">
+      <a href="../5_rnaseq-diffexp/" class="md-nav__link">
+        Differential Expression Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_over-representation_analysis/" class="md-nav__link">
         RNA-seq: pathway analysis
       </a>
     </li>
@@ -392,8 +400,38 @@
   
   
     <li class="md-nav__item">
-      <a href="../5_differentialexpression/" class="md-nav__link">
-        RNA-seq: differential expression analysis
+      <a href="../supp_1/" class="md-nav__link">
+        A Guide to RNA-Seq
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supp_2/" class="md-nav__link">
+        Lecture notes : Introduction To Differential Expression Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supp_3/" class="md-nav__link">
+        Lecture notes : Annotation Data & Gene Set Analysis
       </a>
     </li>
   
@@ -424,13 +462,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    Objectives
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#viewing-the-fastqc-results" class="md-nav__link">
@@ -472,22 +503,14 @@
 
 
 <h1 id="quality-control-of-the-sequencing-data">Quality control of the sequencing data.<a class="headerlink" href="#quality-control-of-the-sequencing-data" title="Permanent link">&para;</a></h1>
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/0.Background/" style="background: var(--bs-green);font-weight:bold">&laquo; Background</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">2. Cleaning Reads &raquo;</a></b>
-  </span>
-</p>
-
-<ul>
-<li toc="toc">Do not remove this line (it will not be displayed)</li>
-</ul>
-<h2 id="objectives">Objectives<a class="headerlink" href="#objectives" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
 <ul>
 <li>Assess the quality of your data</li>
 <li>Use FastQC package to do quality check</li>
 <li>Use MultiQC to view our analysis results</li>
 </ul>
+</div>
 <hr />
 <p>Several tools available to do quality assessemnt. For this workshop, we will use <code>fastqc</code>.</p>
 <p>First, it is always good to verify where we are:</p>
@@ -541,40 +564,31 @@ You will see an automatically updating output message telling you the progress o
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
 </code></pre></div>
 <h2 id="viewing-the-fastqc-results">Viewing the FastQC results<a class="headerlink" href="#viewing-the-fastqc-results" title="Permanent link">&para;</a></h2>
-<p>If we were working on our local computers, we’d be able to look at each of these HTML files by opening them in a web browser.</p>
-<p>However, these files are currently sitting on our remote NeSI HPC, where our local computer can’t see them. And, since we are only logging into NeSI via the command line - it doesn’t have any web browser setup to display these files either.</p>
-<p>So the easiest way to look at these webpage summary reports will be to transfer them to our local computers (i.e. your laptop).</p>
-<p>To transfer a file from a remote server to our own machines, we will use scp.</p>
-<p>First we will make a new directory on our computer to store the HTML files we’re transferring. Let’s put it on our desktop for now. Open a new tab in your terminal program (you can use the pull down menu at the top of your screen or the Cmd+t keyboard shortcut) and type:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ mkdir -p ~/Desktop/fastqc_html 
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ scp -r <span class="nv">$USERp</span>@login.mahuika.nesi.org.nz:~/RNA_seq/QC/ ~/Desktop/fastqc_html
-</code></pre></div>
-<p><img alt="" src="../Prep_Files/Images/fqc1_2.png" /></p>
+<p><img alt="image" src="../Images/fqc1_2.png" /></p>
 <h2 id="working-with-the-fastqc-text-output">Working with the FastQC text output<a class="headerlink" href="#working-with-the-fastqc-text-output" title="Permanent link">&para;</a></h2>
 <p>Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ <span class="nb">cd</span> /home/fayfa80p/RNA_seq/QC
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>$ ls
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ <span class="nb">cd</span> /home/<span class="nv">$USER</span>/RNA_seq/QC
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>$ ls
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
 </code></pre></div>
 Let's unzip the files to look at the FastQC text file outputs.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$ <span class="k">for</span> filename <span class="k">in</span> *.zip
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>&gt; <span class="k">do</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>&gt; unzip <span class="nv">$filename</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>&gt; <span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ <span class="k">for</span> filename <span class="k">in</span> *.zip
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>&gt; <span class="k">do</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>&gt; unzip <span class="nv">$filename</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>&gt; <span class="k">done</span>
 </code></pre></div>
 <p>Inside each unzipped folder, there is a summary text which shows results of the statistical tests done by FastQC</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$ ls SRR014335-chr1_fastqc
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>fastqc_data.txt  fastqc.fo  fastqc_report.html  Icons/  Images/  summary.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ ls SRR014335-chr1_fastqc
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>fastqc_data.txt  fastqc.fo  fastqc_report.html  Icons/  Images/  summary.txt
 </code></pre></div>
 <p>Use less to preview the summary.txt file</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$ less SRR014335-chr1_fastqc/summary.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$ less SRR014335-chr1_fastqc/summary.txt
 </code></pre></div>
 <p>We can make a record of the results we obtained for all our samples by concatenating all of our summary.txt files into a single file using the cat command. We’ll call this fastqc_summaries.txt.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$ cat */summary.txt &gt; ~/RNA_seq/QC/fastqc_summaries.txt 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$ cat */summary.txt &gt; ~/RNA_seq/QC/fastqc_summaries.txt 
 </code></pre></div>
 <ul>
 <li>Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.</li>
@@ -584,34 +598,27 @@ Let's unzip the files to look at the FastQC text file outputs.</p>
 <ul>
 <li>The FastQC analysis is applied to each sample separately, and produces a report for each.</li>
 <li>The application MultiQC provides a way to combine multiple sets of results (i.e., from MANY 
- different software packages) across multipel samples.</li>
-<li>To generate <code>multqc</code> results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):</li>
+ different software packages) across multiple samples.</li>
+<li>To generate <code>multiqc</code> results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$ module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>$ <span class="nb">cd</span> ~/RNA_seq/
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>$ mkdir MultiQC
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>$ <span class="nb">cd</span> MultiQC
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>$ cp ../QC/* ./
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>$ multiqc .
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>$ ls -F
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>multiqc_data/  multiqc_report.html
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$ module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>$ <span class="nb">cd</span> ~/RNA_seq/
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>$ mkdir MultiQC
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>$ <span class="nb">cd</span> MultiQC
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>$ cp ../QC/* ./
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>$ multiqc .
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>$ ls -F
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>multiqc_data/  multiqc_report.html
 </code></pre></div>
 The html report shows the MultiQC summary</p>
-<p><img alt="Alt text" src="../Prep_Files/Images/MQC1.png" /></p>
+<p><img alt="image" src="../Images/MQC1.png" /></p>
 <hr />
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/0.Background/" style="background: var(--bs-green);font-weight:bold">&laquo; Background</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">2. Cleaning Reads &raquo;</a></b>
-  </span>
-</p>
-
 <p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
 
               
@@ -633,7 +640,7 @@ The html report shows the MultiQC summary</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../1_background/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1 background" rel="prev">
+        <a href="../1_background/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RNA-seq Workflow" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -642,7 +649,7 @@ The html report shows the MultiQC summary</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              1 background
+              RNA-seq Workflow
             </div>
           </div>
         </a>

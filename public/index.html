@@ -12,7 +12,7 @@
       
         <link rel="canonical" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/">
       
-      <link rel="icon" href="images/nesi_ga.png">
+      <link rel="icon" href="Images/nesi_ga.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#rna-seq-data-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +84,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="RNA-Seq Data Analysis" class="md-header__button md-logo" aria-label="RNA-Seq Data Analysis" data-md-component="logo">
       
-  <img src="images/nesi_ga.png" alt="logo">
+  <img src="Images/nesi_ga.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -207,7 +212,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="RNA-Seq Data Analysis" class="md-nav__button md-logo" aria-label="RNA-Seq Data Analysis" data-md-component="logo">
       
-  <img src="images/nesi_ga.png" alt="logo">
+  <img src="Images/nesi_ga.png" alt="logo">
 
     </a>
     RNA-Seq Data Analysis
@@ -241,10 +246,43 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         Home
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -259,7 +297,7 @@
   
     <li class="md-nav__item">
       <a href="1_background/" class="md-nav__link">
-        1 background
+        RNA-seq Workflow
       </a>
     </li>
   
@@ -318,7 +356,22 @@
   
   
     <li class="md-nav__item">
-      <a href="5.overexpressionanalysis/" class="md-nav__link">
+      <a href="5_rnaseq-diffexp/" class="md-nav__link">
+        Differential Expression Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_over-representation_analysis/" class="md-nav__link">
         RNA-seq: pathway analysis
       </a>
     </li>
@@ -333,8 +386,38 @@
   
   
     <li class="md-nav__item">
-      <a href="5_differentialexpression/" class="md-nav__link">
-        RNA-seq: differential expression analysis
+      <a href="supp_1/" class="md-nav__link">
+        A Guide to RNA-Seq
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supp_2/" class="md-nav__link">
+        Lecture notes : Introduction To Differential Expression Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supp_3/" class="md-nav__link">
+        Lecture notes : Annotation Data & Gene Set Analysis
       </a>
     </li>
   
@@ -357,6 +440,23 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    Content
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -374,9 +474,67 @@
 
 
 
-  <h1>Home</h1>
-
-
+<p><center></p>
+<h1 id="rna-seq-data-analysis"><strong>RNA-Seq Data Analysis</strong><a class="headerlink" href="#rna-seq-data-analysis" title="Permanent link">&para;</a></h1>
+<p></center></p>
+<p>This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and assumes you are already familiar with the basics of bash and R.</p>
+<h2 id="content">Content<a class="headerlink" href="#content" title="Permanent link">&para;</a></h2>
+<p>Before getting started, have a look at the <a href="./07_supplementary.md">Supplementary data</a> for instructions on how to connect to NeSI Mahuika Jupyter.</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Lesson</strong></th>
+<th align="left"><strong>Overview</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a class="md-button md-button--primary" href="1_background/">1. Background</a></td>
+<td align="left">General overview of Simulations , Gene Regulatory Networks and Simulating Gene Regulatory networks</td>
+</tr>
+<tr>
+<td align="left"><a class="md-button md-button--primary" href="2_qualityassessment/">2. Quality Assessment</a></td>
+<td align="left">Describe how <code>sismonr</code> package works and running the first simulation</td>
+</tr>
+<tr>
+<td align="left"><a class="md-button md-button--primary" href="3_trimmingfiltering/">3. Trimming and Filtering</a></td>
+<td align="left">Introduction to High Performance Computing</td>
+</tr>
+<tr>
+<td align="left"><a class="md-button md-button--primary" href="4_mappingANDcount/">4. Mapping and Count</a></td>
+<td align="left">Introduction to HPC Job Schedulers, Slurm Scheduler &amp; life cycle of a Slurm job, Assessing resource utilisation and profiling</td>
+</tr>
+<tr>
+<td align="left"><a class="md-button md-button--primary" href="5_rnaseq-diffexp/">5. Differential Expression Analysis</a></td>
+<td align="left">Introduction to specifications in Parallel Computing, Slurm Job arrays and Exercises on Scaling networks</td>
+</tr>
+<tr>
+<td align="left"><a class="md-button md-button--primary" href="6_over-representation_analysis/">6. Over-representation analysis</a></td>
+<td align="left">Interpreting <code>sismonr</code> output and Visualising the simlulations</td>
+</tr>
+<tr>
+<td align="left"><a class="md-button" href="supp_1/">Supplementary 1 - A Guide to RNA-Seq</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a class="md-button" href="supp_2/">Supplementary 2 - Lecture notes : DE analysis</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a class="md-button" href="supp_3/">Supplementary 3 - Lecture notes : Annotation Data &amp; Gene Set Analysis</a></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h1 id="attribution-notice">Attribution notice<a class="headerlink" href="#attribution-notice" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>The material used to prepare for the workshop was extracted from Assoc. Prof. Michael Black lectures for <strong>STAT435</strong>-<strong><em>Data Analysis for Bioinformatics</em></strong> (University of Otago,DUD-New Zealand).</p>
+</li>
+<li>
+<p>Some code used in this workshop has been extracted from a collection of presentations, workshops and lectures by Prof. Thomas Girke, Institute for Integrative Genome Biology, UC Riverside: <a href="http://girke.bioinformatics.ucr.edu/">Link_1</a> and <a href="http://faculty.ucr.edu/~tgirke/HTML_Presentations/Manuals/MCBIOS2015/Rrnaseq/Rrnaseq.pdf">Link_2</a></p>
+</li>
+</ul>
 
               
             </article>
@@ -398,13 +556,13 @@
       
       
         
-        <a href="1_background/" class="md-footer__link md-footer__link--next" aria-label="Next: 1 background" rel="next">
+        <a href="1_background/" class="md-footer__link md-footer__link--next" aria-label="Next: RNA-seq Workflow" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              1 background
+              RNA-seq Workflow
             </div>
           </div>
           <div class="md-footer__button md-icon">

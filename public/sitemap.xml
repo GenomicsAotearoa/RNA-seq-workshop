@@ -26,12 +26,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/5.overexpressionanalysis/</loc>
+         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/5_rnaseq-diffexp/</loc>
          <lastmod>2022-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/5_differentialexpression/</loc>
+         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/6_over-representation_analysis/</loc>
+         <lastmod>2022-10-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/supp_1/</loc>
+         <lastmod>2022-10-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/supp_2/</loc>
+         <lastmod>2022-10-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://genomicsaotearoa.github.io/RNA-seq-workshop/supp_3/</loc>
          <lastmod>2022-10-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
