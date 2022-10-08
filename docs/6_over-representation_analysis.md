@@ -528,7 +528,7 @@ cols <- rep(c("lightpink", "lightblue"), c(10,7))
 boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_boxplot1.png) -->
 
 #### All significant GO terms
