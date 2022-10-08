@@ -14,7 +14,7 @@ Before getting started, have a look at the [Supplementary data](./07_supplementa
 |[2. Quality Assessment](./2_qualityassessment.md){ .md-button .md-button--primary }|Describe how `sismonr` package works and running the first simulation|
 |[3. Trimming and Filtering](./3_trimmingfiltering.md){ .md-button .md-button--primary }| Introduction to High Performance Computing|
 |[4. Mapping and Count](./4_mappingANDcount.md){ .md-button .md-button--primary }|Introduction to HPC Job Schedulers, Slurm Scheduler & life cycle of a Slurm job, Assessing resource utilisation and profiling|
-|[5. Differential Expression Analysis](./5_differentialexpression.md){ .md-button .md-button--primary }|Introduction to specifications in Parallel Computing, Slurm Job arrays and Exercises on Scaling networks|
+|[5. Differential Expression Analysis](./5_rnaseq-diffexp.md){ .md-button .md-button--primary }|Introduction to specifications in Parallel Computing, Slurm Job arrays and Exercises on Scaling networks|
 |[6. Over-representation analysis](./6_over-representation_analysis.md){ .md-button .md-button--primary }|Interpreting `sismonr` output and Visualising the simlulations|
 |[Supplementary 1 - A Guide to RNA-Seq](./supp_1.md){ .md-button}||
 |[Supplementary 2 - Lecture notes : DE analysis](./supp_2.md){.md-button}||
