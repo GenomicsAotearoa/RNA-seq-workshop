@@ -551,7 +551,7 @@ volcanoplot(fit, coef=2)
 abline(h=-log10(0.05))
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
 Significantly DE genes:
 
