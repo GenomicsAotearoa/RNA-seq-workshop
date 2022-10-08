@@ -457,7 +457,7 @@ for(i in 1:ncol(logCPM)){
 }
 ```
 
-![](rnaseq-diffexp_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
 ``` r
 boxplot(q$E ~ col(q$E))
