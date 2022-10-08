@@ -851,11 +851,4 @@ save(list='tt', file='topTable.RData')
 ```
 - - - 
 
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/3.Mapping_And_Count/" style="background: var(--bs-green);font-weight:bold">&laquo; 3. Mapping and Counting</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/5.Overrepresentation_Analysis/rnaseq-pathway.html" style="background: var(--bs-green);font-weight:bold">5. Over-representation analysis &raquo;</a></b>
-  </span>
-</p>
-
 <p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
