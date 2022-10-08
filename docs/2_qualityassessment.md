@@ -141,7 +141,7 @@ $ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
  - The FastQC analysis is applied to each sample separately, and produces a report for each.
  - The application MultiQC provides a way to combine multiple sets of results (i.e., from MANY 
  different software packages) across multiple samples.
- - To generate `multqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
+ - To generate `multiqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
  
 ```bash
 $ module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
@@ -161,15 +161,8 @@ multiqc_data/  multiqc_report.html
 ```
 The html report shows the MultiQC summary
 
-![Alt text](../Prep_Files/Images/MQC1.png)
+![image](./Images/MQC1.png)
 
 - - - 
-
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/0.Background/" style="background: var(--bs-green);font-weight:bold">&laquo; Background</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/2.Trimming_And_Filtering/" style="background: var(--bs-green);font-weight:bold">2. Cleaning Reads &raquo;</a></b>
-  </span>
-</p>
 
 <p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
