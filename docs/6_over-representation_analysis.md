@@ -589,7 +589,7 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
 -   DESeq2 and edgeR model the count data, and assume a Negative
     Binomial distribution
 -   Limma transforms (and logs) the data and assumes normality
--   Here we’ve seen that these three approches give quite similar
+-   Here we’ve seen that these three approaches give quite similar
     results.
 -   For Gene Set analysis, gene length needs to be accounted for, since
     longer transcripts are more likely to be found to be differentially
