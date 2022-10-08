@@ -135,7 +135,7 @@ table(genes)
 pwf=nullp(genes, "sacCer1", "ensGene")
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 #### Inspect output
 
