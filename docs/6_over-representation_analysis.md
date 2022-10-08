@@ -527,9 +527,8 @@ for(i in 1:length(onlySig.wall)){
 cols <- rep(c("lightpink", "lightblue"), c(10,7))
 boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
 ```
+![image](./rnaseq-pathway_files/figure-gfm/GO_boxplot1.png)
 
-![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_boxplot1.png) -->
 
 #### All significant GO terms
 
@@ -578,8 +577,8 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
        fill=c("red", "pink", "lightblue", "blue"))
 ```
 
-![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
-<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_p-value.png) -->
+![image](./rnaseq-pathway_files/figure-gfm/GeneLength_vs_p-value.png)<!-- -->
+
 
 ------------------------------------------------------------------------
 
