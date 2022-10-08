@@ -1,19 +1,8 @@
-<p style="text-align:left;">
-  <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-green);font-weight:bold">&laquo; Back to homepage</a></b> 
-  <span style="float:right;">
-    <b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/1.Quality_Assessment/" style="background: var(--bs-green);font-weight:bold">1. Quality Assessment &raquo;</a></b>
-  </span>
-</p>
+# RNA-seq Workflow
 
-
-# Workshop Overview
-* Do not remove this line (it will not be displayed)
-{:toc}
-
-## RNA-seq Workflow
 Before beginning an RNA-Seq experiment, you should understand and carefully consider each step of the RNA-Seq workflow: Experimental design, Extraction, Library preparation, Sequencing, and Data analysis.
 
-![](../Prep_Files/Images/RNA-seq_workflow.png)
+![image](./Images/RNA-seq_workflow.png)
 
 
 ### Experimental design
@@ -40,10 +29,13 @@ Parameters for sequencing—such as read length, configuration, and output—dep
 However, if cost reduction is paramount and/or high data output is required, short-read sequencing is a better choice.
 
 ### Data Analysis
+
 Evaluating your data quality and extracting biologically relevant information is the final and most rewarding step in an RNA-Seq experiment. It is important to discuss your project with an experienced bioinformatician to find the best analysis pipeline for your data. One pipeline does not fit all approaches.
-<p><br><img src="../Prep_Files/Images/full_rna_seq_workflow.png" alt="drawing" width="900"/></p>
+
+![image](./Images/full_rna_seq_workflow.png)
 
 Exercises
+
 - Rank genes based on expression?
 - Identify differentially expressed genes after inducing a drug
 - Identify Novel transcripts
