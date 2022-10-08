@@ -17,7 +17,7 @@
     
     
       
-        <title>RNA-seq: pathway analysis - RNA-Seq Data Analysis</title>
+        <title>Over-representation analysis (Gene Ontology) - RNA-Seq Data Analysis</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rna-seq-pathway-analysis" class="md-skip">
+        <a href="#over-representation-analysis-gene-ontology" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RNA-seq: pathway analysis
+              Over-representation analysis (Gene Ontology)
             
           </span>
         </div>
@@ -339,9 +339,204 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Over-representation analysis (Gene Ontology)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-        RNA-seq: pathway analysis
+        Over-representation analysis (Gene Ontology)
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goseq" class="md-nav__link">
+    GOseq
+  </a>
+  
+    <nav class="md-nav" aria-label="GOseq">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#results-from-the-young-et-al-2010-publication" class="md-nav__link">
+    Results from the Young et al (2010) publication:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goseq-analysis" class="md-nav__link">
+    GOseq analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="GOseq analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculate-gene-weights" class="md-nav__link">
+    Calculate gene weights
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspect-output" class="md-nav__link">
+    Inspect output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-lengths-and-weights" class="md-nav__link">
+    Gene lengths and weights
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-length-vs-average-expression" class="md-nav__link">
+    Gene length vs average expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#length-correction-in-goseq" class="md-nav__link">
+    Length correction in GOSeq
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-wallenius-method" class="md-nav__link">
+    Output: Wallenius method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-value-adjustment" class="md-nav__link">
+    P-value adjustment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-by-gene-set-length" class="md-nav__link">
+    Filtering by gene set length
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-terms" class="md-nav__link">
+    GO terms
+  </a>
+  
+    <nav class="md-nav" aria-label="GO terms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-goseq-without-gene-length-correction" class="md-nav__link">
+    Run GOSeq without gene length correction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-value-adjustment_1" class="md-nav__link">
+    P-value adjustment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-with-and-without-adjustment" class="md-nav__link">
+    Compare with and without adjustment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-lengths-and-go-term-membership" class="md-nav__link">
+    Gene lengths and GO term membership
+  </a>
+  
+    <nav class="md-nav" aria-label="Gene lengths and GO term membership">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-fancy" class="md-nav__link">
+    Getting fancy…
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#significant-hypergeometric-vs-wallenius" class="md-nav__link">
+    Significant: Hypergeometric vs Wallenius
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-significant-go-terms" class="md-nav__link">
+    All significant GO terms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-length-versus-p-value" class="md-nav__link">
+    Gene length versus P-value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -412,6 +607,185 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goseq" class="md-nav__link">
+    GOseq
+  </a>
+  
+    <nav class="md-nav" aria-label="GOseq">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#results-from-the-young-et-al-2010-publication" class="md-nav__link">
+    Results from the Young et al (2010) publication:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goseq-analysis" class="md-nav__link">
+    GOseq analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="GOseq analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculate-gene-weights" class="md-nav__link">
+    Calculate gene weights
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspect-output" class="md-nav__link">
+    Inspect output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-lengths-and-weights" class="md-nav__link">
+    Gene lengths and weights
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-length-vs-average-expression" class="md-nav__link">
+    Gene length vs average expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#length-correction-in-goseq" class="md-nav__link">
+    Length correction in GOSeq
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-wallenius-method" class="md-nav__link">
+    Output: Wallenius method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-value-adjustment" class="md-nav__link">
+    P-value adjustment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-by-gene-set-length" class="md-nav__link">
+    Filtering by gene set length
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-terms" class="md-nav__link">
+    GO terms
+  </a>
+  
+    <nav class="md-nav" aria-label="GO terms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-goseq-without-gene-length-correction" class="md-nav__link">
+    Run GOSeq without gene length correction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-value-adjustment_1" class="md-nav__link">
+    P-value adjustment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compare-with-and-without-adjustment" class="md-nav__link">
+    Compare with and without adjustment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-lengths-and-go-term-membership" class="md-nav__link">
+    Gene lengths and GO term membership
+  </a>
+  
+    <nav class="md-nav" aria-label="Gene lengths and GO term membership">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-fancy" class="md-nav__link">
+    Getting fancy…
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#significant-hypergeometric-vs-wallenius" class="md-nav__link">
+    Significant: Hypergeometric vs Wallenius
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all-significant-go-terms" class="md-nav__link">
+    All significant GO terms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gene-length-versus-p-value" class="md-nav__link">
+    Gene length versus P-value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -428,14 +802,498 @@
 
 
 
-<h1 id="rna-seq-pathway-analysis">RNA-seq: pathway analysis<a class="headerlink" href="#rna-seq-pathway-analysis" title="Permanent link">&para;</a></h1>
-<p>In this session we will be using R to perform a pathway analysis based on over-representation 
-analysis. </p>
-<p>We'll use a combination of R markdown output and slides:</p>
+<h1 id="over-representation-analysis-gene-ontology">Over-representation analysis (Gene Ontology)<a class="headerlink" href="#over-representation-analysis-gene-ontology" title="Permanent link">&para;</a></h1>
 <ul>
-<li>R markdown: <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/5.Overrepresentation_Analysis/rnaseq-pathway.md">rnaseq-pathway.md</a></li>
 <li>Slides: <a href="https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/5.Overrepresentation_Analysis/lecture_annotation_pathways.pdf">lecture_annotation_pathways.pdf</a></li>
 </ul>
+<p>Over-representation Analysis
+(<a href="https://academic.oup.com/bioinformatics/article/20/18/3710/202612">Boyle
+et al. 2004</a>) is a widely used approach to determine whether known
+biological functions or processes are over-represented (= enriched) in
+an experimentally-derived gene list, e.g. a list of differentially
+expressed genes (DEGs).</p>
+<ul>
+<li>Can perform overrepresentation analysis online (e.g., Enrichr,
+    GeneSetDB, PantherDB), and also in R.</li>
+<li>The basic principles are to:<ul>
+<li>identify a collection of differentially expressed genes</li>
+<li>test to see if genes that are members of specific gene sets
+    (e.g., Reactome pathways, Gene Ontology categories) are
+    differentially expressed more often than would be expected by
+    chance.</li>
+</ul>
+</li>
+</ul>
+<p><em>Some caveats for RNA-seq data</em></p>
+<ul>
+<li>The gene-set analysis methods are applicable to transcriptomic data
+    from both microarrays and RNA-seq.</li>
+<li>One caveat, however, is that the results need to take <em>gene length</em>
+    into account.</li>
+<li>RNA-seq tends to produce higher expression levels (i.e., greater
+    counts) for longer genes: a longer transcript implies more aligned
+    fragments, and thus higher counts. This also gives these genes a
+    great chance of being statistically differentially expressed.</li>
+<li>Some gene sets (pathways, GO terms) tend to involve families of long
+    genes: if long genes have a great chance of being detected as
+    differentially expressed, then <em>gene sets</em> consisting of long genes
+    will have a great chance of appeared to be enriched in the analysis.</li>
+</ul>
+<h3 id="goseq">GOseq<a class="headerlink" href="#goseq" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The GOseq methodology
+    (<a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2010-11-2-r14">Young
+    et al., 2010</a>) overcomes this issue by allowing the
+    over-representation analysis to be adjusted for gene length.</li>
+<li>modification to hypergeometric sampling probability</li>
+<li>exact method (resampling) and an approximation-based method</li>
+<li>More recent publications have also applied this gene-length
+    correction to GSEA-based methods.</li>
+<li>Still not widely understood to be an issue when performing RNA-seq
+    pathway analysis, but REALLY important to take into account.</li>
+</ul>
+<h4 id="results-from-the-young-et-al-2010-publication">Results from the Young et al (2010) publication:<a class="headerlink" href="#results-from-the-young-et-al-2010-publication" title="Permanent link">&para;</a></h4>
+<p><img alt="image" src="../PNG/goseq-1.png" />
+<center><small>Proportion DE by gene length and reads</small></center></p>
+<p><img alt="image" src="../PNG/goseq-2.png" />
+<center><small>Gene set ranks by standard analysis</small></center></p>
+<p><img alt="image" src="../PNG/goseq-3.png" />
+<center><small>Gene set ranks by GOseq</small></center></p>
+<h3 id="goseq-analysis">GOseq analysis<a class="headerlink" href="#goseq-analysis" title="Permanent link">&para;</a></h3>
+<p>Need to figure out if our organism is supported… (code is “sacCer”)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">goseq</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">supportedOrganisms</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">head</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>##          Genome         Id  Id Description Lengths in geneLeneDataBase
+## 10      anoCar1    ensGene Ensembl gene ID                        TRUE
+## 11      anoGam1    ensGene Ensembl gene ID                        TRUE
+## 132     anoGam3                                                  FALSE
+## 12      apiMel2    ensGene Ensembl gene ID                        TRUE
+## 137 Arabidopsis                                                  FALSE
+## 56      bosTau2 geneSymbol     Gene Symbol                        TRUE
+##     GO Annotation Available
+## 10                    FALSE
+## 11                     TRUE
+## 132                    TRUE
+## 12                    FALSE
+## 137                    TRUE
+## 56                     TRUE
+</code></pre></div>
+<p>Easier to find if we use <code>View()</code> <strong>(NB - this only works in RStudio.
+Can’t use in Jupyter on NeSI).</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">supportedOrganisms</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">View</span><span class="p">()</span>
+</code></pre></div>
+<p><em>Define differentially expressed genes</em></p>
+<ul>
+<li>Create a vector of 0’s and 1’s to denote whether or not genes are
+    differentially expressed (limma analysis: topTable).</li>
+<li>Add gene names to the vector so that GOSeq knows which gene each
+    data point relates to.</li>
+</ul>
+<p>Load our topTable results from last session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">load</span><span class="p">(</span><span class="s">&#39;topTable.RData&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Note: If you want to use tt from DESeq, replace $adj.P.Val with $padj below</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">genes</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">tt</span><span class="o">$</span><span class="n">adj.P.Val</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span> 
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nf">names</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">rownames</span><span class="p">(</span><span class="n">tt</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nf">head</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## YAL038W YOR161C YML128C YMR105C YHL021C YDR516C 
+##       1       1       1       1       1       1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">table</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## genes
+##    0    1 
+## 1987 5140
+</code></pre></div>
+<h4 id="calculate-gene-weights">Calculate gene weights<a class="headerlink" href="#calculate-gene-weights" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Put genes into length-based “bins”, and plot length vs proportion
+    differentially expressed</li>
+<li>Likely restricts to only those genes with GO annotation</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">pwf</span><span class="o">=</span><span class="nf">nullp</span><span class="p">(</span><span class="n">genes</span><span class="p">,</span> <span class="s">&quot;sacCer1&quot;</span><span class="p">,</span> <span class="s">&quot;ensGene&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="image" src="../rnaseq-pathway_files/figure-gfm/unnamed-chunk-5-1.png" /><!-- --></p>
+<h4 id="inspect-output">Inspect output<a class="headerlink" href="#inspect-output" title="Permanent link">&para;</a></h4>
+<p>Report length (bias) and weight data per gene.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">pwf</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>##         DEgenes bias.data       pwf
+## YAL038W       1      1504 0.8205505
+## YOR161C       1      1621 0.8205505
+## YML128C       1      1543 0.8205505
+## YMR105C       1      1711 0.8205505
+## YHL021C       1      1399 0.8205505
+## YDR516C       1      1504 0.8205505
+</code></pre></div>
+<h4 id="gene-lengths-and-weights">Gene lengths and weights<a class="headerlink" href="#gene-lengths-and-weights" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">hist</span><span class="p">(</span><span class="n">pwf</span><span class="o">$</span><span class="n">bias.data</span><span class="p">,</span><span class="m">30</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nf">hist</span><span class="p">(</span><span class="n">pwf</span><span class="o">$</span><span class="n">pwf</span><span class="p">,</span><span class="m">30</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="image" src="../rnaseq-pathway_files/figure-gfm/unnamed-chunk-8-1.png" /><!-- --></p>
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/Gene_lengths_weight.png) -->
+
+<h4 id="gene-length-vs-average-expression">Gene length vs average expression<a class="headerlink" href="#gene-length-vs-average-expression" title="Permanent link">&para;</a></h4>
+<p>Is there an association between gene length and expression level?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">data.frame</span><span class="p">(</span><span class="n">logGeneLength</span> <span class="o">=</span> <span class="nf">log2</span><span class="p">(</span><span class="n">pwf</span><span class="o">$</span><span class="n">bias.data</span><span class="p">),</span> 
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>           <span class="n">avgExpr</span> <span class="o">=</span> <span class="n">tt</span><span class="o">$</span><span class="n">AveExpr</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  <span class="nf">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">logGeneLength</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">avgExpr</span><span class="p">))</span> <span class="o">+</span> 
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">0.2</span><span class="p">)</span> <span class="o">+</span> 
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;lm&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="image" src="../rnaseq-pathway_files/figure-gfm/unnamed-chunk-9-1.png" /><!-- --></p>
+<p>How about gene length and statistical evidence supporting differential
+expression?</p>
+<p>(Kinda hard to see, but it is apparently there…)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">data.frame</span><span class="p">(</span><span class="n">logGeneLength</span> <span class="o">=</span> <span class="nf">log2</span><span class="p">(</span><span class="n">pwf</span><span class="o">$</span><span class="n">bias.data</span><span class="p">),</span> 
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>           <span class="n">negLogAdjP</span> <span class="o">=</span> <span class="o">-</span><span class="nf">log10</span><span class="p">(</span><span class="n">tt</span><span class="o">$</span><span class="n">adj.P.Val</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  <span class="nf">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">logGeneLength</span><span class="p">,</span> <span class="n">negLogAdjP</span><span class="p">))</span> <span class="o">+</span> 
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">0.2</span><span class="p">)</span> <span class="o">+</span> 
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;lm&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="image" src="../rnaseq-pathway_files/figure-gfm/unnamed-chunk-10-1.png" /><!-- --></p>
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_AvgExpression.png) -->
+
+<h4 id="length-correction-in-goseq">Length correction in GOSeq<a class="headerlink" href="#length-correction-in-goseq" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Uses “Wallenius approximation” to perform correction.</li>
+<li>Essentially it is performing a weighted Fisher’s Exact Test, but
+    each gene in the 2x2 data does not contribute equally to the per
+    cell count - it instead contributes its weight (based on its
+    length).</li>
+<li>This means that a gene set (e.g., GO term) containing lots of
+    significant short genes will be considered more likely to be
+    enriched that a gene set with a similar proportion of long genes
+    that are differentially expressed.</li>
+</ul>
+<p>Run GOSeq with gene length correction:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">GO.wall</span><span class="o">=</span><span class="nf">goseq</span><span class="p">(</span><span class="n">pwf</span><span class="p">,</span> <span class="s">&quot;sacCer1&quot;</span><span class="p">,</span> <span class="s">&quot;ensGene&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="output-wallenius-method">Output: Wallenius method<a class="headerlink" href="#output-wallenius-method" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">GO.wall</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>##        category over_represented_pvalue under_represented_pvalue numDEInCat
+## 1325 GO:0005622            1.817597e-17                        1       4298
+## 7912 GO:0110165            8.200109e-12                        1       4456
+## 5245 GO:0042254            9.441146e-12                        1        364
+## 3817 GO:0022613            1.355385e-11                        1        439
+## 5446 GO:0043226            2.516156e-11                        1       3826
+## 5449 GO:0043229            4.433252e-11                        1       3817
+##      numInCat                                 term ontology
+## 1325     5179                        intracellular       CC
+## 7912     5417           cellular anatomical entity       CC
+## 5245      395                  ribosome biogenesis       BP
+## 3817      482 ribonucleoprotein complex biogenesis       BP
+## 5446     4609                            organelle       CC
+## 5449     4599              intracellular organelle       CC
+</code></pre></div>
+<h4 id="p-value-adjustment">P-value adjustment<a class="headerlink" href="#p-value-adjustment" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">GO.wall.padj</span> <span class="o">&lt;-</span> <span class="nf">p.adjust</span><span class="p">(</span><span class="n">GO.wall</span><span class="o">$</span><span class="n">over_represented_pvalue</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;fdr&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">sum</span><span class="p">(</span><span class="n">GO.wall.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] 45
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">GO.wall.sig</span> <span class="o">&lt;-</span> <span class="n">GO.wall</span><span class="o">$</span><span class="n">category</span><span class="p">[</span><span class="n">GO.wall.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">]</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">length</span><span class="p">(</span><span class="n">GO.wall.sig</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] 45
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">GO.wall.sig</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] &quot;GO:0005622&quot; &quot;GO:0110165&quot; &quot;GO:0042254&quot; &quot;GO:0022613&quot; &quot;GO:0043226&quot;
+## [6] &quot;GO:0043229&quot;
+</code></pre></div>
+<h4 id="filtering-by-gene-set-length">Filtering by gene set length<a class="headerlink" href="#filtering-by-gene-set-length" title="Permanent link">&para;</a></h4>
+<p>We are usually not interested in pathways or ontology terms that involve
+large numbers of genes (they are often rather broad terms or
+mechanisms), so we can exclude these from the results (here we only
+include significant GO terms that involve less than 500 genes):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">GO.wall</span><span class="p">[</span><span class="n">GO.wall.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">,</span> <span class="p">]</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">numInCat</span> <span class="o">&lt;</span> <span class="m">500</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>##      category over_represented_pvalue under_represented_pvalue numDEInCat
+## 1  GO:0042254            9.441146e-12                1.0000000        364
+## 2  GO:0022613            1.355385e-11                1.0000000        439
+## 3  GO:0030684            3.348423e-08                1.0000000        163
+## 4  GO:0016072            3.873737e-08                1.0000000        274
+## 5  GO:0006364            4.532117e-08                1.0000000        259
+## 6  GO:0034470            2.776978e-07                1.0000000        360
+## 7  GO:0030490            9.891093e-07                0.9999998        111
+## 8  GO:0030687            1.502461e-06                1.0000000         62
+## 9  GO:0042274            2.616777e-06                0.9999993        134
+## 10 GO:0005730            3.753501e-06                1.0000000        264
+## 11 GO:0003735            3.799990e-06                1.0000000        194
+## 12 GO:0022626            4.824970e-06                0.9999984        140
+## 13 GO:0044391            6.732064e-06                1.0000000        202
+## 14 GO:0000462            1.221128e-05                0.9999977         99
+## 15 GO:0005840            1.780243e-05                0.9999942        221
+## 16 GO:0002181            2.156069e-05                0.9999913        169
+## 17 GO:0034660            7.782098e-05                0.9999571        409
+## 18 GO:0042273            8.604282e-05                0.9999745        117
+##    numInCat
+## 1       395
+## 2       482
+## 3       171
+## 4       299
+## 5       282
+## 6       401
+## 7       116
+## 8        62
+## 9       143
+## 10      292
+## 11      221
+## 12      156
+## 13      231
+## 14      104
+## 15      254
+## 16      191
+## 17      467
+## 18      126
+##                                                                                        term
+## 1                                                                       ribosome biogenesis
+## 2                                                      ribonucleoprotein complex biogenesis
+## 3                                                                               preribosome
+## 4                                                                    rRNA metabolic process
+## 5                                                                           rRNA processing
+## 6                                                                          ncRNA processing
+## 7                                                                    maturation of SSU-rRNA
+## 8                                                      preribosome, large subunit precursor
+## 9                                                        ribosomal small subunit biogenesis
+## 10                                                                                nucleolus
+## 11                                                       structural constituent of ribosome
+## 12                                                                       cytosolic ribosome
+## 13                                                                        ribosomal subunit
+## 14 maturation of SSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)
+## 15                                                                                 ribosome
+## 16                                                                  cytoplasmic translation
+## 17                                                                  ncRNA metabolic process
+## 18                                                       ribosomal large subunit biogenesis
+##    ontology
+## 1        BP
+## 2        BP
+## 3        CC
+## 4        BP
+## 5        BP
+## 6        BP
+## 7        BP
+## 8        CC
+## 9        BP
+## 10       CC
+## 11       MF
+## 12       CC
+## 13       CC
+## 14       BP
+## 15       CC
+## 16       BP
+## 17       BP
+## 18       BP
+</code></pre></div>
+<hr />
+<h2 id="go-terms">GO terms<a class="headerlink" href="#go-terms" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Can use the <code>GO.db</code> package to get more information about the
+    significant gene sets.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">GO.db</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">GOTERM</span><span class="p">[[</span><span class="n">GO.wall.sig</span><span class="p">[</span><span class="m">1</span><span class="p">]]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## GOID: GO:0005622
+## Term: intracellular
+## Ontology: CC
+## Definition: The living contents of a cell; the matter contained within
+##     (but not including) the plasma membrane, usually taken to exclude
+##     large vacuoles and masses of secretory or ingested material. In
+##     eukaryotes it includes the nucleus and cytoplasm.
+## Synonym: internal to cell
+## Synonym: protoplasm
+## Synonym: nucleocytoplasm
+## Synonym: protoplast
+</code></pre></div>
+<hr />
+<p><strong>NB - the code below is demonstrating the difference between running
+with and without the gene length correction that GOseq implements. You
+wouldn’t usually work through this as part of a standard pathway
+analysis.</strong></p>
+<hr />
+<h4 id="run-goseq-without-gene-length-correction">Run GOSeq without gene length correction<a class="headerlink" href="#run-goseq-without-gene-length-correction" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">GO.nobias</span><span class="o">=</span><span class="nf">goseq</span><span class="p">(</span><span class="n">pwf</span><span class="p">,</span> <span class="s">&quot;sacCer1&quot;</span><span class="p">,</span> <span class="s">&quot;ensGene&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;Hypergeometric&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><em>Output: Hypergeomtric (Fisher) method</em></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">GO.nobias</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>##        category over_represented_pvalue under_represented_pvalue numDEInCat
+## 1325 GO:0005622            8.650971e-29                        1       4298
+## 7912 GO:0110165            3.271100e-21                        1       4456
+## 5446 GO:0043226            9.826546e-16                        1       3826
+## 2650 GO:0009987            1.330459e-15                        1       4146
+## 5449 GO:0043229            2.060920e-15                        1       3817
+## 5245 GO:0042254            7.222008e-11                        1        364
+##      numInCat                       term ontology
+## 1325     5179              intracellular       CC
+## 7912     5417 cellular anatomical entity       CC
+## 5446     4609                  organelle       CC
+## 2650     5023           cellular process       BP
+## 5449     4599    intracellular organelle       CC
+## 5245      395        ribosome biogenesis       BP
+</code></pre></div>
+<h4 id="p-value-adjustment_1">P-value adjustment<a class="headerlink" href="#p-value-adjustment_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">GO.nobias.padj</span> <span class="o">&lt;-</span> <span class="nf">p.adjust</span><span class="p">(</span><span class="n">GO.nobias</span><span class="o">$</span><span class="n">over_represented_pvalue</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;fdr&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">sum</span><span class="p">(</span><span class="n">GO.nobias.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] 44
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">GO.nobias.sig</span> <span class="o">&lt;-</span> <span class="n">GO.nobias</span><span class="o">$</span><span class="n">category</span><span class="p">[</span><span class="n">GO.nobias.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">]</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">length</span><span class="p">(</span><span class="n">GO.nobias.sig</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] 44
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">GO.nobias.sig</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] &quot;GO:0005622&quot; &quot;GO:0110165&quot; &quot;GO:0043226&quot; &quot;GO:0009987&quot; &quot;GO:0043229&quot;
+## [6] &quot;GO:0042254&quot;
+</code></pre></div>
+<h3 id="compare-with-and-without-adjustment">Compare with and without adjustment<a class="headerlink" href="#compare-with-and-without-adjustment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">gplots</span><span class="p">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nf">venn</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">GO.wall</span><span class="o">=</span><span class="n">GO.wall.sig</span><span class="p">,</span> <span class="n">GO.nobias</span><span class="o">=</span><span class="n">GO.nobias.sig</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="image" src="./rnaseq-pathway_files/figure-gfm/unnamed-chunk-19-1.png" /><!-- --></p>
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_venn.png) -->
+
+<p>Extract out the different parts of the Venn diagram (yes, there are
+definitely better ways to do this).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">## Only significant in Hypergeomtric analysis</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">onlySig.nobias</span> <span class="o">&lt;-</span> <span class="nf">setdiff</span><span class="p">(</span><span class="n">GO.nobias.sig</span><span class="p">,</span> <span class="n">GO.wall.sig</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1">## Only significant in Wallenius analysis</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">onlySig.wall</span> <span class="o">&lt;-</span> <span class="nf">setdiff</span><span class="p">(</span><span class="n">GO.wall.sig</span><span class="p">,</span> <span class="n">GO.nobias.sig</span><span class="p">)</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1">## Significant in both</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="n">sig.wall.nobias</span> <span class="o">&lt;-</span> <span class="nf">intersect</span><span class="p">(</span><span class="n">GO.wall.sig</span><span class="p">,</span> <span class="n">GO.nobias.sig</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="gene-lengths-and-go-term-membership">Gene lengths and GO term membership<a class="headerlink" href="#gene-lengths-and-go-term-membership" title="Permanent link">&para;</a></h3>
+<p>Can also extract gene length and GO membership information.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">len</span><span class="o">=</span><span class="nf">getlength</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">genes</span><span class="p">),</span><span class="s">&quot;sacCer1&quot;</span><span class="p">,</span><span class="s">&quot;ensGene&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nf">head</span><span class="p">(</span><span class="n">len</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] 1504 1621 1543 1711 1399 1504
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">go</span> <span class="o">=</span> <span class="nf">getgo</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">genes</span><span class="p">),</span><span class="s">&quot;sacCer1&quot;</span><span class="p">,</span><span class="s">&quot;ensGene&quot;</span><span class="p">)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nf">names</span><span class="p">(</span><span class="n">go</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">head</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] &quot;YAL038W&quot; &quot;YOR161C&quot; &quot;YML128C&quot; &quot;YMR105C&quot; &quot;YHL021C&quot; &quot;YDR516C&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nf">class</span><span class="p">(</span><span class="n">go</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] &quot;list&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">go</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] &quot;GO:0006082&quot; &quot;GO:0008150&quot; &quot;GO:0008152&quot; &quot;GO:0009987&quot; &quot;GO:0019752&quot;
+## [6] &quot;GO:0032787&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">go</span><span class="p">[[</span><span class="m">2</span><span class="p">]])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>## [1] &quot;GO:0006810&quot; &quot;GO:0008150&quot; &quot;GO:0009987&quot; &quot;GO:0051179&quot; &quot;GO:0051234&quot;
+## [6] &quot;GO:0055085&quot;
+</code></pre></div>
+<hr />
+<h4 id="getting-fancy">Getting fancy…<a class="headerlink" href="#getting-fancy" title="Permanent link">&para;</a></h4>
+<p>Figure out which genes are in the significant GO groups, and then gets
+their lengths.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">lengths.onlySig.nobias</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">onlySig.nobias</span><span class="p">)){</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>  <span class="n">inGo</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">go</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="n">onlySig.nobias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%in%</span> <span class="n">x</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">unlist</span><span class="p">()</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>  <span class="n">lengths.onlySig.nobias</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">len</span><span class="p">[</span><span class="n">inGo</span><span class="p">]</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="p">}</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="n">lengths.onlySig.wall</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">onlySig.wall</span><span class="p">)){</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>  <span class="n">inGo</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">go</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="n">onlySig.wall</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%in%</span> <span class="n">x</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">unlist</span><span class="p">()</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>  <span class="n">lengths.onlySig.wall</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">len</span><span class="p">[</span><span class="n">inGo</span><span class="p">]</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="significant-hypergeometric-vs-wallenius">Significant: Hypergeometric vs Wallenius<a class="headerlink" href="#significant-hypergeometric-vs-wallenius" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Only Hypergeometric (pink) vs only Wallenius (blue)</li>
+<li>Hypergeometric method is findings GO terms containing longer genes.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">cols</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lightpink&quot;</span><span class="p">,</span> <span class="s">&quot;lightblue&quot;</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nf">boxplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">lengths.onlySig.nobias</span><span class="p">,</span> <span class="n">lengths.onlySig.wall</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="image" src="./rnaseq-pathway_files/figure-gfm/unnamed-chunk-23-1.png" /><!-- --></p>
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_boxplot1.png) -->
+
+<h4 id="all-significant-go-terms">All significant GO terms<a class="headerlink" href="#all-significant-go-terms" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">lengths.sig.wall.nobias</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">sig.wall.nobias</span><span class="p">)){</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>  <span class="n">inGo</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">go</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="n">sig.wall.nobias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%in%</span> <span class="n">x</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">unlist</span><span class="p">()</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>  <span class="n">lengths.sig.wall.nobias</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">len</span><span class="p">[</span><span class="n">inGo</span><span class="p">]</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">cols</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lightpink&quot;</span><span class="p">,</span> <span class="nf">grey</span><span class="p">(</span><span class="m">0.7</span><span class="p">),</span> <span class="s">&quot;lightblue&quot;</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">37</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">avgLength</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">lengths.onlySig.nobias</span><span class="p">,</span> <span class="n">lengths.sig.wall.nobias</span><span class="p">,</span> <span class="n">lengths.onlySig.wall</span><span class="p">),</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>                    <span class="n">median</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">unlist</span><span class="p">()</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="n">oo</span> <span class="o">&lt;-</span> <span class="nf">order</span><span class="p">(</span><span class="n">avgLength</span><span class="p">,</span> <span class="n">decreasing</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nf">boxplot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">lengths.onlySig.nobias</span><span class="p">,</span> <span class="n">lengths.sig.wall.nobias</span><span class="p">,</span> <span class="n">lengths.onlySig.wall</span><span class="p">)[</span><span class="n">oo</span><span class="p">],</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>        <span class="n">col</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">oo</span><span class="p">],</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Gene Length&quot;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;GO term&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="image" src="../rnaseq-pathway_files/figure-gfm/unnamed-chunk-26-1.png" /><!-- --></p>
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GO_All_significant.png) -->
+
+<h4 id="gene-length-versus-p-value">Gene length versus P-value<a class="headerlink" href="#gene-length-versus-p-value" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">avgLength.wall</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">lengths.onlySig.wall</span><span class="p">,</span> <span class="n">lengths.sig.wall.nobias</span><span class="p">),</span> <span class="n">median</span><span class="p">)</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="n">avgLength.nobias</span> <span class="o">&lt;-</span> <span class="nf">lapply</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">lengths.onlySig.nobias</span><span class="p">,</span> <span class="n">lengths.sig.wall.nobias</span><span class="p">),</span> <span class="n">median</span><span class="p">)</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="n">cols</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">,</span><span class="s">&quot;lightpink&quot;</span><span class="p">),</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>            <span class="nf">c</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">lengths.onlySig.wall</span><span class="p">),</span> <span class="nf">length</span><span class="p">(</span><span class="n">lengths.sig.wall.nobias</span><span class="p">),</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>              <span class="nf">length</span><span class="p">(</span><span class="n">lengths.onlySig.nobias</span><span class="p">),</span> <span class="nf">length</span><span class="p">(</span><span class="n">lengths.sig.wall.nobias</span><span class="p">)))</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="nf">plot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">avgLength.wall</span><span class="p">,</span> <span class="n">avgLength.nobias</span><span class="p">),</span> 
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>     <span class="o">-</span><span class="nf">log</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">GO.nobias.padj</span><span class="p">[</span><span class="n">GO.nobias.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">],</span> <span class="n">GO.wall.padj</span><span class="p">[</span><span class="n">GO.wall.padj</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="p">])),</span> 
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>     <span class="n">col</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Median Gene Length&quot;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span><span class="s">&quot;-log(FDR adj-pval)&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="nf">legend</span><span class="p">(</span><span class="s">&#39;topright&#39;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Only sig in NoBias&quot;</span><span class="p">,</span> <span class="s">&quot;Sig in both (nobias adjp)&quot;</span><span class="p">,</span> 
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>                     <span class="s">&quot;Sig in both (wal adjp)&quot;</span><span class="p">,</span> <span class="s">&quot;Only sig in Wall&quot;</span><span class="p">),</span> 
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>       <span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;pink&quot;</span><span class="p">,</span> <span class="s">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="image" src="./rnaseq-pathway_files/figure-gfm/unnamed-chunk-27-1.png" /><!-- --></p>
+<!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_p-value.png) -->
+
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Once we’ve generated count data, there are a number of ways to
+    perform a differential expression analysis.</li>
+<li>DESeq2 and edgeR model the count data, and assume a Negative
+    Binomial distribution</li>
+<li>Limma transforms (and logs) the data and assumes normality</li>
+<li>Here we’ve seen that these three approches give quite similar
+    results.</li>
+<li>For Gene Set analysis, gene length needs to be accounted for, since
+    longer transcripts are more likely to be found to be differentially
+    expressed.<ul>
+<li>GOSeq adjusts for transcript length to take this into account.</li>
+<li>It is also possible to use GOSeq with other types of annotation
+    (e.g., Reactome or KEGG pathways).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
 
               
             </article>
