@@ -193,7 +193,7 @@ data.frame(logGeneLength = log2(pwf$bias.data),
   geom_smooth(method='lm')
 ```
 
-![](rnaseq-pathway_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![image](./rnaseq-pathway_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 <!-- ![Alt text](https://github.com/foreal17/RNA-seq-workshop/blob/master/Prep_Files/Images/GeneLength_vs_AvgExpression.png) -->
 
