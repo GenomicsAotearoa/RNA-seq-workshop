@@ -6,8 +6,6 @@ This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and
 
 ## Content
 
-Before getting started, have a look at the [Supplementary data](./07_supplementary.md) for instructions on how to connect to NeSI Mahuika Jupyter.
-
 | **Lesson**                                         | **Overview** | 
 |:---------------------------------------------------|:-------------|
 |[1. Background](./1_background.md){ .md-button .md-button--primary }                          | General overview of Simulations , Gene Regulatory Networks and Simulating Gene Regulatory networks |
