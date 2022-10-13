@@ -1,8 +1,8 @@
 # Supplementary 1 - A Guide to RNA-Seq
 
-<object data="../0.Background/NGS_RNA-Seq_eBook_US_Jul27_2020.pdf" width="950" height="1000" type='application/pdf'></object>
 
-<p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>
-
-
+# Method-1
+<object data="NGS_RNA-Seq_eBook_US_Jul27_2020.pdf" type="application/pdf">
+    <embed src="NGS_RNA-Seq_eBook_US_Jul27_2020.pdf" type="application/pdf" />
+</object>
 
