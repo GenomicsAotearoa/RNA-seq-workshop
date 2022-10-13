@@ -147,7 +147,8 @@ SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  
 
 Next we sort the BAM file using the sort command from samtools. `-o` tells the command where to write the output.
 
->SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. Default `sort` is coordinates. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input. 
+>**SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.**
+
 
 ```bash
 $ for filename in *.bam
@@ -157,7 +158,7 @@ $ for filename in *.bam
 > done
 ```
 
->**SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.**
+
 
 You can use samtools to learn more about the bam file as well.
 
