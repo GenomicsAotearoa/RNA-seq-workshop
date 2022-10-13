@@ -674,7 +674,7 @@ Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome
 </code></pre></div>
 <p>Next we sort the BAM file using the sort command from samtools. <code>-o</code> tells the command where to write the output.</p>
 <blockquote>
-<p>SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. Default <code>sort</code> is coordinates. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input. </p>
+<p><strong>SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.</strong></p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ <span class="k">for</span> filename <span class="k">in</span> *.bam
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&gt; <span class="k">do</span>
@@ -682,9 +682,6 @@ Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>&gt; samtools sort -o <span class="si">${</span><span class="nv">base</span><span class="si">}</span>_sorted.bam <span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>&gt; <span class="k">done</span>
 </code></pre></div>
-<blockquote>
-<p><strong>SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.</strong></p>
-</blockquote>
 <p>You can use samtools to learn more about the bam file as well.</p>
 <h2 id="some-stats-on-your-mapping">Some stats on your mapping:<a class="headerlink" href="#some-stats-on-your-mapping" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$ samtools flagstat SRR014335-chr1_sorted.bam 
@@ -732,7 +729,7 @@ is a count table, in which the number of reads assigned to each feature in each 
 <li>Need to specify the annotation information (.gtf file) 
 You can process all the samples at once:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ module load Subread
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ module load Subread/2.0.0-GCC-9.2.0
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$ <span class="nb">pwd</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>/home/<span class="nv">$USER</span>/RNA_seq

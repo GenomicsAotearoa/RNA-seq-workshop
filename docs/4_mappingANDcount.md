@@ -31,9 +31,10 @@ Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.2.ht2  Saccharomyces_cerevisiae.R6
 Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.3.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.7.ht2
 ```
 
->**Arguments:**
->  * **-p** number of threads
->  * **-f** fasta file
+!!! quote ""
+
+    * **-p** number of threads
+    * **-f** fasta file
 
 How many files were created during the indexing process?
 
@@ -69,10 +70,11 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
     19487 (15.58%) aligned >1 times
 83.58% overall alignment rate
 ```
->**Arguments:**
->  * **-x** The basename of the index for the reference genome. 
->  * **-U** Comma-separated list of files containing unpaired reads to be aligned
->  * **-S** File to write SAM alignments to. By default, alignments are written to the “standard out” or “stdout” filehandle  
+!!! quote ""
+
+    * **-x** The basename of the index for the reference genome. 
+    * **-U** Comma-separated list of files containing unpaired reads to be aligned
+    * **-S** File to write SAM alignments to. By default, alignments are written to the “standard out” or “stdout” filehandle  
 
 
 Now we need to align all the rest of the samples.
@@ -129,7 +131,7 @@ The file begins with a header, which is optional. The header is used to describe
 ```
 
 
-We will convert the SAM file to BAM format using the samtools program with the view command and tell this command that the input is in SAM format (`-S`) and to output BAM format (`-b`):
+We will convert the SAM file to BAM format using the samtools program with the `view` command 
 
 ```bash
 $ module load SAMtools/1.10-GCC-9.2.0
@@ -139,7 +141,14 @@ $ for filename in *.sam
 > base=$(basename ${filename} .sam)
 > samtools view -S -b ${filename} -o ${base}.bam
 > done
+```
+!!! quote ""
+ 
+    * **-S** input is in SAM format (it's here as a placeholder as SAMtoools version 1.10 or above  will pick up the correct format automatically by examining the first few characters of input.)
+    * **-b** Output is in BAM format
+    
 
+```
 $ ls
 SRR014335-chr1.bam  SRR014336-chr1.bam  SRR014337-chr1.bam  SRR014339-chr1.bam  SRR014340-chr1.bam  SRR014341-chr1.bam
 SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  SRR014340-chr1.sam  SRR014341-chr1.sam
