@@ -1,15 +1,6 @@
 # Supplementary 3 - Lecture notes : Annotation Data & Gene Set Analysis
 
-#<object data="./pdf/lecture_annotation_pathways.pdf" width="950" height="1000" type='application/pdf'></object>
-
-<object data="docs/pdf/lecture_annotation_pathways.pdf" type="application/pdf">
-    <embed src="docs/pdf/lecture_annotation_pathways.pdf" type="application/pdf" />
-</object>
-
-
-docs/pdf/lecture_annotation_pathways.pdf
-
-<!--- file: docs/pdf/lecture_annotation_pathways.pdf --->
+<embed src="../pdf/lecture_annotation_pathways.pdf" type="application/pdf" width="100%" height=800>
 
 
 
