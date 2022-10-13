@@ -12,7 +12,7 @@ This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and
 |[2. Quality Assessment](./2_qualityassessment.md){ .md-button .md-button--primary }|Assess the quality of data, How to use FastQC and MultiQC|
 |[3. Trimming and Filtering](./3_trimmingfiltering.md){ .md-button .md-button--primary }| How to remove adapter sequences |
 |[4. Mapping and Count](./4_mappingANDcount.md){ .md-button .md-button--primary }| Align/Map reads back to genome and number of reads from each sample that originated from that gene.|
-|[5. Differential Expression Analysis](./5_rnaseq-diffexp.md){ .md-button .md-button--primary }|Introduction to specifications in Parallel Computing, Slurm Job arrays and Exercises on Scaling networks|
+|[5. Differential Expression Analysis](./5_rnaseq-diffexp.md){ .md-button .md-button--primary }|Differential expression analysis with R|
 |[6. Over-representation analysis](./6_over-representation_analysis.md){ .md-button .md-button--primary }|Interpreting `sismonr` output and Visualising the simlulations|
 |[Supplementary 1 - A Guide to RNA-Seq](./supp_1.md){ .md-button}||
 |[Supplementary 2 - Lecture notes : DE analysis](./supp_2.md){.md-button}||
