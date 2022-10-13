@@ -11,7 +11,7 @@ This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and
 |[1. Background](./1_background.md){ .md-button .md-button--primary } | General overview of a RNA-Seq workflow |
 |[2. Quality Assessment](./2_qualityassessment.md){ .md-button .md-button--primary }|Assess the quality of data, How to use FastQC and MultiQC|
 |[3. Trimming and Filtering](./3_trimmingfiltering.md){ .md-button .md-button--primary }| How to remove adapter sequences |
-|[4. Mapping and Count](./4_mappingANDcount.md){ .md-button .md-button--primary }|Introduction to HPC Job Schedulers, Slurm Scheduler & life cycle of a Slurm job, Assessing resource utilisation and profiling|
+|[4. Mapping and Count](./4_mappingANDcount.md){ .md-button .md-button--primary }| Align/Map reads back to genome and number of reads from each sample that originated from that gene.|
 |[5. Differential Expression Analysis](./5_rnaseq-diffexp.md){ .md-button .md-button--primary }|Introduction to specifications in Parallel Computing, Slurm Job arrays and Exercises on Scaling networks|
 |[6. Over-representation analysis](./6_over-representation_analysis.md){ .md-button .md-button--primary }|Interpreting `sismonr` output and Visualising the simlulations|
 |[Supplementary 1 - A Guide to RNA-Seq](./supp_1.md){ .md-button}||
