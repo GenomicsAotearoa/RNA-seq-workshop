@@ -219,7 +219,7 @@ is a count table, in which the number of reads assigned to each feature in each 
 You can process all the samples at once:
 
 ```bash
-$ module load Subread
+$ module load Subread/2.0.0-GCC-9.2.0
 
 $ pwd
 /home/$USER/RNA_seq
