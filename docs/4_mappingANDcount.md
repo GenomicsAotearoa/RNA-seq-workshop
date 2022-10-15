@@ -142,12 +142,13 @@ We will convert the SAM file to BAM format using the samtools program with the `
 
 ```bash
 $ module load SAMtools/1.10-GCC-9.2.0
-
-$ for filename in *.sam
-> do
-> base=$(basename ${filename} .sam)
-> samtools view -S -b ${filename} -o ${base}.bam
-> done
+```
+```bash
+for filename in *.sam
+do
+base=$(basename ${filename} .sam)
+samtools view -S -b ${filename} -o ${base}.bam
+done
 ```
 !!! quote ""
  
