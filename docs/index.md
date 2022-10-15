@@ -3,7 +3,7 @@
 </center>
 
 <center>
-![image](./theme_images/main_image.png){width="400"}
+![image](./theme_images/main_image.png){width="450"}
 
 This RNA-Seq workshop aims to get you started with your own RNA-seq analysis and assumes you are already familiar with the basics of bash and R.
 
