@@ -557,12 +557,16 @@
 
 
 <h1 id="mapping-and-counting">Mapping and Counting<a class="headerlink" href="#mapping-and-counting" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>How to index a reference genome</li>
+<li>How to align sequence reads to an indexed reference genome</li>
+</ul>
+</div>
 <p><center>
 <img alt="imge" src="../theme_images/mapping.png" width="300" />
 </center></p>
-<div class="admonition info">
-<p class="admonition-title">Objectives</p>
-</div>
 <p>RNA-seq generate gene expression information by quantifying the number of transcripts (per gene) in a sample. This is accomplished by counting the number of transcripts that have been sequenced - the more active a gene is, the more transcripts will be in a sample, and the more reads will be generated from that transcript.</p>
 <p>For RNA-seq, we need to align or map each read back to the genome, to see which gene produced it.
 - Highly expressed genes will generate lots of transcripts, so there will be lots of reads that map back to the position of that transcript in the genome.
