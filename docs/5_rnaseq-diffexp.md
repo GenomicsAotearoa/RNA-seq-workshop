@@ -3,7 +3,7 @@
 !!! info "Objectives"
 
 <center>
-![image](./theme_images/head_volcano_plot.png){width="350"}
+![image](./theme_images/r_logos.png)
 </center>
 
 ### Recap
