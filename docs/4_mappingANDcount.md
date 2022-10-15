@@ -1,5 +1,8 @@
 # Mapping and Counting
 
+<center>
+![imge](./theme_images/mapping.png){width="300"}
+</center>
 
 !!! info "Objectives"
 
