@@ -168,11 +168,11 @@ Next we sort the BAM file using the sort command from samtools. `-o` tells the c
 
 
 ```bash
-$ for filename in *.bam
-> do
-> base=$(basename ${filename} .bam)
-> samtools sort -o ${base}_sorted.bam ${filename}
-> done
+for filename in *.bam
+do
+base=$(basename ${filename} .bam)
+samtools sort -o ${base}_sorted.bam ${filename}
+done
 ```
 
 
