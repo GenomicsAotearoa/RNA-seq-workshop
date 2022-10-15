@@ -1,15 +1,17 @@
 
 # Quality control of the sequencing data.
 
-<center>
-![image](./theme_images/qc_image.png){width="350"}
-</center>
-
 !!! info "Objectives"
 
     - Assess the quality of your data
     - Use FastQC package to do quality check
     - Use MultiQC to view our analysis results
+
+
+<center>
+![image](./theme_images/qc_image.png){width="350"}
+</center>
+
 
 ---
 
