@@ -1,6 +1,8 @@
 # Mapping and Counting
 
 !!! info "Objectives"
+    - How to index a reference genome
+    - How to align sequence reads to an indexed reference genome
 
 <center>
 ![imge](./theme_images/mapping.png){width="300"}
