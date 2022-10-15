@@ -24,12 +24,12 @@ theme:
     toggle:
       icon: material/brightness-auto
       name: Switch to light mode
-    primary: light green
+    primary: green
 
   # Palette toggle for light mode
   - media: "(prefers-color-scheme: light)"
     scheme: default
-    primary: light green
+    primary: green
 
 
 
@@ -43,7 +43,7 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to system preference
-    primary: light green
+    primary: green
 
   
   features:
