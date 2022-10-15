@@ -1,5 +1,7 @@
 # Differential Expression Analysis
 
+!!! info "Objectives"
+
 <center>
 ![image](./theme_images/head_volcano_plot.png){width="350"}
 </center>
