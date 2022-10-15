@@ -16,7 +16,7 @@ biological functions or processes are over-represented (= enriched) in
 an experimentally-derived gene list, e.g. a list of differentially
 expressed genes (DEGs).
 
--   Can perform overrepresentation analysis online (e.g., Enrichr,
+-   Can perform over-representation analysis online (e.g., Enrichr,
     GeneSetDB, PantherDB), and also in R.
 -   The basic principles are to:
     -   identify a collection of differentially expressed genes
