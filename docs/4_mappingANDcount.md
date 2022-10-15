@@ -1,5 +1,8 @@
 # Mapping and Counting
 
+
+!!! info "Objectives"
+
 RNA-seq generate gene expression information by quantifying the number of transcripts (per gene) in a sample. This is acompished by counting the number of transcripts that have been sequenced - the more active a gene is, the more transcripts will be in a sample, and the more reads will be generated from that transcript.
 
 For RNA-seq, we need to align or map each read back to the genome, to see which gene produced it.
