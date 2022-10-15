@@ -1,5 +1,11 @@
 # Over-representation analysis (Gene Ontology)
 
+!!! info "Objectives"
+
+<center>
+![image](./theme_images/over-rep_theme.png){width="250"}
+</center>
+
  - Slides: [lecture_annotation_pathways.pdf](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/5.Overrepresentation_Analysis/lecture_annotation_pathways.pdf)
 
 
