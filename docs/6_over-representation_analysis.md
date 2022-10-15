@@ -25,20 +25,20 @@ expressed genes (DEGs).
         differentially expressed more often than would be expected by
         chance.
 
-*Some caveats for RNA-seq data*
+!!! abstract "Some caveats for RNA-seq data"
 
--   The gene-set analysis methods are applicable to transcriptomic data
-    from both microarrays and RNA-seq.
--   One caveat, however, is that the results need to take *gene length*
-    into account.
--   RNA-seq tends to produce higher expression levels (i.e., greater
-    counts) for longer genes: a longer transcript implies more aligned
-    fragments, and thus higher counts. This also gives these genes a
-    great chance of being statistically differentially expressed.
--   Some gene sets (pathways, GO terms) tend to involve families of long
-    genes: if long genes have a great chance of being detected as
-    differentially expressed, then *gene sets* consisting of long genes
-    will have a great chance of appeared to be enriched in the analysis.
+    -   The gene-set analysis methods are applicable to transcriptomic data
+        from both microarrays and RNA-seq.
+    -   One caveat, however, is that the results need to take *gene length*
+        into account.
+    -   RNA-seq tends to produce higher expression levels (i.e., greater
+        counts) for longer genes: a longer transcript implies more aligned
+        fragments, and thus higher counts. This also gives these genes a
+        great chance of being statistically differentially expressed.
+    -   Some gene sets (pathways, GO terms) tend to involve families of long
+        genes: if long genes have a great chance of being detected as
+        differentially expressed, then *gene sets* consisting of long genes
+        will have a great chance of appeared to be enriched in the analysis.
 
 ### GOseq
 
