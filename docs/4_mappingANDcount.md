@@ -183,6 +183,8 @@ You can use samtools to learn more about the bam file as well.
 
 ```bash
 $ samtools flagstat SRR014335-chr1_sorted.bam 
+```
+```
 156984 + 0 in total (QC-passed reads + QC-failed reads)
 31894 + 0 secondary
 0 + 0 supplementary
