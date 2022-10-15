@@ -1,5 +1,9 @@
 # Differential Expression Analysis
 
+<center>
+![image](./theme_images/head_volcano_plot.png){width="350"}
+</center>
+
 ### Recap
 
 -   In the last section we worked through the process of quality
