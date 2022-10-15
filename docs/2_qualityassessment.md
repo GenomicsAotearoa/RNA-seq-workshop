@@ -2,7 +2,7 @@
 # Quality control of the sequencing data.
 
 
-
+!!! info "Objectives"
 
     - Assess the quality of your data
     - Use FastQC package to do quality check
@@ -10,7 +10,7 @@
 
 ---
 
-Several tools available to do quality assessemnt. For this workshop, we will use `fastqc`.
+Several tools available to do quality assessment. For this workshop, we will use `fastqc`.
 
 First, it is always good to verify where we are:
 
