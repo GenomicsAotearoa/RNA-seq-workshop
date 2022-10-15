@@ -1,6 +1,9 @@
 
 # Quality control of the sequencing data.
 
+<center>
+![image](./theme_images/qc_image.png){width="350"}
+</center>
 
 !!! info "Objectives"
 
