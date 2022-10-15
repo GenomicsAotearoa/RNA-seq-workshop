@@ -41,8 +41,8 @@ $ module load cutadapt/2.10-gimkl-2020a-Python-3.8.2
 $ cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq > Trimmed/SRR014335-chr1.log
 
 ```
->**Arguments :**
->* **-q** (`--quality-cutoff`)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.
+!!! quote ""
+    * **-q** (`--quality-cutoff`)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.
 
 ```bash
 
@@ -57,12 +57,13 @@ $ cd Raw
 
 $ ls
 SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
-
-$ for filename in *.fastq
-> do 
-> base=$(basename ${filename} .fastq)
-> cutadapt -q 20 -a AACCGGTT -o ../Trimmed/${base}.trimmed.fastq ${filename} > ../Trimmed/${base}.log
-> done
+```
+```bash
+for filename in *.fastq
+do 
+base=$(basename ${filename} .fastq)
+cutadapt -q 20 -a AACCGGTT -o ../Trimmed/${base}.trimmed.fastq ${filename} > ../Trimmed/${base}.log
+done
 ```
 
 ---
