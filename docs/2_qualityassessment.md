@@ -2,7 +2,7 @@
 # Quality control of the sequencing data.
 
 
-!!! info "Objectives"
+
 
     - Assess the quality of your data
     - Use FastQC package to do quality check
