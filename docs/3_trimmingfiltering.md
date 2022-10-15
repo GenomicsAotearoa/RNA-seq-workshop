@@ -1,6 +1,7 @@
 # Cleaning Reads
 
 !!! info "Objectives"
+    - Highlight the importance of removing adapter sequences and how to remove them 
 
 <center>
 ![image](./theme_images/cleaning_reads.png){width="300"}
