@@ -640,78 +640,79 @@ Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
 </code></pre></div>
 <p>let's use a for loop to process our samples:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ <span class="nb">cd</span> Trimmed
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ <span class="nb">cd</span> Trimmed
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>$ ls
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>$ <span class="k">for</span> filename <span class="k">in</span> *
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>&gt; <span class="k">do</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>&gt; <span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .trimmed.fastq<span class="k">)</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>&gt; hisat2 -p <span class="m">4</span> -x ../Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U <span class="nv">$filename</span> -S ../Mapping/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>.sam --summary-file ../Mapping/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>_summary.txt
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>&gt; <span class="k">done</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span> filename <span class="k">in</span> *
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">do</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .trimmed.fastq<span class="k">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>hisat2 -p <span class="m">4</span> -x ../Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U <span class="nv">$filename</span> -S ../Mapping/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>.sam --summary-file ../Mapping/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>_summary.txt
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">done</span>
+</code></pre></div></p>
 <p>Now we can explore our SAM files.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$ <span class="nb">cd</span> ../Mapping
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>$ ls
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>SRR014335-chr1.sam          SRR014336-chr1_summary.txt  SRR014339-chr1.sam          SRR014340-chr1_summary.txt
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>SRR014335-chr1_summary.txt  SRR014337-chr1.sam          SRR014339-chr1_summary.txt  SRR014341-chr1.sam
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>SRR014336-chr1.sam          SRR014337-chr1_summary.txt  SRR014340-chr1.sam          SRR014341-chr1_summary.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ <span class="nb">cd</span> ../Mapping
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>$ ls
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>SRR014335-chr1.sam          SRR014336-chr1_summary.txt  SRR014339-chr1.sam          SRR014340-chr1_summary.txt
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>SRR014335-chr1_summary.txt  SRR014337-chr1.sam          SRR014339-chr1_summary.txt  SRR014341-chr1.sam
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>SRR014336-chr1.sam          SRR014337-chr1_summary.txt  SRR014340-chr1.sam          SRR014341-chr1_summary.txt
 </code></pre></div>
 <h2 id="converting-sam-files-to-bam-files">Converting SAM files to BAM files<a class="headerlink" href="#converting-sam-files-to-bam-files" title="Permanent link">&para;</a></h2>
 <p>The SAM file, is a tab-delimited text file that contains information for each individual read and its alignment to the genome. While we do not have time to go into detail about the features of the SAM format, the paper by Heng Li et al. provides a lot more detail on the specification.</p>
 <p>The compressed binary version of SAM is called a BAM file. We use this version to reduce size and to allow for indexing, which enables efficient random access of the data contained within the file.</p>
 <h3 id="a-quick-look-into-the-sam-file">A quick look into the sam file<a class="headerlink" href="#a-quick-look-into-the-sam-file" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ less SRR014335-chr1.sam 
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>The file begins with a header, which is optional. The header is used to describe the <span class="nb">source</span> of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information <span class="k">for</span> a single read. Each alignment line has <span class="m">11</span> mandatory fields <span class="k">for</span> essential mapping information and a variable number of other fields <span class="k">for</span> aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ less SRR014335-chr1.sam 
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>The file begins with a header, which is optional. The header is used to describe the <span class="nb">source</span> of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information <span class="k">for</span> a single read. Each alignment line has <span class="m">11</span> mandatory fields <span class="k">for</span> essential mapping information and a variable number of other fields <span class="k">for</span> aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
 </code></pre></div>
 <p>We will convert the SAM file to BAM format using the samtools program with the <code>view</code> command </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ module load SAMtools/1.10-GCC-9.2.0
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>$ <span class="k">for</span> filename <span class="k">in</span> *.sam
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>&gt; <span class="k">do</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>&gt; <span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .sam<span class="k">)</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>&gt; samtools view -S -b <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> -o <span class="si">${</span><span class="nv">base</span><span class="si">}</span>.bam
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>&gt; <span class="k">done</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ module load SAMtools/1.10-GCC-9.2.0
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> filename <span class="k">in</span> *.sam
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">do</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .sam<span class="k">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>samtools view -S -b <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> -o <span class="si">${</span><span class="nv">base</span><span class="si">}</span>.bam
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">done</span>
+</code></pre></div></p>
 <div class="admonition quote">
 <ul>
 <li><strong>-S</strong> input is in SAM format (it's here as a placeholder as SAMtoools version 1.10 or above  will pick up the correct format automatically by examining the first few characters of input.)</li>
 <li><strong>-b</strong> Output is in BAM format</li>
 </ul>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ ls
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>SRR014335-chr1.bam  SRR014336-chr1.bam  SRR014337-chr1.bam  SRR014339-chr1.bam  SRR014340-chr1.bam  SRR014341-chr1.bam
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  SRR014340-chr1.sam  SRR014341-chr1.sam
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ ls
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>SRR014335-chr1.bam  SRR014336-chr1.bam  SRR014337-chr1.bam  SRR014339-chr1.bam  SRR014340-chr1.bam  SRR014341-chr1.bam
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  SRR014340-chr1.sam  SRR014341-chr1.sam
 </code></pre></div>
 <p>Next we sort the BAM file using the sort command from samtools. <code>-o</code> tells the command where to write the output.</p>
 <blockquote>
 <p><strong>SAM/BAM files can be sorted in multiple ways, e.g. by location of alignment on the chromosome, by read name, etc. It is important to be aware that different alignment tools will output differently sorted SAM/BAM, and different downstream tools require differently sorted alignment files as input.</strong></p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$ <span class="k">for</span> filename <span class="k">in</span> *.bam
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>&gt; <span class="k">do</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>&gt; <span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .bam<span class="k">)</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>&gt; samtools sort -o <span class="si">${</span><span class="nv">base</span><span class="si">}</span>_sorted.bam <span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>&gt; <span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">for</span> filename <span class="k">in</span> *.bam
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">do</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .bam<span class="k">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>samtools sort -o <span class="si">${</span><span class="nv">base</span><span class="si">}</span>_sorted.bam <span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">done</span>
 </code></pre></div>
 <p>You can use samtools to learn more about the bam file as well.</p>
 <h2 id="some-stats-on-your-mapping">Some stats on your mapping:<a class="headerlink" href="#some-stats-on-your-mapping" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ samtools flagstat SRR014335-chr1_sorted.bam 
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="m">156984</span> + <span class="m">0</span> <span class="k">in</span> total <span class="o">(</span>QC-passed reads + QC-failed reads<span class="o">)</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="m">31894</span> + <span class="m">0</span> secondary
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="m">0</span> + <span class="m">0</span> supplementary
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="m">0</span> + <span class="m">0</span> duplicates
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="m">136447</span> + <span class="m">0</span> mapped <span class="o">(</span><span class="m">86</span>.92% : N/A<span class="o">)</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="m">0</span> + <span class="m">0</span> paired <span class="k">in</span> sequencing
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="m">0</span> + <span class="m">0</span> read1
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="m">0</span> + <span class="m">0</span> read2
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="m">0</span> + <span class="m">0</span> properly paired <span class="o">(</span>N/A : N/A<span class="o">)</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="m">0</span> + <span class="m">0</span> with itself and mate mapped
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="m">0</span> + <span class="m">0</span> singletons <span class="o">(</span>N/A : N/A<span class="o">)</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="m">0</span> + <span class="m">0</span> with mate mapped to a different chr
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="m">0</span> + <span class="m">0</span> with mate mapped to a different chr <span class="o">(</span>mapQ&gt;<span class="o">=</span><span class="m">5</span><span class="o">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ samtools flagstat SRR014335-chr1_sorted.bam 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>156984 + 0 in total (QC-passed reads + QC-failed reads)
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>31894 + 0 secondary
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>0 + 0 supplementary
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>0 + 0 duplicates
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>136447 + 0 mapped (86.92% : N/A)
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>0 + 0 paired in sequencing
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>0 + 0 read1
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>0 + 0 read2
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>0 + 0 properly paired (N/A : N/A)
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>0 + 0 with itself and mate mapped
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>0 + 0 singletons (N/A : N/A)
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>0 + 0 with mate mapped to a different chr
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>0 + 0 with mate mapped to a different chr (mapQ&gt;=5)
 </code></pre></div>
 Basic statistics shown by <code>flagstat</code> will be slightly different from those in the summary file generated by HISAT2 due to different "totals" that are used for comparisons. <code>flagstat</code> compares the number of alignments; HISAT2 compares the number of reads mapped. This is because reads can be mapped/aligned to more than one reference location, and these reads have a "primary" and "secondary" alignment (see section 1.2 of the <a href="https://github.com/samtools/hts-specs/blob/master/SAMv1.pdf">SAM specifications</a>). For example, the percent overall alignment in the HISAT2 summary will be equivalent to the percent primary mapped evaluated by <code>flagstat</code>. To get number of reads that aligned 0 times (summary file), the equivalent statistic from <code>flagstat</code> would be subtracting the number of mapped reads from the number of total alignments.</p>
 <hr />
@@ -719,11 +720,11 @@ Basic statistics shown by <code>flagstat</code> will be slightly different from 
 <ul>
 <li>The HISAT2 output data can also be incorporated into the MultiQC report the next time it is run.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a> $ <span class="nb">cd</span> ~/RNA_seq/MultiQC
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a> $ cp ../Mapping/*summary* ./
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a> $ multiqc .
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a> $ <span class="nb">cd</span> ~/RNA_seq/MultiQC
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a> $ cp ../Mapping/*summary* ./
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a> $ multiqc .
 </code></pre></div>
 <p><img alt="image" src="../Images/MQC3.png" /></p>
 <p>Please note: running HISAT2 with either option <code>--summary-file</code> or older versions (&lt; v2.1.0) gives log output identical to Bowtie2. These logs are indistinguishable and summary statistics will appear in MultiQC reports labelled as Bowtie2.</p>
@@ -743,35 +744,36 @@ is a count table, in which the number of reads assigned to each feature in each 
 <li>Need to specify the annotation information (.gtf file) 
 You can process all the samples at once:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ module load Subread/2.0.0-GCC-9.2.0
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>$ <span class="nb">pwd</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>/home/<span class="nv">$USER</span>/RNA_seq
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>$ mkdir Counts
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>$ <span class="nb">cd</span> Counts
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>$ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T <span class="m">2</span> -t exon -g gene_id ../Mapping/*sorted.bam
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$ module load Subread/2.0.0-GCC-9.2.0
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>$ <span class="nb">pwd</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>/home/<span class="nv">$USER</span>/RNA_seq
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>$ mkdir Counts
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>$ <span class="nb">cd</span> Counts
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>$ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T <span class="m">2</span> -t exon -g gene_id ../Mapping/*sorted.bam
 </code></pre></div>
-<blockquote>
-<p><strong>Arguments:</strong>
- * <strong>-a</strong> Name of an annotation file. GTF/GFF format by default
- * <strong>-o</strong> Name of output file including read counts
- * <strong>-T</strong> Specify the number of threads/CPUs used for mapping. 1 by default
- * <strong>-t</strong> Specify feature type in GTF annotation. 'exon' by default. Features used for read counting will be extracted from annotation using the provided value.
-*  <strong>-g</strong> Specify attribute type in GTF annotation. 'gene_id' by default. Meta-features used for read counting will be extracted from annotation using the provided value.</p>
-</blockquote>
+<div class="admonition quote">
+<ul>
+<li><strong>-a</strong> Name of an annotation file. GTF/GFF format by default</li>
+<li><strong>-o</strong> Name of output file including read counts</li>
+<li><strong>-T</strong> Specify the number of threads/CPUs used for mapping. 1 by default</li>
+<li><strong>-t</strong> Specify feature type in GTF annotation. 'exon' by default. Features used for read counting will be extracted from annotation using the provided value.</li>
+<li><strong>-g</strong> Specify attribute type in GTF annotation. 'gene_id' by default. Meta-features used for read counting will be extracted from annotation using the provided value.</li>
+</ul>
+</div>
 <hr />
 <h2 id="multiqc-featurecounts-output">MultiQC: featureCounts output<a class="headerlink" href="#multiqc-featurecounts-output" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If the samples are processed individually, the output data can be incorporated into the MultiQC report the next time it is run.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$ <span class="nb">cd</span> ../MultiQC
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>$ cp ../Counts/* .
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>$ multiqc .
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$ <span class="nb">cd</span> ../MultiQC
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>$ cp ../Counts/* .
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>$ multiqc .
 </code></pre></div>
 <p><img alt="image" src="../Images/MQC4.png" /></p>
 <hr />
@@ -779,9 +781,9 @@ You can process all the samples at once:</li>
 <ul>
 <li>And the code to do it is below, however for this workshop, we are going to use a different file (yeast_counts_all_chr.txt) that you can download from section 4. Differential_Expression. This file has all the data for all the chromosomes.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">#In a new terminal that you can access you computer files, cd to the directory you want to save the counts file.</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>$ scp fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/Counts/yeast_counts_all_chr.txt ./
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">#In a new terminal that you can access you computer files, cd to the directory you want to save the counts file.</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>$ scp fayfa80p@login.mahuika.nesi.org.nz:/home/fayfa80p/RNA_seq/Counts/yeast_counts_all_chr.txt ./
 </code></pre></div>
 <hr />
 <p align="center"><b><a class="btn" href="https://genomicsaotearoa.github.io/RNA-seq-workshop/" style="background: var(--bs-dark);font-weight:bold">Back to homepage</a></b></p>

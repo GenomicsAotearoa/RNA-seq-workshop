@@ -506,6 +506,9 @@
 <div class="admonition info">
 <p class="admonition-title">Objectives</p>
 </div>
+<p><center>
+<img alt="image" src="../theme_images/cleaning_reads.png" width="300" />
+</center></p>
 <p>In the previous section, we took a high-level look at the quality of each of our samples using FastQC. We visualized per-base quality graphs showing the distribution of read quality at each base across all reads in a sample and extracted information about which samples fail which quality checks. Some of our samples failed quite a few quality metrics used by FastQC. This doesn’t mean, though, that our samples should be thrown out! It’s very common to have some quality metrics fail, and this may or may not be a problem for your downstream application. </p>
 <h2 id="adapter-removal">Adapter removal<a class="headerlink" href="#adapter-removal" title="Permanent link">&para;</a></h2>
 <ul>
@@ -533,34 +536,35 @@ from FASTQ files.
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>$ cutadapt -q <span class="m">20</span> -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq &gt; Trimmed/SRR014335-chr1.log
 </code></pre></div>
-<blockquote>
-<p><strong>Arguments :</strong>
-* <strong>-q</strong> (<code>--quality-cutoff</code>)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.</p>
-</blockquote>
+<div class="admonition quote">
+<ul>
+<li><strong>-q</strong> (<code>--quality-cutoff</code>)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.</li>
+</ul>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ less Trimmed/SRR014335-chr1.log
 </code></pre></div>
 <p>Now we should trim all samples.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ <span class="nb">cd</span> Raw
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ <span class="nb">cd</span> Raw
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>$ ls
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>$ <span class="k">for</span> filename <span class="k">in</span> *.fastq
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>&gt; <span class="k">do</span> 
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>&gt; <span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .fastq<span class="k">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>&gt; cutadapt -q <span class="m">20</span> -a AACCGGTT -o ../Trimmed/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>.trimmed.fastq <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> &gt; ../Trimmed/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>.log
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>&gt; <span class="k">done</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span> filename <span class="k">in</span> *.fastq
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">do</span> 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">base</span><span class="o">=</span><span class="k">$(</span>basename <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> .fastq<span class="k">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>cutadapt -q <span class="m">20</span> -a AACCGGTT -o ../Trimmed/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>.trimmed.fastq <span class="si">${</span><span class="nv">filename</span><span class="si">}</span> &gt; ../Trimmed/<span class="si">${</span><span class="nv">base</span><span class="si">}</span>.log
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">done</span>
+</code></pre></div></p>
 <hr />
 <h2 id="multiqc-cutadapt-log-files">MultiQC: <code>cutadapt</code> log files<a class="headerlink" href="#multiqc-cutadapt-log-files" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If the log files from <code>cutadapt</code> are added to the directory containing the FastQC output, this information will also be incorporated into the MultiQC report the next time it is run.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ <span class="nb">cd</span> ../MultiQC
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>$ cp ../Trimmed/*log .
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>$ multiqc .
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ <span class="nb">cd</span> ../MultiQC
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>$ cp ../Trimmed/*log .
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>$ multiqc .
 </code></pre></div>
 <img alt="image" src="../Images/MQC2.png" /></p>
 <hr />
