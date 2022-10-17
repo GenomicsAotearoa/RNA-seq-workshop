@@ -3,7 +3,7 @@
 !!! info "Objectives"
 
 <center>
-![image](./theme_images/r_logos.png){width="400"}
+![image](./theme_images/r_logos.png){width="420"}
 </center>
 
 ### Recap
