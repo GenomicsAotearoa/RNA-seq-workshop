@@ -275,7 +275,8 @@ include significant GO terms that involve less than 500 genes):
 ``` r
 GO.wall[GO.wall.padj < 0.05, ] %>% filter(numInCat < 500)
 ```
-
+??? question "Output"
+    ```r
     ##      category over_represented_pvalue under_represented_pvalue numDEInCat
     ## 1  GO:0042254            9.441146e-12                1.0000000        364
     ## 2  GO:0022613            1.355385e-11                1.0000000        439
@@ -352,6 +353,8 @@ GO.wall[GO.wall.padj < 0.05, ] %>% filter(numInCat < 500)
     ## 16       BP
     ## 17       BP
     ## 18       BP
+    ```
+
 
 ------------------------------------------------------------------------
 
