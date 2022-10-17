@@ -595,19 +595,21 @@ legend('topright', c("Only sig in NoBias", "Sig in both (nobias adjp)",
 
 ## Summary
 
--   Once we’ve generated count data, there are a number of ways to
-    perform a differential expression analysis.
--   DESeq2 and edgeR model the count data, and assume a Negative
-    Binomial distribution
--   Limma transforms (and logs) the data and assumes normality
--   Here we’ve seen that these three approaches give quite similar
-    results.
--   For Gene Set analysis, gene length needs to be accounted for, since
-    longer transcripts are more likely to be found to be differentially
-    expressed.
-    -   GOSeq adjusts for transcript length to take this into account.
-    -   It is also possible to use GOSeq with other types of annotation
-        (e.g., Reactome or KEGG pathways).
+!!! info ""
+
+    -   Once we’ve generated count data, there are a number of ways to
+        perform a differential expression analysis.
+    -   DESeq2 and edgeR model the count data, and assume a Negative
+        Binomial distribution
+    -   Limma transforms (and logs) the data and assumes normality
+    -   Here we’ve seen that these three approaches give quite similar
+        results.
+    -   For Gene Set analysis, gene length needs to be accounted for, since
+        longer transcripts are more likely to be found to be differentially
+        expressed.
+        -   GOSeq adjusts for transcript length to take this into account.
+        -   It is also possible to use GOSeq with other types of annotation
+            (e.g., Reactome or KEGG pathways).
 
 - - - 
 
