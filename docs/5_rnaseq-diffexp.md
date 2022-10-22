@@ -2,6 +2,10 @@
 
 !!! info "Objectives"
 
+    - Import count data into R and familiarise yourself with the format of this data
+    - Identify differentially expressed genes using LIMMA, DESeq2 and edgeR
+    - Recognise the impact of different methods on differentially expressed gene sets
+
 <center>
 ![image](./theme_images/r_logos.png){width="420"}
 </center>
