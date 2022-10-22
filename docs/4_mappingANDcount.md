@@ -1,8 +1,9 @@
 # Mapping and Counting
 
 !!! info "Objectives"
-    - How to index a reference genome
-    - How to align sequence reads to an indexed reference genome
+    - Learn how to index a reference genome
+    - Align sequence reads to an indexed reference genome
+    - Generate read counts for each exon in the genome
 
 <center>
 ![imge](./theme_images/mapping.png){width="300"}
