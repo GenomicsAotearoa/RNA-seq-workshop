@@ -1,7 +1,9 @@
 # Cleaning Reads
 
 !!! info "Objectives"
-    - Highlight the importance of removing adapter sequences and how to remove them 
+    
+    - Understand what adapters are
+    - Understand that trimming can be done based on Phred scores or sequence
 
 <center>
 ![image](./theme_images/cleaning_reads.png){width="300"}
