@@ -174,8 +174,8 @@ boxplot(as.matrix(counts) ~ col(counts))
 
 Some genes have zero counts:
 
-``` r
-colSums(counts==0)
+``` R
+colSums(counts == 0)
 ```
 
     ## WT1 WT2 WT3 MT1 MT2 MT3 
