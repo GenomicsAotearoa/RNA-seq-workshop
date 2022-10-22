@@ -183,7 +183,7 @@ colSums(counts == 0)
 
 Log transformation (add 0.5 to avoid log(0) issues):
 
-``` r
+```R
 logCounts = log2(as.matrix(counts)+ 0.5)
 ```
 
