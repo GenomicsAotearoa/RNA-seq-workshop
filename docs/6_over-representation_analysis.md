@@ -2,6 +2,9 @@
 
 !!! info "Objectives"
 
+    - Identify enriched biological functions or processes within a list of differentially expressed genes
+    - Recognise the importance of gene length in over-representation analyses, and how to correct for this in your analysis
+
 <center>
 ![image](./theme_images/over-rep_theme.png){width="250"}
 </center>
