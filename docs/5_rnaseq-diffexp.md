@@ -174,7 +174,7 @@ boxplot(as.matrix(counts) ~ col(counts))
 
 Some genes have zero counts:
 
-``` R
+```R
 colSums(counts == 0)
 ```
 
@@ -197,7 +197,7 @@ boxplot(as.matrix(logCounts) ~ col(logCounts))
 
 Density plots are also a good way to visualise the data:
 
-``` r
+```R
 lineColour <- c("blue", "blue", "blue", "red", "red", "red")
 lineColour
 ```

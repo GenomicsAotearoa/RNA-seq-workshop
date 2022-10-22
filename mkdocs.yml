@@ -83,6 +83,8 @@ markdown_extensions:
   - admonition
   - attr_list
   - def_list
+  - codehilite:
+      guess_lang: false
   - footnotes
   - meta
   - md_in_html
@@ -124,6 +126,10 @@ plugins:
     - mkdocs-video
     - search:
         lang: en
+    - minify:
+        minify_html: true
+        minify_js: true
+        minify_css: true
 
 extra_javascript:
   - javascripts/mathjax.js
