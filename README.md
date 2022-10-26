@@ -41,7 +41,7 @@ Please take the <a href="https://otago.au1.qualtrics.com/jfe/form/SV_6A3iTbRwsoI
 
   ## Attribution notice
   
-- The material used to prepare for the workshop was extracted from Assoc. Prof. Michael Black lectures for Stat435 course.
+- The material used to prepare for the workshop was extracted from Professor Mik Black's lectures for STAT435 at the University of Otago.
 
 - Some code used in this workshop has been extracted from a collection of presentations, workshops and lectures by Prof. Thomas Girke, Institute for Integrative Genome Biology, UC Riverside: <a href="http://girke.bioinformatics.ucr.edu/">Link_1</a> and <a href="http://faculty.ucr.edu/~tgirke/HTML_Presentations/Manuals/MCBIOS2015/Rrnaseq/Rrnaseq.pdf">Link_2</a>
 
