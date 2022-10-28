@@ -66,7 +66,7 @@ $ module load FastQC/0.11.9
 ```
 !!! hint "Load all modules at once"
 
-    There is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running `source ~/RNA_seq/rsmodules.sh` command will execute it. 
+    There is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running <br>`source ~/RNA_seq/rsmodules.sh` command will execute it. 
 
 Now we can start the quality control:
 
@@ -104,7 +104,7 @@ SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.ht
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
 
 ```bash
-$ cd /home/$USER/RNA_seq/QC
+$ cd ~/RNA_seq/QC
 
 $ ls
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
