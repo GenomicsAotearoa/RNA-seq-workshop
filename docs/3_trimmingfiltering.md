@@ -13,10 +13,12 @@ In the previous section, we took a high-level look at the quality of each of our
 
 ## Adapter removal
 
-- "Adapters" are short DNA sequences that are added to each read as part of the sequencing process (we won't get into "why" here).
-- These are removed as part of the data generation steps that occur during the sequencing run, but sometimes there is still a non-trivial amount of adapter sequence present in the FASTQ files.
-- Since the sequence is not part of the target genome (i.e., the genome if the species from which teh samples were derived) then we need to remove it to prevent it affecting the downstream analysis.
-- The FastQC application get detection adapter contamination in samples.
+!!! danger ""
+
+    - "Adapters" are short DNA sequences that are added to each read as part of the sequencing process (we won't get into "why" here).
+    - These are removed as part of the data generation steps that occur during the sequencing run, but sometimes there is still a non-trivial amount of adapter sequence present in the FASTQ files.
+    - Since the sequence is not part of the target genome (i.e., the genome if the species from which teh samples were derived) then we need to remove it to prevent it affecting the downstream analysis.
+    - The FastQC application get detection adapter contamination in samples.
 
 We will use a program called CutAdapt to filter poor quality reads and trim poor quality bases from our samples.
 
