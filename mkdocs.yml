@@ -130,6 +130,9 @@ plugins:
         minify_html: true
         minify_js: true
         minify_css: true
+    - glightbox:
+        effect: zoom
+        zoomable: true
 
 extra_javascript:
   - javascripts/mathjax.js
