@@ -64,7 +64,9 @@ $ module purge
 
 $ module load FastQC/0.11.9
 ```
->hint : there is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running `source ~/RNA_seq/rsmodules.sh` command will excute it. 
+!!! hint "Load all modules at once"
+
+    There is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running `source ~/RNA_seq/rsmodules.sh` command will execute it. 
 
 Now we can start the quality control:
 
