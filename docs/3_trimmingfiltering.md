@@ -78,11 +78,13 @@ done
  - If the log files from `cutadapt` are added to the directory containing the FastQC output, this information will also be incorporated into the MultiQC report the next time it is run.
  
 ```bash
-$ cd ../MultiQC
- 
-$ cp ../Trimmed/*log .
-
-$ multiqc .
+cd ../MultiQC
+``` 
+```bash
+cp ../Trimmed/*log .
+```
+```bash
+multiqc .
 ```
 ![image](./Images/MQC2.png)
 
