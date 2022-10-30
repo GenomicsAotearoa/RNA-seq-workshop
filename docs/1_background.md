@@ -50,12 +50,12 @@ Before beginning an RNA-Seq experiment, you should understand and carefully cons
     
 ![image](./Images/full_rna_seq_workflow.png)
 
-Exercises
+!!! question "Exercises"
 
-- Rank genes based on expression?
-- Identify differentially expressed genes after inducing a drug
-- Identify Novel transcripts
-- Identify bacterial and eukaryotic genes in a sample
+    - Rank genes based on expression?
+    - Identify differentially expressed genes after inducing a drug
+    - Identify Novel transcripts
+    - Identify bacterial and eukaryotic genes in a sample
 
 ---
 
