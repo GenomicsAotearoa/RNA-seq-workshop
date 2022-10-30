@@ -135,7 +135,7 @@ Approx 30% complete for SRR014335-chr1.fastq
 Approx 35% complete for SRR014335-chr1.fastq
 ```
 
-The FastQC program has created several new files within our RNA_seq/QC/ directory.
+The FastQC program has created several new files within our ***~/RNA_seq/QC/*** directory.
 
 ```bash
 $ ls QC
@@ -194,7 +194,7 @@ We can make a record of the results we obtained for all our samples by concatena
 cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt 
 ```
 
-* Have a look at the fastqc_summaries.txt and search for any of the samples that have failed the QC statistical tests.
+* Have a look at the ***fastqc_summaries.txt*** and search for any of the samples that have failed the QC statistical tests.
 
 ---
 
