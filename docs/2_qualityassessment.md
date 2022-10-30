@@ -53,24 +53,64 @@ Genome  Raw  rsmodules.sh  yeast_counts_all_chr.txt
 $ mkdir QC
 ```
 
-Since we are working on the NeSI HPC, we need to search and load the package before we start using it.
+Since we are working on the NeSI HPC, we need to search and load the software/application before we can use it.
+
+??? info "Note: Accessing and Deploying software with `module` command""
+
+    * View available modules
+
+    ```bash
+    #View all modules
+    $ module avail
+
+    # View all modules which match the keyword in their name
+    $ module avail KEYWORD
+
+    # View all modules which match the keyword in their name or description
+    $ module spider KEYWORD
+    ```
+
+    * Load a specific program
+
+        >All module names on NeSI Software stack have a version and toolchain/environment suffixes. If none is specified, then the default version of the software is loaded. The default version can be seen with the `module avail modulename` command (corresponding module name will have `(D)` suffix)
+
+    ```bash
+    $ module load Module_Name
+    ```
+
+
+    * Unload all current modules
+
+    ```bash
+    $ module purge
+    ```
+    >Please **do not** use `$module --force purge`
+
+    * Swap a currently loaded module for a different one
+
+    ```bash
+    $ module switch CURRENT_MODULE DESIRED_MODULE
+    ```
 
 Search
 
 ```bash
-$ module spider fastqc
+module spider fastqc
 ```
 
 and then load 
 
 ```bash
-$ module purge
-
-$ module load FastQC/0.11.9
+module purge
+```
+```bash
+module load FastQC/0.11.9
 ```
 !!! hint "Load all modules at once"
 
     There is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running <br>`source ~/RNA_seq/rsmodules.sh` command will execute it. 
+
+
 
 Now we can start the quality control:
 
