@@ -92,7 +92,7 @@ Since we are working on the NeSI HPC, we need to search and load the software/ap
     $ module switch CURRENT_MODULE DESIRED_MODULE
     ```
 
-Search
+* Search whether the software is available as a module with `module spider` command. 
 
 ```bash
 module spider fastqc
@@ -106,6 +106,11 @@ module purge
 ```bash
 module load FastQC/0.11.9
 ```
+
+!!! warning "Warning"
+    module name used for `module spider` is case insensitive.i.e. `fastqc` will respond and show the available modules matching the string. However, module name for `module load` command is case sensitive. Therefore, we recommend copying and pasting the name/version of it from the spider list
+    
+
 !!! hint "Load all modules at once"
 
     There is a file named ***rsmodules.sh*** which is a shell script to load the required modules at once. Running <br>`source ~/RNA_seq/rsmodules.sh` command will execute it. 
