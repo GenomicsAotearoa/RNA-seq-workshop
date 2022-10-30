@@ -150,6 +150,7 @@ SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.ht
 ![image](./Images/fqc1_2.png)
 
 ## Working with the FastQC text output
+
 Now that we’ve looked at our HTML reports to get a feel for the data, let’s look more closely at the other output files. Go back to the tab in your terminal program that is connected to NeSI and make sure you’re in our results subdirectory.
 
 ```bash
