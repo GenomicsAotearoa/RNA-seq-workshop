@@ -20,9 +20,13 @@ Several tools available to do quality assessment. For this workshop, we will use
 First, it is always good to verify where we are:
 
 ```bash
-$ cd ~
+cd ~
+```
+```bash
+pwd
+```
 
-$ pwd
+```
 /home/$USER
 # good I am ready to work
 ```
@@ -71,7 +75,7 @@ $ module load FastQC/0.11.9
 Now we can start the quality control:
 
 ```bash
-$ fastqc -o QC/ Raw/*
+fastqc -o QC/ Raw/*
 ```
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
 
