@@ -208,7 +208,7 @@ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
      - To generate `multiqc` results, run the following command in the directory with the output files you want to summarise (e.g., fastqc reports generated above):
     
 ```bash
-module load MultiQC/1.9-gimkl-2020a-Python-3.8.2
+module load MultiQC/1.13-gimkl-2022a-Python-3.10.5
 ```
 ```
 cd ~/RNA_seq/
