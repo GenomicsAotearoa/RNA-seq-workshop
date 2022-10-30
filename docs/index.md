@@ -1,6 +1,6 @@
-<center>
-# **RNA-Seq Data Analysis**
-</center>
+<style>h1 {text-align: center;}</style>
+<h1><b>RNA-Seq Data Analysis</b></h1>
+
 
 <center>
 ![image](./theme_images/main_image.png){width="450"}
