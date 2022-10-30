@@ -227,7 +227,9 @@ multiqc .
 ```
 ```
 ls -F
-multiqc_data/  multiqc_report.html
+```
+```bash
+    multiqc_data/  multiqc_report.html
 ```
 The html report shows the MultiQC summary
 
