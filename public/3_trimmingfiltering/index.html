@@ -12,7 +12,7 @@
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
 <a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>$ mkdir Trimmed
 <a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>$ module load cutadapt/2.10-gimkl-2020a-Python-3.8.2
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>$ module load cutadapt/4.1-gimkl-2022a-Python-3.10.5
 <a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
 <a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>$ cutadapt -q <span class="m">20</span> -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq &gt; Trimmed/SRR014335-chr1.log
 </code></pre></div> <div class="admonition quote"> <ul> <li><strong>-q</strong> (<code>--quality-cutoff</code>) parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.</li> </ul> </div> <div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$ less Trimmed/SRR014335-chr1.log
