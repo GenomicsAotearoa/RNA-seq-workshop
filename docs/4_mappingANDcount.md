@@ -146,7 +146,7 @@ The file begins with a header, which is optional. The header is used to describe
 We will convert the SAM file to BAM format using the samtools program with the `view` command 
 
 ```bash
-$ module load SAMtools/1.10-GCC-9.2.0
+$ module load SAMtools/1.15.1-GCC-11.3.0
 ```
 ```bash
 for filename in *.sam
