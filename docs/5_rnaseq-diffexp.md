@@ -258,7 +258,7 @@ But first, lets take a brief aside, and talk about the process of
 detecting genes that have undergone a statistically significance change
 in expression between the two groups.
 
-**GO BACK TO THE README PAGE, AND OPEN UP THE PDF DOCUMENT**
+**LET'S DIG INTO THINGS A LITTLE DEEPER:** [lecture_differential_expression.pdf](https://github.com/GenomicsAotearoa/RNA-seq-workshop/blob/master/4.Differential_Expression/lecture_differential_expression.pdf)
 
 ------------------------------------------------------------------------
 
