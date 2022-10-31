@@ -123,7 +123,6 @@ markdown_extensions:
   - pymdownx.pathconverter
 
 plugins:
-    - mkdocs-video
     - search:
         lang: en
     - minify:
