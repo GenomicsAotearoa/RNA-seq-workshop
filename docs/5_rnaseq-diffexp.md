@@ -43,7 +43,8 @@
 ### Create an RStudio project
 
 **NOTE: skip to the next section (“Count Data”) if you are working
-within Jupyter on NeSI**
+within a Jupyter notebook on NeSI. If you are using RStudio on NeSI,
+then keep following the instructions below.**
 
 One of the first benefits we will take advantage of in RStudio is
 something called an RStudio Project. An RStudio project allows you to
@@ -57,14 +58,17 @@ more easily:
 
 To create a project:
 
--   Open RStudio and go to the File menu, and click New Project.
+-   Open RStudio and go to the File menu, and click **New Project**.
 -   In the window that opens select Existing Project, and browse to the
-    RNA_seq folder.
--   Finally, click Create Project.
+    RNA\_seq folder.
+-   Finally, click **Create Project**.
 
-*Save source from untitled to `yeast_data.R` and continue saving
-regularly as you work.*
+To create a new file where we will type our R code:
 
+- In RStudio, go to the File menu, and choose **New File** and then **R Script**
+- This will open a new panel where we can save our R command.
+- Initially the new file is called *untitled* - use **Save As** from the File menu to save the file as `yeast_data.R` and continue saving
+regularly as you work. 
 ### Count data
 
 Note: I have now aligned the data for ALL CHROMOSOMES and generated
