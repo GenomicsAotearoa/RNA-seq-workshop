@@ -96,7 +96,7 @@ supportedOrganisms() %>% head()
     ## 56                     TRUE
 
 Easier to find if we use `View()` **(NB - this only works in RStudio.
-Can’t use in Jupyter on NeSI).**
+Can’t use if working in a Jupyter Notebook).**
 
 ``` r
 supportedOrganisms() %>% View()
