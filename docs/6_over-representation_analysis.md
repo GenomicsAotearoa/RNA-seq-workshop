@@ -118,8 +118,8 @@ load('topTable.RData')
 ``` r
 # Note: If you want to use tt from DESeq, replace $adj.P.Val with $padj below
 
-genes <- ifelse(tt$adj.P.Val < 0.05, 1, 0) 
-names(genes) <- rownames(tt)
+genes = ifelse(tt$adj.P.Val < 0.05, 1, 0) 
+names(genes) = rownames(tt)
 head(genes)
 ```
 
@@ -248,14 +248,14 @@ head(GO.wall)
 #### P-value adjustment
 
 ``` r
-GO.wall.padj <- p.adjust(GO.wall$over_represented_pvalue, method="fdr")
+GO.wall.padj = p.adjust(GO.wall$over_represented_pvalue, method="fdr")
 sum(GO.wall.padj < 0.05)
 ```
 
     ## [1] 45
 
 ``` r
-GO.wall.sig <- GO.wall$category[GO.wall.padj < 0.05]
+GO.wall.sig = GO.wall$category[GO.wall.padj < 0.05]
 length(GO.wall.sig)
 ```
 
@@ -423,14 +423,14 @@ head(GO.nobias)
 #### P-value adjustment
 
 ``` r
-GO.nobias.padj <- p.adjust(GO.nobias$over_represented_pvalue, method="fdr")
+GO.nobias.padj = p.adjust(GO.nobias$over_represented_pvalue, method="fdr")
 sum(GO.nobias.padj < 0.05)
 ```
 
     ## [1] 44
 
 ``` r
-GO.nobias.sig <- GO.nobias$category[GO.nobias.padj < 0.05]
+GO.nobias.sig = GO.nobias$category[GO.nobias.padj < 0.05]
 length(GO.nobias.sig)
 ```
 
@@ -460,13 +460,13 @@ definitely better ways to do this).
 
 ``` r
 ## Only significant in Hypergeomtric analysis
-onlySig.nobias <- setdiff(GO.nobias.sig, GO.wall.sig)
+onlySig.nobias = setdiff(GO.nobias.sig, GO.wall.sig)
 
 ## Only significant in Wallenius analysis
-onlySig.wall <- setdiff(GO.wall.sig, GO.nobias.sig)
+onlySig.wall = setdiff(GO.wall.sig, GO.nobias.sig)
 
 ## Significant in both
-sig.wall.nobias <- intersect(GO.wall.sig, GO.nobias.sig)
+sig.wall.nobias = intersect(GO.wall.sig, GO.nobias.sig)
 ```
 
 ### Gene lengths and GO term membership
@@ -517,18 +517,18 @@ Figure out which genes are in the significant GO groups, and then gets
 their lengths.
 
 ``` r
-lengths.onlySig.nobias <- list()
+lengths.onlySig.nobias = list()
 
 for(i in 1:length(onlySig.nobias)){
-  inGo <- lapply(go, function(x)  onlySig.nobias[i] %in% x) %>% unlist()
-  lengths.onlySig.nobias[[i]] <- len[inGo]
+  inGo = lapply(go, function(x)  onlySig.nobias[i] %in% x) %>% unlist()
+  lengths.onlySig.nobias[[i]] = len[inGo]
 }
 
-lengths.onlySig.wall <- list()
+lengths.onlySig.wall = list()
 
 for(i in 1:length(onlySig.wall)){
-  inGo <- lapply(go, function(x)  onlySig.wall[i] %in% x) %>% unlist()
-  lengths.onlySig.wall[[i]] <- len[inGo]
+  inGo = lapply(go, function(x)  onlySig.wall[i] %in% x) %>% unlist()
+  lengths.onlySig.wall[[i]] = len[inGo]
 }
 ```
 
@@ -538,7 +538,7 @@ for(i in 1:length(onlySig.wall)){
 -   Hypergeometric method is findings GO terms containing longer genes.
 
 ``` r
-cols <- rep(c("lightpink", "lightblue"), c(10,7))
+cols = rep(c("lightpink", "lightblue"), c(10,7))
 boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
 ```
 ![image](./rnaseq-pathway_files/figure-gfm/GO_boxplot1.png)
@@ -547,21 +547,21 @@ boxplot(c(lengths.onlySig.nobias, lengths.onlySig.wall), col=cols)
 #### All significant GO terms
 
 ``` r
-lengths.sig.wall.nobias <- list()
+lengths.sig.wall.nobias = list()
 
 for(i in 1:length(sig.wall.nobias)){
-  inGo <- lapply(go, function(x)  sig.wall.nobias[i] %in% x) %>% unlist()
-  lengths.sig.wall.nobias[[i]] <- len[inGo]
+  inGo = lapply(go, function(x)  sig.wall.nobias[i] %in% x) %>% unlist()
+  lengths.sig.wall.nobias[[i]] = len[inGo]
 }
 ```
 
 ``` r
-cols <- rep(c("lightpink", grey(0.7), "lightblue"), c(10,37,7))
+cols = rep(c("lightpink", grey(0.7), "lightblue"), c(10,37,7))
 
-avgLength <- lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall),
+avgLength = lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall),
                     median) %>% unlist()
 
-oo <- order(avgLength, decreasing=TRUE)
+oo = order(avgLength, decreasing=TRUE)
 ```
 
 ``` r
@@ -575,11 +575,11 @@ boxplot(c(lengths.onlySig.nobias, lengths.sig.wall.nobias, lengths.onlySig.wall)
 #### Gene length versus P-value
 
 ``` r
-avgLength.wall <- lapply(c(lengths.onlySig.wall, lengths.sig.wall.nobias), median)
+avgLength.wall = lapply(c(lengths.onlySig.wall, lengths.sig.wall.nobias), median)
 
-avgLength.nobias <- lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias), median)
+avgLength.nobias = lapply(c(lengths.onlySig.nobias, lengths.sig.wall.nobias), median)
 
-cols <- rep(c("blue", "lightblue", "red","lightpink"),
+cols = rep(c("blue", "lightblue", "red","lightpink"),
             c(length(lengths.onlySig.wall), length(lengths.sig.wall.nobias),
               length(lengths.onlySig.nobias), length(lengths.sig.wall.nobias)))
 
