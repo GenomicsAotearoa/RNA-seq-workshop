@@ -77,6 +77,8 @@ counts, so we are working with data from all 7127 genes.
 *Let’s look at our data set and perform some basic checks before we do a
 differential expression analysis.*
 
+NB - the keyboard shortcut for `%>%` (R's pipe command) is `shift-control-m` (also `shift-command-m` on Mac - both work).
+
 ```r
 library(dplyr)
 fcData = read.table('yeast_counts_all_chr.txt', sep='\t', header=TRUE)
