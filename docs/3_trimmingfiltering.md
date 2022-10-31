@@ -41,7 +41,7 @@ $ pwd
 
 $ mkdir Trimmed
 
-$ module load cutadapt/2.10-gimkl-2020a-Python-3.8.2
+$ module load cutadapt/4.1-gimkl-2022a-Python-3.10.5
 
 $ cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq > Trimmed/SRR014335-chr1.log
 
