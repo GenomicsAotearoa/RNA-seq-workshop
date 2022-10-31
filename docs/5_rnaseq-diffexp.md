@@ -202,7 +202,7 @@ boxplot(as.matrix(logCounts) ~ col(logCounts))
 Density plots are also a good way to visualise the data:
 
 ```R
-lineColour <- c("blue", "blue", "blue", "red", "red", "red")
+lineColour = c("blue", "blue", "blue", "red", "red", "red")
 lineColour
 ```
 
@@ -276,9 +276,9 @@ in expression between the two groups.
 library(limma)
 library(edgeR)
 
-dge <- DGEList(counts=counts)
-dge <- calcNormFactors(dge)
-logCPM <- cpm(dge, log=TRUE, prior.count=3)
+dge = DGEList(counts=counts)
+dge = calcNormFactors(dge)
+logCPM = cpm(dge, log=TRUE, prior.count=3)
 
 options(width=100)
 head(logCPM, 3)
@@ -301,7 +301,7 @@ reads):
 ``` r
 library(goseq)
 geneLengths = getlength(rownames(counts), "sacCer2","ensGene")
-rpkmData <- rpkm(dge, geneLengths)
+rpkmData = rpkm(dge, geneLengths)
 rpkmData %>% round(., 2) %>% head()
 ```
 
@@ -343,7 +343,7 @@ What if we just did a t-test?
 library(beeswarm)
 
 # Specify "conditions" (groups: WT and MT)
-conds <- c("WT","WT","WT","MT","MT","MT")
+conds = c("WT","WT","WT","MT","MT","MT")
 
 ## Perform t-test for "gene number 6" (because I like that one...)
 t.test(logCPM[6,] ~ conds)
@@ -382,7 +382,7 @@ do a little bit more normalisation.
     the limma analysis.
 
 ``` r
-design <- model.matrix(~conds)
+design = model.matrix(~conds)
 design
 ```
 
@@ -400,7 +400,7 @@ design
     ## [1] "contr.treatment"
 
 ``` r
-v <- voom(dge, design, plot=TRUE)
+v = voom(dge, design, plot=TRUE)
 ```
 
 ![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
@@ -431,7 +431,7 @@ boxplot(v$E ~ col(v$E))
 ![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
-lineColour <- ifelse(conds=="MT", "red", "blue")
+lineColour = ifelse(conds=="MT", "red", "blue")
 lineColour
 ```
 
@@ -451,7 +451,7 @@ We can deal with this via “quantile normalisation”. Specify
 in the `voom` function.
 
 ``` r
-q <- voom(dge, design, plot=TRUE, normalize="quantile")
+q = voom(dge, design, plot=TRUE, normalize="quantile")
 ```
 
 ![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
@@ -480,7 +480,7 @@ boxplot(q$E ~ col(q$E))
 ![image](./rnaseq-diffexp_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
-lineColour <- ifelse(conds=="MT", "red", "blue")
+lineColour = ifelse(conds=="MT", "red", "blue")
 lineColour
 ```
 
@@ -503,7 +503,7 @@ The next step is to fit a linear model to the transformed count data.
 The `lmFit()` command does this *for each gene* (all at once).
 
 ``` r
-fit <- lmFit(v, design)
+fit = lmFit(v, design)
 ```
 
 The `eBayes()` function then performs Emprical Bays shrinkage estimation
@@ -511,7 +511,7 @@ to adjust the variability estimates for each gene, and produce the
 moderated t-statistics.
 
 ``` r
-fit <- eBayes(fit)
+fit = eBayes(fit)
 ```
 
 We then summarize this information using the `topTable()` function,
@@ -520,7 +520,7 @@ differential expression (i.e., genes with lowest p-values are at the top
 of the list):
 
 ``` r
-tt <- topTable(fit, coef=ncol(design), n=nrow(counts))
+tt = topTable(fit, coef=ncol(design), n=nrow(counts))
 head(tt)
 ```
 
@@ -603,7 +603,7 @@ Get the rows of top table with significant adjusted p-values - we’ll
 save these for later to compare with the other methods.
 
 ``` r
-limmaPadj <- tt[tt$adj.P.Val <= 0.01, ]
+limmaPadj = tt[tt$adj.P.Val <= 0.01, ]
 ```
 
 ------------------------------------------------------------------------
@@ -626,7 +626,7 @@ Set up “DESeq object” for analysis:
 
 ``` r
 library(DESeq2)
-dds <- DESeqDataSetFromMatrix(countData = as.matrix(counts), 
+dds = DESeqDataSetFromMatrix(countData = as.matrix(counts), 
                               colData = data.frame(conds=factor(conds)), 
                               design = formula(~conds))
 ```
@@ -649,13 +649,13 @@ counts(dds) %>% head()
 Fit DESeq model to identify DE transcripts
 
 ``` r
-dds <- DESeq(dds)
+dds = DESeq(dds)
 ```
 
 Take a look at the results table
 
 ``` r
-res <- DESeq2::results(dds)
+res = DESeq2::results(dds)
 knitr::kable(res[1:6,])
 ```
 
@@ -697,7 +697,7 @@ Note: p-value adjustment
 res = na.omit(res)
 
 # Get the rows of "res" with significant adjusted p-values
-resPadj<-res[res$padj <= 0.05 , ]
+resPadj=res[res$padj <= 0.05 , ]
 
 # Get dimensions
 dim(resPadj)
@@ -733,7 +733,7 @@ Sort summary list by p-value and save the table as a CSV file that can
 be read in Excel (or any other spreadhseet program).
 
 ``` r
-res <- res[order(res$padj),]
+res = res[order(res$padj),]
 
 write.csv(as.data.frame(res),file='deseq2.csv')
 ```
@@ -758,25 +758,25 @@ library(edgeR)
 Construct `DGEList` object
 
 ``` r
-y <- DGEList(counts=counts, group=conds)
+y = DGEList(counts=counts, group=conds)
 ```
 
 Calculate library size (counts per sample)
 
 ``` r
-y <- calcNormFactors(y)
+y = calcNormFactors(y)
 ```
 
 Estimate common dispersion (overall variability)
 
 ``` r
-y <- estimateCommonDisp(y)
+y = estimateCommonDisp(y)
 ```
 
 Estimate tagwise dispersion (per gene variability)
 
 ``` r
-y <- estimateTagwiseDisp(y)
+y = estimateTagwiseDisp(y)
 ```
 
 #### edgeR analysis and output
@@ -784,7 +784,7 @@ y <- estimateTagwiseDisp(y)
 Compute exact test for the negative binomial distribution.
 
 ``` r
-et <- exactTest(y) 
+et = exactTest(y) 
 
 knitr::kable(topTags(et, n=4)$table)
 ```
@@ -799,7 +799,7 @@ knitr::kable(topTags(et, n=4)$table)
 *Adjusted p-values*
 
 ``` r
-edge <- as.data.frame(topTags(et, n=nrow(counts))) 
+edge = as.data.frame(topTags(et, n=nrow(counts))) 
 sum(edge$FDR <= 0.05)
 ```
 
@@ -814,7 +814,7 @@ sum(p.adjust(edge$PValue, method="fdr") <= 0.05)
 Get the rows of “edge” with significant adjusted p-values
 
 ``` r
-edgePadj <- edge[edge$FDR <= 0.05, ]
+edgePadj = edge[edge$FDR <= 0.05, ]
 ```
 
 ### DESeq2 vs edgeR
@@ -825,7 +825,7 @@ There is fairly good overlap:
 
 ``` r
 library(gplots)
-setlist <- list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj))
+setlist = list(edgeRexact=rownames(edgePadj), DESeq2=rownames(resPadj))
 venn(setlist)
 ```
 
@@ -838,7 +838,7 @@ venn(setlist)
 Again, fairly good overlap across the three methods we’ve looked at:
 
 ``` r
-setlist <- list(edgeRexact=rownames(edgePadj), 
+setlist = list(edgeRexact=rownames(edgePadj), 
                 DESeq2=rownames(resPadj),
                 LimmaVoom=rownames(limmaPadj))
 venn(setlist)
