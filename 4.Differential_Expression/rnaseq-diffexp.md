@@ -36,7 +36,8 @@
 ### Create an RStudio project
 
 **NOTE: skip to the next section (“Count Data”) if you are working
-within Jupyter on NeSI**
+within a Jupyter notebook on NeSI. If you are using RStudio on NeSI,
+then keep following the instructions below.**
 
 One of the first benefits we will take advantage of in RStudio is
 something called an RStudio Project. An RStudio project allows you to
