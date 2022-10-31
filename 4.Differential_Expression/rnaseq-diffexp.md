@@ -51,13 +51,17 @@ more easily:
 
 To create a project:
 
--   Open RStudio and go to the File menu, and click New Project.
+-   Open RStudio and go to the File menu, and click **New Project**.
 -   In the window that opens select Existing Project, and browse to the
     RNA\_seq folder.
--   Finally, click Create Project.
+-   Finally, click **Create Project**.
 
-*Save source from untitled to `yeast_data.R` and continue saving
-regularly as you work.*
+To create a new file where we will type our R code:
+
+- In RStudio, go to the File menu, and choose **New File** and then **R Script**
+- This will open a new panel where we can save our R command.
+- Initially the new file is called *untitled* - use **Save As** from the File menu to save the file as `yeast_data.R` and continue saving
+regularly as you work. 
 
 ### Count data
 
