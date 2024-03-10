@@ -21,8 +21,6 @@ First, it is always good to verify where we are:
 
 ```bash
 cd ~
-```
-```bash
 pwd
 ```
 
@@ -34,23 +32,24 @@ pwd
 Checking to make sure we have the Raw files for the workshop.
 
 ```bash
-$ ls
+ls
+```
+```bash
 RNA_seq ...
 ```
 
 Creating a directory where to store the QC data:
 
 ```bash
-$ cd RNA_seq
+cd RNA_seq
+ls
 ```
-
 ```bash
-$ ls
 Genome  Raw  rsmodules.sh  yeast_counts_all_chr.txt
 ```
 
 ```bash
-$ mkdir QC
+mkdir QC
 ```
 
 Since we are working on the NeSI HPC, we need to search and load the software/application before we can use it.
@@ -61,13 +60,13 @@ Since we are working on the NeSI HPC, we need to search and load the software/ap
 
     ```bash
     #View all modules
-    $ module avail
+    module avail
 
     # View all modules which match the keyword in their name
-    $ module avail KEYWORD
+    module avail KEYWORD
 
     # View all modules which match the keyword in their name or description
-    $ module spider KEYWORD
+    module spider KEYWORD
     ```
 
     * Load a specific program
@@ -75,21 +74,21 @@ Since we are working on the NeSI HPC, we need to search and load the software/ap
         >All module names on NeSI Software stack have a version and toolchain/environment suffixes. If none is specified, then the default version of the software is loaded. The default version can be seen with the `module avail modulename` command (corresponding module name will have `(D)` suffix)
 
     ```bash
-    $ module load Module_Name
+    module load Module_Name
     ```
 
 
     * Unload all current modules
 
     ```bash
-    $ module purge
+    module purge
     ```
     >Please **do not** use `$module --force purge`
 
     * Swap a currently loaded module for a different one
 
     ```bash
-    $ module switch CURRENT_MODULE DESIRED_MODULE
+    module switch CURRENT_MODULE DESIRED_MODULE
     ```
 
 * Search whether the software is available as a module with `module spider` command. 
@@ -102,8 +101,6 @@ and then load
 
 ```bash
 module purge
-```
-```bash
 module load FastQC/0.11.9
 ```
 
@@ -138,7 +135,9 @@ Approx 35% complete for SRR014335-chr1.fastq
 The FastQC program has created several new files within our ***~/RNA_seq/QC/*** directory.
 
 ```bash
-$ ls QC
+ls QC
+```
+```bash
 SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
 SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
 SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
@@ -155,8 +154,6 @@ Now that we’ve looked at our HTML reports to get a feel for the data, let’s 
 
 ```bash
 cd ~/RNA_seq/QC
-```
-```
 ls
 ```
 ```
@@ -179,7 +176,7 @@ Inside each unzipped folder, there is a summary text which shows results of the 
 ls SRR014335-chr1_fastqc
 ```
 ```
-    fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
+fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
 ```
 
 Use less to preview the summary.txt file
@@ -209,23 +206,11 @@ cat */summary.txt > ~/RNA_seq/QC/fastqc_summaries.txt
     
 ```bash
 module load MultiQC/1.13-gimkl-2022a-Python-3.10.5
-```
-```
 cd ~/RNA_seq/
-```
-```
 mkdir MultiQC
-```
-```
 cd MultiQC
-```
-```
 cp ../QC/* ./
-```
-```
 multiqc .
-```
-```
 ls -F
 ```
 ```bash
