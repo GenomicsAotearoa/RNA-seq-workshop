@@ -23,19 +23,24 @@ To be able to map (align) sequencing reads on the genome, the genome needs to be
 Note for speed reason, the reads will be aligned on the chr5 of the Yeast genome.
 
 ```bash
-$ cd /home/$USER/RNA_seq/Genome
+cd /home/$USER/RNA_seq/Genome
 
 #to list what is in your directory:
-$ ls /home/$USER/RNA_seq/Genome
-Saccharomyces_cerevisiae.R64-1-1.99.gtf  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
-
-$ module load HISAT2/2.2.1-gimpi-2022a
+ls /home/$USER/RNA_seq/Genome
+```
+```
+    Saccharomyces_cerevisiae.R64-1-1.99.gtf  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
+```
+```bash
+module load HISAT2/2.2.1-gimpi-2022a
 
 # index file:
-$ hisat2-build -p 4 -f Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna.toplevel
+hisat2-build -p 4 -f Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa Saccharomyces_cerevisiae.R64-1-1.dna.toplevel
 
 #list what is in the directory:
-$ ls /home/$USER/RNA_seq/Genome
+ls /home/$USER/RNA_seq/Genome
+```
+```
 Saccharomyces_cerevisiae.R64-1-1.99.gtf              Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.4.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.8.ht2
 Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.1.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.5.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa
 Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.2.ht2  Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.6.ht2
@@ -64,17 +69,19 @@ Information required:
   * Now, lets move one folder up (into the RNA_seq folder):
   
 ```bash
-$ cd ..
-  
-$ ls
-Genome  QC  Raw  Trimmed
+cd ..
+ ls
+```
+```
+    Genome  QC  Raw  Trimmed
 ```
 
 Let's map one of our sample to the genome
 
 ```bash
-$ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR014335-chr1.fastq -S SRR014335.sam
-125090 reads; of these:
+hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR014335-chr1.fastq -S SRR014335.sam
+```
+```125090 reads; of these:
   125090 (100.00%) were unpaired; of these:
     20537 (16.42%) aligned 0 times
     85066 (68.00%) aligned exactly 1 time
@@ -91,22 +98,27 @@ $ hisat2 -x Genome/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel -U Raw/SRR01433
 Now we need to align all the rest of the samples.
 
 ```bash
-$ pwd
-/home/$USER/RNA_seq/
-
-$ mkdir Mapping
-
-$ ls
-Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
+pwd
+```
+```
+    /home/$USER/RNA_seq/
+```
+```bash
+mkdir Mapping
+ls
+```
+```
+    Genome  Mapping  QC  Raw  SRR014335.sam  Trimmed
 ```
 
 let's use a for loop to process our samples:
 
 ```bash
-$ cd Trimmed
-
-$ ls
-SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
+cd Trimmed
+ls
+```
+```
+    SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
 ```
 ```bash
 for filename in *
@@ -119,9 +131,10 @@ done
 Now we can explore our SAM files.
 
 ```bash
-$ cd ../Mapping
-
-$ ls
+cd ../Mapping
+ls
+```
+```
 SRR014335-chr1.sam          SRR014336-chr1_summary.txt  SRR014339-chr1.sam          SRR014340-chr1_summary.txt
 SRR014335-chr1_summary.txt  SRR014337-chr1.sam          SRR014339-chr1_summary.txt  SRR014341-chr1.sam
 SRR014336-chr1.sam          SRR014337-chr1_summary.txt  SRR014340-chr1.sam          SRR014341-chr1_summary.txt
@@ -136,19 +149,16 @@ The compressed binary version of SAM is called a BAM file. We use this version t
 ### A quick look into the sam file
 
 ```bash 
-$ less SRR014335-chr1.sam 
-
-The file begins with a header, which is optional. The header is used to describe the source of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information for a single read. Each alignment line has 11 mandatory fields for essential mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
-
+less SRR014335-chr1.sam 
 ```
+The file begins with a header, which is optional. The header is used to describe the source of data, reference sequence, method of alignment, etc., this will change depending on the aligner being used. Following the header is the alignment section. Each line that follows corresponds to alignment information for a single read. Each alignment line has 11 mandatory fields for essential mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is displayed below with the different fields highlighted.
 
 
 We will convert the SAM file to BAM format using the samtools program with the `view` command 
 
 ```bash
-$ module load SAMtools/1.15.1-GCC-11.3.0
-```
-```bash
+module load SAMtools/1.15.1-GCC-11.3.0
+
 for filename in *.sam
 do
 base=$(basename ${filename} .sam)
@@ -161,8 +171,10 @@ done
     * **-b** Output is in BAM format
     
 
+```bash
+ls
 ```
-$ ls
+```
 SRR014335-chr1.bam  SRR014336-chr1.bam  SRR014337-chr1.bam  SRR014339-chr1.bam  SRR014340-chr1.bam  SRR014341-chr1.bam
 SRR014335-chr1.sam  SRR014336-chr1.sam  SRR014337-chr1.sam  SRR014339-chr1.sam  SRR014340-chr1.sam  SRR014341-chr1.sam
 ```
@@ -187,7 +199,7 @@ You can use samtools to learn more about the bam file as well.
 ## Some stats on your mapping:
 
 ```bash
-$ samtools flagstat SRR014335-chr1_sorted.bam 
+samtools flagstat SRR014335-chr1_sorted.bam 
 ```
 ```
 156984 + 0 in total (QC-passed reads + QC-failed reads)
@@ -213,12 +225,9 @@ Basic statistics shown by `flagstat` will be slightly different from those in th
  - The HISAT2 output data can also be incorporated into the MultiQC report the next time it is run.
  
 ```bash
- $ cd ~/RNA_seq/MultiQC
- 
- $ cp ../Mapping/*summary* ./
- 
- $ multiqc .
-
+cd ~/RNA_seq/MultiQC
+cp ../Mapping/*summary* ./
+multiqc .
 ```
 
 ![image](./Images/MQC3.png)
@@ -244,16 +253,16 @@ is a count table, in which the number of reads assigned to each feature in each 
 You can process all the samples at once:
 
 ```bash
-$ module load Subread/2.0.3-GCC-11.3.0
-
-$ pwd
+module load Subread/2.0.3-GCC-11.3.0
+pwd
+```
+```
 /home/$USER/RNA_seq
-
-$ mkdir Counts
-
-$ cd Counts
-
-$ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
+```
+```bash
+mkdir Counts
+cd Counts
+featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_counts.txt -T 2 -t exon -g gene_id ../Mapping/*sorted.bam
 ```
 !!! quote ""
     * **-a** Name of an annotation file. GTF/GFF format by default
@@ -269,13 +278,9 @@ $ featureCounts -a ../Genome/Saccharomyces_cerevisiae.R64-1-1.99.gtf -o ./yeast_
 - If the samples are processed individually, the output data can be incorporated into the MultiQC report the next time it is run.
  
 ```bash
-
-$ cd ../MultiQC
-
-$ cp ../Counts/* .
-
-$ multiqc .
-
+cd ../MultiQC
+cp ../Counts/* .
+multiqc .
 ```
 
 ![image](./Images/MQC4.png)
