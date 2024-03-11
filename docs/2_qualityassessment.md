@@ -25,7 +25,7 @@ pwd
 ```
 
 ```
-/home/$USER
+    /home/$USER
 # good I am ready to work
 ```
 
@@ -34,8 +34,8 @@ Checking to make sure we have the Raw files for the workshop.
 ```bash
 ls
 ```
-```bash
-RNA_seq ...
+```
+    RNA_seq ...
 ```
 
 Creating a directory where to store the QC data:
@@ -44,8 +44,8 @@ Creating a directory where to store the QC data:
 cd RNA_seq
 ls
 ```
-```bash
-Genome  Raw  rsmodules.sh  yeast_counts_all_chr.txt
+```
+    Genome  Raw  rsmodules.sh  yeast_counts_all_chr.txt
 ```
 
 ```bash
@@ -122,14 +122,14 @@ fastqc -o QC/ Raw/*
 You will see an automatically updating output message telling you the progress of the analysis. It will start like this:
 
 ```
-Started analysis of SRR014335-chr1.fastq
-Approx 5% complete for SRR014335-chr1.fastq
-Approx 10% complete for SRR014335-chr1.fastq
-Approx 15% complete for SRR014335-chr1.fastq
-Approx 20% complete for SRR014335-chr1.fastq
-Approx 25% complete for SRR014335-chr1.fastq
-Approx 30% complete for SRR014335-chr1.fastq
-Approx 35% complete for SRR014335-chr1.fastq
+    Started analysis of SRR014335-chr1.fastq
+    Approx 5% complete for SRR014335-chr1.fastq
+    Approx 10% complete for SRR014335-chr1.fastq
+    Approx 15% complete for SRR014335-chr1.fastq
+    Approx 20% complete for SRR014335-chr1.fastq
+    Approx 25% complete for SRR014335-chr1.fastq
+    Approx 30% complete for SRR014335-chr1.fastq
+    Approx 35% complete for SRR014335-chr1.fastq
 ```
 
 The FastQC program has created several new files within our ***~/RNA_seq/QC/*** directory.
@@ -138,9 +138,9 @@ The FastQC program has created several new files within our ***~/RNA_seq/QC/*** 
 ls QC
 ```
 ```bash
-SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
-SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
-SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
+    SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
+    SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
+    SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
 ```
 
 ## Viewing the FastQC results
@@ -157,9 +157,9 @@ cd ~/RNA_seq/QC
 ls
 ```
 ```
-SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
-SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
-SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
+    SRR014335-chr1_fastqc.html  SRR014336-chr1_fastqc.zip   SRR014339-chr1_fastqc.html  SRR014340-chr1_fastqc.zip
+    SRR014335-chr1_fastqc.zip   SRR014337-chr1_fastqc.html  SRR014339-chr1_fastqc.zip   SRR014341-chr1_fastqc.html
+    SRR014336-chr1_fastqc.html  SRR014337-chr1_fastqc.zip   SRR014340-chr1_fastqc.html  SRR014341-chr1_fastqc.zip
 ```
 Let's unzip the files to look at the FastQC text file outputs.
 
@@ -176,7 +176,7 @@ Inside each unzipped folder, there is a summary text which shows results of the 
 ls SRR014335-chr1_fastqc
 ```
 ```
-fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
+    fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
 ```
 
 Use less to preview the summary.txt file
