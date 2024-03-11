@@ -35,32 +35,30 @@ from FASTQ files.
 - The following syntax will remove the adapter sequence AACCGGTT from the file SRR014335-chr1.fastq, create a new file called SRR014335-chr1_trimmed.fastq, and write a summary to the log file SRR014335-chr1.log:
 
 ```bash
-
-$ pwd
-/home/$USER/RNA_seq
-
-$ mkdir Trimmed
-
-$ module load cutadapt/4.1-gimkl-2022a-Python-3.10.5
-
-$ cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq > Trimmed/SRR014335-chr1.log
-
+pwd
+```
+```
+    /home/$USER/RNA_seq
+```
+```bash
+mkdir Trimmed
+module load cutadapt/4.1-gimkl-2022a-Python-3.10.5
+cutadapt -q 20 -a AACCGGTT -o Trimmed/SRR014335-chr1_cutadapt.fastq Raw/SRR014335-chr1.fastq > Trimmed/SRR014335-chr1.log
 ```
 !!! quote ""
     * **-q** (`--quality-cutoff`)  parameter can be used to trim low-quality ends from reads. If you specify a single cutoff value, the 3’ end of each read is trimmed.
 
 ```bash
-
-$ less Trimmed/SRR014335-chr1.log
-
+less Trimmed/SRR014335-chr1.log
 ```
 
 Now we should trim all samples.
 
 ```bash 
-$ cd Raw
-
-$ ls
+cd Raw
+ls
+```
+```
 SRR014335-chr1.fastq  SRR014336-chr1.fastq  SRR014337-chr1.fastq  SRR014339-chr1.fastq  SRR014340-chr1.fastq  SRR014341-chr1.fastq
 ```
 ```bash
@@ -79,11 +77,7 @@ done
  
 ```bash
 cd ../MultiQC
-``` 
-```bash
 cp ../Trimmed/*log .
-```
-```bash
 multiqc .
 ```
 ![image](./Images/MQC2.png)
